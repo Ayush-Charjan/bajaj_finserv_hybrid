@@ -1,57 +1,51 @@
-# Bajaj Finserv Demo App
+# Fintech App - Professional Banking & Loan Management Demo
 
-A simplified Flutter demo app that replicates the basic structure of the Bajaj Finserv mobile app for learning purposes.
+A professional Flutter demo app inspired by modern fintech applications, featuring comprehensive loan management, EMI tracking, and financial services.
 
 ![Flutter](https://img.shields.io/badge/Flutter-3.0%2B-blue)
 ![Dart](https://img.shields.io/badge/Dart-3.0%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-## 🚀 Quick Start
+## ✨ Features
 
-### Prerequisites
-- [Flutter SDK](https://flutter.dev/docs/get-started/install) (3.0.0 or higher)
-- [Git](https://git-scm.com/downloads)
-- An IDE: [VS Code](https://code.visualstudio.com/) or [Android Studio](https://developer.android.com/studio)
+### 📱 6-Tab Navigation
+- **Home** - Dashboard with services and offers
+- **Profile** - User information and settings
+- **Scan QR** - QR code scanner for payments
+- **Pay EMI** - EMI payment management
+- **Menu** - All app features and services
+- **Chat** - 24/7 customer support
 
-### Installation Steps
+### 🏠 Home Screen
+- Professional top bar with cart, EMI button, and notifications
+- Search functionality
+- Promotional banners with attractive offers
+- 6-icon quick action grid (Offer, Loans, Credit Card, Grocery, Finance Manager, Stock Market)
+- Horizontal scrollable EMI types (Gold, AC, Personal, Two Wheeler, Mobile, Home)
+- Large featured EMI card with multiple options
+- Bills & Recharge section
+- EMIs on Electronics with discounts
+- Exclusive loan offers carousel
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/Ayush-Charjan/bajaj-finserv-demo.git
-cd bajaj-finserv-demo
-```
+### 💳 EMI Management
+- View all upcoming EMIs
+- Pay individually or pay all at once
+- EMI history and tracking
+- Auto-pay setup option
+- Due date notifications
 
-2. **Install dependencies**
-```bash
-flutter pub get
-```
+### 👤 Profile & Settings
+- Personal information management
+- Account settings
+- Transaction history
+- Notification preferences
+- Help & support access
 
-3. **Run the app**
-
-Choose your preferred platform:
-
-```bash
-# For Android/iOS (requires emulator or device)
-flutter run
-
-# For Windows
-flutter run -d windows
-
-# For Chrome browser (fastest for testing)
-flutter run -d chrome
-
-# For Edge browser
-flutter run -d edge
-```
-
-4. **Login to the app**
-- Use any email address (must contain @)
-- Use any password (minimum 6 characters)
-- Example: `test@example.com` / `password123`
-
-That's it! You're ready to explore the app. 🎉
-
-## Features
+### 💬 Chat Support
+- Real-time customer support interface
+- Quick help options
+- Message history
+- File attachments support
 
 ### Screens
 - **Login Screen**: User authentication with email and password
