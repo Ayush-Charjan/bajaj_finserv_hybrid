@@ -4,6 +4,8 @@ import '../models/user.dart';
 import '../models/loan.dart';
 import '../models/emi.dart';
 import '../models/feature_item.dart';
+import '../models/emi_type.dart';
+import '../models/offer_card.dart';
 
 class MockDataService {
   // Mock user data
@@ -113,5 +115,148 @@ class MockDataService {
   // Get available credit
   static double getAvailableCredit() {
     return 150000;
+  }
+
+  // Get EMI types
+  static List<EmiType> getEmiTypes() {
+    return [
+      EmiType(
+        id: '1',
+        name: 'Gold Loan',
+        icon: Icons.inventory_2,
+        color: Colors.amber.shade700,
+        description: 'Loans against gold at low interest',
+        interestRate: 7.5,
+      ),
+      EmiType(
+        id: '2',
+        name: 'AC EMI',
+        icon: Icons.ac_unit,
+        color: Colors.blue.shade400,
+        description: 'Easy EMI on Air Conditioners',
+        interestRate: 0,
+      ),
+      EmiType(
+        id: '3',
+        name: 'Personal Loan',
+        icon: Icons.person,
+        color: Colors.purple.shade600,
+        description: 'Quick personal loans',
+        interestRate: 10.5,
+      ),
+      EmiType(
+        id: '4',
+        name: 'Two Wheeler',
+        icon: Icons.two_wheeler,
+        color: Colors.green.shade600,
+        description: 'Bike loans at best rates',
+        interestRate: 9.0,
+      ),
+      EmiType(
+        id: '5',
+        name: 'Mobile EMI',
+        icon: Icons.phone_android,
+        color: Colors.orange.shade600,
+        description: 'EMI on smartphones',
+        interestRate: 0,
+      ),
+      EmiType(
+        id: '6',
+        name: 'Home Loan',
+        icon: Icons.home,
+        color: Colors.red.shade600,
+        description: 'Home loans up to ₹15 Cr',
+        interestRate: 8.5,
+      ),
+    ];
+  }
+
+  // Get promotional offers
+  static List<OfferCard> getOffers() {
+    return [
+      OfferCard(
+        id: '1',
+        title: 'Personal Loan',
+        subtitle: 'Get up to ₹55 Lakh at low interest rates',
+        buttonText: 'Apply Now',
+        backgroundColor: Color(0xFFFFD4B2),
+      ),
+      OfferCard(
+        id: '2',
+        title: 'Home Loan',
+        subtitle: 'Make your dream home a reality. Up to ₹15 Crores',
+        buttonText: 'Check Offer',
+        backgroundColor: Color(0xFFFF6B35),
+      ),
+      OfferCard(
+        id: '3',
+        title: 'Gold Loan',
+        subtitle: 'Get instant money against your gold',
+        buttonText: 'Know More',
+        backgroundColor: Color(0xFFFFF3E0),
+      ),
+    ];
+  }
+
+  // Get quick action items
+  static List<Map<String, dynamic>> getQuickActions() {
+    return [
+      {
+        'title': 'Offer',
+        'icon': Icons.local_offer,
+        'color': Colors.yellow.shade700,
+      },
+      {
+        'title': 'Loans',
+        'icon': Icons.account_balance,
+        'color': Colors.green.shade600,
+      },
+      {
+        'title': 'Credit Card',
+        'icon': Icons.credit_card,
+        'color': Colors.blue.shade600,
+      },
+      {
+        'title': 'Grocery',
+        'icon': Icons.shopping_bag,
+        'color': Colors.orange.shade600,
+      },
+      {
+        'title': 'Finance Manager',
+        'icon': Icons.assignment,
+        'color': Colors.purple.shade600,
+      },
+      {
+        'title': 'Stock Market',
+        'icon': Icons.trending_up,
+        'color': Colors.red.shade600,
+      },
+    ];
+  }
+
+  // Get electronic products for EMI
+  static List<Map<String, dynamic>> getElectronics() {
+    return [
+      {
+        'name': 'Smartphones',
+        'icon': Icons.phone_android,
+        'discount': '10% off'
+      },
+      {'name': 'Laptops', 'icon': Icons.laptop, 'discount': '15% off'},
+      {'name': 'TVs', 'icon': Icons.tv, 'discount': '20% off'},
+      {'name': 'AC', 'icon': Icons.ac_unit, 'discount': '12% off'},
+      {'name': 'Refrigerator', 'icon': Icons.kitchen, 'discount': '8% off'},
+    ];
+  }
+
+  // Get recharge services
+  static List<Map<String, dynamic>> getRechargeServices() {
+    return [
+      {'name': 'Mobile Recharge', 'icon': Icons.phone_android},
+      {'name': 'DTH Recharge', 'icon': Icons.tv},
+      {'name': 'Electricity Bill', 'icon': Icons.flash_on},
+      {'name': 'Water Bill', 'icon': Icons.water_drop},
+      {'name': 'Gas Bill', 'icon': Icons.local_fire_department},
+    ];
   }
 }
