@@ -159,7 +159,8 @@ class CreditCardScreen extends StatelessWidget {
                       LinearProgressIndicator(
                         value: 0.25,
                         backgroundColor: Colors.grey.shade200,
-                        valueColor: AlwaysStoppedAnimation<Color>(AppColors.primary),
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(AppColors.primary),
                         minHeight: 8,
                       ),
                       const SizedBox(height: 12),
@@ -281,7 +282,8 @@ class CreditCardScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      Icon(Icons.credit_card, size: 48, color: AppColors.primary),
+                      Icon(Icons.credit_card,
+                          size: 48, color: AppColors.primary),
                       const SizedBox(height: 12),
                       const Text(
                         'Don\'t have a card yet?',
@@ -324,7 +326,8 @@ class CreditCardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionCard(BuildContext context, String title, IconData icon, Color color) {
+  Widget _buildActionCard(
+      BuildContext context, String title, IconData icon, Color color) {
     return Card(
       elevation: 2,
       child: InkWell(
@@ -348,7 +351,8 @@ class CreditCardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTransactionItem(String merchant, String date, int amount, IconData icon) {
+  Widget _buildTransactionItem(
+      String merchant, String date, int amount, IconData icon) {
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       child: ListTile(

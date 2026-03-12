@@ -205,7 +205,8 @@ class OffersScreen extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 30,
-            backgroundColor: isSelected ? AppColors.primary : Colors.grey.shade200,
+            backgroundColor:
+                isSelected ? AppColors.primary : Colors.grey.shade200,
             child: Icon(
               icon,
               color: isSelected ? Colors.white : Colors.grey.shade600,

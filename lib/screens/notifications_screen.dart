@@ -16,7 +16,8 @@ class NotificationsScreen extends StatelessWidget {
           TextButton(
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('All notifications marked as read')),
+                const SnackBar(
+                    content: Text('All notifications marked as read')),
               );
             },
             child: const Text(

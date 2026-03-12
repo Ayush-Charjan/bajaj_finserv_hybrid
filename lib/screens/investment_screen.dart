@@ -51,7 +51,8 @@ class InvestmentScreen extends StatelessWidget {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        const Icon(Icons.trending_up, color: Colors.greenAccent, size: 20),
+                        const Icon(Icons.trending_up,
+                            color: Colors.greenAccent, size: 20),
                         const SizedBox(width: 4),
                         const Text(
                           '+₹12,450',
@@ -63,7 +64,8 @@ class InvestmentScreen extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
                             color: Colors.greenAccent.withOpacity(0.2),
                             borderRadius: BorderRadius.circular(8),
@@ -88,11 +90,13 @@ class InvestmentScreen extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: _buildQuickAction('Buy', Icons.add_circle, Colors.green),
+                    child: _buildQuickAction(
+                        'Buy', Icons.add_circle, Colors.green),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: _buildQuickAction('Sell', Icons.remove_circle, Colors.red),
+                    child: _buildQuickAction(
+                        'Sell', Icons.remove_circle, Colors.red),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
@@ -116,9 +120,11 @@ class InvestmentScreen extends StatelessWidget {
                     children: [
                       _buildIndexItem('NIFTY 50', 22145.65, 245.30, 1.12, true),
                       const Divider(),
-                      _buildIndexItem('SENSEX', 72950.45, -150.20, -0.21, false),
+                      _buildIndexItem(
+                          'SENSEX', 72950.45, -150.20, -0.21, false),
                       const Divider(),
-                      _buildIndexItem('NIFTY BANK', 47890.30, 380.50, 0.80, true),
+                      _buildIndexItem(
+                          'NIFTY BANK', 47890.30, 380.50, 0.80, true),
                     ],
                   ),
                 ),
@@ -132,11 +138,16 @@ class InvestmentScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 12),
-              _buildStockCard('Reliance Industries', 'RELIANCE', 2550.50, 45.20, 1.80, true, 10),
-              _buildStockCard('Tata Consultancy Services', 'TCS', 3680.75, -22.30, -0.60, false, 5),
-              _buildStockCard('Infosys', 'INFY', 1450.20, 18.50, 1.29, true, 15),
-              _buildStockCard('HDFC Bank', 'HDFCBANK', 1620.40, 35.80, 2.26, true, 8),
-              _buildStockCard('ICICI Bank', 'ICICIBANK', 980.65, -5.40, -0.55, false, 20),
+              _buildStockCard('Reliance Industries', 'RELIANCE', 2550.50, 45.20,
+                  1.80, true, 10),
+              _buildStockCard('Tata Consultancy Services', 'TCS', 3680.75,
+                  -22.30, -0.60, false, 5),
+              _buildStockCard(
+                  'Infosys', 'INFY', 1450.20, 18.50, 1.29, true, 15),
+              _buildStockCard(
+                  'HDFC Bank', 'HDFCBANK', 1620.40, 35.80, 2.26, true, 8),
+              _buildStockCard(
+                  'ICICI Bank', 'ICICIBANK', 980.65, -5.40, -0.55, false, 20),
 
               const SizedBox(height: 24),
 
@@ -224,7 +235,8 @@ class InvestmentScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildIndexItem(String name, double value, double change, double changePercent, bool isPositive) {
+  Widget _buildIndexItem(String name, double value, double change,
+      double changePercent, bool isPositive) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -293,7 +305,8 @@ class InvestmentScreen extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: isPositive ? Colors.green.shade100 : Colors.red.shade100,
+          backgroundColor:
+              isPositive ? Colors.green.shade100 : Colors.red.shade100,
           child: Text(
             symbol.substring(0, 2),
             style: TextStyle(
@@ -306,7 +319,8 @@ class InvestmentScreen extends StatelessWidget {
           symbol,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        subtitle: Text('$quantity shares • ₹${(price * quantity).toStringAsFixed(2)}'),
+        subtitle: Text(
+            '$quantity shares • ₹${(price * quantity).toStringAsFixed(2)}'),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -342,7 +356,8 @@ class InvestmentScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInvestmentOption(String title, String subtitle, IconData icon, Color color) {
+  Widget _buildInvestmentOption(
+      String title, String subtitle, IconData icon, Color color) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: ListTile(

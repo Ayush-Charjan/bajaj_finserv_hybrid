@@ -32,7 +32,10 @@ class ProductEmiScreen extends StatelessWidget {
                   itemCount: electronics.length,
                   itemBuilder: (context, index) {
                     final item = electronics[index];
-                    final isSelected = item['name'].toString().toLowerCase().contains(selectedProduct);
+                    final isSelected = item['name']
+                        .toString()
+                        .toLowerCase()
+                        .contains(selectedProduct);
                     return GestureDetector(
                       onTap: () {
                         // Navigate to specific product category
@@ -44,7 +47,9 @@ class ProductEmiScreen extends StatelessWidget {
                           color: isSelected ? AppColors.primary : Colors.white,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
-                            color: isSelected ? AppColors.primary : Colors.grey.shade300,
+                            color: isSelected
+                                ? AppColors.primary
+                                : Colors.grey.shade300,
                             width: 2,
                           ),
                         ),
@@ -53,7 +58,8 @@ class ProductEmiScreen extends StatelessWidget {
                           children: [
                             Icon(
                               item['icon'],
-                              color: isSelected ? Colors.white : AppColors.primary,
+                              color:
+                                  isSelected ? Colors.white : AppColors.primary,
                               size: 32,
                             ),
                             const SizedBox(height: 6),
@@ -63,7 +69,8 @@ class ProductEmiScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold,
-                                color: isSelected ? Colors.white : Colors.black87,
+                                color:
+                                    isSelected ? Colors.white : Colors.black87,
                               ),
                               maxLines: 2,
                             ),
@@ -198,7 +205,9 @@ class ProductEmiScreen extends StatelessWidget {
                                   selected: months == 12,
                                   selectedColor: AppColors.primary,
                                   labelStyle: TextStyle(
-                                    color: months == 12 ? Colors.white : Colors.black,
+                                    color: months == 12
+                                        ? Colors.white
+                                        : Colors.black,
                                   ),
                                   onSelected: (selected) {},
                                 ))
@@ -303,7 +312,8 @@ class ProductEmiScreen extends StatelessWidget {
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      Icon(Icons.credit_card, size: 14, color: Colors.green.shade700),
+                      Icon(Icons.credit_card,
+                          size: 14, color: Colors.green.shade700),
                       const SizedBox(width: 4),
                       Text(
                         '₹$emiText',
@@ -323,7 +333,8 @@ class ProductEmiScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
                 foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               ),
               onPressed: () {},
               child: const Text('Buy'),

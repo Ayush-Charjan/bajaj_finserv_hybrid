@@ -10,7 +10,7 @@ import 'investment_screen.dart';
 import 'bills_recharge_screen.dart';
 import 'notifications_screen.dart';
 import 'cart_screen.dart';
-import 'emi_card_screen.dart';
+import 'emi_screen.dart';
 
 class NewHomeScreen extends StatelessWidget {
   const NewHomeScreen({Key? key}) : super(key: key);
@@ -41,14 +41,14 @@ class NewHomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 16),
-                    _buildPromoBanner(offers.first),
+                    _buildPromoBanner(context, offers.first),
                     const SizedBox(height: 16),
                     _buildQuickActionsGrid(quickActions),
                     const SizedBox(height: 20),
                     _buildSectionTitle('Select EMI Type'),
                     _buildEmiTypesRow(emiTypes),
                     const SizedBox(height: 20),
-                    _buildBigEmiCard(emiTypes),
+                    _buildBigEmiCard(context, emiTypes),
                     const SizedBox(height: 20),
                     _buildSectionTitle('Bills & Recharge'),
                     _buildRechargeRow(rechargeServices),
@@ -138,7 +138,7 @@ class NewHomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const EmiCardScreen()),
+                    MaterialPageRoute(builder: (context) => const EmiScreen()),
                   );
                 },
                 constraints: const BoxConstraints(),
@@ -168,7 +168,8 @@ class NewHomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const NotificationsScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const NotificationsScreen()),
                   );
                 },
                 child: Stack(
@@ -217,7 +218,7 @@ class NewHomeScreen extends StatelessWidget {
   }
 
   /// PROMO BANNER
-  Widget _buildPromoBanner(dynamic offer) {
+  Widget _buildPromoBanner(BuildContext context, dynamic offer) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       height: 120,
@@ -406,7 +407,7 @@ class NewHomeScreen extends StatelessWidget {
   }
 
   /// BIG EMI CARD
-  Widget _buildBigEmiCard(List emiTypes) {
+  Widget _buildBigEmiCard(BuildContext context, List emiTypes) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(20),
@@ -430,7 +431,7 @@ class NewHomeScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const EmiCardScreen()),
+                MaterialPageRoute(builder: (context) => const EmiScreen()),
               );
             },
             child: const Text("Explore EMI Options"),

@@ -59,7 +59,8 @@ class FinanceManagerScreen extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: _buildBalanceItem('Income', '₹1,50,000', Icons.arrow_downward, Colors.green),
+                          child: _buildBalanceItem('Income', '₹1,50,000',
+                              Icons.arrow_downward, Colors.green),
                         ),
                         Container(
                           width: 1,
@@ -67,7 +68,8 @@ class FinanceManagerScreen extends StatelessWidget {
                           color: Colors.white30,
                         ),
                         Expanded(
-                          child: _buildBalanceItem('Expenses', '₹65,500', Icons.arrow_upward, Colors.red),
+                          child: _buildBalanceItem('Expenses', '₹65,500',
+                              Icons.arrow_upward, Colors.red),
                         ),
                       ],
                     ),
@@ -81,11 +83,13 @@ class FinanceManagerScreen extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: _buildStatCard('Investments', '₹4,20,000', Icons.trending_up, Colors.green),
+                    child: _buildStatCard('Investments', '₹4,20,000',
+                        Icons.trending_up, Colors.green),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: _buildStatCard('Savings', '₹2,15,000', Icons.savings, Colors.blue),
+                    child: _buildStatCard(
+                        'Savings', '₹2,15,000', Icons.savings, Colors.blue),
                   ),
                 ],
               ),
@@ -103,7 +107,8 @@ class FinanceManagerScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: Column(
                     children: [
-                      _buildBudgetItem('Food & Dining', 12000, 15000, Colors.orange),
+                      _buildBudgetItem(
+                          'Food & Dining', 12000, 15000, Colors.orange),
                       const SizedBox(height: 12),
                       _buildBudgetItem('Shopping', 8000, 10000, Colors.purple),
                       const SizedBox(height: 12),
@@ -198,7 +203,8 @@ class FinanceManagerScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBalanceItem(String label, String amount, IconData icon, Color color) {
+  Widget _buildBalanceItem(
+      String label, String amount, IconData icon, Color color) {
     return Column(
       children: [
         Icon(icon, color: Colors.white, size: 20),
@@ -222,7 +228,8 @@ class FinanceManagerScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStatCard(String label, String amount, IconData icon, Color color) {
+  Widget _buildStatCard(
+      String label, String amount, IconData icon, Color color) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -316,7 +323,8 @@ class FinanceManagerScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildGoalCard(String title, int saved, int target, String percentage) {
+  Widget _buildGoalCard(
+      String title, int saved, int target, String percentage) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: Padding(

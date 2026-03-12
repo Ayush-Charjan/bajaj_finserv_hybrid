@@ -104,8 +104,9 @@ class _BillsRechargeScreenState extends State<BillsRechargeScreen> {
                           color: isSelected ? AppColors.primary : Colors.white,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
-                            color:
-                                isSelected ? AppColors.primary : Colors.grey.shade300,
+                            color: isSelected
+                                ? AppColors.primary
+                                : Colors.grey.shade300,
                             width: 2,
                           ),
                         ),
@@ -123,7 +124,8 @@ class _BillsRechargeScreenState extends State<BillsRechargeScreen> {
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold,
-                                color: isSelected ? Colors.white : Colors.black87,
+                                color:
+                                    isSelected ? Colors.white : Colors.black87,
                               ),
                             ),
                           ],
@@ -148,7 +150,8 @@ class _BillsRechargeScreenState extends State<BillsRechargeScreen> {
                       children: [
                         Row(
                           children: [
-                            Icon(service['icon'], color: service['color'], size: 32),
+                            Icon(service['icon'],
+                                color: service['color'], size: 32),
                             const SizedBox(width: 12),
                             Text(
                               service['title'],
@@ -210,7 +213,8 @@ class _BillsRechargeScreenState extends State<BillsRechargeScreen> {
                           children: [100, 200, 500, 1000, 2000]
                               .map((amount) => OutlinedButton(
                                     onPressed: () {
-                                      _amountController.text = amount.toString();
+                                      _amountController.text =
+                                          amount.toString();
                                     },
                                     child: Text('₹$amount'),
                                   ))
@@ -253,9 +257,12 @@ class _BillsRechargeScreenState extends State<BillsRechargeScreen> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 12),
-              _buildRecentTransaction('Mobile Recharge', '9876543210', 299, Icons.phone_android),
-              _buildRecentTransaction('Electricity Bill', 'CON123456', 1500, Icons.flash_on),
-              _buildRecentTransaction('DTH Recharge', 'DTH987654', 450, Icons.tv),
+              _buildRecentTransaction(
+                  'Mobile Recharge', '9876543210', 299, Icons.phone_android),
+              _buildRecentTransaction(
+                  'Electricity Bill', 'CON123456', 1500, Icons.flash_on),
+              _buildRecentTransaction(
+                  'DTH Recharge', 'DTH987654', 450, Icons.tv),
             ],
           ),
         ),
@@ -263,7 +270,8 @@ class _BillsRechargeScreenState extends State<BillsRechargeScreen> {
     );
   }
 
-  Widget _buildRecentTransaction(String title, String id, int amount, IconData icon) {
+  Widget _buildRecentTransaction(
+      String title, String id, int amount, IconData icon) {
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       child: ListTile(

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import '../services/mock_data_service.dart';
 import '../utils/app_colors.dart';
-import '../widgets/image_helpers.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);

@@ -37,7 +37,10 @@ class _CartScreenState extends State<CartScreen> {
   ];
 
   int _getTotalAmount() {
-    return _cartItems.fold(0, (sum, item) => sum + (item['price'] as int) * (item['quantity'] as int));
+    return _cartItems.fold(
+        0,
+        (sum, item) =>
+            sum + (item['price'] as int) * (item['quantity'] as int));
   }
 
   int _getTotalItems() {
