@@ -1,6 +1,7 @@
 // Loans screen displaying all user loans
 import 'package:flutter/material.dart';
 import '../services/mock_data_service.dart';
+import '../utils/app_colors.dart';
 import '../widgets/loan_card.dart';
 import '../models/loan.dart';
 
@@ -17,7 +18,7 @@ class _LoansScreenState extends State<LoansScreen> {
   @override
   Widget build(BuildContext context) {
     final allLoans = MockDataService.getLoans();
-    
+
     // Filter loans based on selected filter
     List<Loan> filteredLoans = allLoans.where((loan) {
       if (_selectedFilter == 'All') return true;
@@ -29,9 +30,9 @@ class _LoansScreenState extends State<LoansScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade700,
+        backgroundColor: AppColors.primary,
         elevation: 0,
-        title: Text(
+        title: const Text(
           'My Loans',
           style: TextStyle(
             fontSize: 20,
@@ -42,7 +43,7 @@ class _LoansScreenState extends State<LoansScreen> {
         actions: [
           // Filter icon
           IconButton(
-            icon: Icon(Icons.filter_list, color: Colors.white),
+            icon: const Icon(Icons.filter_list, color: Colors.white),
             onPressed: () {
               _showFilterDialog();
             },
@@ -54,8 +55,8 @@ class _LoansScreenState extends State<LoansScreen> {
           // Summary card
           Container(
             width: double.infinity,
-            margin: EdgeInsets.all(16),
-            padding: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [Colors.blue.shade600, Colors.blue.shade800],
@@ -65,40 +66,40 @@ class _LoansScreenState extends State<LoansScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Total Active Loans',
                   style: TextStyle(
                     color: Colors.white70,
                     fontSize: 14,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   '${allLoans.where((l) => l.status == 'active').length}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Total Amount',
                           style: TextStyle(
                             color: Colors.white70,
                             fontSize: 12,
                           ),
                         ),
-                        SizedBox(height: 4),
+                        const SizedBox(height: 4),
                         Text(
                           '₹${_calculateTotalAmount(allLoans)}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -109,17 +110,17 @@ class _LoansScreenState extends State<LoansScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Monthly EMI',
                           style: TextStyle(
                             color: Colors.white70,
                             fontSize: 12,
                           ),
                         ),
-                        SizedBox(height: 4),
+                        const SizedBox(height: 4),
                         Text(
                           '₹${_calculateTotalEmi(allLoans)}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -132,22 +133,22 @@ class _LoansScreenState extends State<LoansScreen> {
               ],
             ),
           ),
-          
+
           // Filter chips
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               children: [
                 _buildFilterChip('All'),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 _buildFilterChip('Active'),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 _buildFilterChip('Closed'),
               ],
             ),
           ),
-          SizedBox(height: 16),
-          
+          const SizedBox(height: 16),
+
           // Loans list
           Expanded(
             child: filteredLoans.isEmpty
@@ -160,7 +161,7 @@ class _LoansScreenState extends State<LoansScreen> {
                           size: 64,
                           color: Colors.grey.shade400,
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(
                           'No ${_selectedFilter.toLowerCase()} loans found',
                           style: TextStyle(
@@ -185,17 +186,18 @@ class _LoansScreenState extends State<LoansScreen> {
           ),
         ],
       ),
-      
+
       // Apply for new loan button
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Apply for new loan feature coming soon!')),
+            const SnackBar(
+                content: Text('Apply for new loan feature coming soon!')),
           );
         },
-        backgroundColor: Colors.blue.shade700,
-        icon: Icon(Icons.add),
-        label: Text('Apply for Loan'),
+        backgroundColor: AppColors.primary,
+        icon: const Icon(Icons.add),
+        label: const Text('Apply for Loan'),
       ),
     );
   }
@@ -211,7 +213,7 @@ class _LoansScreenState extends State<LoansScreen> {
           _selectedFilter = label;
         });
       },
-      selectedColor: Colors.blue.shade700,
+      selectedColor: AppColors.primary,
       labelStyle: TextStyle(
         color: isSelected ? Colors.white : Colors.grey.shade700,
         fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
@@ -224,12 +226,12 @@ class _LoansScreenState extends State<LoansScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Filter Loans'),
+        title: const Text('Filter Loans'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              title: Text('All Loans'),
+              title: const Text('All Loans'),
               leading: Radio(
                 value: 'All',
                 groupValue: _selectedFilter,
@@ -242,7 +244,7 @@ class _LoansScreenState extends State<LoansScreen> {
               ),
             ),
             ListTile(
-              title: Text('Active Loans'),
+              title: const Text('Active Loans'),
               leading: Radio(
                 value: 'Active',
                 groupValue: _selectedFilter,
@@ -255,7 +257,7 @@ class _LoansScreenState extends State<LoansScreen> {
               ),
             ),
             ListTile(
-              title: Text('Closed Loans'),
+              title: const Text('Closed Loans'),
               leading: Radio(
                 value: 'Closed',
                 groupValue: _selectedFilter,
@@ -284,22 +286,22 @@ class _LoansScreenState extends State<LoansScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Loan ID: ${loan.id}'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('Amount: ₹${loan.amount.toStringAsFixed(0)}'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('Interest Rate: ${loan.interestRate}%'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('Tenure: ${loan.tenure} months'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('EMI: ₹${loan.emiAmount.toStringAsFixed(0)}'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('Status: ${loan.status}'),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Close'),
+            child: const Text('Close'),
           ),
         ],
       ),

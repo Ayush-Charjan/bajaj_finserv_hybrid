@@ -22,7 +22,7 @@ class LoanCard extends StatelessWidget {
             : Colors.orange;
 
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -31,7 +31,7 @@ class LoanCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -48,7 +48,8 @@ class LoanCard extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                     decoration: BoxDecoration(
                       color: statusColor.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
@@ -64,12 +65,13 @@ class LoanCard extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 12),
-              
+              const SizedBox(height: 12),
+
               // Loan amount
               Row(
                 children: [
-                  Icon(Icons.currency_rupee, size: 16, color: Colors.grey.shade600),
+                  Icon(Icons.currency_rupee,
+                      size: 16, color: Colors.grey.shade600),
                   Text(
                     'Loan Amount: ',
                     style: TextStyle(
@@ -87,8 +89,8 @@ class LoanCard extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 8),
-              
+              const SizedBox(height: 8),
+
               // EMI amount
               Row(
                 children: [
@@ -110,8 +112,8 @@ class LoanCard extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 8),
-              
+              const SizedBox(height: 8),
+
               // Interest rate and tenure
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,5 +1,6 @@
 // Reusable credit card widget for home screen
 import 'package:flutter/material.dart';
+import '../utils/app_colors.dart';
 
 class CreditCardWidget extends StatelessWidget {
   final double creditLimit;
@@ -17,11 +18,11 @@ class CreditCardWidget extends StatelessWidget {
     double usagePercentage = (usedCredit / creditLimit) * 100;
 
     return Container(
-      margin: EdgeInsets.all(16),
-      padding: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.blue.shade700, Colors.blue.shade900],
+          colors: [AppColors.primary, AppColors.primaryDark],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -30,7 +31,7 @@ class CreditCardWidget extends StatelessWidget {
           BoxShadow(
             color: Colors.blue.withOpacity(0.3),
             blurRadius: 10,
-            offset: Offset(0, 5),
+            offset: const Offset(0, 5),
           ),
         ],
       ),
@@ -38,7 +39,7 @@ class CreditCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Card title
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -55,40 +56,40 @@ class CreditCardWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
-          
+          const SizedBox(height: 20),
+
           // Available credit
-          Text(
+          const Text(
             'Available Credit',
             style: TextStyle(
               color: Colors.white70,
               fontSize: 14,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             '₹${availableCredit.toStringAsFixed(0)}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 32,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 16),
-          
+          const SizedBox(height: 16),
+
           // Progress bar
           LinearProgressIndicator(
             value: usagePercentage / 100,
             backgroundColor: Colors.white30,
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
             minHeight: 6,
           ),
-          SizedBox(height: 8),
-          
+          const SizedBox(height: 8),
+
           // Credit limit info
           Text(
             'Credit Limit: ₹${creditLimit.toStringAsFixed(0)}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white70,
               fontSize: 12,
             ),

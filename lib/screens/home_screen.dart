@@ -1,9 +1,9 @@
 // Home Dashboard screen showing user overview and features
 import 'package:flutter/material.dart';
 import '../services/mock_data_service.dart';
+import '../utils/app_colors.dart';
 import '../widgets/credit_card_widget.dart';
 import '../widgets/feature_grid_item.dart';
-import '../models/feature_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -30,14 +30,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade700,
+        backgroundColor: AppColors.primary,
         elevation: 0,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               _getGreeting(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 color: Colors.white70,
                 fontWeight: FontWeight.normal,
@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
             ),
             Text(
               user.name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -56,10 +56,10 @@ class HomeScreen extends StatelessWidget {
         actions: [
           // Notifications icon
           IconButton(
-            icon: Icon(Icons.notifications_outlined, color: Colors.white),
+            icon: const Icon(Icons.notifications_outlined, color: Colors.white),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('No new notifications')),
+                const SnackBar(content: Text('No new notifications')),
               );
             },
           ),
@@ -74,11 +74,11 @@ class HomeScreen extends StatelessWidget {
               creditLimit: creditLimit,
               availableCredit: availableCredit,
             ),
-            SizedBox(height: 8),
-            
+            const SizedBox(height: 8),
+
             // Quick actions section
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Quick Actions',
                 style: TextStyle(
@@ -88,14 +88,14 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             // Feature grid
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: GridView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
@@ -111,11 +111,14 @@ class HomeScreen extends StatelessWidget {
                         // Navigate to loans tab
                         // This will be handled by the main navigation
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Navigate to Loans tab')),
+                          const SnackBar(
+                              content: Text('Navigate to Loans tab')),
                         );
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('${features[index].title} feature coming soon!')),
+                          SnackBar(
+                              content: Text(
+                                  '${features[index].title} feature coming soon!')),
                         );
                       }
                     },
@@ -123,10 +126,10 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
-            
+
             // Recent activity section
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Recent Activity',
                 style: TextStyle(
@@ -136,11 +139,11 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             // Activity list
             ListView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: 3,
               itemBuilder: (context, index) {
                 return ListTile(
@@ -148,15 +151,15 @@ class HomeScreen extends StatelessWidget {
                     backgroundColor: Colors.blue.shade100,
                     child: Icon(
                       Icons.account_balance_wallet,
-                      color: Colors.blue.shade700,
+                      color: AppColors.primary,
                       size: 20,
                     ),
                   ),
-                  title: Text(
+                  title: const Text(
                     'EMI Payment',
                     style: TextStyle(fontWeight: FontWeight.w600),
                   ),
-                  subtitle: Text('Personal Loan - ₹16,134'),
+                  subtitle: const Text('Personal Loan - ₹16,134'),
                   trailing: Text(
                     '2 days ago',
                     style: TextStyle(
@@ -167,7 +170,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
           ],
         ),
       ),

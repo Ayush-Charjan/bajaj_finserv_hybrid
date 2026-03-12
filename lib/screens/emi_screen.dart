@@ -1,6 +1,7 @@
 // EMI Card screen showing upcoming EMI payments
 import 'package:flutter/material.dart';
 import '../services/mock_data_service.dart';
+import '../utils/app_colors.dart';
 import '../widgets/emi_card_widget.dart';
 
 class EmiScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class EmiScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final upcomingEmis = MockDataService.getUpcomingEmis();
-    
+
     // Calculate total upcoming EMI amount
     double totalEmiAmount = upcomingEmis
         .where((emi) => !emi.isPaid)
@@ -18,9 +19,9 @@ class EmiScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade700,
+        backgroundColor: AppColors.primary,
         elevation: 0,
-        title: Text(
+        title: const Text(
           'EMI Payments',
           style: TextStyle(
             fontSize: 20,
@@ -31,10 +32,11 @@ class EmiScreen extends StatelessWidget {
         actions: [
           // History icon
           IconButton(
-            icon: Icon(Icons.history, color: Colors.white),
+            icon: const Icon(Icons.history, color: Colors.white),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('EMI payment history coming soon!')),
+                const SnackBar(
+                    content: Text('EMI payment history coming soon!')),
               );
             },
           ),
@@ -47,8 +49,8 @@ class EmiScreen extends StatelessWidget {
             // Summary card
             Container(
               width: double.infinity,
-              margin: EdgeInsets.all(16),
-              padding: EdgeInsets.all(20),
+              margin: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Colors.orange.shade600, Colors.orange.shade800],
@@ -58,7 +60,7 @@ class EmiScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  const Row(
                     children: [
                       Icon(
                         Icons.account_balance_wallet,
@@ -75,10 +77,10 @@ class EmiScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         '₹',
                         style: TextStyle(
                           color: Colors.white,
@@ -88,7 +90,7 @@ class EmiScreen extends StatelessWidget {
                       ),
                       Text(
                         totalEmiAmount.toStringAsFixed(0),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
@@ -96,18 +98,18 @@ class EmiScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.info_outline,
                         color: Colors.white70,
                         size: 16,
                       ),
-                      SizedBox(width: 4),
+                      const SizedBox(width: 4),
                       Text(
                         '${upcomingEmis.where((e) => !e.isPaid).length} pending payments',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 12,
                         ),
@@ -117,11 +119,11 @@ class EmiScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             // Quick tip
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 16),
-              padding: EdgeInsets.all(12),
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: Colors.blue.shade50,
                 borderRadius: BorderRadius.circular(8),
@@ -131,10 +133,10 @@ class EmiScreen extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.lightbulb_outline,
-                    color: Colors.blue.shade700,
+                    color: AppColors.primary,
                     size: 20,
                   ),
-                  SizedBox(width: 12),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: Text(
                       'Set up auto-pay to never miss an EMI payment',
@@ -147,11 +149,11 @@ class EmiScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
-            
+            const SizedBox(height: 16),
+
             // Upcoming EMIs section
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Upcoming Payments',
                 style: TextStyle(
@@ -161,12 +163,12 @@ class EmiScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             // EMI list
             upcomingEmis.isEmpty
                 ? Center(
                     child: Padding(
-                      padding: EdgeInsets.all(32),
+                      padding: const EdgeInsets.all(32),
                       child: Column(
                         children: [
                           Icon(
@@ -174,7 +176,7 @@ class EmiScreen extends StatelessWidget {
                             size: 64,
                             color: Colors.green.shade400,
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           Text(
                             'No upcoming EMI payments',
                             style: TextStyle(
@@ -188,7 +190,7 @@ class EmiScreen extends StatelessWidget {
                   )
                 : ListView.builder(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: upcomingEmis.length,
                     itemBuilder: (context, index) {
                       return EmiCardWidget(
@@ -199,25 +201,26 @@ class EmiScreen extends StatelessWidget {
                       );
                     },
                   ),
-            SizedBox(height: 16),
-            
+            const SizedBox(height: 16),
+
             // Auto-pay setup button
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: OutlinedButton.icon(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Auto-pay setup coming soon!')),
+                      const SnackBar(
+                          content: Text('Auto-pay setup coming soon!')),
                     );
                   },
-                  icon: Icon(Icons.auto_fix_high),
-                  label: Text('Set Up Auto-Pay'),
+                  icon: const Icon(Icons.auto_fix_high),
+                  label: const Text('Set Up Auto-Pay'),
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.blue.shade700,
-                    side: BorderSide(color: Colors.blue.shade700),
+                    foregroundColor: AppColors.primary,
+                    side: BorderSide(color: AppColors.primary),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -236,23 +239,23 @@ class EmiScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Confirm Payment'),
+        title: const Text('Confirm Payment'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Loan: ${emi.loanType}'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               'Amount: ₹${emi.emiAmount.toStringAsFixed(0)}',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue.shade700,
+                color: AppColors.primary,
               ),
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Are you sure you want to make this payment?',
               style: TextStyle(fontSize: 14),
             ),
@@ -261,22 +264,22 @@ class EmiScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
+                const SnackBar(
                   content: Text('Payment successful!'),
                   backgroundColor: Colors.green,
                 ),
               );
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue.shade700,
+              backgroundColor: AppColors.primary,
             ),
-            child: Text('Pay Now'),
+            child: const Text('Pay Now'),
           ),
         ],
       ),

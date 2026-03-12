@@ -1,6 +1,8 @@
 // Profile screen showing user information and settings
 import 'package:flutter/material.dart';
 import '../services/mock_data_service.dart';
+import '../utils/app_colors.dart';
+import '../widgets/image_helpers.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -12,9 +14,9 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade700,
+        backgroundColor: AppColors.primary,
         elevation: 0,
-        title: Text(
+        title: const Text(
           'Profile',
           style: TextStyle(
             fontSize: 20,
@@ -25,10 +27,10 @@ class ProfileScreen extends StatelessWidget {
         actions: [
           // Edit icon
           IconButton(
-            icon: Icon(Icons.edit, color: Colors.white),
+            icon: const Icon(Icons.edit, color: Colors.white),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Edit profile coming soon!')),
+                const SnackBar(content: Text('Edit profile coming soon!')),
               );
             },
           ),
@@ -40,37 +42,43 @@ class ProfileScreen extends StatelessWidget {
             // Profile header
             Container(
               width: double.infinity,
-              color: Colors.blue.shade700,
-              padding: EdgeInsets.only(bottom: 24),
+              color: AppColors.primary,
+              padding: const EdgeInsets.only(bottom: 24),
               child: Column(
                 children: [
-                  // Profile picture
+                  // Profile picture with image support
                   CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.person,
-                      size: 50,
-                      color: Colors.blue.shade700,
-                    ),
+                    backgroundImage: user.profileImage.isNotEmpty
+                        ? AssetImage(user.profileImage)
+                        : null,
+                    child: user.profileImage.isEmpty
+                        ? Icon(
+                            Icons.person,
+                            size: 50,
+                            color: AppColors.primary,
+                          )
+                        : null,
+                    onBackgroundImageError: (exception, stackTrace) {},
                   ),
-                  SizedBox(height: 12),
-                  
+                  const SizedBox(height: 12),
+
                   // User name
                   Text(
                     user.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 4),
-                  
+                  const SizedBox(height: 4),
+
                   // User ID
                   Text(
                     'ID: ${user.id}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.white70,
                     ),
@@ -78,8 +86,8 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
-            
+            const SizedBox(height: 16),
+
             // Personal information section
             _buildSectionTitle('Personal Information'),
             _buildInfoCard(
@@ -92,8 +100,8 @@ class ProfileScreen extends StatelessWidget {
               title: 'Phone',
               value: user.phone,
             ),
-            SizedBox(height: 16),
-            
+            const SizedBox(height: 16),
+
             // Account settings section
             _buildSectionTitle('Account Settings'),
             _buildMenuTile(
@@ -101,7 +109,7 @@ class ProfileScreen extends StatelessWidget {
               title: 'Change Password',
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Change password coming soon!')),
+                  const SnackBar(content: Text('Change password coming soon!')),
                 );
               },
             ),
@@ -110,7 +118,8 @@ class ProfileScreen extends StatelessWidget {
               title: 'Biometric Authentication',
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Biometric settings coming soon!')),
+                  const SnackBar(
+                      content: Text('Biometric settings coming soon!')),
                 );
               },
             ),
@@ -119,12 +128,13 @@ class ProfileScreen extends StatelessWidget {
               title: 'Notification Settings',
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Notification settings coming soon!')),
+                  const SnackBar(
+                      content: Text('Notification settings coming soon!')),
                 );
               },
             ),
-            SizedBox(height: 16),
-            
+            const SizedBox(height: 16),
+
             // Support section
             _buildSectionTitle('Support'),
             _buildMenuTile(
@@ -132,7 +142,7 @@ class ProfileScreen extends StatelessWidget {
               title: 'Help & Support',
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Help & Support coming soon!')),
+                  const SnackBar(content: Text('Help & Support coming soon!')),
                 );
               },
             ),
@@ -141,7 +151,8 @@ class ProfileScreen extends StatelessWidget {
               title: 'Terms & Conditions',
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Terms & Conditions coming soon!')),
+                  const SnackBar(
+                      content: Text('Terms & Conditions coming soon!')),
                 );
               },
             ),
@@ -150,7 +161,7 @@ class ProfileScreen extends StatelessWidget {
               title: 'Privacy Policy',
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Privacy Policy coming soon!')),
+                  const SnackBar(content: Text('Privacy Policy coming soon!')),
                 );
               },
             ),
@@ -161,11 +172,11 @@ class ProfileScreen extends StatelessWidget {
                 _showAboutDialog(context);
               },
             ),
-            SizedBox(height: 24),
-            
+            const SizedBox(height: 24),
+
             // Logout button
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -173,8 +184,8 @@ class ProfileScreen extends StatelessWidget {
                   onPressed: () {
                     _showLogoutDialog(context);
                   },
-                  icon: Icon(Icons.logout),
-                  label: Text('Logout'),
+                  icon: const Icon(Icons.logout),
+                  label: const Text('Logout'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red.shade600,
                     foregroundColor: Colors.white,
@@ -185,8 +196,8 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 24),
-            
+            const SizedBox(height: 24),
+
             // App version
             Text(
               'Version 1.0.0',
@@ -195,7 +206,7 @@ class ProfileScreen extends StatelessWidget {
                 fontSize: 12,
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
           ],
         ),
       ),
@@ -205,7 +216,7 @@ class ProfileScreen extends StatelessWidget {
   // Build section title widget
   Widget _buildSectionTitle(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
@@ -227,8 +238,8 @@ class ProfileScreen extends StatelessWidget {
     required String value,
   }) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -236,14 +247,14 @@ class ProfileScreen extends StatelessWidget {
           BoxShadow(
             color: Colors.grey.withOpacity(0.1),
             blurRadius: 4,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
       child: Row(
         children: [
-          Icon(icon, color: Colors.blue.shade700),
-          SizedBox(width: 16),
+          Icon(icon, color: AppColors.primary),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -255,7 +266,7 @@ class ProfileScreen extends StatelessWidget {
                     color: Colors.grey.shade600,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   value,
                   style: TextStyle(
@@ -279,7 +290,7 @@ class ProfileScreen extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -287,15 +298,15 @@ class ProfileScreen extends StatelessWidget {
           BoxShadow(
             color: Colors.grey.withOpacity(0.1),
             blurRadius: 4,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
       child: ListTile(
-        leading: Icon(icon, color: Colors.blue.shade700),
+        leading: Icon(icon, color: AppColors.primary),
         title: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w500,
           ),
@@ -311,30 +322,30 @@ class ProfileScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('About'),
+        title: const Text('About'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               Icons.account_balance,
               size: 64,
-              color: Colors.blue.shade700,
+              color: AppColors.primary,
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Bajaj Finserv Demo',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               'Version 1.0.0',
               style: TextStyle(color: Colors.grey.shade600),
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'This is a demo app created for learning purposes.',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 14),
@@ -344,7 +355,7 @@ class ProfileScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Close'),
+            child: const Text('Close'),
           ),
         ],
       ),
@@ -356,12 +367,12 @@ class ProfileScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Logout'),
-        content: Text('Are you sure you want to logout?'),
+        title: const Text('Logout'),
+        content: const Text('Are you sure you want to logout?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () {
@@ -371,7 +382,7 @@ class ProfileScreen extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red.shade600,
             ),
-            child: Text('Logout'),
+            child: const Text('Logout'),
           ),
         ],
       ),

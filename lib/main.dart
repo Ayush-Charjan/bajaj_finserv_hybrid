@@ -14,13 +14,13 @@ void main() {
 
   // Set system UI overlay style
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
+    const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
     ),
   );
 
-  runApp(BajajFinservApp());
+  runApp(const BajajFinservApp());
 }
 
 class BajajFinservApp extends StatelessWidget {
@@ -30,7 +30,7 @@ class BajajFinservApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // App title
-      title: 'Fintech App',
+      title: 'Bajaj Finserv',
 
       // Remove debug banner
       debugShowCheckedModeBanner: false,
@@ -42,7 +42,7 @@ class BajajFinservApp extends StatelessWidget {
         primaryColor: AppColors.primary,
 
         // App bar theme
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: AppColors.primary,
           elevation: 0,
           centerTitle: false,
@@ -62,7 +62,7 @@ class BajajFinservApp extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
           ),
         ),
 
@@ -111,8 +111,8 @@ class BajajFinservApp extends StatelessWidget {
 
       // Routes configuration
       routes: {
-        '/': (context) => LoginScreen(),
-        '/home': (context) => NewMainNavigationScreen(),
+        '/': (context) => const LoginScreen(),
+        '/home': (context) => const NewMainNavigationScreen(),
       },
     );
   }

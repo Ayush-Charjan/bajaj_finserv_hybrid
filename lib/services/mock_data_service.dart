@@ -6,6 +6,7 @@ import '../models/emi.dart';
 import '../models/feature_item.dart';
 import '../models/emi_type.dart';
 import '../models/offer_card.dart';
+import '../utils/app_colors.dart';
 
 class MockDataService {
   // Mock user data
@@ -15,7 +16,7 @@ class MockDataService {
       name: 'Rajesh Kumar',
       email: 'rajesh.kumar@example.com',
       phone: '+91 98765 43210',
-      profileImage: 'assets/profile.png',
+      profileImage: 'assets/images/user_placeholder.png',
     );
   }
 
@@ -62,7 +63,7 @@ class MockDataService {
         id: 'E001',
         loanType: 'Personal Loan',
         emiAmount: 16134,
-        dueDate: DateTime.now().add(Duration(days: 5)),
+        dueDate: DateTime.now().add(const Duration(days: 5)),
         isPaid: false,
         remainingEmis: 22,
       ),
@@ -70,7 +71,7 @@ class MockDataService {
         id: 'E002',
         loanType: 'Home Loan',
         emiAmount: 27689,
-        dueDate: DateTime.now().add(Duration(days: 12)),
+        dueDate: DateTime.now().add(const Duration(days: 12)),
         isPaid: false,
         remainingEmis: 178,
       ),
@@ -83,7 +84,7 @@ class MockDataService {
       FeatureItem(
         title: 'Loans',
         icon: Icons.account_balance,
-        color: Colors.blue.shade700,
+        color: AppColors.primary,
         route: '/loans',
       ),
       FeatureItem(
@@ -127,6 +128,7 @@ class MockDataService {
         color: Colors.amber.shade700,
         description: 'Loans against gold at low interest',
         interestRate: 7.5,
+        imagePath: 'assets/images/gold_emi.jpg',
       ),
       EmiType(
         id: '2',
@@ -135,6 +137,7 @@ class MockDataService {
         color: Colors.blue.shade400,
         description: 'Easy EMI on Air Conditioners',
         interestRate: 0,
+        imagePath: 'assets/images/ac_emi.jpg',
       ),
       EmiType(
         id: '3',
@@ -143,6 +146,7 @@ class MockDataService {
         color: Colors.purple.shade600,
         description: 'Quick personal loans',
         interestRate: 10.5,
+        imagePath: 'assets/images/personal_loan.jpg',
       ),
       EmiType(
         id: '4',
@@ -151,6 +155,7 @@ class MockDataService {
         color: Colors.green.shade600,
         description: 'Bike loans at best rates',
         interestRate: 9.0,
+        imagePath: 'assets/images/two_wheeler.jpg',
       ),
       EmiType(
         id: '5',
@@ -159,6 +164,7 @@ class MockDataService {
         color: Colors.orange.shade600,
         description: 'EMI on smartphones',
         interestRate: 0,
+        imagePath: 'assets/images/mobile.jpg',
       ),
       EmiType(
         id: '6',
@@ -167,6 +173,7 @@ class MockDataService {
         color: Colors.red.shade600,
         description: 'Home loans up to ₹15 Cr',
         interestRate: 8.5,
+        imagePath: 'assets/images/home_loan.jpg',
       ),
     ];
   }
@@ -179,21 +186,24 @@ class MockDataService {
         title: 'Personal Loan',
         subtitle: 'Get up to ₹55 Lakh at low interest rates',
         buttonText: 'Apply Now',
-        backgroundColor: Color(0xFFFFD4B2),
+        backgroundColor: const Color(0xFFFFD4B2),
+        imageUrl: 'assets/images/instant_loan.jpg',
       ),
       OfferCard(
         id: '2',
         title: 'Home Loan',
         subtitle: 'Make your dream home a reality. Up to ₹15 Crores',
         buttonText: 'Check Offer',
-        backgroundColor: Color(0xFFFF6B35),
+        backgroundColor: const Color(0xFFFF6B35),
+        imageUrl: 'assets/images/home_loan.jpg',
       ),
       OfferCard(
         id: '3',
         title: 'Gold Loan',
         subtitle: 'Get instant money against your gold',
         buttonText: 'Know More',
-        backgroundColor: Color(0xFFFFF3E0),
+        backgroundColor: const Color(0xFFFFF3E0),
+        imageUrl: 'assets/images/gold_emi.jpg',
       ),
     ];
   }
@@ -205,31 +215,37 @@ class MockDataService {
         'title': 'Offer',
         'icon': Icons.local_offer,
         'color': Colors.yellow.shade700,
+        'image': 'assets/icons/rewards.png',
       },
       {
         'title': 'Loans',
         'icon': Icons.account_balance,
         'color': Colors.green.shade600,
+        'image': 'assets/icons/personal_loan_icon.png',
       },
       {
         'title': 'Credit Card',
         'icon': Icons.credit_card,
         'color': Colors.blue.shade600,
+        'image': 'assets/icons/wallet.png',
       },
       {
         'title': 'Grocery',
         'icon': Icons.shopping_bag,
         'color': Colors.orange.shade600,
+        'image': 'assets/icons/shopping.png',
       },
       {
         'title': 'Finance Manager',
         'icon': Icons.assignment,
         'color': Colors.purple.shade600,
+        'image': 'assets/icons/investment.png',
       },
       {
         'title': 'Stock Market',
         'icon': Icons.trending_up,
         'color': Colors.red.shade600,
+        'image': 'assets/icons/investment.png',
       },
     ];
   }
@@ -240,23 +256,64 @@ class MockDataService {
       {
         'name': 'Smartphones',
         'icon': Icons.phone_android,
-        'discount': '10% off'
+        'discount': '10% off',
+        'image': 'assets/images/mobile.jpg',
       },
-      {'name': 'Laptops', 'icon': Icons.laptop, 'discount': '15% off'},
-      {'name': 'TVs', 'icon': Icons.tv, 'discount': '20% off'},
-      {'name': 'AC', 'icon': Icons.ac_unit, 'discount': '12% off'},
-      {'name': 'Refrigerator', 'icon': Icons.kitchen, 'discount': '8% off'},
+      {
+        'name': 'Laptops',
+        'icon': Icons.laptop,
+        'discount': '15% off',
+        'image': 'assets/images/laptop.jpg',
+      },
+      {
+        'name': 'TVs',
+        'icon': Icons.tv,
+        'discount': '20% off',
+        'image': 'assets/images/tv.jpg',
+      },
+      {
+        'name': 'AC',
+        'icon': Icons.ac_unit,
+        'discount': '12% off',
+        'image': 'assets/images/ac_emi.jpg',
+      },
+      {
+        'name': 'Refrigerator',
+        'icon': Icons.kitchen,
+        'discount': '8% off',
+        'image': 'assets/images/refrigerator.jpg',
+      },
     ];
   }
 
   // Get recharge services
   static List<Map<String, dynamic>> getRechargeServices() {
     return [
-      {'name': 'Mobile Recharge', 'icon': Icons.phone_android},
-      {'name': 'DTH Recharge', 'icon': Icons.tv},
-      {'name': 'Electricity Bill', 'icon': Icons.flash_on},
-      {'name': 'Water Bill', 'icon': Icons.water_drop},
-      {'name': 'Gas Bill', 'icon': Icons.local_fire_department},
+      {
+        'name': 'Mobile Recharge',
+        'icon': Icons.phone_android,
+        'image': 'assets/icons/mobile_recharge.png',
+      },
+      {
+        'name': 'DTH Recharge',
+        'icon': Icons.tv,
+        'image': 'assets/icons/dth.png',
+      },
+      {
+        'name': 'Electricity Bill',
+        'icon': Icons.flash_on,
+        'image': 'assets/icons/electricity.png',
+      },
+      {
+        'name': 'Water Bill',
+        'icon': Icons.water_drop,
+        'image': 'assets/icons/water.png',
+      },
+      {
+        'name': 'Gas Bill',
+        'icon': Icons.local_fire_department,
+        'image': 'assets/icons/gas.png',
+      },
     ];
   }
 }

@@ -12,18 +12,18 @@ class ScanQRScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Scan QR Code', style: TextStyle(color: Colors.white)),
+        title: const Text('Scan QR Code', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.close, color: Colors.white),
+          icon: const Icon(Icons.close, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.flash_on, color: Colors.white),
+            icon: const Icon(Icons.flash_on, color: Colors.white),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Flash toggled')),
+                const SnackBar(content: Text('Flash toggled')),
               );
             },
           ),
@@ -53,7 +53,7 @@ class ScanQRScreen extends StatelessWidget {
                           child: Container(
                             width: 40,
                             height: 40,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               border: Border(
                                 top: BorderSide(
                                     color: AppColors.accent, width: 5),
@@ -69,7 +69,7 @@ class ScanQRScreen extends StatelessWidget {
                           child: Container(
                             width: 40,
                             height: 40,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               border: Border(
                                 top: BorderSide(
                                     color: AppColors.accent, width: 5),
@@ -85,7 +85,7 @@ class ScanQRScreen extends StatelessWidget {
                           child: Container(
                             width: 40,
                             height: 40,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               border: Border(
                                 bottom: BorderSide(
                                     color: AppColors.accent, width: 5),
@@ -101,7 +101,7 @@ class ScanQRScreen extends StatelessWidget {
                           child: Container(
                             width: 40,
                             height: 40,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               border: Border(
                                 bottom: BorderSide(
                                     color: AppColors.accent, width: 5),
@@ -122,8 +122,8 @@ class ScanQRScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 24),
-                  Text(
+                  const SizedBox(height: 24),
+                  const Text(
                     'Position QR code within the frame',
                     style: TextStyle(
                       color: Colors.white,
@@ -137,21 +137,21 @@ class ScanQRScreen extends StatelessWidget {
 
           // Bottom Actions
           Container(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Column(
               children: [
                 ElevatedButton.icon(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Upload from gallery')),
+                      const SnackBar(content: Text('Upload from gallery')),
                     );
                   },
-                  icon: Icon(Icons.photo_library),
-                  label: Text('Upload QR from Gallery'),
+                  icon: const Icon(Icons.photo_library),
+                  label: const Text('Upload QR from Gallery'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: AppColors.primary,
-                    minimumSize: Size(double.infinity, 50),
+                    minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),

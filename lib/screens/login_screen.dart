@@ -1,5 +1,7 @@
 // Login screen for user authentication
 import 'package:flutter/material.dart';
+import '../widgets/image_helpers.dart';
+import '../utils/app_colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -36,42 +38,34 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Form(
               key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 40),
-                  
+                  const SizedBox(height: 40),
+
                   // Logo and welcome text
                   Center(
                     child: Column(
                       children: [
-                        // Bajaj Finserv logo placeholder
-                        Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            color: Colors.blue.shade700,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Icon(
-                            Icons.account_balance,
-                            size: 40,
-                            color: Colors.white,
-                          ),
+                        // App logo with fallback
+                        LogoWithFallback(
+                          assetPath: 'assets/logos/app_logo.png',
+                          size: 100,
+                          backgroundColor: AppColors.primary,
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(
                           'Bajaj Finserv',
                           style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue.shade700,
+                            color: AppColors.primary,
                           ),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(
                           'Welcome back!',
                           style: TextStyle(
@@ -82,8 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 48),
-                  
+                  const SizedBox(height: 48),
+
                   // Email field
                   Text(
                     'Email',
@@ -93,13 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.grey.shade800,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   TextFormField(
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       hintText: 'Enter your email',
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: const Icon(Icons.email_outlined),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -116,8 +110,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
-                  
+                  const SizedBox(height: 20),
+
                   // Password field
                   Text(
                     'Password',
@@ -127,13 +121,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.grey.shade800,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   TextFormField(
                     controller: _passwordController,
                     obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
                       hintText: 'Enter your password',
-                      prefixIcon: Icon(Icons.lock_outline),
+                      prefixIcon: const Icon(Icons.lock_outline),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _isPasswordVisible
@@ -162,8 +156,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 12),
-                  
+                  const SizedBox(height: 12),
+
                   // Forgot password
                   Align(
                     alignment: Alignment.centerRight,
@@ -171,14 +165,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         // Handle forgot password
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Forgot password feature coming soon!')),
+                          const SnackBar(
+                              content:
+                                  Text('Forgot password feature coming soon!')),
                         );
                       },
-                      child: Text('Forgot Password?'),
+                      child: const Text('Forgot Password?'),
                     ),
                   ),
-                  SizedBox(height: 24),
-                  
+                  const SizedBox(height: 24),
+
                   // Login button
                   SizedBox(
                     width: double.infinity,
@@ -186,13 +182,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       onPressed: _handleLogin,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue.shade700,
+                        backgroundColor: AppColors.primary,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Login',
                         style: TextStyle(
                           fontSize: 16,
@@ -201,8 +197,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 24),
-                  
+                  const SizedBox(height: 24),
+
                   // Sign up link
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -215,10 +211,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
                           // Handle sign up
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Sign up feature coming soon!')),
+                            const SnackBar(
+                                content: Text('Sign up feature coming soon!')),
                           );
                         },
-                        child: Text('Sign Up'),
+                        child: const Text('Sign Up'),
                       ),
                     ],
                   ),

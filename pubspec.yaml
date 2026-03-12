@@ -24,7 +24,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # If you want to add custom assets later, uncomment and configure:
-  # assets:
-  #   - assets/images/
-  #   - assets/icons/
+  # Assets configuration
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/logos/

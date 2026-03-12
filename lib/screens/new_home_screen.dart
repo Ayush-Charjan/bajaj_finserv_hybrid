@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../services/mock_data_service.dart';
 import '../utils/app_colors.dart';
+import '../widgets/image_helpers.dart';
 
 class NewHomeScreen extends StatelessWidget {
   const NewHomeScreen({Key? key}) : super(key: key);
@@ -30,39 +31,39 @@ class NewHomeScreen extends StatelessWidget {
                   children: [
                     // Search Bar
                     _buildSearchBar(),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
 
                     // Promotional Banner
                     _buildPromoBanner(offers.first),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
 
                     // Quick Actions Grid
                     _buildQuickActionsGrid(quickActions),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
                     // EMI Types Horizontal Scroll
                     _buildSectionTitle('Select EMI Type'),
                     _buildEmiTypesRow(emiTypes),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
                     // Big EMI Card
                     _buildBigEmiCard(emiTypes),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
                     // Bills & Recharge
                     _buildSectionTitle('Bills & Recharge'),
                     _buildRechargeRow(rechargeServices),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
                     // EMIs on Electronics
                     _buildSectionTitle('EMIs on Electronics'),
                     _buildElectronicsRow(electronics),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
                     // Exclusive Loan Offers
                     _buildSectionTitle('Exclusive Loan Offers'),
                     _buildLoanOffers(offers),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
@@ -76,21 +77,21 @@ class NewHomeScreen extends StatelessWidget {
   // Top Bar with title, cart, EMI button, notification
   Widget _buildTopBar(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         color: AppColors.primary,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 4,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
       child: Row(
         children: [
           // App Title
-          Expanded(
+          const Expanded(
             child: Text(
               'Fintech App',
               style: TextStyle(
@@ -103,22 +104,22 @@ class NewHomeScreen extends StatelessWidget {
 
           // Cart Icon
           IconButton(
-            icon: Icon(Icons.shopping_cart_outlined, color: Colors.white),
+            icon: const Icon(Icons.shopping_cart_outlined, color: Colors.white),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Cart feature coming soon!')),
+                const SnackBar(content: Text('Cart feature coming soon!')),
               );
             },
           ),
 
           // EMI Button
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.white, width: 1.5),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Text(
+            child: const Text(
               'EMI',
               style: TextStyle(
                 color: Colors.white,
@@ -127,20 +128,20 @@ class NewHomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
 
           // Notification Bell
           IconButton(
             icon: Stack(
               children: [
-                Icon(Icons.notifications_outlined, color: Colors.white),
+                const Icon(Icons.notifications_outlined, color: Colors.white),
                 Positioned(
                   right: 0,
                   top: 0,
                   child: Container(
                     width: 8,
                     height: 8,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.red,
                       shape: BoxShape.circle,
                     ),
@@ -150,7 +151,7 @@ class NewHomeScreen extends StatelessWidget {
             ),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('2 new notifications')),
+                const SnackBar(content: Text('2 new notifications')),
               );
             },
           ),
@@ -162,7 +163,7 @@ class NewHomeScreen extends StatelessWidget {
   // Search Bar
   Widget _buildSearchBar() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -171,11 +172,11 @@ class NewHomeScreen extends StatelessWidget {
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
               blurRadius: 4,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
-        child: TextField(
+        child: const TextField(
           decoration: InputDecoration(
             hintText: 'Search for loans, services...',
             prefixIcon: Icon(Icons.search, color: Colors.grey),
@@ -190,52 +191,62 @@ class NewHomeScreen extends StatelessWidget {
   // Promotional Banner
   Widget _buildPromoBanner(offer) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      height: 120,
       decoration: BoxDecoration(
         color: offer.backgroundColor,
         borderRadius: BorderRadius.circular(12),
+        image: offer.imageUrl != null
+            ? DecorationImage(
+                image: AssetImage(offer.imageUrl!),
+                fit: BoxFit.cover,
+                opacity: 0.3,
+              )
+            : null,
       ),
-      child: Row(
-        children: [
-          Icon(Icons.account_balance_wallet,
-              size: 40, color: Colors.green.shade800),
-          SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  offer.title,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          children: [
+            Icon(Icons.account_balance_wallet,
+                size: 40, color: Colors.green.shade800),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    offer.title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                SizedBox(height: 4),
-                Text(
-                  offer.subtitle,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.red.shade700,
-                    fontWeight: FontWeight.w600,
+                  const SizedBox(height: 4),
+                  Text(
+                    offer.subtitle,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.red.shade700,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.accent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+                ],
               ),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             ),
-            child: Text('Apply Now'),
-          ),
-        ],
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.accent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              ),
+              child: const Text('Apply Now'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -243,11 +254,11 @@ class NewHomeScreen extends StatelessWidget {
   // Quick Actions Grid (6 items in 2 rows)
   Widget _buildQuickActionsGrid(List<Map<String, dynamic>> actions) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: GridView.builder(
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
@@ -269,11 +280,11 @@ class NewHomeScreen extends StatelessWidget {
                   color: action['color'],
                   size: 32,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   action['title'],
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w600,
                   ),
@@ -291,10 +302,10 @@ class NewHomeScreen extends StatelessWidget {
   // Section Title
   Widget _buildSectionTitle(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
           color: AppColors.textPrimary,
@@ -306,33 +317,52 @@ class NewHomeScreen extends StatelessWidget {
   // EMI Types Horizontal Row
   Widget _buildEmiTypesRow(List emiTypes) {
     return Container(
-      height: 100,
-      margin: EdgeInsets.only(top: 12),
+      height: 120,
+      margin: const EdgeInsets.only(top: 12),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: emiTypes.length,
         itemBuilder: (context, index) {
           final type = emiTypes[index];
           return Container(
-            width: 80,
-            margin: EdgeInsets.only(right: 12),
+            width: 90,
+            margin: const EdgeInsets.only(right: 12),
             child: Column(
               children: [
                 Container(
-                  width: 60,
-                  height: 60,
+                  width: 70,
+                  height: 70,
                   decoration: BoxDecoration(
-                    color: type.color.withOpacity(0.1),
+                    color: Colors.white,
                     shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
-                  child: Icon(type.icon, color: type.color, size: 28),
+                  child: ClipOval(
+                    child: type.imagePath != null
+                        ? Image.asset(
+                            type.imagePath!,
+                            width: 70,
+                            height: 70,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Icon(type.icon, color: type.color, size: 32);
+                            },
+                          )
+                        : Icon(type.icon, color: type.color, size: 32),
+                  ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   type.name,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
+                  style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -347,10 +377,10 @@ class NewHomeScreen extends StatelessWidget {
   // Big EMI Card
   Widget _buildBigEmiCard(List emiTypes) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
-      padding: EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [AppColors.primary, AppColors.primaryDark],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -360,14 +390,14 @@ class NewHomeScreen extends StatelessWidget {
           BoxShadow(
             color: AppColors.primary.withOpacity(0.3),
             blurRadius: 10,
-            offset: Offset(0, 5),
+            offset: const Offset(0, 5),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Choose Your EMI Plan',
             style: TextStyle(
               color: Colors.white,
@@ -375,13 +405,13 @@ class NewHomeScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Wrap(
             spacing: 12,
             runSpacing: 12,
             children: emiTypes.take(4).map((type) {
               return Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(20),
@@ -391,17 +421,17 @@ class NewHomeScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(type.icon, color: Colors.white, size: 18),
-                    SizedBox(width: 6),
+                    const SizedBox(width: 6),
                     Text(
                       type.name,
-                      style: TextStyle(color: Colors.white, fontSize: 13),
+                      style: const TextStyle(color: Colors.white, fontSize: 13),
                     ),
                   ],
                 ),
               );
             }).toList(),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
@@ -410,9 +440,9 @@ class NewHomeScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
-              minimumSize: Size(double.infinity, 45),
+              minimumSize: const Size(double.infinity, 45),
             ),
-            child: Text('Explore All EMI Options',
+            child: const Text('Explore All EMI Options',
                 style: TextStyle(fontWeight: FontWeight.bold)),
           ),
         ],
@@ -423,18 +453,18 @@ class NewHomeScreen extends StatelessWidget {
   // Bills & Recharge Row
   Widget _buildRechargeRow(List<Map<String, dynamic>> services) {
     return Container(
-      height: 100,
-      margin: EdgeInsets.only(top: 12),
+      height: 110,
+      margin: const EdgeInsets.only(top: 12),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: services.length,
         itemBuilder: (context, index) {
           final service = services[index];
           return Container(
             width: 100,
-            margin: EdgeInsets.only(right: 12),
-            padding: EdgeInsets.all(12),
+            margin: const EdgeInsets.only(right: 12),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
@@ -442,19 +472,33 @@ class NewHomeScreen extends StatelessWidget {
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.2),
                   blurRadius: 4,
-                  offset: Offset(0, 2),
+                  offset: const Offset(0, 2),
                 ),
               ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(service['icon'], color: AppColors.accent, size: 32),
-                SizedBox(height: 8),
+                // Icon with image fallback
+                Container(
+                  width: 40,
+                  height: 40,
+                  child: service['image'] != null
+                      ? Image.asset(
+                          service['image'],
+                          width: 40,
+                          height: 40,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Icon(service['icon'], color: AppColors.accent, size: 32);
+                          },
+                        )
+                      : Icon(service['icon'], color: AppColors.accent, size: 32),
+                ),
+                const SizedBox(height: 8),
                 Text(
                   service['name'],
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                  style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -469,17 +513,17 @@ class NewHomeScreen extends StatelessWidget {
   // Electronics Row
   Widget _buildElectronicsRow(List<Map<String, dynamic>> items) {
     return Container(
-      height: 140,
-      margin: EdgeInsets.only(top: 12),
+      height: 160,
+      margin: const EdgeInsets.only(top: 12),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];
           return Container(
-            width: 120,
-            margin: EdgeInsets.only(right: 12),
+            width: 130,
+            margin: const EdgeInsets.only(right: 12),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
@@ -487,30 +531,44 @@ class NewHomeScreen extends StatelessWidget {
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.2),
                   blurRadius: 4,
-                  offset: Offset(0, 2),
+                  offset: const Offset(0, 2),
                 ),
               ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Product image with fallback
                 Container(
-                  width: 60,
-                  height: 60,
+                  width: 80,
+                  height: 80,
                   decoration: BoxDecoration(
-                    color: AppColors.accent.withOpacity(0.1),
-                    shape: BoxShape.circle,
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Icon(item['icon'], color: AppColors.accent, size: 32),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: item['image'] != null
+                        ? Image.asset(
+                            item['image'],
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Icon(item['icon'], color: AppColors.accent, size: 40);
+                            },
+                          )
+                        : Icon(item['icon'], color: AppColors.accent, size: 40),
+                  ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 8),
                 Text(
                   item['name'],
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.green.shade50,
                     borderRadius: BorderRadius.circular(12),
@@ -536,16 +594,16 @@ class NewHomeScreen extends StatelessWidget {
   Widget _buildLoanOffers(List offers) {
     return Container(
       height: 180,
-      margin: EdgeInsets.only(top: 12),
+      margin: const EdgeInsets.only(top: 12),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: offers.length,
         itemBuilder: (context, index) {
           final offer = offers[index];
           return Container(
             width: 280,
-            margin: EdgeInsets.only(right: 16),
+            margin: const EdgeInsets.only(right: 16),
             decoration: BoxDecoration(
               color: offer.backgroundColor,
               borderRadius: BorderRadius.circular(16),
@@ -553,12 +611,12 @@ class NewHomeScreen extends StatelessWidget {
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.3),
                   blurRadius: 6,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -566,12 +624,12 @@ class NewHomeScreen extends StatelessWidget {
                     children: [
                       Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                         decoration: BoxDecoration(
                           color: Colors.green.shade700,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Text(
+                        child: const Text(
                           'SPECIAL OFFER',
                           style: TextStyle(
                             color: Colors.white,
@@ -582,20 +640,20 @@ class NewHomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Text(
                     offer.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: AppColors.textPrimary,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Expanded(
                     child: Text(
                       offer.subtitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 13,
                         color: AppColors.textSecondary,
                       ),

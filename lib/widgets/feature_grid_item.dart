@@ -18,7 +18,7 @@ class FeatureGridItem extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -26,7 +26,7 @@ class FeatureGridItem extends StatelessWidget {
             BoxShadow(
               color: Colors.grey.withOpacity(0.1),
               blurRadius: 4,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
@@ -35,7 +35,7 @@ class FeatureGridItem extends StatelessWidget {
           children: [
             // Icon container
             Container(
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: feature.color.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(12),
@@ -46,8 +46,8 @@ class FeatureGridItem extends StatelessWidget {
                 size: 32,
               ),
             ),
-            SizedBox(height: 12),
-            
+            const SizedBox(height: 12),
+
             // Feature title
             Text(
               feature.title,

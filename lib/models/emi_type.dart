@@ -8,6 +8,7 @@ class EmiType {
   final Color color;
   final String description;
   final double interestRate;
+  final String? imagePath; // Image asset path
 
   EmiType({
     required this.id,
@@ -16,5 +17,6 @@ class EmiType {
     required this.color,
     required this.description,
     required this.interestRate,
+    this.imagePath,
   });
 }

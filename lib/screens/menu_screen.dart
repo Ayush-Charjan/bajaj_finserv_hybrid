@@ -11,7 +11,7 @@ class MenuScreen extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.primary,
-        title: Text('Menu', style: TextStyle(color: Colors.white)),
+        title: const Text('Menu', style: TextStyle(color: Colors.white)),
       ),
       body: ListView(
         children: [
@@ -45,7 +45,7 @@ class MenuScreen extends StatelessWidget {
               },
             ],
           ),
-          Divider(height: 1),
+          const Divider(height: 1),
           _buildMenuSection(
             'Pay & Recharge',
             [
@@ -71,7 +71,7 @@ class MenuScreen extends StatelessWidget {
               },
             ],
           ),
-          Divider(height: 1),
+          const Divider(height: 1),
           _buildMenuSection(
             'Account & Settings',
             [
@@ -97,7 +97,7 @@ class MenuScreen extends StatelessWidget {
               },
             ],
           ),
-          Divider(height: 1),
+          const Divider(height: 1),
           _buildMenuSection(
             'Help & Support',
             [
@@ -118,20 +118,20 @@ class MenuScreen extends StatelessWidget {
               },
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: ElevatedButton.icon(
               onPressed: () {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: Text('Logout'),
-                    content: Text('Are you sure you want to logout?'),
+                    title: const Text('Logout'),
+                    content: const Text('Are you sure you want to logout?'),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
-                        child: Text('Cancel'),
+                        child: const Text('Cancel'),
                       ),
                       ElevatedButton(
                         onPressed: () {
@@ -141,24 +141,24 @@ class MenuScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
                         ),
-                        child: Text('Logout'),
+                        child: const Text('Logout'),
                       ),
                     ],
                   ),
                 );
               },
-              icon: Icon(Icons.logout),
-              label: Text('Logout'),
+              icon: const Icon(Icons.logout),
+              label: const Text('Logout'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
-                minimumSize: Size(double.infinity, 50),
+                minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
     );
@@ -169,10 +169,10 @@ class MenuScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: AppColors.textSecondary,
@@ -182,7 +182,7 @@ class MenuScreen extends StatelessWidget {
         ...items
             .map((item) => ListTile(
                   leading: Container(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: AppColors.primary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(8),
@@ -191,11 +191,11 @@ class MenuScreen extends StatelessWidget {
                   ),
                   title: Text(
                     item['title'],
-                    style: TextStyle(fontWeight: FontWeight.w600),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                   subtitle:
-                      Text(item['subtitle'], style: TextStyle(fontSize: 12)),
-                  trailing: Icon(Icons.chevron_right, color: Colors.grey),
+                      Text(item['subtitle'], style: const TextStyle(fontSize: 12)),
+                  trailing: const Icon(Icons.chevron_right, color: Colors.grey),
                   onTap: () {},
                 ))
             .toList(),

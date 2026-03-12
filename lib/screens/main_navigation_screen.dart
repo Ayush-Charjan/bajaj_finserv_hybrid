@@ -1,5 +1,6 @@
 // Main navigation wrapper with BottomNavigationBar
 import 'package:flutter/material.dart';
+import '../utils/app_colors.dart';
 import 'home_screen.dart';
 import 'loans_screen.dart';
 import 'emi_screen.dart';
@@ -18,10 +19,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   // List of screens for navigation
   final List<Widget> _screens = [
-    HomeScreen(),
-    LoansScreen(),
-    EmiScreen(),
-    ProfileScreen(),
+    const HomeScreen(),
+    const LoansScreen(),
+    const EmiScreen(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -36,11 +37,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue.shade700,
+        selectedItemColor: AppColors.primary,
         unselectedItemColor: Colors.grey.shade600,
         selectedFontSize: 12,
         unselectedFontSize: 12,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),

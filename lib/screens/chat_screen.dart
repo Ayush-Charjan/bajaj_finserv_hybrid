@@ -37,7 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     // Simulate bot response
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         _messages.add({
           'text':
@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.primary,
-        title: Row(
+        title: const Row(
           children: [
             CircleAvatar(
               backgroundColor: Colors.white,
@@ -81,10 +81,10 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.phone, color: Colors.white),
+            icon: const Icon(Icons.phone, color: Colors.white),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Calling support...')),
+                const SnackBar(content: Text('Calling support...')),
               );
             },
           ),
@@ -94,18 +94,18 @@ class _ChatScreenState extends State<ChatScreen> {
         children: [
           // Quick Help Options
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             color: Colors.blue.shade50,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
                   _buildQuickHelpChip('EMI Payment'),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   _buildQuickHelpChip('Loan Status'),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   _buildQuickHelpChip('Account Info'),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   _buildQuickHelpChip('Other'),
                 ],
               ),
@@ -115,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
           // Messages List
           Expanded(
             child: ListView.builder(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               itemCount: _messages.length,
               itemBuilder: (context, index) {
                 final message = _messages[index];
@@ -130,24 +130,24 @@ class _ChatScreenState extends State<ChatScreen> {
 
           // Message Input
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.2),
                   blurRadius: 4,
-                  offset: Offset(0, -2),
+                  offset: const Offset(0, -2),
                 ),
               ],
             ),
             child: Row(
               children: [
                 IconButton(
-                  icon: Icon(Icons.attach_file, color: Colors.grey),
+                  icon: const Icon(Icons.attach_file, color: Colors.grey),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Attach file')),
+                      const SnackBar(content: Text('Attach file')),
                     );
                   },
                 ),
@@ -163,16 +163,16 @@ class _ChatScreenState extends State<ChatScreen> {
                       filled: true,
                       fillColor: Colors.grey.shade100,
                       contentPadding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     ),
                     onSubmitted: (_) => _sendMessage(),
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 CircleAvatar(
                   backgroundColor: AppColors.primary,
                   child: IconButton(
-                    icon: Icon(Icons.send, color: Colors.white, size: 20),
+                    icon: const Icon(Icons.send, color: Colors.white, size: 20),
                     onPressed: _sendMessage,
                   ),
                 ),
@@ -186,7 +186,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget _buildQuickHelpChip(String label) {
     return ActionChip(
-      label: Text(label, style: TextStyle(fontSize: 12)),
+      label: Text(label, style: const TextStyle(fontSize: 12)),
       onPressed: () {
         setState(() {
           _messages.add({
@@ -203,7 +203,7 @@ class _ChatScreenState extends State<ChatScreen> {
         });
       },
       backgroundColor: Colors.white,
-      side: BorderSide(color: AppColors.primary),
+      side: const BorderSide(color: AppColors.primary),
     );
   }
 
@@ -211,20 +211,20 @@ class _ChatScreenState extends State<ChatScreen> {
     return Align(
       alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        margin: EdgeInsets.only(bottom: 12),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        constraints: BoxConstraints(maxWidth: 280),
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        constraints: const BoxConstraints(maxWidth: 280),
         decoration: BoxDecoration(
           color: isUser ? AppColors.primary : Colors.white,
           borderRadius: BorderRadius.circular(16).copyWith(
-            bottomRight: isUser ? Radius.circular(4) : Radius.circular(16),
-            bottomLeft: isUser ? Radius.circular(16) : Radius.circular(4),
+            bottomRight: isUser ? const Radius.circular(4) : const Radius.circular(16),
+            bottomLeft: isUser ? const Radius.circular(16) : const Radius.circular(4),
           ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
               blurRadius: 2,
-              offset: Offset(0, 1),
+              offset: const Offset(0, 1),
             ),
           ],
         ),
@@ -238,7 +238,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 fontSize: 14,
               ),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
               time,
               style: TextStyle(

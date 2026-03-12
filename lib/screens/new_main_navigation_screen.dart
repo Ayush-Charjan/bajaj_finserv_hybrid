@@ -20,19 +20,19 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    NewHomeScreen(),
-    ProfileScreen(),
+    const NewHomeScreen(),
+    const ProfileScreen(),
     Container(), // Placeholder for Scan QR (opens as modal)
-    PayEmiScreen(),
-    MenuScreen(),
-    ChatScreen(),
+    const PayEmiScreen(),
+    const MenuScreen(),
+    const ChatScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _currentIndex == 2
-          ? NewHomeScreen() // Show home if scan QR is selected
+          ? const NewHomeScreen() // Show home if scan QR is selected
           : _screens[_currentIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -40,7 +40,7 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
               blurRadius: 8,
-              offset: Offset(0, -2),
+              offset: const Offset(0, -2),
             ),
           ],
         ),
@@ -52,7 +52,7 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ScanQRScreen(),
+                  builder: (context) => const ScanQRScreen(),
                   fullscreenDialog: true,
                 ),
               );
@@ -68,36 +68,36 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
           unselectedItemColor: Colors.grey.shade600,
           selectedFontSize: 11,
           unselectedFontSize: 11,
-          selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
+          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
           items: [
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
               activeIcon: Icon(Icons.home),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),
               activeIcon: Icon(Icons.person),
               label: 'Profile',
             ),
             BottomNavigationBarItem(
               icon: Container(
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(
                   color: AppColors.accent,
                   shape: BoxShape.circle,
                 ),
                 child:
-                    Icon(Icons.qr_code_scanner, color: Colors.white, size: 24),
+                    const Icon(Icons.qr_code_scanner, color: Colors.white, size: 24),
               ),
               label: 'Scan QR',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.payment_outlined),
               activeIcon: Icon(Icons.payment),
               label: 'Pay EMI',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.menu),
               activeIcon: Icon(Icons.menu_open),
               label: 'Menu',
@@ -105,14 +105,14 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
             BottomNavigationBarItem(
               icon: Stack(
                 children: [
-                  Icon(Icons.chat_bubble_outline),
+                  const Icon(Icons.chat_bubble_outline),
                   Positioned(
                     right: 0,
                     top: 0,
                     child: Container(
                       width: 8,
                       height: 8,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.red,
                         shape: BoxShape.circle,
                       ),
@@ -120,7 +120,7 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
                   ),
                 ],
               ),
-              activeIcon: Icon(Icons.chat_bubble),
+              activeIcon: const Icon(Icons.chat_bubble),
               label: 'Chat',
             ),
           ],
