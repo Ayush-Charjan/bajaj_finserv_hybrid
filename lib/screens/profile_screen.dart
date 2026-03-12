@@ -54,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
                         ? AssetImage(user.profileImage)
                         : null,
                     child: user.profileImage.isEmpty
-                        ? Icon(
+                        ? const Icon(
                             Icons.person,
                             size: 50,
                             color: AppColors.primary,
@@ -326,7 +326,7 @@ class ProfileScreen extends StatelessWidget {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
               Icons.account_balance,
               size: 64,
               color: AppColors.primary,

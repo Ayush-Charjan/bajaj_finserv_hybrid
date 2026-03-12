@@ -13,7 +13,8 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _messageController = TextEditingController();
   final List<Map<String, dynamic>> _messages = [
     {
-      'text': 'Hello! Welcome to Fintech Support. How can I help you today?',
+      'text':
+          'Hello! Welcome to  Bajaj Fintech Support. How can I help you today?',
       'isUser': false,
       'time': '10:30 AM',
     },
@@ -162,8 +163,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       filled: true,
                       fillColor: Colors.grey.shade100,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                     ),
                     onSubmitted: (_) => _sendMessage(),
                   ),
@@ -217,8 +218,10 @@ class _ChatScreenState extends State<ChatScreen> {
         decoration: BoxDecoration(
           color: isUser ? AppColors.primary : Colors.white,
           borderRadius: BorderRadius.circular(16).copyWith(
-            bottomRight: isUser ? const Radius.circular(4) : const Radius.circular(16),
-            bottomLeft: isUser ? const Radius.circular(16) : const Radius.circular(4),
+            bottomRight:
+                isUser ? const Radius.circular(4) : const Radius.circular(16),
+            bottomLeft:
+                isUser ? const Radius.circular(16) : const Radius.circular(4),
           ),
           boxShadow: [
             BoxShadow(

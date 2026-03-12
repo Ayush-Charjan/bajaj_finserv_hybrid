@@ -1,4 +1,3 @@
-// Login screen for user authentication
 import 'package:flutter/material.dart';
 import '../widgets/image_helpers.dart';
 import '../utils/app_colors.dart';
@@ -26,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
   // Handle login button press
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
-      // Navigate to home screen after successful login
       Navigator.pushReplacementNamed(context, '/home');
     }
   }
@@ -51,13 +49,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       children: [
                         // App logo with fallback
-                        LogoWithFallback(
+                        const LogoWithFallback(
                           assetPath: 'assets/logos/app_logo.png',
                           size: 100,
                           backgroundColor: AppColors.primary,
                         ),
                         const SizedBox(height: 16),
-                        Text(
+                        const Text(
                           'Bajaj Finserv',
                           style: TextStyle(
                             fontSize: 28,

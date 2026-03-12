@@ -149,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                 return ListTile(
                   leading: CircleAvatar(
                     backgroundColor: Colors.blue.shade100,
-                    child: Icon(
+                    child: const Icon(
                       Icons.account_balance_wallet,
                       color: AppColors.primary,
                       size: 20,

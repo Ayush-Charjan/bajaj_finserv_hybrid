@@ -1,7 +1,3 @@
-// Main entry point of the Bajaj Finserv Demo App
-// This app demonstrates a simplified version of a fintech app
-// with features like loans, EMI tracking, and user profile management
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens/login_screen.dart';
@@ -9,7 +5,6 @@ import 'screens/new_main_navigation_screen.dart';
 import 'utils/app_colors.dart';
 
 void main() {
-  // Ensure Flutter is initialized
   WidgetsFlutterBinding.ensureInitialized();
 
   // Set system UI overlay style
@@ -29,16 +24,14 @@ class BajajFinservApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // App title
-      title: 'Bajaj Finserv',
+      // App titlehh
+      title: 'Bajaj Finserv ',
 
       // Remove debug banner
       debugShowCheckedModeBanner: false,
 
       // Theme configuration
       theme: ThemeData(
-        // Primary color scheme
-        primarySwatch: Colors.blue,
         primaryColor: AppColors.primary,
 
         // App bar theme

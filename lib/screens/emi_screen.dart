@@ -131,7 +131,7 @@ class EmiScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.lightbulb_outline,
                     color: AppColors.primary,
                     size: 20,
@@ -220,7 +220,7 @@ class EmiScreen extends StatelessWidget {
                   label: const Text('Set Up Auto-Pay'),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.primary,
-                    side: BorderSide(color: AppColors.primary),
+                    side: const BorderSide(color: AppColors.primary),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -248,7 +248,7 @@ class EmiScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               'Amount: ₹${emi.emiAmount.toStringAsFixed(0)}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primary,
