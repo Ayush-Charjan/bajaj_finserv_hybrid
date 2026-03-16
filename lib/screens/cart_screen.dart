@@ -288,7 +288,7 @@ class _CartScreenState extends State<CartScreen> {
               ),
               Text(
                 '₹$totalAmount',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primary,

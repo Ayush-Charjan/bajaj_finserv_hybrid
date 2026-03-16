@@ -87,8 +87,8 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
                   color: AppColors.accent,
                   shape: BoxShape.circle,
                 ),
-                child:
-                    const Icon(Icons.qr_code_scanner, color: Colors.white, size: 24),
+                child: const Icon(Icons.qr_code_scanner,
+                    color: Colors.white, size: 24),
               ),
               label: 'Scan QR',
             ),

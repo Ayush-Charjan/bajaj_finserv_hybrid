@@ -32,6 +32,10 @@ class BajajFinservApp extends StatelessWidget {
 
       // Theme configuration
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.primary,
+          primary: AppColors.primary,
+        ),
         primaryColor: AppColors.primary,
 
         // App bar theme

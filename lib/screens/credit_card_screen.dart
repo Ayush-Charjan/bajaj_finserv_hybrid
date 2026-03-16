@@ -20,7 +20,7 @@ class CreditCardScreen extends StatelessWidget {
               margin: const EdgeInsets.all(20),
               height: 200,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [AppColors.primary, AppColors.primaryDark],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -138,10 +138,10 @@ class CreditCardScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             'Total Credit Limit',
                             style: TextStyle(fontSize: 16),
                           ),
@@ -159,8 +159,8 @@ class CreditCardScreen extends StatelessWidget {
                       LinearProgressIndicator(
                         value: 0.25,
                         backgroundColor: Colors.grey.shade200,
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(AppColors.primary),
+                        valueColor: const AlwaysStoppedAnimation<Color>(
+                            AppColors.primary),
                         minHeight: 8,
                       ),
                       const SizedBox(height: 12),
@@ -282,7 +282,7 @@ class CreditCardScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      Icon(Icons.credit_card,
+                      const Icon(Icons.credit_card,
                           size: 48, color: AppColors.primary),
                       const SizedBox(height: 12),
                       const Text(

@@ -1,4 +1,3 @@
-// Loans screen displaying all user loans
 import 'package:flutter/material.dart';
 import '../services/mock_data_service.dart';
 import '../utils/app_colors.dart';
@@ -58,8 +57,21 @@ class _LoansScreenState extends State<LoansScreen> {
             margin: const EdgeInsets.all(16),
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //     image: const AssetImage('background.jpg'),
+              //     fit: BoxFit.cover,
+              //     colorFilter: ColorFilter.mode(
+              //       Colors.black.withOpacity(0.3),
+              //       BlendMode.darken,
+              //     ),
+              //   ),
+              // ),
+
               gradient: LinearGradient(
-                colors: [Colors.blue.shade600, Colors.blue.shade800],
+                colors: [
+                  Colors.blue.shade600,
+                  const Color.fromARGB(255, 1, 17, 36)
+                ],
               ),
               borderRadius: BorderRadius.circular(12),
             ),

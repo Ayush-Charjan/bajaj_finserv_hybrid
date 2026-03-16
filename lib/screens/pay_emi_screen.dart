@@ -1,4 +1,3 @@
-// Pay EMI Screen
 import 'package:flutter/material.dart';
 import '../services/mock_data_service.dart';
 import '../utils/app_colors.dart';
@@ -143,7 +142,8 @@ class PayEmiScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.auto_fix_high, color: AppColors.primary, size: 32),
+                  const Icon(Icons.auto_fix_high,
+                      color: AppColors.primary, size: 32),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(

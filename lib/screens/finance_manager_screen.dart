@@ -29,7 +29,7 @@ class FinanceManagerScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [AppColors.primary, AppColors.primaryDark],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -344,7 +344,7 @@ class FinanceManagerScreen extends StatelessWidget {
                 ),
                 Text(
                   percentage,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primary,
@@ -356,7 +356,8 @@ class FinanceManagerScreen extends StatelessWidget {
             LinearProgressIndicator(
               value: saved / target,
               backgroundColor: Colors.grey.shade200,
-              valueColor: AlwaysStoppedAnimation<Color>(AppColors.primary),
+              valueColor:
+                  const AlwaysStoppedAnimation<Color>(AppColors.primary),
               minHeight: 8,
             ),
             const SizedBox(height: 8),

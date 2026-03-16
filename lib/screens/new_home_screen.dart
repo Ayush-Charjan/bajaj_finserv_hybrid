@@ -18,6 +18,23 @@ class NewHomeScreen extends StatelessWidget {
   // Navy Blue Theme Colors
   final Color darkNavy = const Color.fromARGB(255, 14, 50, 105);
 
+  Widget _assetImage(
+    String path, {
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.cover,
+    Widget? fallback,
+  }) {
+    return Image.asset(
+      path,
+      width: width,
+      height: height,
+      fit: fit,
+      errorBuilder: (context, error, stackTrace) =>
+          fallback ?? const Icon(Icons.image_not_supported),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final emiTypes = MockDataService.getEmiTypes();
@@ -89,14 +106,14 @@ class NewHomeScreen extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(4),
-                  child: Image.asset(
-                    "assets/logos/app_icon.png",
+                  child: _assetImage(
+                    'assets/logos/app_icon.png',
                     fit: BoxFit.contain,
-                    // Error builder in case the asset is missing
-                    errorBuilder: (context, error, stackTrace) => const Icon(
-                        Icons.account_balance,
-                        size: 20,
-                        color: Colors.blue),
+                    fallback: const Icon(
+                      Icons.account_balance,
+                      size: 20,
+                      color: Colors.blue,
+                    ),
                   ),
                 ),
               ),
@@ -197,18 +214,67 @@ class NewHomeScreen extends StatelessWidget {
 
           /// SEARCH BAR
           Container(
-            height: 45,
+            height: 48, // Slightly taller for a more premium feel
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(
+                  30), // Fully rounded corners (pill shape)
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black
+                      .withOpacity(0.15), // Subtle drop shadow for depth
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
             ),
             child: TextField(
+              cursorColor: darkNavy, // Cursor matches your theme
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Colors.black87,
+              ),
               decoration: InputDecoration(
                 hintText: "Search App...",
+                hintStyle: TextStyle(
+                  color: Colors.grey.shade500,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
                 border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(vertical: 12),
-                prefixIcon: Icon(Icons.search, color: darkNavy),
-                suffixIcon: const Icon(Icons.mic_none, color: Colors.grey),
+
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+
+                /// SEARCH ICON
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 12.0, right: 4.0),
+                  child: Icon(Icons.search, color: darkNavy, size: 24),
+                ),
+                prefixIconConstraints: const BoxConstraints(
+                  minWidth: 40,
+                  minHeight: 40,
+                ),
+
+                /// MIC ICON
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.only(right: 12.0),
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors
+                          .grey.shade100, // Light background circle for the mic
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(Icons.mic,
+                        color: darkNavy.withOpacity(0.7), size: 20),
+                  ),
+                ),
+                suffixIconConstraints: const BoxConstraints(
+                  minWidth: 45,
+                  minHeight: 40,
+                ),
               ),
             ),
           ),
@@ -230,7 +296,15 @@ class NewHomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            const Icon(Icons.account_balance_wallet, size: 40),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: _assetImage(
+                'assets/images/banner1.jpg',
+                width: 64,
+                height: 64,
+                fallback: const Icon(Icons.account_balance_wallet, size: 40),
+              ),
+            ),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
@@ -298,7 +372,17 @@ class NewHomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(action['icon'], color: action['color'], size: 30),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: _assetImage(
+                    action['image'],
+                    width: 36,
+                    height: 36,
+                    fit: BoxFit.contain,
+                    fallback:
+                        Icon(action['icon'], color: action['color'], size: 30),
+                  ),
+                ),
                 const SizedBox(height: 8),
                 Text(
                   action['title'],
@@ -384,10 +468,20 @@ class NewHomeScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleAvatar(
-                    radius: 32,
-                    backgroundColor: Colors.white,
-                    child: Icon(type.icon, color: type.color),
+                  Container(
+                    width: 64,
+                    height: 64,
+                    decoration: const BoxDecoration(shape: BoxShape.circle),
+                    clipBehavior: Clip.antiAlias,
+                    child: _assetImage(
+                      type.imagePath,
+                      fit: BoxFit.cover,
+                      fallback: CircleAvatar(
+                        radius: 32,
+                        backgroundColor: Colors.white,
+                        child: Icon(type.icon, color: type.color),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 6),
                   Text(
@@ -468,7 +562,20 @@ class NewHomeScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(service['icon'], color: Colors.blueAccent, size: 30),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: _assetImage(
+                      service['image'],
+                      width: 42,
+                      height: 42,
+                      fit: BoxFit.contain,
+                      fallback: Icon(
+                        service['icon'],
+                        color: Colors.blueAccent,
+                        size: 30,
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 6),
                   Text(
                     service['name'],
@@ -518,10 +625,7 @@ class NewHomeScreen extends StatelessWidget {
             },
             child: Container(
               width: 120,
-              margin: const EdgeInsets.only(
-                  right: 12,
-                  bottom: 8,
-                  top: 4), // Added vertical margin for shadow/spacing
+              margin: const EdgeInsets.only(right: 12, bottom: 8, top: 4),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -529,7 +633,16 @@ class NewHomeScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(item['icon'], size: 40, color: darkNavy),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: _assetImage(
+                      item['image'],
+                      width: 64,
+                      height: 64,
+                      fit: BoxFit.cover,
+                      fallback: Icon(item['icon'], size: 40, color: darkNavy),
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Text(
                     item['name'],
@@ -573,6 +686,16 @@ class NewHomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: _assetImage(
+                    offer.imageUrl,
+                    width: double.infinity,
+                    height: 72,
+                    fallback: const SizedBox.shrink(),
+                  ),
+                ),
+                const SizedBox(height: 10),
                 Text(
                   offer.title,
                   style: const TextStyle(
