@@ -6,6 +6,7 @@ class OfferCard {
   final String title;
   final String subtitle;
   final String buttonText;
+  final Gradient? gradient;
   final Color backgroundColor;
   final String? imageUrl;
 
@@ -14,7 +15,8 @@ class OfferCard {
     required this.title,
     required this.subtitle,
     required this.buttonText,
-    required this.backgroundColor,
+    this.gradient,
+    this.backgroundColor = const Color.fromARGB(255, 248, 149, 56),
     this.imageUrl,
   });
 }

@@ -25,8 +25,8 @@ class OffersScreen extends StatelessWidget {
               Container(
                 height: 150,
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [AppColors.primary, AppColors.primaryDark],
+                  gradient: LinearGradient(
+                    colors: [AppColors.primary, AppColors.primaryLight],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
@@ -103,7 +103,10 @@ class OffersScreen extends StatelessWidget {
                     elevation: 2,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: offer.backgroundColor,
+                        gradient: offer.gradient,
+                        color: offer.gradient == null
+                            ? offer.backgroundColor
+                            : null,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Padding(
@@ -156,39 +159,39 @@ class OffersScreen extends StatelessWidget {
 
               // Additional Offers
               _buildOfferCard(
-                'Electronics EMI',
-                'Zero down payment on smartphones, laptops & more',
-                'Up to 20% off',
-                Icons.phone_android,
-                Colors.blue,
+                title: 'Electronics EMI',
+                description: 'Zero down payment on smartphones, laptops & more',
+                badge: 'Up to 20% off',
+                icon: Icons.phone_android,
+                color: Colors.blue,
               ),
               _buildOfferCard(
-                'Travel Loan',
-                'Plan your dream vacation with easy EMI',
-                '0% interest',
-                Icons.flight,
-                Colors.orange,
+                title: 'Travel Loan',
+                description: 'Plan your dream vacation with easy EMI',
+                badge: '0% interest',
+                icon: Icons.flight,
+                color: Colors.orange,
               ),
               _buildOfferCard(
-                'Wedding Loan',
-                'Make your special day more special',
-                'Up to ₹15 Lakh',
-                Icons.celebration,
-                Colors.pink,
+                title: 'Wedding Loan',
+                description: 'Make your special day more special',
+                badge: 'Up to ₹15 Lakh',
+                icon: Icons.celebration,
+                color: Colors.pink,
               ),
               _buildOfferCard(
-                'Medical Emergency',
-                'Instant approval for medical expenses',
-                'Quick disbursal',
-                Icons.medical_services,
-                Colors.red,
+                title: 'Medical Emergency',
+                description: 'Instant approval for medical expenses',
+                badge: 'Quick disbursal',
+                icon: Icons.medical_services,
+                color: Colors.red,
               ),
               _buildOfferCard(
-                'Education Loan',
-                'Invest in your future with low-interest loans',
-                'Flexible tenure',
-                Icons.school,
-                Colors.purple,
+                title: 'Education Loan',
+                description: 'Invest in your future with low-interest loans',
+                badge: 'Flexible tenure',
+                icon: Icons.school,
+                color: Colors.purple,
               ),
             ],
           ),
@@ -225,37 +228,60 @@ class OffersScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildOfferCard(
-    String title,
-    String description,
-    String badge,
-    IconData icon,
-    Color color,
-  ) {
+  Widget _buildOfferCard({
+    required String title,
+    required String description,
+    required String badge,
+    required IconData icon,
+    required Color color,
+    Gradient? gradient,
+  }) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: color.withOpacity(0.1),
-          child: Icon(icon, color: color),
+      clipBehavior: Clip
+          .antiAlias, // Ensures the gradient doesn't bleed past rounded corners
+      elevation: 2,
+      child: Container(
+        decoration: BoxDecoration(
+          // Use the gradient if provided, otherwise fall back to a solid color
+          gradient: gradient,
+          color: gradient == null ? color.withOpacity(0.1) : null,
         ),
-        title: Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Text(description),
-        trailing: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: Colors.green.shade100,
-            borderRadius: BorderRadius.circular(12),
+        child: ListTile(
+          leading: CircleAvatar(
+            // We use white here so it pops against the gradient background
+            backgroundColor: Colors.white.withOpacity(0.2),
+            child: Icon(icon, color: gradient != null ? Colors.white : color),
           ),
-          child: Text(
-            badge,
+          title: Text(
+            title,
             style: TextStyle(
-              color: Colors.green.shade800,
               fontWeight: FontWeight.bold,
-              fontSize: 12,
+              // Change text to white if there is a gradient
+              color: gradient != null ? Colors.white : Colors.black87,
+            ),
+          ),
+          subtitle: Text(
+            description,
+            style: TextStyle(
+              color: gradient != null ? Colors.white70 : Colors.black54,
+            ),
+          ),
+          trailing: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: gradient != null
+                  ? Colors.white.withOpacity(0.3)
+                  : Colors.green.shade100,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              badge,
+              style: TextStyle(
+                color: gradient != null ? Colors.white : Colors.green.shade800,
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+              ),
             ),
           ),
         ),

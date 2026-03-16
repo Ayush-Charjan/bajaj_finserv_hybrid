@@ -24,7 +24,7 @@ class BajajFinservApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // App titlehh
+      // App title      
       title: 'Bajaj Finserv ',
 
       // Remove debug banner

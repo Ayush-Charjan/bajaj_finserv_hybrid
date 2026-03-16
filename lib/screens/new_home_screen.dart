@@ -93,31 +93,39 @@ class NewHomeScreen extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
       child: Column(
         children: [
-          /// TOP ICON ROW
           Row(
             children: [
-              /// LOGO
               Container(
-                width: 34,
-                height: 34,
+                width: 36, // Slightly increased for better scale
+                height: 36,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 4,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(4),
-                  child: _assetImage(
-                    'assets/logos/app_icon.png',
-                    fit: BoxFit.contain,
-                    fallback: const Icon(
-                      Icons.account_balance,
-                      size: 20,
-                      color: Colors.blue,
+                // ClipRRect ensures the image stays inside the rounded corners
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Padding(
+                    padding: const EdgeInsets.all(0),
+                    child: _assetImage(
+                      'assets/logos/app_icon.png',
+                      fit: BoxFit.contain,
+                      fallback: const Icon(
+                        Icons.account_balance,
+                        size: 20,
+                        color: Colors.blue,
+                      ),
                     ),
                   ),
                 ),
               ),
-
               const SizedBox(width: 8),
 
               /// TITLE (Wrapped in Expanded to fix horizontal overflow)
@@ -214,11 +222,10 @@ class NewHomeScreen extends StatelessWidget {
 
           /// SEARCH BAR
           Container(
-            height: 48, // Slightly taller for a more premium feel
+            height: 48,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(
-                  30), // Fully rounded corners (pill shape)
+              borderRadius: BorderRadius.circular(30),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black
@@ -236,7 +243,7 @@ class NewHomeScreen extends StatelessWidget {
                 color: Colors.black87,
               ),
               decoration: InputDecoration(
-                hintText: "Search App...",
+                hintText: "Search here...",
                 hintStyle: TextStyle(
                   color: Colors.grey.shade500,
                   fontSize: 14,
@@ -263,8 +270,7 @@ class NewHomeScreen extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: Colors
-                          .grey.shade100, // Light background circle for the mic
+                      color: const Color.fromARGB(255, 207, 201, 201),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(Icons.mic,
@@ -283,7 +289,6 @@ class NewHomeScreen extends StatelessWidget {
     );
   }
 
-  /// PROMO BANNER
   Widget _buildPromoBanner(BuildContext context, dynamic offer) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -299,7 +304,7 @@ class NewHomeScreen extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: _assetImage(
-                'assets/images/banner1.jpg',
+                'assets/images/personal_loan.jpg',
                 width: 64,
                 height: 64,
                 fallback: const Icon(Icons.account_balance_wallet, size: 40),
@@ -376,11 +381,11 @@ class NewHomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   child: _assetImage(
                     action['image'],
-                    width: 36,
-                    height: 36,
+                    width: 100,
+                    height: 100,
                     fit: BoxFit.contain,
                     fallback:
-                        Icon(action['icon'], color: action['color'], size: 30),
+                        Icon(action['icon'], color: action['color'], size: 40),
                   ),
                 ),
                 const SizedBox(height: 8),

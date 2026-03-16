@@ -73,8 +73,8 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Divider OR
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Expanded(
                       child: Divider(
                         color: Colors.white38,

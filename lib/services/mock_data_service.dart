@@ -16,7 +16,7 @@ class MockDataService {
       name: 'Rajesh Kumar',
       email: 'rajesh.kumar@example.com',
       phone: '+91 98765 43210',
-      profileImage: 'assets/images/user_placeholder.png',
+      profileImage: 'assets/images/avatar_male.png',
     );
   }
 
@@ -186,7 +186,14 @@ class MockDataService {
         title: 'Personal Loan',
         subtitle: 'Get up to ₹55 Lakh at low interest rates',
         buttonText: 'Apply Now',
-        backgroundColor: const Color(0xFFFFD4B2),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xFFFFD4B2),
+            Color(0xFFFFB28E),
+          ],
+        ),
         imageUrl: 'assets/images/instant_loan.jpg',
       ),
       OfferCard(
@@ -194,7 +201,14 @@ class MockDataService {
         title: 'Home Loan',
         subtitle: 'Make your dream home a reality. Up to ₹15 Crores',
         buttonText: 'Check Offer',
-        backgroundColor: const Color(0xFFFF6B35),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color.fromARGB(255, 221, 197, 89),
+            Color.fromARGB(255, 221, 137, 10),
+          ],
+        ),
         imageUrl: 'assets/images/home_loan.jpg',
       ),
       OfferCard(
@@ -202,7 +216,14 @@ class MockDataService {
         title: 'Gold Loan',
         subtitle: 'Get instant money against your gold',
         buttonText: 'Know More',
-        backgroundColor: const Color(0xFFFFF3E0),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color.fromARGB(255, 236, 216, 99),
+            Color.fromARGB(255, 236, 187, 23),
+          ],
+        ),
         imageUrl: 'assets/images/gold_emi.jpg',
       ),
     ];
@@ -221,7 +242,7 @@ class MockDataService {
         'title': 'Loans',
         'icon': Icons.account_balance,
         'color': Colors.green.shade600,
-        'image': 'assets/icons/personal_loan_icon.png',
+        'image': 'assets/images/instant_loan.jpg',
       },
       {
         'title': 'Credit Card',
@@ -245,7 +266,7 @@ class MockDataService {
         'title': 'Stock Market',
         'icon': Icons.trending_up,
         'color': Colors.red.shade600,
-        'image': 'assets/icons/investment.png',
+        'image': 'assets/images/stock_market.png',
       },
     ];
   }
@@ -292,7 +313,7 @@ class MockDataService {
       {
         'name': 'Mobile Recharge',
         'icon': Icons.phone_android,
-        'image': 'assets/icons/mobile_recharge.png',
+        'image': 'images/mobile.jpg',
       },
       {
         'name': 'DTH Recharge',

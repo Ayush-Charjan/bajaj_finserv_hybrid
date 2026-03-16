@@ -1,4 +1,3 @@
-// Scan QR Screen
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 
@@ -12,7 +11,8 @@ class ScanQRScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Scan QR Code', style: TextStyle(color: Colors.white)),
+        title:
+            const Text('Scan QR Code', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.close, color: Colors.white),
@@ -36,7 +36,6 @@ class ScanQRScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // QR Scanner Frame
                   Container(
                     width: 280,
                     height: 280,
