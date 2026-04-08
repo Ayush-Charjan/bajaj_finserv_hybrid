@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import '../services/mock_data_service.dart';
 import '../utils/app_colors.dart';
 import 'offers_screen.dart';
 import 'loans_screen.dart';
@@ -12,6 +11,9 @@ import 'bills_recharge_screen.dart';
 import 'notifications_screen.dart';
 import 'cart_screen.dart';
 import 'emi_screen.dart';
+import 'scan_qr_screen.dart';
+import 'service_mock_screen.dart';
+import 'quick_service_form_screen.dart';
 
 // Main content area between top bar and bottom navigation bar
 class NewHomeMainContent extends StatefulWidget {
@@ -78,6 +80,30 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
       'subtitle': 'Quick approval in minutes',
       'image': 'assets/images/banner3.jpg',
       'color': Color(0xFF2E7D32),
+    },
+    {
+      'title': 'Festive Cashback',
+      'subtitle': 'Extra savings on every purchase',
+      'image': 'assets/images/banner4.jpg',
+      'color': Color(0xFFEF6C00),
+    },
+    {
+      'title': 'Premium Benefits',
+      'subtitle': 'Unlock offers with Prime plans',
+      'image': 'assets/images/banner5.jpg',
+      'color': Color(0xFF3949AB),
+    },
+    {
+      'title': 'Smart EMI Plans',
+      'subtitle': 'Flexible tenure, lower monthly payout',
+      'image': 'assets/images/banner6.jpg',
+      'color': Color(0xFF00897B),
+    },
+    {
+      'title': 'Loan Top Deals',
+      'subtitle': 'Get instant eligibility checks',
+      'image': 'assets/images/banner7.jpg',
+      'color': Color(0xFFD81B60),
     },
   ];
 
@@ -240,15 +266,15 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 12),
+          const SizedBox(height: 6),
           _buildOfferRow(),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           _buildAutoBanners(),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           _buildFeatureGroupCards(),
-          const SizedBox(height: 18),
+          const SizedBox(height: 10),
           _buildBillsAndRecharge(),
-          const SizedBox(height: 20),
+          const SizedBox(height: 12),
         ],
       ),
     );
@@ -256,50 +282,54 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
 
   Widget _buildOfferRow() {
     return SizedBox(
-      height: 112,
+      height: 100,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 6),
         itemCount: _offers.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        separatorBuilder: (_, __) => const SizedBox(width: 6),
         itemBuilder: (context, index) {
           final item = _offers[index];
           final color = item['color'] as Color;
-          return SizedBox(
-            width: 88,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: color.withValues(alpha: 0.16),
-                    shape: BoxShape.circle,
-                    border: Border.all(color: color.withValues(alpha: 0.35)),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: ClipOval(
-                      child: _assetImage(
-                        item['image'] as String,
-                        fit: BoxFit.cover,
+          return InkWell(
+            borderRadius: BorderRadius.circular(10),
+            onTap: () => _openOffer(context, item['label'] as String),
+            child: SizedBox(
+              width: 82,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 58,
+                    height: 58,
+                    decoration: BoxDecoration(
+                      color: color.withValues(alpha: 0.16),
+                      shape: BoxShape.circle,
+                      border: Border.all(color: color.withValues(alpha: 0.35)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(3),
+                      child: ClipOval(
+                        child: _assetImage(
+                          item['image'] as String,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  item['label'] as String,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
+                  const SizedBox(height: 8),
+                  Text(
+                    item['label'] as String,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 9,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -323,7 +353,7 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
             itemBuilder: (context, index) {
               final banner = _banners[index];
               return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 5),
+                margin: const EdgeInsets.symmetric(horizontal: 3),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
                   image: DecorationImage(
@@ -347,21 +377,26 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
                     alignment: Alignment.bottomLeft,
                     child: Padding(
                       padding: const EdgeInsets.all(12),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: const Text(
-                          'Apply Now',
-                          style: TextStyle(
-                            color: Color(0xFF0B3A63),
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
+                      child: InkWell(
+                        onTap: () =>
+                            _openBanner(context, banner['title'] as String),
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Text(
+                            'Apply Now',
+                            style: TextStyle(
+                              color: AppColors.primary,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -379,12 +414,11 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
             final selected = _bannerIndex == index;
             return AnimatedContainer(
               duration: const Duration(milliseconds: 250),
-              width: selected ? 18 : 8,
-              height: 8,
-              margin: const EdgeInsets.symmetric(horizontal: 4),
+              width: selected ? 14 : 6,
+              height: 6,
+              margin: const EdgeInsets.symmetric(horizontal: 3),
               decoration: BoxDecoration(
-                color:
-                    selected ? const Color(0xFF0B3A63) : Colors.grey.shade300,
+                color: selected ? AppColors.primary : Colors.grey.shade300,
                 borderRadius: BorderRadius.circular(12),
               ),
             );
@@ -396,18 +430,18 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
 
   Widget _buildFeatureGroupCards() {
     return SizedBox(
-      height: 210,
+      height: 194,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 6),
         itemCount: _featureGroups.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 10),
+        separatorBuilder: (_, __) => const SizedBox(width: 8),
         itemBuilder: (context, index) {
           final group = _featureGroups[index];
           final items = group['items'] as List<dynamic>;
           return Container(
-            width: 198,
-            padding: const EdgeInsets.fromLTRB(12, 12, 12, 10),
+            width: 188,
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(14),
@@ -425,12 +459,12 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
                 Text(
                   group['title'] as String,
                   style: const TextStyle(
-                    color: Color(0xFF0B3A63),
-                    fontSize: 13,
+                    color: AppColors.primary,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 Expanded(
                   child: GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
@@ -438,9 +472,9 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 8,
-                      childAspectRatio: 1.15,
+                      mainAxisSpacing: 6,
+                      crossAxisSpacing: 6,
+                      childAspectRatio: 1.2,
                     ),
                     itemBuilder: (context, i) {
                       final item = items[i] as Map<String, dynamic>;
@@ -450,34 +484,39 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
                           color: color.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 6,
-                            vertical: 6,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(6),
-                                child: _assetImage(
-                                  item['icon'] as String,
-                                  width: 30,
-                                  height: 30,
-                                  fit: BoxFit.contain,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(8),
+                          onTap: () =>
+                              _openFeature(context, item['label'] as String),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 2,
+                              vertical: 2,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(6),
+                                  child: _assetImage(
+                                    item['icon'] as String,
+                                    width: 38,
+                                    height: 38,
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 6),
-                              Text(
-                                item['label'] as String,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600,
+                                const SizedBox(height: 4),
+                                Text(
+                                  item['label'] as String,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -494,77 +533,81 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
 
   Widget _buildBillsAndRecharge() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 6),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
             'Bills & Recharge',
             style: TextStyle(
-              color: Color(0xFF0B3A63),
-              fontSize: 15,
+              color: AppColors.primary,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           SizedBox(
-            height: 138,
+            height: 124,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: _billItems.length,
-              separatorBuilder: (_, __) => const SizedBox(width: 10),
+              separatorBuilder: (_, __) => const SizedBox(width: 8),
               itemBuilder: (context, index) {
                 final item = _billItems[index];
                 final color = item['color'] as Color;
-                return Container(
-                  width: 108,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.06),
-                        blurRadius: 6,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 10,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 54,
-                          height: 54,
-                          decoration: BoxDecoration(
-                            color: color.withValues(alpha: 0.18),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: _assetImage(
-                              item['icon'] as String,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 9),
-                        Text(
-                          item['label'] as String,
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            height: 1.2,
-                          ),
+                return InkWell(
+                  borderRadius: BorderRadius.circular(12),
+                  onTap: () => _openBillItem(context, item['label'] as String),
+                  child: Container(
+                    width: 98,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.06),
+                          blurRadius: 6,
+                          offset: const Offset(0, 2),
                         ),
                       ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                        vertical: 6,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: color.withValues(alpha: 0.18),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(7),
+                              child: _assetImage(
+                                item['icon'] as String,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            item['label'] as String,
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                              height: 1.2,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -575,13 +618,166 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
       ),
     );
   }
+
+  void _push(BuildContext context, Widget screen) {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
+  }
+
+  void _openOffer(BuildContext context, String label) {
+    switch (label) {
+      case 'Festive Offer':
+        _push(context, const OffersScreen());
+        return;
+      case 'Home Loan':
+      case 'Personal Loan':
+      case 'Car Loan':
+      case '2 Wheeler':
+        _push(context, const LoansScreen());
+        return;
+      case 'AC EMI':
+        _push(context, const ProductEmiScreen(productType: 'ac'));
+        return;
+      default:
+        _push(context, ServiceMockScreen(serviceName: label));
+    }
+  }
+
+  void _openBanner(BuildContext context, String title) {
+    if (title.contains('Loan')) {
+      _push(context, const LoansScreen());
+      return;
+    }
+    if (title.contains('EMI')) {
+      _push(context, const EmiScreen());
+      return;
+    }
+    _push(context, const OffersScreen());
+  }
+
+  void _openFeature(BuildContext context, String label) {
+    switch (label) {
+      case 'Shopping':
+        _push(context, const CartScreen());
+        return;
+      case 'Rewards':
+        _push(context, const OffersScreen());
+        return;
+      case 'Wallet':
+        _push(context, const FinanceManagerScreen());
+        return;
+      case 'Invest':
+        _push(context, const InvestmentScreen());
+        return;
+      case 'Bills':
+      case 'Recharge':
+        _push(context, const BillsRechargeScreen(serviceType: 'mobile'));
+        return;
+      case 'Insurance':
+        _push(
+          context,
+          const QuickServiceFormScreen(
+            title: 'Insurance Premium',
+            icon: Icons.shield_outlined,
+            color: Color(0xFFD81B60),
+            primaryFieldLabel: 'Policy Number',
+            primaryFieldHint: 'Enter policy number',
+            ctaLabel: 'Pay Premium',
+          ),
+        );
+        return;
+      case 'Transfer':
+        _push(
+          context,
+          const QuickServiceFormScreen(
+            title: 'Money Transfer',
+            icon: Icons.send_outlined,
+            color: Color(0xFF00897B),
+            primaryFieldLabel: 'Recipient UPI / Account',
+            primaryFieldHint: 'Enter UPI ID or account number',
+            ctaLabel: 'Send Money',
+          ),
+        );
+        return;
+      case 'Gold':
+      case 'Medical':
+      case 'Business':
+      case 'Education':
+        _push(context, const LoansScreen());
+        return;
+      default:
+        _push(context, ServiceMockScreen(serviceName: label));
+    }
+  }
+
+  void _openBillItem(BuildContext context, String label) {
+    final key = label.toLowerCase();
+    if (key.contains('broadband')) {
+      _push(
+        context,
+        const QuickServiceFormScreen(
+          title: 'Broadband Bill',
+          icon: Icons.wifi,
+          color: Color(0xFF3949AB),
+          primaryFieldLabel: 'Customer ID',
+          primaryFieldHint: 'Enter broadband customer ID',
+          ctaLabel: 'Pay Bill',
+        ),
+      );
+      return;
+    }
+    final serviceType = key.contains('electricity')
+        ? 'electricity'
+        : key.contains('water')
+            ? 'water'
+            : key.contains('gas')
+                ? 'gas'
+                : key.contains('dth')
+                    ? 'dth'
+                    : 'mobile';
+    _push(context, BillsRechargeScreen(serviceType: serviceType));
+  }
 }
 
-class NewHomeScreen extends StatelessWidget {
-  const NewHomeScreen({Key? key}) : super(key: key);
+class NewHomeScreen extends StatefulWidget {
+  final bool isEmbedded;
+
+  const NewHomeScreen({Key? key, this.isEmbedded = false}) : super(key: key);
+
+  @override
+  State<NewHomeScreen> createState() => _NewHomeScreenState();
+}
+
+class _NewHomeScreenState extends State<NewHomeScreen> {
+  Timer? _backgroundTimer;
+  int _backgroundIndex = 0;
+
+  final List<String> _backgroundImages = const [
+    'assets/images/glass background.jpg',
+    'assets/images/glass background 2.jpg',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _backgroundTimer = Timer.periodic(const Duration(seconds: 9), (_) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _backgroundIndex = (_backgroundIndex + 1) % _backgroundImages.length;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _backgroundTimer?.cancel();
+    super.dispose();
+  }
 
   // Navy Blue Theme Colors
-  final Color darkNavy = const Color.fromARGB(255, 14, 50, 105);
+  // Primary Theme Color
+  final Color darkNavy = AppColors.primary;
 
   Widget _assetImage(
     String path, {
@@ -603,16 +799,42 @@ class NewHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
+        child: Stack(
           children: [
-            /// TOP BAR
-            _buildTopBar(context),
+            Positioned.fill(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 1400),
+                child: SizedBox.expand(
+                  key: ValueKey<int>(_backgroundIndex),
+                  child: Opacity(
+                    opacity: 0.16,
+                    child: Image.asset(
+                      _backgroundImages[_backgroundIndex],
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => const SizedBox.expand(
+                          child: ColoredBox(color: Colors.white)),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: Container(
+                color: Colors.white.withValues(alpha: 0.82),
+              ),
+            ),
+            Column(
+              children: [
+                /// TOP BAR (only show if not embedded)
+                if (!widget.isEmbedded) _buildTopBar(context),
 
-            /// MAIN CONTENT (between top bar and bottom nav)
-            const Expanded(
-              child: NewHomeMainContent(),
+                /// MAIN CONTENT (between top bar and bottom nav)
+                const Expanded(
+                  child: NewHomeMainContent(),
+                ),
+              ],
             ),
           ],
         ),
@@ -623,99 +845,141 @@ class NewHomeScreen extends StatelessWidget {
   /// NAVY BLUE HEADER
   Widget _buildTopBar(BuildContext context) {
     return Container(
-      color: const Color(0xFF0B3A63),
-      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+      color: AppColors.primary,
+      padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
       child: Column(
         children: [
           /// TOP ROW (SMALL)
           Row(
             children: [
               Container(
-                width: 34,
-                height: 34,
+                width: 28,
+                height: 28,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(2),
+                  padding: const EdgeInsets.all(1),
                   child: Image.asset('assets/logos/app_icon.png',
                       fit: BoxFit.contain),
                 ),
               ),
-              const SizedBox(width: 7),
+              const SizedBox(width: 5),
               const Text(
                 "FINANCE",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                  fontSize: 12,
                   letterSpacing: 1,
                 ),
               ),
               const Spacer(),
-              const Icon(Icons.shopping_cart_outlined,
-                  color: Colors.white, size: 30),
-              const SizedBox(width: 14),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const CartScreen()),
+                  );
+                },
+                child: const Icon(Icons.shopping_cart_outlined,
+                    color: Colors.white, size: 24),
+              ),
+              const SizedBox(width: 10),
+              const SizedBox(width: 8),
+              const SizedBox(width: 8),
+              const SizedBox(width: 8),
+              const SizedBox(height: 6),
 
               /// EMI
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.yellow, width: 1),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: const Text(
-                  "EMI",
-                  style: TextStyle(
-                    color: Colors.yellow,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const EmiScreen()),
+                  );
+                },
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.yellow, width: 1),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: const Text(
+                    "EMI",
+                    style: TextStyle(
+                      color: Colors.yellow,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 10,
+                    ),
                   ),
                 ),
               ),
 
-              const SizedBox(width: 12),
+              const SizedBox(width: 10),
 
               /// PRIME
-              const Row(
-                children: [
-                  Text("prime",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold)),
-                  SizedBox(width: 3),
-                  CircleAvatar(radius: 4, backgroundColor: Colors.orange),
-                ],
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const OffersScreen(),
+                    ),
+                  );
+                },
+                child: const Row(
+                  children: [
+                    Text("prime",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(width: 3),
+                    CircleAvatar(radius: 3, backgroundColor: Colors.orange),
+                  ],
+                ),
               ),
 
-              const SizedBox(width: 12),
+              const SizedBox(width: 10),
 
-              const Stack(
-                children: [
-                  Icon(Icons.notifications_none, color: Colors.white, size: 30),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: CircleAvatar(
-                      radius: 4,
-                      backgroundColor: Colors.red,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const NotificationsScreen(),
                     ),
-                  )
-                ],
+                  );
+                },
+                child: const Stack(
+                  children: [
+                    Icon(Icons.notifications_none,
+                        color: Colors.white, size: 24),
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      child: CircleAvatar(
+                        radius: 3,
+                        backgroundColor: Colors.red,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
 
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
 
           /// SEARCH + QR (SMALL)
           Row(
             children: [
               Expanded(
                 child: Container(
-                  height: 54,
+                  height: 42,
                   decoration: BoxDecoration(
                     color: const Color(0xFFF2F3F5),
                     borderRadius: BorderRadius.circular(7),
@@ -724,20 +988,32 @@ class NewHomeScreen extends StatelessWidget {
                     children: [
                       const Expanded(
                         child: TextField(
-                          style: TextStyle(fontSize: 14),
+                          style: TextStyle(fontSize: 13),
                           decoration: InputDecoration(
                             hintText: "Search Bajajfinserv.in",
                             border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 16),
+                            contentPadding: EdgeInsets.symmetric(horizontal: 8),
                             isDense: true,
                           ),
                         ),
                       ),
-                      const Icon(Icons.mic_none, color: Colors.grey, size: 38),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const ServiceMockScreen(
+                                serviceName: 'Voice Search',
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Icon(Icons.mic_none,
+                            color: Colors.grey, size: 24),
+                      ),
                       Container(
-                        width: 64,
-                        height: 54,
+                        width: 48,
+                        height: 42,
                         decoration: const BoxDecoration(
                           color: Color(0xFFF8E9DB),
                           borderRadius: BorderRadius.only(
@@ -745,37 +1021,57 @@ class NewHomeScreen extends StatelessWidget {
                             bottomRight: Radius.circular(7),
                           ),
                         ),
-                        child: const Icon(Icons.search,
-                            color: Color(0xFFEF6C00), size: 42),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const ServiceMockScreen(
+                                  serviceName: 'Search',
+                                ),
+                              ),
+                            );
+                          },
+                          child: const Icon(Icons.search,
+                              color: Color(0xFFEF6C00), size: 26),
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
 
-              const SizedBox(width: 8),
+              const SizedBox(width: 6),
 
               /// QR
-              Container(
-                width: 46,
-                height: 54,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white, width: 1.2),
-                  borderRadius: BorderRadius.circular(7),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const ScanQRScreen()),
+                  );
+                },
+                child: Container(
+                  width: 36,
+                  height: 42,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 1.2),
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                  child: const Icon(Icons.qr_code_scanner,
+                      color: Colors.white, size: 18),
                 ),
-                child: const Icon(Icons.qr_code_scanner,
-                    color: Colors.white, size: 24),
               ),
             ],
           ),
 
-          const SizedBox(height: 6),
+          const SizedBox(height: 5),
 
           const Text(
             "BAJAJ FINANCE LIMITED",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 11,
+              fontSize: 10,
               fontWeight: FontWeight.bold,
               letterSpacing: 1,
             ),

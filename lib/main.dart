@@ -7,6 +7,8 @@ import 'utils/app_colors.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
+  final bool isEmbedded = Uri.base.queryParameters['embedded'] == 'true';
+
   // Set system UI overlay style
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -15,16 +17,18 @@ void main() {
     ),
   );
 
-  runApp(const BajajFinservApp());
+  runApp(BajajFinservApp(isEmbedded: isEmbedded));
 }
 
 class BajajFinservApp extends StatelessWidget {
-  const BajajFinservApp({Key? key}) : super(key: key);
+  final bool isEmbedded;
+
+  const BajajFinservApp({Key? key, required this.isEmbedded}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // App title      
+      // App title
       title: 'Bajaj Finserv ',
 
       // Remove debug banner
@@ -103,13 +107,13 @@ class BajajFinservApp extends StatelessWidget {
         fontFamily: 'Roboto',
       ),
 
-      // Initial route
-      initialRoute: '/',
+      // In embedded mode, skip login and show only app body content.
+      initialRoute: isEmbedded ? '/home' : '/',
 
       // Routes configuration
       routes: {
         '/': (context) => const LoginScreen(),
-        '/home': (context) => const NewMainNavigationScreen(),
+        '/home': (context) => NewMainNavigationScreen(isEmbedded: isEmbedded),
       },
     );
   }
