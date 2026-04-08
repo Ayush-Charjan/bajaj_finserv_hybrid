@@ -1,8 +1,9 @@
-  name: Deploy Flutter Web To Pages
+name: Deploy Flutter Web To Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -10,37 +11,26 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          flutter-version: 'stable'
 
-      - name: Enable Web
-        run: flutter config --enable-web
-
-      - name: Pub Get
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: Build Web For GitHub Pages
-        env:
-          REPO_NAME: ${{ github.event.repository.name }}
-        run: flutter build web --release --base-href "/${REPO_NAME}/"
+      - name: Build Flutter Web
+        run: flutter build web --base-href "/bajaj_finserv_hybrid/"
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build/web
@@ -48,10 +38,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - name: Deploy To GitHub Pages
-        id: deployment
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
