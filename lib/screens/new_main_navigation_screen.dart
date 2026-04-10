@@ -26,11 +26,11 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
 
   List<Widget> get _screens => [
         NewHomeScreen(isEmbedded: widget.isEmbedded),
-        const ProfileScreen(),
+        ProfileScreen(isEmbedded: widget.isEmbedded),
         Container(), // Placeholder for Scan QR (opens as modal)
-        const PayEmiScreen(),
-        const MenuScreen(),
-        const ChatScreen(),
+        PayEmiScreen(isEmbedded: widget.isEmbedded),
+        MenuScreen(isEmbedded: widget.isEmbedded),
+        ChatScreen(isEmbedded: widget.isEmbedded),
       ];
 
   @override
@@ -74,106 +74,117 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _currentIndex == 2
-          ? NewHomeScreen(
-              isEmbedded: widget.isEmbedded) // Show home if scan QR is selected
-          : _screens[_currentIndex],
-      bottomNavigationBar: widget.isEmbedded
-          ? null
-          : Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 8,
-                    offset: const Offset(0, -2),
-                  ),
-                ],
-              ),
-              child: BottomNavigationBar(
-                currentIndex: _currentIndex,
-                onTap: (index) {
-                  if (index == 2) {
-                    // Open Scan QR as a full screen modal
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ScanQRScreen(),
-                        fullscreenDialog: true,
-                      ),
-                    );
-                  } else {
-                    setState(() {
-                      _currentIndex = index;
-                    });
-                  }
-                },
-                type: BottomNavigationBarType.fixed,
-                backgroundColor: Colors.white,
-                selectedItemColor: AppColors.primary,
-                unselectedItemColor: Colors.grey.shade600,
-                selectedFontSize: 11,
-                unselectedFontSize: 11,
-                selectedLabelStyle:
-                    const TextStyle(fontWeight: FontWeight.w600),
-                items: [
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.home_outlined),
-                    activeIcon: Icon(Icons.home),
-                    label: 'Home',
-                  ),
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.person_outline),
-                    activeIcon: Icon(Icons.person),
-                    label: 'Profile',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: const BoxDecoration(
-                        color: AppColors.accent,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(Icons.qr_code_scanner,
-                          color: Colors.white, size: 24),
+    return WillPopScope(
+      onWillPop: () async {
+        if (_currentIndex != 0) {
+          setState(() {
+            _currentIndex = 0;
+          });
+        }
+        return false;
+      },
+      child: Scaffold(
+        body: _currentIndex == 2
+            ? NewHomeScreen(
+                isEmbedded:
+                    widget.isEmbedded) // Show home if scan QR is selected
+            : _screens[_currentIndex],
+        bottomNavigationBar: widget.isEmbedded
+            ? null
+            : Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 8,
+                      offset: const Offset(0, -2),
                     ),
-                    label: 'Scan QR',
-                  ),
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.payment_outlined),
-                    activeIcon: Icon(Icons.payment),
-                    label: 'Pay EMI',
-                  ),
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.menu),
-                    activeIcon: Icon(Icons.menu_open),
-                    label: 'Menu',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Stack(
-                      children: [
-                        const Icon(Icons.chat_bubble_outline),
-                        Positioned(
-                          right: 0,
-                          top: 0,
-                          child: Container(
-                            width: 8,
-                            height: 8,
-                            decoration: const BoxDecoration(
-                              color: Colors.red,
-                              shape: BoxShape.circle,
+                  ],
+                ),
+                child: BottomNavigationBar(
+                  currentIndex: _currentIndex,
+                  onTap: (index) {
+                    if (index == 2) {
+                      // Open Scan QR as a full screen modal
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ScanQRScreen(),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    } else {
+                      setState(() {
+                        _currentIndex = index;
+                      });
+                    }
+                  },
+                  type: BottomNavigationBarType.fixed,
+                  backgroundColor: Colors.white,
+                  selectedItemColor: AppColors.primary,
+                  unselectedItemColor: Colors.grey.shade600,
+                  selectedFontSize: 11,
+                  unselectedFontSize: 11,
+                  selectedLabelStyle:
+                      const TextStyle(fontWeight: FontWeight.w600),
+                  items: [
+                    const BottomNavigationBarItem(
+                      icon: Icon(Icons.home_outlined),
+                      activeIcon: Icon(Icons.home),
+                      label: 'Home',
+                    ),
+                    const BottomNavigationBarItem(
+                      icon: Icon(Icons.person_outline),
+                      activeIcon: Icon(Icons.person),
+                      label: 'Profile',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: const BoxDecoration(
+                          color: AppColors.accent,
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(Icons.qr_code_scanner,
+                            color: Colors.white, size: 24),
+                      ),
+                      label: 'Scan QR',
+                    ),
+                    const BottomNavigationBarItem(
+                      icon: Icon(Icons.payment_outlined),
+                      activeIcon: Icon(Icons.payment),
+                      label: 'Pay EMI',
+                    ),
+                    const BottomNavigationBarItem(
+                      icon: Icon(Icons.menu),
+                      activeIcon: Icon(Icons.menu_open),
+                      label: 'Menu',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Stack(
+                        children: [
+                          const Icon(Icons.chat_bubble_outline),
+                          Positioned(
+                            right: 0,
+                            top: 0,
+                            child: Container(
+                              width: 8,
+                              height: 8,
+                              decoration: const BoxDecoration(
+                                color: Colors.red,
+                                shape: BoxShape.circle,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                      activeIcon: const Icon(Icons.chat_bubble),
+                      label: 'Chat',
                     ),
-                    activeIcon: const Icon(Icons.chat_bubble),
-                    label: 'Chat',
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+      ),
     );
   }
 }

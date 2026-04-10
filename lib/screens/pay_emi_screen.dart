@@ -4,7 +4,9 @@ import '../utils/app_colors.dart';
 import '../widgets/emi_card_widget.dart';
 
 class PayEmiScreen extends StatelessWidget {
-  const PayEmiScreen({Key? key}) : super(key: key);
+  final bool isEmbedded;
+
+  const PayEmiScreen({Key? key, this.isEmbedded = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,20 +14,26 @@ class PayEmiScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        title: const Text('Pay EMI', style: TextStyle(color: Colors.white)),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.history, color: Colors.white),
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('EMI payment history')),
-              );
-            },
-          ),
-        ],
-      ),
+      appBar: isEmbedded
+          ? null
+          : AppBar(
+              automaticallyImplyLeading: false,
+              leading: const SizedBox.shrink(),
+              leadingWidth: 0,
+              backgroundColor: AppColors.primary,
+              title:
+                  const Text('Pay EMI', style: TextStyle(color: Colors.white)),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.history, color: Colors.white),
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('EMI payment history')),
+                    );
+                  },
+                ),
+              ],
+            ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

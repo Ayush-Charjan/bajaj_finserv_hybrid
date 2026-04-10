@@ -3,16 +3,23 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({Key? key}) : super(key: key);
+  final bool isEmbedded;
+
+  const MenuScreen({Key? key, this.isEmbedded = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        title: const Text('Menu', style: TextStyle(color: Colors.white)),
-      ),
+      appBar: isEmbedded
+          ? null
+          : AppBar(
+              automaticallyImplyLeading: false,
+              leading: const SizedBox.shrink(),
+              leadingWidth: 0,
+              backgroundColor: AppColors.primary,
+              title: const Text('Menu', style: TextStyle(color: Colors.white)),
+            ),
       body: ListView(
         children: [
           _buildMenuSection(
@@ -193,8 +200,8 @@ class MenuScreen extends StatelessWidget {
                     item['title'],
                     style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
-                  subtitle:
-                      Text(item['subtitle'], style: const TextStyle(fontSize: 12)),
+                  subtitle: Text(item['subtitle'],
+                      style: const TextStyle(fontSize: 12)),
                   trailing: const Icon(Icons.chevron_right, color: Colors.grey),
                   onTap: () {},
                 ))

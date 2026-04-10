@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+  final bool isEmbedded;
+
+  const ChatScreen({Key? key, this.isEmbedded = false}) : super(key: key);
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -56,41 +58,46 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        title: const Row(
-          children: [
-            CircleAvatar(
-              backgroundColor: Colors.white,
-              child: Icon(Icons.support_agent, color: AppColors.primary),
-            ),
-            SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Customer Support',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                Text(
-                  'Online',
-                  style: TextStyle(color: Colors.white70, fontSize: 12),
+      appBar: widget.isEmbedded
+          ? null
+          : AppBar(
+              automaticallyImplyLeading: false,
+              leading: const SizedBox.shrink(),
+              leadingWidth: 0,
+              backgroundColor: AppColors.primary,
+              title: const Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.support_agent, color: AppColors.primary),
+                  ),
+                  SizedBox(width: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Customer Support',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      Text(
+                        'Online',
+                        style: TextStyle(color: Colors.white70, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.phone, color: Colors.white),
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Calling support...')),
+                    );
+                  },
                 ),
               ],
             ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.phone, color: Colors.white),
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Calling support...')),
-              );
-            },
-          ),
-        ],
-      ),
       body: Column(
         children: [
           // Quick Help Options

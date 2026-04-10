@@ -1,10 +1,11 @@
-// Profile screen showing user information and settings
 import 'package:flutter/material.dart';
 import '../services/mock_data_service.dart';
 import '../utils/app_colors.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  final bool isEmbedded;
+
+  const ProfileScreen({Key? key, this.isEmbedded = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,29 +13,35 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        elevation: 0,
-        title: const Text(
-          'Profile',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        actions: [
-          // Edit icon
-          IconButton(
-            icon: const Icon(Icons.edit, color: Colors.white),
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Edit profile coming soon!')),
-              );
-            },
-          ),
-        ],
-      ),
+      appBar: isEmbedded
+          ? null
+          : AppBar(
+              automaticallyImplyLeading: false,
+              leading: const SizedBox.shrink(),
+              leadingWidth: 0,
+              backgroundColor: AppColors.primary,
+              elevation: 0,
+              title: const Text(
+                'Profile',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              actions: [
+                // Edit icon
+                IconButton(
+                  icon: const Icon(Icons.edit, color: Colors.white),
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text('Edit profile coming soon!')),
+                    );
+                  },
+                ),
+              ],
+            ),
       body: SingleChildScrollView(
         child: Column(
           children: [

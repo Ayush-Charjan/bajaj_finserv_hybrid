@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
+  void _openHome(BuildContext context) {
+    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                 // MPIN Login Button
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/home');
+                    _openHome(context);
                   },
                   child: const Text(
                     "Log in using MPIN",
@@ -105,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                 // Fingerprint Login
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    _openHome(context);
                   },
                   child: const Icon(
                     Icons.fingerprint,
