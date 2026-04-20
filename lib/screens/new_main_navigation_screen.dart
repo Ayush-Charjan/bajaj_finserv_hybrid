@@ -7,13 +7,17 @@ import 'pay_emi_screen.dart';
 import 'menu_screen.dart';
 import 'chat_screen.dart';
 import '../utils/app_colors.dart';
-import '../services/native_footer_bridge.dart';
+import '../services/native_shell_bridge.dart';
 
 class NewMainNavigationScreen extends StatefulWidget {
   final bool isEmbedded;
+  final bool useNativeShell;
 
-  const NewMainNavigationScreen({Key? key, this.isEmbedded = false})
-      : super(key: key);
+  const NewMainNavigationScreen({
+    Key? key,
+    this.isEmbedded = false,
+    this.useNativeShell = false,
+  }) : super(key: key);
 
   @override
   State<NewMainNavigationScreen> createState() =>
@@ -22,12 +26,15 @@ class NewMainNavigationScreen extends StatefulWidget {
 
 class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
   int _currentIndex = 0;
-  final NativeFooterBridge _nativeFooterBridge = NativeFooterBridge();
+  final NativeShellBridge _nativeShellBridge = NativeShellBridge();
 
   List<Widget> get _screens => [
-        NewHomeScreen(isEmbedded: widget.isEmbedded),
+        NewHomeScreen(
+          isEmbedded: widget.isEmbedded,
+          useNativeShell: widget.useNativeShell,
+        ),
         ProfileScreen(isEmbedded: widget.isEmbedded),
-        Container(), // Placeholder for Scan QR (opens as modal)
+        Container(),
         PayEmiScreen(isEmbedded: widget.isEmbedded),
         MenuScreen(isEmbedded: widget.isEmbedded),
         ChatScreen(isEmbedded: widget.isEmbedded),
@@ -36,39 +43,10 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
   @override
   void initState() {
     super.initState();
-    if (widget.isEmbedded) {
-      _nativeFooterBridge.register(_onNativeFooterTap);
-    }
-  }
-
-  void _onNativeFooterTap(int nativeIndex) {
-    final int? mapped = _mapNativeFooterIndexToWebTab(nativeIndex);
-    if (mapped == null || !mounted) {
-      return;
-    }
-    setState(() {
-      _currentIndex = mapped;
-    });
-  }
-
-  int? _mapNativeFooterIndexToWebTab(int nativeIndex) {
-    switch (nativeIndex) {
-      case 0:
-        return 0; // Home
-      case 1:
-        return 3; // Pay EMI
-      case 3:
-        return 4; // Menu
-      case 4:
-        return 5; // Chat
-      default:
-        return null;
-    }
   }
 
   @override
   void dispose() {
-    _nativeFooterBridge.dispose();
     super.dispose();
   }
 
@@ -86,8 +64,9 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
       child: Scaffold(
         body: _currentIndex == 2
             ? NewHomeScreen(
-                isEmbedded:
-                    widget.isEmbedded) // Show home if scan QR is selected
+                isEmbedded: widget.isEmbedded,
+                useNativeShell: widget.useNativeShell,
+              )
             : _screens[_currentIndex],
         bottomNavigationBar: widget.isEmbedded
             ? null
@@ -105,13 +84,17 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
                   currentIndex: _currentIndex,
                   onTap: (index) {
                     if (index == 2) {
-                      // Open Scan QR as a full screen modal
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const ScanQRScreen(),
                           fullscreenDialog: true,
                         ),
+                      );
+                    } else if (widget.useNativeShell &&
+                        (index == 4 || index == 5)) {
+                      _nativeShellBridge.openFeature(
+                        index == 4 ? 'menu' : 'chat',
                       );
                     } else {
                       setState(() {

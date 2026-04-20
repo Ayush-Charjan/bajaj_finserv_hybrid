@@ -14,6 +14,7 @@ import 'emi_screen.dart';
 import 'scan_qr_screen.dart';
 import 'service_mock_screen.dart';
 import 'quick_service_form_screen.dart';
+import '../services/native_shell_bridge.dart';
 
 // Main content area between top bar and bottom navigation bar
 class NewHomeMainContent extends StatefulWidget {
@@ -740,8 +741,13 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
 
 class NewHomeScreen extends StatefulWidget {
   final bool isEmbedded;
+  final bool useNativeShell;
 
-  const NewHomeScreen({Key? key, this.isEmbedded = false}) : super(key: key);
+  const NewHomeScreen({
+    Key? key,
+    this.isEmbedded = false,
+    this.useNativeShell = false,
+  }) : super(key: key);
 
   @override
   State<NewHomeScreen> createState() => _NewHomeScreenState();
@@ -750,6 +756,7 @@ class NewHomeScreen extends StatefulWidget {
 class _NewHomeScreenState extends State<NewHomeScreen> {
   Timer? _backgroundTimer;
   int _backgroundIndex = 0;
+  final NativeShellBridge _nativeShellBridge = NativeShellBridge();
 
   final List<String> _backgroundImages = const [
     'assets/images/glass background.jpg',
@@ -845,7 +852,7 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
   /// NAVY BLUE HEADER
   Widget _buildTopBar(BuildContext context) {
     return Container(
-      color: AppColors.primary,
+      color: const Color.fromRGBO(0, 42, 84, 1),
       padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
       child: Column(
         children: [

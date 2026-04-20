@@ -279,6 +279,7 @@ class _ScanQRScreenState extends State<ScanQRScreen>
   final MobileScannerController controller = MobileScannerController(
     detectionSpeed: DetectionSpeed.noDuplicates,
   );
+  bool _isScanning = true;
 
   @override
   void initState() {
@@ -338,11 +339,18 @@ class _ScanQRScreenState extends State<ScanQRScreen>
           MobileScanner(
             controller: controller,
             onDetect: (capture) {
-              final barcode = capture.barcodes.first;
-              final String? code = barcode.rawValue;
+              if (!_isScanning) return;
+
+              final List<Barcode> barcodes = capture.barcodes;
+
+              if (barcodes.isEmpty) return;
+
+              final String? code = barcodes.first.rawValue;
+
               if (code != null) {
+                _isScanning = false; // prevent multiple triggers
                 debugPrint('Scanned URL: $code');
-                // Returns the URL to the previous screen and closes the scanner
+
                 Navigator.pop(context, code);
               }
             },
@@ -351,7 +359,7 @@ class _ScanQRScreenState extends State<ScanQRScreen>
           // 2. DARK OVERLAY WITH CUTOUT
           ColorFiltered(
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.6),
+              Colors.black.withValues(alpha: 0.6),
               BlendMode.srcOut,
             ),
             child: Stack(
@@ -402,7 +410,7 @@ class _ScanQRScreenState extends State<ScanQRScreen>
                             color: AppColors.accent,
                             boxShadow: [
                               BoxShadow(
-                                color: AppColors.accent.withOpacity(0.5),
+                                color: AppColors.accent.withValues(alpha: 0.6),
                                 blurRadius: 10,
                                 spreadRadius: 2,
                               )

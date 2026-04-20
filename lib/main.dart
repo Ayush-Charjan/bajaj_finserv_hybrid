@@ -8,6 +8,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   final bool isEmbedded = Uri.base.queryParameters['embedded'] == 'true';
+  final bool useNativeShell = Uri.base.queryParameters['nativeShell'] == 'true';
 
   // Set system UI overlay style
   SystemChrome.setSystemUIOverlayStyle(
@@ -17,13 +18,23 @@ void main() {
     ),
   );
 
-  runApp(BajajFinservApp(isEmbedded: isEmbedded));
+  runApp(
+    BajajFinservApp(
+      isEmbedded: isEmbedded,
+      useNativeShell: useNativeShell,
+    ),
+  );
 }
 
 class BajajFinservApp extends StatelessWidget {
   final bool isEmbedded;
+  final bool useNativeShell;
 
-  const BajajFinservApp({Key? key, required this.isEmbedded}) : super(key: key);
+  const BajajFinservApp({
+    Key? key,
+    required this.isEmbedded,
+    required this.useNativeShell,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +124,10 @@ class BajajFinservApp extends StatelessWidget {
       // Routes configuration
       routes: {
         '/': (context) => const LoginScreen(),
-        '/home': (context) => NewMainNavigationScreen(isEmbedded: isEmbedded),
+        '/home': (context) => NewMainNavigationScreen(
+              isEmbedded: isEmbedded,
+              useNativeShell: useNativeShell,
+            ),
       },
     );
   }
