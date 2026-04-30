@@ -3,7 +3,7 @@ name: Deploy Flutter Web To Pages
 on:
   push:
     branches:
-      - main
+      - native-shell-integration
   workflow_dispatch:
 
 permissions:
