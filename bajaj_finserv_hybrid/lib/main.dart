@@ -42,6 +42,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
   String _startUrl = 'about:blank';
   bool _hasLoadError = false;
   bool _isNativeLoggedIn = false;
+  bool _isLoading = false;
   int _selectedBottomNavIndex = 0;
   String? _lastFeatureOpened;
   DateTime? _lastFeatureOpenedAt;
@@ -111,10 +112,16 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
             if (mounted) {
               setState(() {
                 _hasLoadError = false;
+                _isLoading = true;
               });
             }
           },
           onPageFinished: (_) {
+            if (mounted) {
+              setState(() {
+                _isLoading = false;
+              });
+            }
             _injectNativeScanInterceptor();
           },
           onNavigationRequest: (NavigationRequest request) {
@@ -124,7 +131,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
               return NavigationDecision.navigate;
             }
 
-            if (_isPwaLoginRoute(uri)) {
+            if (_isPwaLoginRoute(uri) && !uri.toString().contains('nativeShell=true')) {
               debugPrint('Blocked PWA login route: ${request.url}');
               if (mounted) {
                 ScaffoldMessenger.of(context)
@@ -362,7 +369,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
               : (_controller == null
                     ? const Center(child: CircularProgressIndicator())
                     : (_hasLoadError
-                          ? _InternetRequiredView(onRetry: _reloadWebApp)
+                          ? _InternetRequiredView(onRetry: _reloadPwaApp)
                           : SizedBox.expand(
                               child: WebViewWidget(controller: _controller!),
                             ))),
@@ -393,16 +400,31 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
           await _loadPwaTab(index);
         },
       ),
-      body: SafeArea(
-        child: (_startUrl == 'about:blank')
-            ? const _InternetRequiredView()
-            : (_controller == null
-                  ? const Center(child: CircularProgressIndicator())
-                  : (_hasLoadError
-                        ? _InternetRequiredView(onRetry: _reloadPwaApp)
-                        : SizedBox.expand(
-                            child: WebViewWidget(controller: _controller!),
-                          ))),
+      body: Stack(
+        children: [
+          SafeArea(
+            child: (_startUrl == 'about:blank')
+                ? const _InternetRequiredView()
+                : (_controller == null
+                      ? const Center(child: CircularProgressIndicator())
+                      : (_hasLoadError
+                            ? _InternetRequiredView(onRetry: _reloadPwaApp)
+                            : SizedBox.expand(
+                                child: WebViewWidget(controller: _controller!),
+                              ))),
+          ),
+          if (_isLoading)
+            Container(
+              color: Colors.black.withOpacity(0.3),
+              child: const Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Color(0xFF0057B8),
+                  ),
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -431,7 +453,7 @@ class _NativeTopSearchBar extends StatelessWidget
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
-      elevation: 2,
+      elevation: 8,
       child: SafeArea(
         bottom: false,
         child: Padding(
@@ -502,9 +524,19 @@ class _NativeBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBar(
-      selectedIndex: selectedIndex,
-      onDestinationSelected: onSelected,
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 8,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      child: NavigationBar(
+        selectedIndex: selectedIndex,
+        onDestinationSelected: onSelected,
       destinations: const [
         NavigationDestination(icon: Icon(Icons.home_rounded), label: 'Home'),
         NavigationDestination(
@@ -522,6 +554,7 @@ class _NativeBottomNavBar extends StatelessWidget {
         NavigationDestination(icon: Icon(Icons.menu_rounded), label: 'Menu'),
         NavigationDestination(icon: Icon(Icons.chat_rounded), label: 'Chat'),
       ],
+      ),
     );
   }
 }
