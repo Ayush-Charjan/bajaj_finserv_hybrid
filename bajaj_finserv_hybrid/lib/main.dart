@@ -33,7 +33,7 @@ class HybridHomeScreen extends StatefulWidget {
 class _HybridHomeScreenState extends State<HybridHomeScreen> {
   static const String _remotePwaUrl = String.fromEnvironment(
     'PWA_URL',
-    defaultValue: 'https://ayush-charjan.github.io/bajaj-pwa',
+    defaultValue: 'https://ayush-charjan.github.io/bajaj_finserv_hybrid/#/home',
   );
 
   WebViewController? _controller;
@@ -131,28 +131,10 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
               return NavigationDecision.navigate;
             }
 
-            if (_isPwaLoginRoute(uri) && 
-                !uri.toString().contains('nativeShell=true') &&
-                !_startUrl.contains('nativeShell=true')) {
-              debugPrint('Blocked PWA login route: ${request.url}');
-              if (mounted) {
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        'Session ended. Please use native login again.',
-                      ),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
-                setState(() {
-                  _isNativeLoggedIn = false;
-                  _controller = null;
-                  _hasLoadError = false;
-                });
-              }
-              return NavigationDecision.prevent;
+              if (_isPwaLoginRoute(uri) &&
+                  !uri.toString().contains('nativeShell=true')) {
+                debugPrint('Allowing PWA login route: ${request.url}');
+                return NavigationDecision.navigate;
             }
 
             if (uri.scheme == 'native') {
