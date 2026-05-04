@@ -131,7 +131,9 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
               return NavigationDecision.navigate;
             }
 
-            if (_isPwaLoginRoute(uri) && !uri.toString().contains('nativeShell=true')) {
+            if (_isPwaLoginRoute(uri) && 
+                !uri.toString().contains('nativeShell=true') &&
+                !_startUrl.contains('nativeShell=true')) {
               debugPrint('Blocked PWA login route: ${request.url}');
               if (mounted) {
                 ScaffoldMessenger.of(context)
@@ -418,9 +420,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
               color: Colors.black.withOpacity(0.3),
               child: const Center(
                 child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Color(0xFF0057B8),
-                  ),
+                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF0057B8)),
                 ),
               ),
             ),
@@ -516,71 +516,162 @@ class _NativeTopSearchBar extends StatelessWidget
 class _NativeBottomNavBar extends StatelessWidget {
   const _NativeBottomNavBar({
     required this.selectedIndex,
-    required this.onSelected,
-  });
+    @override
+    Size get preferredSize => const Size.fromHeight(120);
 
-  final int selectedIndex;
-  final ValueChanged<int> onSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, -2),
+    @override
+    Widget build(BuildContext context) {
+      return Material(
+        color: const Color.fromRGBO(0, 42, 84, 1),
+        elevation: 8,
+        child: SafeArea(
+          bottom: false,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 32,
+                      height: 32,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2),
+                        child: Image.asset('assets/logos/app_icon.png',
+                            fit: BoxFit.contain,
+                            errorBuilder: (_, __, ___) =>
+                                const Icon(Icons.account_balance, size: 20)),
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    const Text(
+                      'FINANCE',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.yellow, width: 1),
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                      child: const Text(
+                        'EMI',
+                        style: TextStyle(
+                          color: Colors.yellow,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    const Row(
+                      children: [
+                        Text('prime',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold)),
+                        SizedBox(width: 3),
+                        CircleAvatar(radius: 3, backgroundColor: Colors.orange),
+                      ],
+                    ),
+                    const SizedBox(width: 8),
+                    const Stack(
+                      children: [
+                        Icon(Icons.notifications_none,
+                            color: Colors.white, size: 22),
+                        Positioned(
+                          right: 0,
+                          top: 0,
+                          child: CircleAvatar(
+                            radius: 2.5,
+                            backgroundColor: Colors.red,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 38,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF2F3F5),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: TextField(
+                                controller: controller,
+                                focusNode: focusNode,
+                                textInputAction: TextInputAction.search,
+                                onSubmitted: onSubmitted,
+                                style: const TextStyle(fontSize: 12),
+                                decoration: const InputDecoration(
+                                  hintText: 'Search Bajajfinserv.in',
+                                  border: InputBorder.none,
+                                  contentPadding:
+                                      EdgeInsets.symmetric(horizontal: 8),
+                                  isDense: true,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 40,
+                              height: 38,
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFF8E9DB),
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(6),
+                                  bottomRight: Radius.circular(6),
+                                ),
+                              ),
+                              child: InkWell(
+                                onTap: onScanTap,
+                                child: const Icon(Icons.qr_code_scanner,
+                                    color: Color(0xFFEF6C00), size: 20),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: const Text(
+                  'BAJAJ FINANCE LIMITED',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 9,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: NavigationBar(
-        selectedIndex: selectedIndex,
-        onDestinationSelected: onSelected,
-      destinations: const [
-        NavigationDestination(icon: Icon(Icons.home_rounded), label: 'Home'),
-        NavigationDestination(
-          icon: Icon(Icons.person_rounded),
-          label: 'Profile',
         ),
-        NavigationDestination(
-          icon: Icon(Icons.qr_code_scanner_rounded),
-          label: 'Scan',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.payment_rounded),
-          label: 'Pay EMI',
-        ),
-        NavigationDestination(icon: Icon(Icons.menu_rounded), label: 'Menu'),
-        NavigationDestination(icon: Icon(Icons.chat_rounded), label: 'Chat'),
-      ],
-      ),
-    );
-  }
-}
-
-class _NativeLoginScreen extends StatelessWidget {
-  const _NativeLoginScreen({required this.onLoginSuccess});
-
-  final Future<void> Function(String username, String password) onLoginSuccess;
-
-  Future<void> _continueWithNativeLogin(BuildContext context) async {
-    await onLoginSuccess('native_user', 'native_session');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF0B2A5B),
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 120,
+      );
+    }
                   width: 120,
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -1200,41 +1291,60 @@ class _NativeChatScreenState extends State<_NativeChatScreen> {
                 ),
               ],
             ),
-            child: Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.attach_file, color: Colors.grey),
-                  onPressed: () {},
-                ),
-                Expanded(
-                  child: TextField(
-                    controller: _messageController,
-                    decoration: InputDecoration(
-                      hintText: 'Type your message...',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(24),
-                        borderSide: BorderSide.none,
+            @override
+            Widget build(BuildContext context) {
+              return BottomNavigationBar(
+                currentIndex: selectedIndex,
+                onTap: onSelected,
+                type: BottomNavigationBarType.fixed,
+                backgroundColor: Colors.white,
+                selectedItemColor: const Color(0xFF0057B8),
+                unselectedItemColor: Colors.grey.shade600,
+                selectedFontSize: 11,
+                unselectedFontSize: 11,
+                elevation: 8,
+                selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+                items: [
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.home_outlined),
+                    activeIcon: Icon(Icons.home),
+                    label: 'Home',
+                  ),
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.person_outline),
+                    activeIcon: Icon(Icons.person),
+                    label: 'Profile',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Container(
+                      padding: const EdgeInsets.all(6),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF0057B8),
+                        shape: BoxShape.circle,
                       ),
-                      filled: true,
-                      fillColor: Colors.grey.shade100,
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
+                      child: const Icon(Icons.qr_code_scanner,
+                          color: Colors.white, size: 20),
                     ),
-                    onSubmitted: (_) => _sendMessage(),
+                    label: 'Scan',
                   ),
-                ),
-                const SizedBox(width: 8),
-                CircleAvatar(
-                  backgroundColor: const Color(0xFF0057B8),
-                  child: IconButton(
-                    icon: const Icon(Icons.send, color: Colors.white, size: 20),
-                    onPressed: _sendMessage,
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.payment_outlined),
+                    activeIcon: Icon(Icons.payment),
+                    label: 'Pay EMI',
                   ),
-                ),
-              ],
-            ),
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.menu),
+                    activeIcon: Icon(Icons.menu_open),
+                    label: 'Menu',
+                  ),
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.chat_outlined),
+                    activeIcon: Icon(Icons.chat),
+                    label: 'Chat',
+                  ),
+                ],
+              );
+            }
           ),
         ],
       ),
