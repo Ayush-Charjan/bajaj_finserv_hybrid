@@ -67,7 +67,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     await _initializeMobileWebView();
   }
 
-  bool _isWebLoginRoute(Uri uri) {
+  bool _isPwaLoginRoute(Uri uri) {
     final String url = uri.toString().toLowerCase();
     final String path = uri.path.toLowerCase();
     return path.contains('/login') ||
@@ -124,8 +124,8 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
               return NavigationDecision.navigate;
             }
 
-            if (_isWebLoginRoute(uri)) {
-              debugPrint('Blocked web login route: ${request.url}');
+            if (_isPwaLoginRoute(uri)) {
+              debugPrint('Blocked PWA login route: ${request.url}');
               if (mounted) {
                 ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
@@ -210,7 +210,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     ''');
   }
 
-  Future<void> _reloadWebApp() async {
+  Future<void> _reloadPwaApp() async {
     if (_startUrl != 'about:blank') {
       await _controller?.loadRequest(Uri.parse(_startUrl));
     }
@@ -399,7 +399,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
             : (_controller == null
                   ? const Center(child: CircularProgressIndicator())
                   : (_hasLoadError
-                        ? _InternetRequiredView(onRetry: _reloadWebApp)
+                        ? _InternetRequiredView(onRetry: _reloadPwaApp)
                         : SizedBox.expand(
                             child: WebViewWidget(controller: _controller!),
                           ))),
@@ -646,7 +646,7 @@ class _WebUnsupportedView extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              'Run this hybrid shell on Android, iOS, Windows, macOS, or Linux for a full-screen PWA with native QR, menu, and chat flows.',
+              'Run this hybrid shell on Android, iOS, Windows, macOS, or Linux for a full-screen PWA with native app QR, menu, and chat flows.',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 13, color: Colors.black54),
             ),
@@ -966,7 +966,7 @@ class _NativeMenuScreen extends StatelessWidget {
             child: ElevatedButton.icon(
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.arrow_back),
-              label: const Text('Back to PWA'),
+              label: const Text('Back to native app'),
             ),
           ),
         ],
