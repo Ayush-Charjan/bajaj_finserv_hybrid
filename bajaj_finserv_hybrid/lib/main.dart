@@ -131,10 +131,10 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
               return NavigationDecision.navigate;
             }
 
-              if (_isPwaLoginRoute(uri) &&
-                  !uri.toString().contains('nativeShell=true')) {
-                debugPrint('Allowing PWA login route: ${request.url}');
-                return NavigationDecision.navigate;
+            if (_isPwaLoginRoute(uri) &&
+                !uri.toString().contains('nativeShell=true')) {
+              debugPrint('Allowing PWA login route: ${request.url}');
+              return NavigationDecision.navigate;
             }
 
             if (uri.scheme == 'native') {
@@ -177,7 +177,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
   }
 
   Future<void> _injectNativeScanInterceptor() async {
-    // Expose a stable explicit bridge for hosted PWA code to invoke native features.
     await _controller?.runJavaScript(r'''
       (function() {
         if (window.__nativeScanHookInstalled) {
@@ -399,7 +398,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
           ),
           if (_isLoading)
             Container(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: 0.3),
               child: const Center(
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF0057B8)),
@@ -429,66 +428,173 @@ class _NativeTopSearchBar extends StatelessWidget
   final VoidCallback onMenuTap;
 
   @override
-  Size get preferredSize => const Size.fromHeight(76);
+  Size get preferredSize => const Size.fromHeight(120);
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: const Color.fromRGBO(0, 42, 84, 1),
       elevation: 8,
       child: SafeArea(
         bottom: false,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          child: Row(
-            children: [
-              Container(
-                width: 38,
-                height: 38,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF0057B8).withValues(alpha: 0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.account_balance_rounded,
-                  color: Color(0xFF0057B8),
-                  size: 22,
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: TextField(
-                  controller: controller,
-                  focusNode: focusNode,
-                  textInputAction: TextInputAction.search,
-                  onSubmitted: onSubmitted,
-                  decoration: InputDecoration(
-                    hintText: 'Search loans, cards, support...',
-                    prefixIcon: const Icon(Icons.search_rounded),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.qr_code_scanner_rounded),
-                      onPressed: onScanTap,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
+              child: Row(
+                children: [
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4),
                     ),
-                    filled: true,
-                    fillColor: const Color(0xFFF5F7FB),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide.none,
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Image.asset(
+                        'assets/logos/app_icon.png',
+                        fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(Icons.account_balance, size: 20),
+                      ),
                     ),
                   ),
+                  const SizedBox(width: 6),
+                  const Text(
+                    'FINANCE',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                      letterSpacing: 1,
+                    ),
+                  ),
+
+                  const Spacer(),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 2,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.yellow, width: 1),
+                      borderRadius: BorderRadius.circular(3),
+                    ),
+                    child: const Text(
+                      'EMI',
+                      style: TextStyle(
+                        color: Colors.yellow,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  const Row(
+                    children: [
+                      Text(
+                        'prime',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(width: 3),
+                      CircleAvatar(radius: 3, backgroundColor: Colors.orange),
+                    ],
+                  ),
+                  const SizedBox(width: 8),
+                  const Stack(
+                    children: [
+                      Icon(
+                        Icons.notifications_none,
+                        color: Colors.white,
+                        size: 22,
+                      ),
+                      Positioned(
+                        right: 0,
+                        top: 0,
+                        child: CircleAvatar(
+                          radius: 2.5,
+                          backgroundColor: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF2F3F5),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: controller,
+                              focusNode: focusNode,
+                              textInputAction: TextInputAction.search,
+                              onSubmitted: onSubmitted,
+                              style: const TextStyle(fontSize: 12),
+                              decoration: const InputDecoration(
+                                hintText: 'Search Bajajfinserv.in',
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                ),
+                                isDense: true,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 40,
+                            height: 38,
+                            decoration: const BoxDecoration(
+                              color: Color(0xFFF8E9DB),
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(6),
+                                bottomRight: Radius.circular(6),
+                              ),
+                            ),
+                            child: InkWell(
+                              onTap: onScanTap,
+                              child: const Icon(
+                                Icons.qr_code_scanner,
+                                color: Color(0xFFEF6C00),
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: const Text(
+                'BAJAJ FINANCE LIMITED',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 9,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5,
                 ),
               ),
-              IconButton(
-                onPressed: onMenuTap,
-                icon: const Icon(Icons.menu_rounded),
-                color: const Color(0xFF0057B8),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -498,162 +604,93 @@ class _NativeTopSearchBar extends StatelessWidget
 class _NativeBottomNavBar extends StatelessWidget {
   const _NativeBottomNavBar({
     required this.selectedIndex,
-    @override
-    Size get preferredSize => const Size.fromHeight(120);
+    required this.onSelected,
+  });
 
-    @override
-    Widget build(BuildContext context) {
-      return Material(
-        color: const Color.fromRGBO(0, 42, 84, 1),
-        elevation: 8,
-        child: SafeArea(
-          bottom: false,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 32,
-                      height: 32,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(2),
-                        child: Image.asset('assets/logos/app_icon.png',
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, __, ___) =>
-                                const Icon(Icons.account_balance, size: 20)),
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    const Text(
-                      'FINANCE',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.yellow, width: 1),
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                      child: const Text(
-                        'EMI',
-                        style: TextStyle(
-                          color: Colors.yellow,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Row(
-                      children: [
-                        Text('prime',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold)),
-                        SizedBox(width: 3),
-                        CircleAvatar(radius: 3, backgroundColor: Colors.orange),
-                      ],
-                    ),
-                    const SizedBox(width: 8),
-                    const Stack(
-                      children: [
-                        Icon(Icons.notifications_none,
-                            color: Colors.white, size: 22),
-                        Positioned(
-                          right: 0,
-                          top: 0,
-                          child: CircleAvatar(
-                            radius: 2.5,
-                            backgroundColor: Colors.red,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 38,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFF2F3F5),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                controller: controller,
-                                focusNode: focusNode,
-                                textInputAction: TextInputAction.search,
-                                onSubmitted: onSubmitted,
-                                style: const TextStyle(fontSize: 12),
-                                decoration: const InputDecoration(
-                                  hintText: 'Search Bajajfinserv.in',
-                                  border: InputBorder.none,
-                                  contentPadding:
-                                      EdgeInsets.symmetric(horizontal: 8),
-                                  isDense: true,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 40,
-                              height: 38,
-                              decoration: const BoxDecoration(
-                                color: Color(0xFFF8E9DB),
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(6),
-                                  bottomRight: Radius.circular(6),
-                                ),
-                              ),
-                              child: InkWell(
-                                onTap: onScanTap,
-                                child: const Icon(Icons.qr_code_scanner,
-                                    color: Color(0xFFEF6C00), size: 20),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 4),
-                child: const Text(
-                  'BAJAJ FINANCE LIMITED',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 9,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-              ),
-            ],
-          ),
+  final int selectedIndex;
+  final ValueChanged<int> onSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      currentIndex: selectedIndex,
+      onTap: onSelected,
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      selectedItemColor: const Color(0xFF0057B8),
+      unselectedItemColor: Colors.grey.shade600,
+      selectedFontSize: 11,
+      unselectedFontSize: 11,
+      elevation: 8,
+      selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+      items: [
+        const BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          activeIcon: Icon(Icons.home),
+          label: 'Home',
         ),
-      );
-    }
+        const BottomNavigationBarItem(
+          icon: Icon(Icons.person_outline),
+          activeIcon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+        BottomNavigationBarItem(
+          icon: Container(
+            padding: const EdgeInsets.all(6),
+            decoration: const BoxDecoration(
+              color: Color(0xFF0057B8),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.qr_code_scanner,
+              color: Colors.white,
+              size: 20,
+            ),
+          ),
+          label: 'Scan',
+        ),
+        const BottomNavigationBarItem(
+          icon: Icon(Icons.payment_outlined),
+          activeIcon: Icon(Icons.payment),
+          label: 'Pay EMI',
+        ),
+        const BottomNavigationBarItem(
+          icon: Icon(Icons.menu),
+          activeIcon: Icon(Icons.menu_open),
+          label: 'Menu',
+        ),
+        const BottomNavigationBarItem(
+          icon: Icon(Icons.chat_outlined),
+          activeIcon: Icon(Icons.chat),
+          label: 'Chat',
+        ),
+      ],
+    );
+  }
+}
+
+class _NativeLoginScreen extends StatelessWidget {
+  const _NativeLoginScreen({required this.onLoginSuccess});
+
+  final Future<void> Function(String username, String password) onLoginSuccess;
+
+  Future<void> _continueWithNativeLogin(BuildContext context) async {
+    await onLoginSuccess('native_user', 'native_session');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF0B2A5B),
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 120,
                   width: 120,
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -722,41 +759,6 @@ class _NativeBottomNavBar extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _WebUnsupportedView extends StatelessWidget {
-  const _WebUnsupportedView();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.web_asset_off_rounded,
-              size: 52,
-              color: Color(0xFF0057B8),
-            ),
-            SizedBox(height: 12),
-            Text(
-              'WebView shell is not supported on Flutter Web.',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Run this hybrid shell on Android, iOS, Windows, macOS, or Linux for a full-screen PWA with native app QR, menu, and chat flows.',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 13, color: Colors.black54),
-            ),
-          ],
         ),
       ),
     );
@@ -1040,18 +1042,18 @@ class _NativeMenuScreen extends StatelessWidget {
           const Divider(height: 1),
           _NativeMenuSection(
             title: 'Help & Support',
-            items: [
-              const _NativeMenuItem(
+            items: const [
+              _NativeMenuItem(
                 Icons.chat_bubble_outline,
                 'Chat Support',
                 '24/7 customer support',
               ),
-              const _NativeMenuItem(
+              _NativeMenuItem(
                 Icons.help_outline,
                 'Help Center',
                 'FAQs and support',
               ),
-              const _NativeMenuItem(
+              _NativeMenuItem(
                 Icons.star_outline,
                 'Rate Us',
                 'Share your feedback',
@@ -1273,60 +1275,32 @@ class _NativeChatScreenState extends State<_NativeChatScreen> {
                 ),
               ],
             ),
-            @override
-            Widget build(BuildContext context) {
-              return BottomNavigationBar(
-                currentIndex: selectedIndex,
-                onTap: onSelected,
-                type: BottomNavigationBarType.fixed,
-                backgroundColor: Colors.white,
-                selectedItemColor: const Color(0xFF0057B8),
-                unselectedItemColor: Colors.grey.shade600,
-                selectedFontSize: 11,
-                unselectedFontSize: 11,
-                elevation: 8,
-                selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-                items: [
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.home_outlined),
-                    activeIcon: Icon(Icons.home),
-                    label: 'Home',
-                  ),
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.person_outline),
-                    activeIcon: Icon(Icons.person),
-                    label: 'Profile',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF0057B8),
-                        shape: BoxShape.circle,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _messageController,
+                    decoration: InputDecoration(
+                      hintText: 'Type your message...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24),
                       ),
-                      child: const Icon(Icons.qr_code_scanner,
-                          color: Colors.white, size: 20),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
                     ),
-                    label: 'Scan',
                   ),
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.payment_outlined),
-                    activeIcon: Icon(Icons.payment),
-                    label: 'Pay EMI',
-                  ),
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.menu),
-                    activeIcon: Icon(Icons.menu_open),
-                    label: 'Menu',
-                  ),
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.chat_outlined),
-                    activeIcon: Icon(Icons.chat),
-                    label: 'Chat',
-                  ),
-                ],
-              );
-            }
+                ),
+                const SizedBox(width: 8),
+                FloatingActionButton(
+                  onPressed: _sendMessage,
+                  mini: true,
+                  backgroundColor: const Color(0xFF0057B8),
+                  child: const Icon(Icons.send, color: Colors.white),
+                ),
+              ],
+            ),
           ),
         ],
       ),
