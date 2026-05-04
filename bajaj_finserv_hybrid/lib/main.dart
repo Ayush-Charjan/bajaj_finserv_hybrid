@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -34,7 +33,7 @@ class HybridHomeScreen extends StatefulWidget {
 class _HybridHomeScreenState extends State<HybridHomeScreen> {
   static const String _remotePwaUrl = String.fromEnvironment(
     'PWA_URL',
-    defaultValue: 'https://ayush-charjan.github.io/bajaj_finserv_hybrid/#/home',
+    defaultValue: 'https://ayush-charjan.github.io/bajaj-pwa',
   );
 
   WebViewController? _controller;
@@ -93,7 +92,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
 
   Future<void> _initializeMobileWebView() async {
     await _ensureCameraPermission();
-    _startUrl = _buildStartUrl();
+    _startUrl = _buildStartUrl(tab: 'home');
     debugPrint('Hybrid shell start URL: $_startUrl');
 
     _controller = WebViewController()
@@ -217,71 +216,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     }
   }
 
-  Future<void> _sendNativeEventToPwa(
-    String type, [
-    Map<String, Object?> detail = const <String, Object?>{},
-  ]) async {
-    final WebViewController? controller = _controller;
-    if (controller == null) {
-      return;
-    }
-
-    final String payload = jsonEncode(<String, Object?>{
-      'type': type,
-      'detail': detail,
-    });
-
-    try {
-      await controller.runJavaScript(
-        "window.dispatchEvent(new CustomEvent('nativeShell', { detail: $payload }));",
-      );
-    } catch (e) {
-      debugPrint('Failed to send event to PWA: $e');
-    }
-  }
-
-  Future<void> _submitSearch(String query) async {
-    final String trimmed = query.trim();
-    if (trimmed.isEmpty) {
-      return;
-    }
-
-    await _sendNativeEventToPwa('search', <String, Object?>{'query': trimmed});
-  }
-
-  Future<void> _openHome() async {
-    setState(() {
-      _selectedBottomNavIndex = 0;
-    });
-    await _reloadWebApp();
-    await _sendNativeEventToPwa('home');
-  }
-
-  Future<void> _onBottomNavSelected(int index) async {
-    setState(() {
-      _selectedBottomNavIndex = index;
-    });
-
-    switch (index) {
-      case 0:
-        await _openHome();
-        return;
-      case 1:
-        _searchFocusNode.requestFocus();
-        await _sendNativeEventToPwa('searchFocus');
-        return;
-      case 2:
-        await _openQRScanner();
-        return;
-      case 3:
-        await _openNativeFeature('menu');
-        return;
-      default:
-        return;
-    }
-  }
-
-  String _buildStartUrl() {
+  String _buildStartUrl({required String tab, String? searchQuery}) {
     final String trimmed = _remotePwaUrl.trim();
     if (trimmed.isEmpty) {
       return 'about:blank';
@@ -297,6 +232,10 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
       baseUri.queryParameters,
     );
     query['nativeShell'] = 'true';
+    query['tab'] = tab;
+    if (searchQuery != null && searchQuery.trim().isNotEmpty) {
+      query['search'] = searchQuery.trim();
+    }
 
     String normalizedPath = baseUri.path;
     if (RegExp(
@@ -318,6 +257,26 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
         .toString();
   }
 
+  Future<void> _loadPwaTab(int index, {String? searchQuery}) async {
+    setState(() {
+      _selectedBottomNavIndex = index;
+    });
+
+    final List<String> tabs = <String>[
+      'home',
+      'profile',
+      'scan',
+      'payemi',
+      'menu',
+      'chat',
+    ];
+    final String tab = tabs[index.clamp(0, tabs.length - 1)];
+    final String url = _buildStartUrl(tab: tab, searchQuery: searchQuery);
+    if (url != 'about:blank') {
+      await _controller?.loadRequest(Uri.parse(url));
+    }
+  }
+
   Future<void> _openQRScanner() async {
     final String? scannedCode = await Navigator.push<String>(
       context,
@@ -327,6 +286,14 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     if (scannedCode != null && scannedCode.trim().isNotEmpty) {
       debugPrint('Scanned QR link: $scannedCode');
     }
+  }
+
+  Future<void> _submitSearch(String query) async {
+    final String trimmed = query.trim();
+    if (trimmed.isEmpty) {
+      return;
+    }
+    await _loadPwaTab(0, searchQuery: trimmed);
   }
 
   String _normalizeFeature(String feature) {
@@ -385,23 +352,11 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     super.dispose();
   }
 
-  Widget _buildHybridShell() {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(0, 42, 84, 1),
-      appBar: _NativeTopSearchBar(
-        controller: _searchController,
-        focusNode: _searchFocusNode,
-        onSubmitted: _submitSearch,
-        onScanTap: _openQRScanner,
-        onMenuTap: () => _openNativeFeature('menu'),
-      ),
-      bottomNavigationBar: _NativeBottomNavBar(
-        selectedIndex: _selectedBottomNavIndex,
-        onSelected: _onBottomNavSelected,
-      ),
-      body: SafeArea(
-        child: Container(
-          color: const Color(0xFFF5F7FB),
+  @override
+  Widget build(BuildContext context) {
+    if (kIsWeb) {
+      return Scaffold(
+        body: SafeArea(
           child: (_startUrl == 'about:blank')
               ? const _InternetRequiredView()
               : (_controller == null
@@ -412,21 +367,162 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
                               child: WebViewWidget(controller: _controller!),
                             ))),
         ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (kIsWeb) {
-      return const Scaffold(body: _WebUnsupportedView());
+      );
     }
 
     if (!_isNativeLoggedIn) {
       return _NativeLoginScreen(onLoginSuccess: _handleNativeLoginSuccess);
     }
 
-    return _buildHybridShell();
+    return Scaffold(
+      backgroundColor: const Color.fromRGBO(0, 42, 84, 1),
+      appBar: _NativeTopSearchBar(
+        controller: _searchController,
+        focusNode: _searchFocusNode,
+        onSubmitted: _submitSearch,
+        onScanTap: _openQRScanner,
+        onMenuTap: () => _loadPwaTab(4),
+      ),
+      bottomNavigationBar: _NativeBottomNavBar(
+        selectedIndex: _selectedBottomNavIndex,
+        onSelected: (index) async {
+          if (index == 2) {
+            await _openQRScanner();
+            return;
+          }
+          await _loadPwaTab(index);
+        },
+      ),
+      body: SafeArea(
+        child: (_startUrl == 'about:blank')
+            ? const _InternetRequiredView()
+            : (_controller == null
+                  ? const Center(child: CircularProgressIndicator())
+                  : (_hasLoadError
+                        ? _InternetRequiredView(onRetry: _reloadWebApp)
+                        : SizedBox.expand(
+                            child: WebViewWidget(controller: _controller!),
+                          ))),
+      ),
+    );
+  }
+}
+
+class _NativeTopSearchBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  const _NativeTopSearchBar({
+    required this.controller,
+    required this.focusNode,
+    required this.onSubmitted,
+    required this.onScanTap,
+    required this.onMenuTap,
+  });
+
+  final TextEditingController controller;
+  final FocusNode focusNode;
+  final ValueChanged<String> onSubmitted;
+  final VoidCallback onScanTap;
+  final VoidCallback onMenuTap;
+
+  @override
+  Size get preferredSize => const Size.fromHeight(76);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.white,
+      elevation: 2,
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          child: Row(
+            children: [
+              Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF0057B8).withValues(alpha: 0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.account_balance_rounded,
+                  color: Color(0xFF0057B8),
+                  size: 22,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: TextField(
+                  controller: controller,
+                  focusNode: focusNode,
+                  textInputAction: TextInputAction.search,
+                  onSubmitted: onSubmitted,
+                  decoration: InputDecoration(
+                    hintText: 'Search loans, cards, support...',
+                    prefixIcon: const Icon(Icons.search_rounded),
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.qr_code_scanner_rounded),
+                      onPressed: onScanTap,
+                    ),
+                    filled: true,
+                    fillColor: const Color(0xFFF5F7FB),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 0,
+                    ),
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed: onMenuTap,
+                icon: const Icon(Icons.menu_rounded),
+                color: const Color(0xFF0057B8),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NativeBottomNavBar extends StatelessWidget {
+  const _NativeBottomNavBar({
+    required this.selectedIndex,
+    required this.onSelected,
+  });
+
+  final int selectedIndex;
+  final ValueChanged<int> onSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return NavigationBar(
+      selectedIndex: selectedIndex,
+      onDestinationSelected: onSelected,
+      destinations: const [
+        NavigationDestination(icon: Icon(Icons.home_rounded), label: 'Home'),
+        NavigationDestination(
+          icon: Icon(Icons.person_rounded),
+          label: 'Profile',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.qr_code_scanner_rounded),
+          label: 'Scan',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.payment_rounded),
+          label: 'Pay EMI',
+        ),
+        NavigationDestination(icon: Icon(Icons.menu_rounded), label: 'Menu'),
+        NavigationDestination(icon: Icon(Icons.chat_rounded), label: 'Chat'),
+      ],
+    );
   }
 }
 
@@ -557,119 +653,6 @@ class _WebUnsupportedView extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _NativeTopSearchBar extends StatelessWidget
-    implements PreferredSizeWidget {
-  const _NativeTopSearchBar({
-    required this.controller,
-    required this.focusNode,
-    required this.onSubmitted,
-    required this.onScanTap,
-    required this.onMenuTap,
-  });
-
-  final TextEditingController controller;
-  final FocusNode focusNode;
-  final ValueChanged<String> onSubmitted;
-  final VoidCallback onScanTap;
-  final VoidCallback onMenuTap;
-
-  @override
-  Size get preferredSize => const Size.fromHeight(76);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      elevation: 2,
-      child: SafeArea(
-        bottom: false,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          child: Row(
-            children: [
-              Container(
-                width: 38,
-                height: 38,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF0057B8).withValues(alpha: 0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.account_balance_rounded,
-                  color: Color(0xFF0057B8),
-                  size: 22,
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: TextField(
-                  controller: controller,
-                  focusNode: focusNode,
-                  textInputAction: TextInputAction.search,
-                  onSubmitted: onSubmitted,
-                  decoration: InputDecoration(
-                    hintText: 'Search loans, cards, support...',
-                    prefixIcon: const Icon(Icons.search_rounded),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.qr_code_scanner_rounded),
-                      onPressed: onScanTap,
-                    ),
-                    filled: true,
-                    fillColor: const Color(0xFFF5F7FB),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide.none,
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 0,
-                    ),
-                  ),
-                ),
-              ),
-              IconButton(
-                onPressed: onMenuTap,
-                icon: const Icon(Icons.menu_rounded),
-                color: const Color(0xFF0057B8),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _NativeBottomNavBar extends StatelessWidget {
-  const _NativeBottomNavBar({
-    required this.selectedIndex,
-    required this.onSelected,
-  });
-
-  final int selectedIndex;
-  final ValueChanged<int> onSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return NavigationBar(
-      selectedIndex: selectedIndex,
-      onDestinationSelected: onSelected,
-      destinations: const [
-        NavigationDestination(icon: Icon(Icons.home_rounded), label: 'Home'),
-        NavigationDestination(
-          icon: Icon(Icons.search_rounded),
-          label: 'Search',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.qr_code_scanner_rounded),
-          label: 'Scan',
-        ),
-        NavigationDestination(icon: Icon(Icons.menu_rounded), label: 'More'),
-      ],
     );
   }
 }
