@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -249,9 +250,18 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
       'chat',
     ];
     final String tab = tabs[index.clamp(0, tabs.length - 1)];
-    final String url = _buildStartUrl(tab: tab, searchQuery: searchQuery);
-    if (url != 'about:blank') {
-      await _controller?.loadRequest(Uri.parse(url));
+    if (searchQuery != null && searchQuery.trim().isNotEmpty) {
+      final String url = _buildStartUrl(tab: tab, searchQuery: searchQuery);
+      if (url != 'about:blank') {
+        await _controller?.loadRequest(Uri.parse(url));
+      }
+      return;
+    }
+
+    if (_controller != null && _startUrl != 'about:blank') {
+      await _controller?.runJavaScript(
+        "window.dispatchEvent(new CustomEvent('nativeShellTab', { detail: ${jsonEncode(tab)} }));",
+      );
     }
   }
 
