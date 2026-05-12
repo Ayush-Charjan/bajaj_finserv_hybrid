@@ -1,4 +1,5 @@
 // New Main Navigation with 6 bottom tabs
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'new_home_screen.dart';
@@ -14,12 +15,14 @@ class NewMainNavigationScreen extends StatefulWidget {
   final bool isEmbedded;
   final bool useNativeShell;
   final int initialIndex;
+  final Stream<int>? externalTabStream;
 
   const NewMainNavigationScreen({
     Key? key,
     this.isEmbedded = false,
     this.useNativeShell = false,
     this.initialIndex = 0,
+    this.externalTabStream,
   }) : super(key: key);
 
   @override
@@ -30,6 +33,7 @@ class NewMainNavigationScreen extends StatefulWidget {
 class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
   int _currentIndex = 0;
   final NativeShellBridge _nativeShellBridge = NativeShellBridge();
+  StreamSubscription<int>? _externalTabSubscription;
 
   List<Widget> get _screens => [
         NewHomeScreen(
@@ -59,11 +63,49 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
   void initState() {
     super.initState();
     _currentIndex = widget.initialIndex;
+    _externalTabSubscription = widget.externalTabStream?.listen((index) {
+      if (!mounted) {
+        return;
+      }
+      _handleTabSelection(index, fromNativeShell: true);
+    });
   }
 
   @override
   void dispose() {
+    _externalTabSubscription?.cancel();
     super.dispose();
+  }
+
+  Future<void> _handleTabSelection(
+    int index, {
+    bool fromNativeShell = false,
+  }) async {
+    if (index == 2) {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ScanQRScreen(),
+          fullscreenDialog: true,
+        ),
+      );
+      return;
+    }
+
+    if (!fromNativeShell &&
+        widget.useNativeShell &&
+        (index == 4 || index == 5)) {
+      _nativeShellBridge.openFeature(index == 4 ? 'menu' : 'chat');
+      return;
+    }
+
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      _currentIndex = index;
+    });
   }
 
   @override
@@ -85,8 +127,8 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
               )
             : _screens[_currentIndex],
         bottomNavigationBar: widget.isEmbedded || widget.useNativeShell
-          ? null
-          : Container(
+            ? null
+            : Container(
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -98,26 +140,7 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
                 ),
                 child: BottomNavigationBar(
                   currentIndex: _currentIndex,
-                    onTap: (index) {
-                      if (index == 2) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ScanQRScreen(),
-                            fullscreenDialog: true,
-                          ),
-                        );
-                        } else if (widget.useNativeShell &&
-                          (index == 4 || index == 5)) {
-                        _nativeShellBridge.openFeature(
-                          index == 4 ? 'menu' : 'chat',
-                        );
-                      } else {
-                        setState(() {
-                          _currentIndex = index;
-                        });
-                      }
-                    },
+                  onTap: (index) => _handleTabSelection(index),
                   type: BottomNavigationBarType.fixed,
                   backgroundColor: Colors.white,
                   selectedItemColor: AppColors.primary,

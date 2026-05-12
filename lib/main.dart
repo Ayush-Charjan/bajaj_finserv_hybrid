@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'screens/login_screen.dart';
 import 'screens/new_main_navigation_screen.dart';
 import 'utils/app_colors.dart';
+import 'utils/native_shell_tab_bridge.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +23,7 @@ void main() {
     BajajFinservApp(
       isEmbedded: isEmbedded,
       useNativeShell: useNativeShell,
+      nativeShellTabStream: NativeShellTabBridge.instance.stream,
     ),
   );
 }
@@ -29,11 +31,13 @@ void main() {
 class BajajFinservApp extends StatelessWidget {
   final bool isEmbedded;
   final bool useNativeShell;
+  final Stream<int>? nativeShellTabStream;
 
   const BajajFinservApp({
     Key? key,
     required this.isEmbedded,
     required this.useNativeShell,
+    required this.nativeShellTabStream,
   }) : super(key: key);
 
   @override
@@ -127,6 +131,7 @@ class BajajFinservApp extends StatelessWidget {
         '/home': (context) => NewMainNavigationScreen(
               isEmbedded: isEmbedded,
               useNativeShell: useNativeShell,
+              externalTabStream: nativeShellTabStream,
             ),
       },
     );
