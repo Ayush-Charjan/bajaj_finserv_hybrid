@@ -359,7 +359,7 @@ class _ScanQRScreenState extends State<ScanQRScreen>
           // 2. DARK OVERLAY WITH CUTOUT
           ColorFiltered(
             colorFilter: ColorFilter.mode(
-              Colors.black.withValues(alpha: 0.6),
+              Colors.black.withOpacity(0.6),
               BlendMode.srcOut,
             ),
             child: Stack(
@@ -410,7 +410,7 @@ class _ScanQRScreenState extends State<ScanQRScreen>
                             color: AppColors.accent,
                             boxShadow: [
                               BoxShadow(
-                                color: AppColors.accent.withValues(alpha: 0.6),
+                                color: AppColors.accent.withOpacity(0.6),
                                 blurRadius: 10,
                                 spreadRadius: 2,
                               )

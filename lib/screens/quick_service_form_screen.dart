@@ -84,7 +84,7 @@ class _QuickServiceFormScreenState extends State<QuickServiceFormScreen> {
                     children: [
                       CircleAvatar(
                         radius: 20,
-                        backgroundColor: widget.color.withValues(alpha: 0.16),
+                        backgroundColor: widget.color.withOpacity(0.16),
                         child: Icon(widget.icon, color: widget.color),
                       ),
                       const SizedBox(width: 10),

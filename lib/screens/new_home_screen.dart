@@ -304,9 +304,9 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
                     width: 58,
                     height: 58,
                     decoration: BoxDecoration(
-                      color: color.withValues(alpha: 0.16),
+                      color: color.withOpacity(0.16),
                       shape: BoxShape.circle,
-                      border: Border.all(color: color.withValues(alpha: 0.35)),
+                      border: Border.all(color: color.withOpacity(0.35)),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(3),
@@ -369,7 +369,7 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
                       begin: Alignment.bottomCenter,
                       end: Alignment.center,
                       colors: [
-                        Colors.black.withValues(alpha: 0.45),
+                        Colors.black.withOpacity(0.45),
                         Colors.transparent,
                       ],
                     ),
@@ -448,7 +448,7 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
               borderRadius: BorderRadius.circular(14),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.08),
+                  color: Colors.black.withOpacity(0.08),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -482,7 +482,7 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
                       final color = item['color'] as Color;
                       return Container(
                         decoration: BoxDecoration(
-                          color: color.withValues(alpha: 0.12),
+                          color: color.withOpacity(0.12),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: InkWell(
@@ -566,7 +566,7 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.06),
+                          color: Colors.black.withOpacity(0.06),
                           blurRadius: 6,
                           offset: const Offset(0, 2),
                         ),
@@ -584,7 +584,7 @@ class _NewHomeMainContentState extends State<NewHomeMainContent> {
                             width: 50,
                             height: 50,
                             decoration: BoxDecoration(
-                              color: color.withValues(alpha: 0.18),
+                              color: color.withOpacity(0.18),
                               shape: BoxShape.circle,
                             ),
                             child: Padding(
@@ -829,7 +829,7 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
             ),
             Positioned.fill(
               child: Container(
-                color: Colors.white.withValues(alpha: 0.82),
+                color: Colors.white.withOpacity(0.82),
               ),
             ),
             Column(

@@ -80,19 +80,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
         url.contains('page=login');
   }
 
-  Future<void> _ensureCameraPermission() async {
-    final PermissionStatus status = await Permission.camera.status;
-    if (status.isGranted) {
-      debugPrint('Android camera runtime permission already granted.');
-      return;
-    }
-
-    final PermissionStatus result = await Permission.camera.request();
-    debugPrint('Android camera runtime permission result: $result');
-  }
-
   Future<void> _initializeMobileWebView() async {
-    await _ensureCameraPermission();
     _startUrl = _buildStartUrl(tab: 'home');
     debugPrint('Hybrid shell start URL: $_startUrl');
 
@@ -268,6 +256,19 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
   }
 
   Future<void> _openQRScanner() async {
+    final PermissionStatus permissionStatus = await Permission.camera.status;
+    if (!permissionStatus.isGranted) {
+      final PermissionStatus result = await Permission.camera.request();
+      debugPrint('Android camera runtime permission result: $result');
+      if (!result.isGranted) {
+        return;
+      }
+    }
+
+    if (!mounted) {
+      return;
+    }
+
     final String? scannedCode = await Navigator.push<String>(
       context,
       MaterialPageRoute(builder: (_) => const _NativeQRScannerScreen()),
@@ -455,7 +456,7 @@ class _NativeTopSearchBar extends StatelessWidget
                       child: Image.asset(
                         'assets/logos/app_icon.png',
                         fit: BoxFit.contain,
-                        errorBuilder: (context, error, stackTrace) =>
+                        errorBuilder: (_, _, _) =>
                             const Icon(Icons.account_balance, size: 20),
                       ),
                     ),
@@ -470,7 +471,6 @@ class _NativeTopSearchBar extends StatelessWidget
                       letterSpacing: 1,
                     ),
                   ),
-
                   const Spacer(),
                   Container(
                     padding: const EdgeInsets.symmetric(
