@@ -4,8 +4,11 @@ import '../utils/app_colors.dart';
 
 class ProfileScreen extends StatelessWidget {
   final bool isEmbedded;
+  final bool useNativeShell;
 
-  const ProfileScreen({Key? key, this.isEmbedded = false}) : super(key: key);
+  const ProfileScreen(
+      {Key? key, this.isEmbedded = false, this.useNativeShell = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      appBar: isEmbedded
+      appBar: (isEmbedded || useNativeShell)
           ? null
           : AppBar(
               automaticallyImplyLeading: false,

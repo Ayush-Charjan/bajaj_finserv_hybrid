@@ -4,11 +4,16 @@ import '../utils/app_colors.dart';
 
 class ChatScreen extends StatefulWidget {
   final bool isEmbedded;
+  final bool useNativeShell;
 
-  const ChatScreen({Key? key, this.isEmbedded = false}) : super(key: key);
+  const ChatScreen(
+      {Key? key, this.isEmbedded = false, this.useNativeShell = false})
+      : super(key: key);
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
+
+  bool get _shouldHideAppBar => isEmbedded || useNativeShell;
 }
 
 class _ChatScreenState extends State<ChatScreen> {
@@ -58,7 +63,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: widget.isEmbedded
+      appBar: widget._shouldHideAppBar
           ? null
           : AppBar(
               automaticallyImplyLeading: false,

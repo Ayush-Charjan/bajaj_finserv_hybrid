@@ -12,11 +12,13 @@ import '../services/native_shell_bridge.dart';
 class NewMainNavigationScreen extends StatefulWidget {
   final bool isEmbedded;
   final bool useNativeShell;
+  final int initialIndex;
 
   const NewMainNavigationScreen({
     Key? key,
     this.isEmbedded = false,
     this.useNativeShell = false,
+    this.initialIndex = 0,
   }) : super(key: key);
 
   @override
@@ -33,16 +35,29 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
           isEmbedded: widget.isEmbedded,
           useNativeShell: widget.useNativeShell,
         ),
-        ProfileScreen(isEmbedded: widget.isEmbedded),
+        ProfileScreen(
+          isEmbedded: widget.isEmbedded,
+          useNativeShell: widget.useNativeShell,
+        ),
         Container(),
-        PayEmiScreen(isEmbedded: widget.isEmbedded),
-        MenuScreen(isEmbedded: widget.isEmbedded),
-        ChatScreen(isEmbedded: widget.isEmbedded),
+        PayEmiScreen(
+          isEmbedded: widget.isEmbedded,
+          useNativeShell: widget.useNativeShell,
+        ),
+        MenuScreen(
+          isEmbedded: widget.isEmbedded,
+          useNativeShell: widget.useNativeShell,
+        ),
+        ChatScreen(
+          isEmbedded: widget.isEmbedded,
+          useNativeShell: widget.useNativeShell,
+        ),
       ];
 
   @override
   void initState() {
     super.initState();
+    _currentIndex = widget.initialIndex;
   }
 
   @override
@@ -68,7 +83,7 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
                 useNativeShell: widget.useNativeShell,
               )
             : _screens[_currentIndex],
-        bottomNavigationBar: widget.isEmbedded
+        bottomNavigationBar: (widget.isEmbedded || widget.useNativeShell)
             ? null
             : Container(
                 decoration: BoxDecoration(

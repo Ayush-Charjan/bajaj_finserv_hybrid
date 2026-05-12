@@ -4,14 +4,17 @@ import '../utils/app_colors.dart';
 
 class MenuScreen extends StatelessWidget {
   final bool isEmbedded;
+  final bool useNativeShell;
 
-  const MenuScreen({Key? key, this.isEmbedded = false}) : super(key: key);
+  const MenuScreen(
+      {Key? key, this.isEmbedded = false, this.useNativeShell = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: isEmbedded
+      appBar: (isEmbedded || useNativeShell)
           ? null
           : AppBar(
               automaticallyImplyLeading: false,
