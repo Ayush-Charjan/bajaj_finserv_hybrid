@@ -1,4 +1,5 @@
 // New Main Navigation with 6 bottom tabs
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'new_home_screen.dart';
 import 'profile_screen.dart';
@@ -83,7 +84,8 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
                 useNativeShell: widget.useNativeShell,
               )
             : _screens[_currentIndex],
-        bottomNavigationBar: (widget.isEmbedded || widget.useNativeShell)
+        bottomNavigationBar:
+          widget.isEmbedded || (widget.useNativeShell && !kIsWeb)
             ? null
             : Container(
                 decoration: BoxDecoration(
@@ -97,26 +99,26 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
                 ),
                 child: BottomNavigationBar(
                   currentIndex: _currentIndex,
-                  onTap: (index) {
-                    if (index == 2) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ScanQRScreen(),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    } else if (widget.useNativeShell &&
-                        (index == 4 || index == 5)) {
-                      _nativeShellBridge.openFeature(
-                        index == 4 ? 'menu' : 'chat',
-                      );
-                    } else {
-                      setState(() {
-                        _currentIndex = index;
-                      });
-                    }
-                  },
+                    onTap: (index) {
+                      if (index == 2) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ScanQRScreen(),
+                            fullscreenDialog: true,
+                          ),
+                        );
+                      } else if (widget.useNativeShell && !kIsWeb &&
+                          (index == 4 || index == 5)) {
+                        _nativeShellBridge.openFeature(
+                          index == 4 ? 'menu' : 'chat',
+                        );
+                      } else {
+                        setState(() {
+                          _currentIndex = index;
+                        });
+                      }
+                    },
                   type: BottomNavigationBarType.fixed,
                   backgroundColor: Colors.white,
                   selectedItemColor: AppColors.primary,

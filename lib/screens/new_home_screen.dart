@@ -834,8 +834,9 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
             ),
             Column(
               children: [
-                /// TOP BAR (only show if not embedded)
-                if (!widget.isEmbedded) _buildTopBar(context),
+                /// TOP BAR (hide when embedded or when native shell owns chrome)
+                if (!widget.isEmbedded && !widget.useNativeShell)
+                  _buildTopBar(context),
 
                 /// MAIN CONTENT (between top bar and bottom nav)
                 const Expanded(
