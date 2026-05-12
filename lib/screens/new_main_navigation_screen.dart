@@ -84,10 +84,9 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
                 useNativeShell: widget.useNativeShell,
               )
             : _screens[_currentIndex],
-        bottomNavigationBar:
-          widget.isEmbedded || (widget.useNativeShell && !kIsWeb)
-            ? null
-            : Container(
+        bottomNavigationBar: widget.isEmbedded || widget.useNativeShell
+          ? null
+          : Container(
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -108,7 +107,7 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
                             fullscreenDialog: true,
                           ),
                         );
-                      } else if (widget.useNativeShell && !kIsWeb &&
+                        } else if (widget.useNativeShell &&
                           (index == 4 || index == 5)) {
                         _nativeShellBridge.openFeature(
                           index == 4 ? 'menu' : 'chat',
