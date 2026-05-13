@@ -36,6 +36,10 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     'PWA_URL',
     defaultValue: 'https://ayush-charjan.github.io/bajaj_finserv_hybrid/#/home',
   );
+  static const String _remoteCartPwaUrl = String.fromEnvironment(
+    'PWA_CART_URL',
+    defaultValue: 'https://ayush-charjan.github.io/bajaj_cart_angular/#/cart',
+  );
 
   WebViewController? _controller;
   final TextEditingController _searchController = TextEditingController();
@@ -297,6 +301,28 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     await _loadPwaTab(0, searchQuery: trimmed);
   }
 
+  Future<void> _openCartPage() async {
+    final String url = _buildCartUrl();
+    if (url == 'about:blank') {
+      return;
+    }
+
+    await _controller?.loadRequest(Uri.parse(url));
+  }
+
+  String _buildCartUrl() {
+    final String trimmed = _remoteCartPwaUrl.trim();
+    if (trimmed.isNotEmpty) {
+      final Uri? cartUri = Uri.tryParse(trimmed);
+      if (cartUri != null &&
+          (cartUri.scheme == 'http' || cartUri.scheme == 'https')) {
+        return cartUri.toString();
+      }
+    }
+
+    return _buildStartUrl(tab: 'cart');
+  }
+
   String _normalizeFeature(String feature) {
     final String normalized = feature.toLowerCase().trim();
     if (normalized == 'scanqr' || normalized == 'scan qr') {
@@ -328,6 +354,9 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     switch (normalizedFeature) {
       case 'scan-qr':
         await _openQRScanner();
+        return;
+      case 'cart':
+        await _openCartPage();
         return;
       case 'menu':
         await Navigator.push(
@@ -381,6 +410,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
         controller: _searchController,
         focusNode: _searchFocusNode,
         onSubmitted: _submitSearch,
+        onCartTap: _openCartPage,
         onScanTap: _openQRScanner,
         onMenuTap: () => _loadPwaTab(4),
       ),
@@ -428,6 +458,7 @@ class _NativeTopSearchBar extends StatelessWidget
     required this.controller,
     required this.focusNode,
     required this.onSubmitted,
+    required this.onCartTap,
     required this.onScanTap,
     required this.onMenuTap,
   });
@@ -435,6 +466,7 @@ class _NativeTopSearchBar extends StatelessWidget
   final TextEditingController controller;
   final FocusNode focusNode;
   final ValueChanged<String> onSubmitted;
+  final VoidCallback onCartTap;
   final VoidCallback onScanTap;
   final VoidCallback onMenuTap;
 
@@ -514,6 +546,15 @@ class _NativeTopSearchBar extends StatelessWidget
                       SizedBox(width: 3),
                       CircleAvatar(radius: 3, backgroundColor: Colors.orange),
                     ],
+                  ),
+                  const SizedBox(width: 8),
+                  InkWell(
+                    onTap: onCartTap,
+                    child: const Icon(
+                      Icons.shopping_cart_outlined,
+                      color: Colors.white,
+                      size: 22,
+                    ),
                   ),
                   const SizedBox(width: 8),
                   const Stack(
