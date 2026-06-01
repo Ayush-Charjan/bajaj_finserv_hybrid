@@ -1,6 +1,5 @@
 // New Main Navigation with 6 bottom tabs
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'new_home_screen.dart';
 import 'profile_screen.dart';
@@ -34,6 +33,7 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
   int _currentIndex = 0;
   final NativeShellBridge _nativeShellBridge = NativeShellBridge();
   StreamSubscription<int>? _externalTabSubscription;
+  DateTime? _lastBackPressedAt;
 
   List<Widget> get _screens => [
         NewHomeScreen(
@@ -68,6 +68,13 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
         return;
       }
       _handleTabSelection(index, fromNativeShell: true);
+    });
+
+    // Notify Native Shell that PWA is fully loaded and ready
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        _nativeShellBridge.openFeature('READY');
+      });
     });
   }
 
@@ -112,12 +119,31 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        // If there is a pushed route on the Navigator stack, allow it to pop.
+        if (Navigator.of(context).canPop()) {
+          return true;
+        }
+
+        // If we're not on the home tab, go to home tab instead of exiting.
         if (_currentIndex != 0) {
           setState(() {
             _currentIndex = 0;
           });
+          return false;
         }
-        return false;
+
+        // Double back to exit from root tab: show a toast/snackbar on first press.
+        final DateTime now = DateTime.now();
+        if (_lastBackPressedAt == null ||
+            now.difference(_lastBackPressedAt!) > const Duration(seconds: 2)) {
+          _lastBackPressedAt = now;
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Press back again to exit')),
+          );
+          return false;
+        }
+
+        return true;
       },
       child: Scaffold(
         body: _currentIndex == 2

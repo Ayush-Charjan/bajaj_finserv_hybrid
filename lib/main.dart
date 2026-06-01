@@ -28,7 +28,7 @@ void main() {
   );
 }
 
-class BajajFinservApp extends StatelessWidget {
+class BajajFinservApp extends StatefulWidget {
   final bool isEmbedded;
   final bool useNativeShell;
   final Stream<int>? nativeShellTabStream;
@@ -41,8 +41,17 @@ class BajajFinservApp extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<BajajFinservApp> createState() => _BajajFinservAppState();
+}
+
+class _BajajFinservAppState extends State<BajajFinservApp> {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+  DateTime? _lastBackPressedAt;
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: _navigatorKey,
       // App title
       title: 'Bajaj Finserv ',
 
@@ -56,8 +65,6 @@ class BajajFinservApp extends StatelessWidget {
           primary: AppColors.primary,
         ),
         primaryColor: AppColors.primary,
-
-        // App bar theme
         appBarTheme: const AppBarTheme(
           backgroundColor: AppColors.primary,
           elevation: 0,
@@ -69,8 +76,6 @@ class BajajFinservApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-
-        // Elevated button theme
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.primary,
@@ -81,23 +86,17 @@ class BajajFinservApp extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
           ),
         ),
-
-        // Text button theme
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: AppColors.primary,
           ),
         ),
-
-        // Card theme
         cardTheme: CardTheme(
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
         ),
-
-        // Input decoration theme
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
@@ -105,8 +104,6 @@ class BajajFinservApp extends StatelessWidget {
           filled: true,
           fillColor: Colors.grey.shade50,
         ),
-
-        // Bottom navigation bar theme
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
           selectedItemColor: AppColors.primary,
@@ -114,25 +111,48 @@ class BajajFinservApp extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           elevation: 8,
         ),
-
-        // Scaffold background color
         scaffoldBackgroundColor: AppColors.background,
-
-        // Font family (using default)
         fontFamily: 'Roboto',
       ),
 
-      // In embedded mode, skip login and show only app body content.
-      initialRoute: isEmbedded ? '/home' : '/',
+      initialRoute: widget.isEmbedded ? '/home' : '/',
 
-      // Routes configuration
       routes: {
         '/': (context) => const LoginScreen(),
         '/home': (context) => NewMainNavigationScreen(
-              isEmbedded: isEmbedded,
-              useNativeShell: useNativeShell,
-              externalTabStream: nativeShellTabStream,
+              isEmbedded: widget.isEmbedded,
+              useNativeShell: widget.useNativeShell,
+              externalTabStream: widget.nativeShellTabStream,
             ),
+      },
+
+      builder: (context, child) {
+        return WillPopScope(
+          onWillPop: () async {
+            final NavigatorState? nav = _navigatorKey.currentState;
+            if (nav == null) return true;
+
+            if (nav.canPop()) {
+              nav.maybePop();
+              return false;
+            }
+
+            final DateTime now = DateTime.now();
+            if (_lastBackPressedAt == null ||
+                now.difference(_lastBackPressedAt!) >
+                    const Duration(seconds: 2)) {
+              _lastBackPressedAt = now;
+              final messengerContext = _navigatorKey.currentContext ?? context;
+              ScaffoldMessenger.of(messengerContext).showSnackBar(
+                const SnackBar(content: Text('Press back again to exit')),
+              );
+              return false;
+            }
+
+            return true;
+          },
+          child: child ?? const SizedBox.shrink(),
+        );
       },
     );
   }

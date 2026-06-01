@@ -42,6 +42,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
   );
 
   WebViewController? _controller;
+  DateTime? _lastBackPressedAt;
   final TextEditingController _searchController = TextEditingController();
   final FocusNode _searchFocusNode = FocusNode();
   String _startUrl = 'about:blank';
@@ -55,6 +56,20 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
   @override
   void initState() {
     super.initState();
+    _lastBackPressedAt = null;
+
+    // Check if running in a native shell to auto-login
+    final queryParams = Uri.base.queryParameters;
+    final isShell = queryParams['nativeShell'] == 'true' || queryParams['embedded'] == 'true';
+    if (isShell) {
+      _isNativeLoggedIn = true;
+      _initializeMobileWebView();
+
+      // Notify shell that we are ready after a small delay to allow for API calls/rendering
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        _openNativeFeature('READY');
+      });
+    }
   }
 
   Future<void> _handleNativeLoginSuccess(
@@ -399,54 +414,89 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
         ),
       );
     }
-
     if (!_isNativeLoggedIn) {
       return _NativeLoginScreen(onLoginSuccess: _handleNativeLoginSuccess);
     }
 
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(0, 42, 84, 1),
-      appBar: _NativeTopSearchBar(
-        controller: _searchController,
-        focusNode: _searchFocusNode,
-        onSubmitted: _submitSearch,
-        onCartTap: _openCartPage,
-        onScanTap: _openQRScanner,
-        onMenuTap: () => _loadPwaTab(4),
-      ),
-      bottomNavigationBar: _NativeBottomNavBar(
-        selectedIndex: _selectedBottomNavIndex,
-        onSelected: (index) async {
-          if (index == 2) {
-            await _openQRScanner();
-            return;
+    return WillPopScope(
+      onWillPop: () async {
+        // If webview can go back, navigate back inside webview.
+        try {
+          if (_controller != null) {
+            final bool canGoBack = await _controller!.canGoBack();
+            if (canGoBack) {
+              await _controller!.goBack();
+              return false;
+            }
           }
-          await _loadPwaTab(index);
-        },
-      ),
-      body: Stack(
-        children: [
-          SafeArea(
-            child: (_startUrl == 'about:blank')
-                ? const _InternetRequiredView()
-                : (_controller == null
-                      ? const Center(child: CircularProgressIndicator())
-                      : (_hasLoadError
-                            ? _InternetRequiredView(onRetry: _reloadPwaApp)
-                            : SizedBox.expand(
-                                child: WebViewWidget(controller: _controller!),
-                              ))),
-          ),
-          if (_isLoading)
-            Container(
-              color: Colors.black.withValues(alpha: 0.3),
-              child: const Center(
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF0057B8)),
+        } catch (_) {}
+
+        // If there are flutter routes to pop, allow navigator to pop.
+        if (Navigator.of(context).canPop()) {
+          return true;
+        }
+
+        // Double back to exit.
+        final DateTime now = DateTime.now();
+        if (_lastBackPressedAt == null ||
+            now.difference(_lastBackPressedAt!) > const Duration(seconds: 2)) {
+          _lastBackPressedAt = now;
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Press back again to exit')),
+          );
+          return false;
+        }
+
+        return true;
+      },
+      child: Scaffold(
+        backgroundColor: const Color.fromRGBO(0, 42, 84, 1),
+        appBar: _NativeTopSearchBar(
+          controller: _searchController,
+          focusNode: _searchFocusNode,
+          onSubmitted: _submitSearch,
+          onCartTap: _openCartPage,
+          onScanTap: _openQRScanner,
+          onMenuTap: () => _loadPwaTab(4),
+        ),
+        bottomNavigationBar: _NativeBottomNavBar(
+          selectedIndex: _selectedBottomNavIndex,
+          onSelected: (index) async {
+            if (index == 2) {
+              await _openQRScanner();
+              return;
+            }
+            await _loadPwaTab(index);
+          },
+        ),
+        body: Stack(
+          children: [
+            SafeArea(
+              child: (_startUrl == 'about:blank')
+                  ? const _InternetRequiredView()
+                  : (_controller == null
+                        ? const Center(child: CircularProgressIndicator())
+                        : (_hasLoadError
+                              ? _InternetRequiredView(onRetry: _reloadPwaApp)
+                              : SizedBox.expand(
+                                  child: WebViewWidget(
+                                    controller: _controller!,
+                                  ),
+                                ))),
+            ),
+            if (_isLoading)
+              Container(
+                color: Colors.black.withValues(alpha: 0.3),
+                child: const Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Color(0xFF0057B8),
+                    ),
+                  ),
                 ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }
