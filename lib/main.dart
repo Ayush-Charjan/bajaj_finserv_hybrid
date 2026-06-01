@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'screens/login_screen.dart';
 import 'screens/new_main_navigation_screen.dart';
 import 'utils/app_colors.dart';
 import 'utils/native_shell_tab_bridge.dart';
@@ -115,10 +114,14 @@ class _BajajFinservAppState extends State<BajajFinservApp> {
         fontFamily: 'Roboto',
       ),
 
-      initialRoute: widget.isEmbedded ? '/home' : '/',
+      initialRoute: '/home',
 
       routes: {
-        '/': (context) => const LoginScreen(),
+        '/': (context) => NewMainNavigationScreen(
+          isEmbedded: widget.isEmbedded,
+          useNativeShell: widget.useNativeShell,
+          externalTabStream: widget.nativeShellTabStream,
+        ),
         '/home': (context) => NewMainNavigationScreen(
               isEmbedded: widget.isEmbedded,
               useNativeShell: widget.useNativeShell,
