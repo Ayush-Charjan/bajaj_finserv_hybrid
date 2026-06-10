@@ -1,0 +1,3 @@
+bool isLikelyEmbeddedRuntime() {
+  return false;
+}

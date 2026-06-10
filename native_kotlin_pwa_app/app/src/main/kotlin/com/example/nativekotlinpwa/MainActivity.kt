@@ -1,7 +1,5 @@
 package com.example.nativekotlinpwa
 
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.graphics.Color
 import android.net.ConnectivityManager
@@ -13,7 +11,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.animation.Animation
 import android.view.inputmethod.EditorInfo
 import android.webkit.JavascriptInterface
 import android.webkit.WebResourceError
@@ -22,22 +19,21 @@ import android.webkit.WebSettings
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var webView: WebView
     private lateinit var searchInput: EditText
     private lateinit var loader: ProgressBar
-    private lateinit var skeletonLoader: View
+    private lateinit var skeletonLoader: ShimmerFrameLayout
     private lateinit var errorView: View
-    private var shimmerAnimator: ObjectAnimator? = null
-    
+
     private val pwaBaseUrl = "https://ayush-charjan.github.io/bajaj_finserv_hybrid/"
     private val pwaCartBaseUrl = "https://ayush-charjan.github.io/bajaj_cart_angular/"
 
@@ -46,9 +42,22 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navTexts: List<TextView?>
     private val activeColor = Color.parseColor("#002A54")
     private val inactiveColor = Color.parseColor("#777777")
-    
+
     private var currentActiveTab: String = ""
     private var isPwaReady: Boolean = false
+
+    private var slowInternetSnackbar: Snackbar? = null
+    private val slowInternetHandler = Handler(Looper.getMainLooper())
+    private val slowInternetRunnable = Runnable {
+        if (!isPwaReady) {
+            slowInternetSnackbar = Snackbar.make(
+                findViewById(android.R.id.content),
+                "Slow internet connection. Loading...",
+                Snackbar.LENGTH_INDEFINITE
+            )
+            slowInternetSnackbar?.show()
+        }
+    }
 
     private val networkCallback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {
@@ -76,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         loader = findViewById(R.id.loader)
         skeletonLoader = findViewById(R.id.skeleton_loader)
         errorView = findViewById(R.id.error_view)
-        
+
         webView.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
@@ -84,14 +93,14 @@ class MainActivity : AppCompatActivity() {
             loadWithOverviewMode = true
             databaseEnabled = true
             mediaPlaybackRequiresUserGesture = false
-            cacheMode = WebSettings.LOAD_DEFAULT 
-            
+            cacheMode = WebSettings.LOAD_DEFAULT
+
             val originalUA = userAgentString
             if (!originalUA.contains("BajajNativeShell")) {
                 userAgentString = "$originalUA BajajNativeShell/1.0"
             }
         }
-        
+
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 val url = request?.url ?: return false
@@ -110,10 +119,10 @@ class MainActivity : AppCompatActivity() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 injectNativeBridge()
-                // Fallback: hide loader after 8 seconds if PWA doesn't signal READY
-                Handler(Looper.getMainLooper()).postDelayed({
-                    if (loader.visibility == View.VISIBLE) hideLoading()
-                }, 8000)
+
+                if (url?.contains("bajaj_cart_angular") == true) {
+                    hideLoading()
+                }
             }
 
             override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
@@ -133,38 +142,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showLoading() {
+        isPwaReady = false
         loader.visibility = View.VISIBLE
         skeletonLoader.visibility = View.VISIBLE
         errorView.visibility = View.GONE
-        startShimmer()
+        skeletonLoader.startShimmer()
+        
+        slowInternetHandler.removeCallbacks(slowInternetRunnable)
+        slowInternetHandler.postDelayed(slowInternetRunnable, 5000)
     }
 
     private fun hideLoading() {
-        // Small delay to ensure content is rendered behind the skeleton
+        isPwaReady = true
+        slowInternetHandler.removeCallbacks(slowInternetRunnable)
+        slowInternetSnackbar?.dismiss()
+        
         Handler(Looper.getMainLooper()).postDelayed({
             loader.visibility = View.GONE
             skeletonLoader.visibility = View.GONE
-            stopShimmer()
+            skeletonLoader.stopShimmer()
         }, 300)
-    }
-
-    private fun startShimmer() {
-        if (shimmerAnimator == null) {
-            shimmerAnimator = ObjectAnimator.ofPropertyValuesHolder(
-                skeletonLoader,
-                PropertyValuesHolder.ofFloat(View.ALPHA, 0.4f, 1.0f)
-            ).apply {
-                duration = 800
-                repeatCount = ObjectAnimator.INFINITE
-                repeatMode = ObjectAnimator.REVERSE
-            }
-        }
-        shimmerAnimator?.start()
-    }
-
-    private fun stopShimmer() {
-        shimmerAnimator?.cancel()
-        skeletonLoader.alpha = 1.0f
     }
 
     private fun setupListeners() {
@@ -174,11 +171,11 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.btn_notifications_top).setOnClickListener { loadTab("notifications") }
         findViewById<View>(R.id.btn_qr_top).setOnClickListener { loadTab("scan") }
         findViewById<View>(R.id.btn_retry).setOnClickListener { startApplication() }
-        
+
         findViewById<View>(R.id.btn_search).setOnClickListener {
             submitSearch(searchInput.text?.toString().orEmpty())
         }
-        
+
         searchInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 submitSearch(searchInput.text?.toString().orEmpty())
@@ -243,13 +240,13 @@ class MainActivity : AppCompatActivity() {
     private fun loadTab(tab: String) {
         val currentUrl = webView.url ?: ""
         if (tab == currentActiveTab && currentUrl.contains("nativeShell=true")) return
-        
+
         updateBottomNavUI(tab)
         currentActiveTab = tab
 
         val isCartApp = currentUrl.contains("bajaj_cart_angular")
         val targetIsCart = tab == "cart"
-        
+
         if (targetIsCart && !isCartApp) {
             isPwaReady = false
             webView.loadUrl(buildUrl(pwaCartBaseUrl, "cart", "cart"))
@@ -280,7 +277,6 @@ class MainActivity : AppCompatActivity() {
     private fun handleNativeFeature(feature: String) {
         when (feature.trim().lowercase()) {
             "ready" -> {
-                isPwaReady = true
                 hideLoading()
             }
             "home", "profile", "scan", "payemi", "menu", "chat", "cart" -> {

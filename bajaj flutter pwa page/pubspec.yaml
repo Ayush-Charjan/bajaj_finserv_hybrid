@@ -1,0 +1,68 @@
+# name: bajaj_finserv_demo
+# description: A simplified Flutter demo app replicating Bajaj Finserv mobile app structure for learning purposes.
+
+# # Prevent accidental publishing to pub.dev.
+# publish_to: 'none'
+
+# version: 1.0.0+1
+
+# environment:
+#   sdk: '>=3.0.0 <4.0.0'
+
+# dependencies:
+#   flutter:
+#     sdk: flutter
+#     mobile_scanner: ^5.0.0
+  
+#   # For date formatting in EMI card widget
+#   intl: ^0.18.0
+
+# dev_dependencies:
+#   flutter_test:
+#     sdk: flutter
+#   flutter_lints: ^2.0.0
+
+# flutter:
+#   uses-material-design: true
+
+#   # Assets configuration
+#   assets:
+#     - assets/images/
+#     - assets/icons/
+#     - assets/logos/
+
+
+
+name: bajaj_finserv_demo
+description: A simplified Flutter demo app replicating Bajaj Finserv mobile app structure for learning purposes.
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mobile_scanner: ^5.0.0
+  
+  
+  # For date formatting in EMI card widget
+  intl: ^0.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Assets configuration
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/logos/

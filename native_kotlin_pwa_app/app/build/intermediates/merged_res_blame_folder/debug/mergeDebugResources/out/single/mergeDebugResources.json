@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.example.nativekotlinpwa.app-debug-29:/layout_layout_skeleton.xml.flat",
+        "source": "com.example.nativekotlinpwa.app-main-31:/layout/layout_skeleton.xml"
+    },
+    {
+        "merged": "com.example.nativekotlinpwa.app-debug-29:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.example.nativekotlinpwa.app-main-31:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "com.example.nativekotlinpwa.app-debug-29:/drawable_bg_scan_circle.xml.flat",
+        "source": "com.example.nativekotlinpwa.app-main-31:/drawable/bg_scan_circle.xml"
+    },
+    {
+        "merged": "com.example.nativekotlinpwa.app-debug-29:/drawable_app_icon.png.flat",
+        "source": "com.example.nativekotlinpwa.app-main-31:/drawable/app_icon.png"
+    },
+    {
+        "merged": "com.example.nativekotlinpwa.app-debug-29:/drawable_dot_red.xml.flat",
+        "source": "com.example.nativekotlinpwa.app-main-31:/drawable/dot_red.xml"
+    },
+    {
+        "merged": "com.example.nativekotlinpwa.app-debug-29:/drawable_bg_emi_chip.xml.flat",
+        "source": "com.example.nativekotlinpwa.app-main-31:/drawable/bg_emi_chip.xml"
+    },
+    {
+        "merged": "com.example.nativekotlinpwa.app-debug-29:/drawable_dot_orange.xml.flat",
+        "source": "com.example.nativekotlinpwa.app-main-31:/drawable/dot_orange.xml"
+    },
+    {
+        "merged": "com.example.nativekotlinpwa.app-debug-29:/drawable_bg_qr_outline.xml.flat",
+        "source": "com.example.nativekotlinpwa.app-main-31:/drawable/bg_qr_outline.xml"
+    },
+    {
+        "merged": "com.example.nativekotlinpwa.app-debug-29:/layout_activity_main.xml.flat",
+        "source": "com.example.nativekotlinpwa.app-main-31:/layout/activity_main.xml"
+    }
+]

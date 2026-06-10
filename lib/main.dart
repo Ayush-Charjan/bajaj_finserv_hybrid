@@ -118,10 +118,10 @@ class _BajajFinservAppState extends State<BajajFinservApp> {
 
       routes: {
         '/': (context) => NewMainNavigationScreen(
-          isEmbedded: widget.isEmbedded,
-          useNativeShell: widget.useNativeShell,
-          externalTabStream: widget.nativeShellTabStream,
-        ),
+              isEmbedded: widget.isEmbedded,
+              useNativeShell: widget.useNativeShell,
+              externalTabStream: widget.nativeShellTabStream,
+            ),
         '/home': (context) => NewMainNavigationScreen(
               isEmbedded: widget.isEmbedded,
               useNativeShell: widget.useNativeShell,
