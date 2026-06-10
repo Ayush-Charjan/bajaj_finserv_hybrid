@@ -58,14 +58,12 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     super.initState();
     _lastBackPressedAt = null;
 
-    // Check if running in a native shell to auto-login
     final queryParams = Uri.base.queryParameters;
     final isShell = queryParams['nativeShell'] == 'true' || queryParams['embedded'] == 'true';
     if (isShell) {
       _isNativeLoggedIn = true;
       _initializeMobileWebView();
 
-      // Notify shell that we are ready after a small delay to allow for API calls/rendering
       Future.delayed(const Duration(milliseconds: 1500), () {
         _openNativeFeature('READY');
       });
@@ -76,15 +74,12 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     String username,
     String password,
   ) async {
-    debugPrint('Native login success for user: $username');
-
     if (mounted) {
       setState(() {
         _isNativeLoggedIn = true;
         _hasLoadError = false;
       });
     }
-
     await _initializeMobileWebView();
   }
 
@@ -102,14 +97,12 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
 
   Future<void> _initializeMobileWebView() async {
     _startUrl = _buildStartUrl(tab: 'home');
-    debugPrint('Hybrid shell start URL: $_startUrl');
 
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..addJavaScriptChannel(
         'NativeShell',
         onMessageReceived: (JavaScriptMessage message) {
-          debugPrint('NativeShell JS message: ${message.message}');
           _openNativeFeature(message.message);
         },
       )
@@ -133,7 +126,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
             _injectNativeScanInterceptor();
           },
           onNavigationRequest: (NavigationRequest request) {
-            debugPrint('WebView navigation request: ${request.url}');
             final Uri? uri = Uri.tryParse(request.url);
             if (uri == null) {
               return NavigationDecision.navigate;
@@ -141,7 +133,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
 
             if (_isPwaLoginRoute(uri) &&
                 !uri.toString().contains('nativeShell=true')) {
-              debugPrint('Allowing PWA login route: ${request.url}');
               return NavigationDecision.navigate;
             }
 
@@ -158,7 +149,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
             return NavigationDecision.navigate;
           },
           onWebResourceError: (WebResourceError error) {
-            debugPrint('WebView error: ${error.description}');
             if (mounted) {
               setState(() {
                 _hasLoadError = true;
@@ -174,7 +164,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
           _controller!.platform as AndroidWebViewController;
       await androidController.setMediaPlaybackRequiresUserGesture(false);
       await androidController.setOnPlatformPermissionRequest((request) {
-        debugPrint('WebView permission request: ${request.types}');
         request.grant();
       });
     }
@@ -288,7 +277,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     final PermissionStatus permissionStatus = await Permission.camera.status;
     if (!permissionStatus.isGranted) {
       final PermissionStatus result = await Permission.camera.request();
-      debugPrint('Android camera runtime permission result: $result');
       if (!result.isGranted) {
         return;
       }
@@ -304,7 +292,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     );
 
     if (scannedCode != null && scannedCode.trim().isNotEmpty) {
-      debugPrint('Scanned QR link: $scannedCode');
+      // Handle scanned code
     }
   }
 
@@ -321,7 +309,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     if (url == 'about:blank') {
       return;
     }
-
     await _controller?.loadRequest(Uri.parse(url));
   }
 
@@ -334,16 +321,12 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
         return cartUri.toString();
       }
     }
-
     return _buildStartUrl(tab: 'cart');
   }
 
   String _normalizeFeature(String feature) {
     final String normalized = feature.toLowerCase().trim();
-    if (normalized == 'scanqr' || normalized == 'scan qr') {
-      return 'scan-qr';
-    }
-    if (normalized == 'scan_qr' || normalized == 'scan' || normalized == 'qr') {
+    if (normalized == 'scanqr' || normalized == 'scan qr' || normalized == 'scan_qr' || normalized == 'scan' || normalized == 'qr') {
       return 'scan-qr';
     }
     return normalized;
@@ -351,16 +334,12 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
 
   Future<void> _openNativeFeature(String feature) async {
     final String normalizedFeature = _normalizeFeature(feature);
-    debugPrint('Opening native feature: $normalizedFeature');
 
     final DateTime now = DateTime.now();
     final int throttleMs = normalizedFeature == 'scan-qr' ? 3000 : 900;
     if (_lastFeatureOpened == normalizedFeature &&
         _lastFeatureOpenedAt != null &&
         now.difference(_lastFeatureOpenedAt!).inMilliseconds < throttleMs) {
-      debugPrint(
-        'Skipping duplicate native feature trigger: $normalizedFeature',
-      );
       return;
     }
     _lastFeatureOpened = normalizedFeature;
@@ -420,7 +399,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
 
     return WillPopScope(
       onWillPop: () async {
-        // If webview can go back, navigate back inside webview.
         try {
           if (_controller != null) {
             final bool canGoBack = await _controller!.canGoBack();
@@ -431,12 +409,10 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
           }
         } catch (_) {}
 
-        // If there are flutter routes to pop, allow navigator to pop.
         if (Navigator.of(context).canPop()) {
           return true;
         }
 
-        // Double back to exit.
         final DateTime now = DateTime.now();
         if (_lastBackPressedAt == null ||
             now.difference(_lastBackPressedAt!) > const Duration(seconds: 2)) {
@@ -486,7 +462,7 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
             ),
             if (_isLoading)
               Container(
-                color: Colors.black.withValues(alpha: 0.3),
+                color: Colors.black.withOpacity(0.3),
                 child: const Center(
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(
@@ -885,7 +861,6 @@ class _NativeQRScannerScreenState extends State<_NativeQRScannerScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    debugPrint('Native QR scanner screen opened');
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -896,18 +871,16 @@ class _NativeQRScannerScreenState extends State<_NativeQRScannerScreen>
   Future<void> _startScanner() async {
     try {
       await controller.start();
-      debugPrint('MobileScanner started');
     } catch (e) {
-      debugPrint('MobileScanner start failed: $e');
+      // Handle error
     }
   }
 
   Future<void> _stopScanner() async {
     try {
       await controller.stop();
-      debugPrint('MobileScanner stopped');
     } catch (e) {
-      debugPrint('MobileScanner stop failed: $e');
+      // Handle error
     }
   }
 
@@ -925,7 +898,6 @@ class _NativeQRScannerScreenState extends State<_NativeQRScannerScreen>
 
   @override
   void dispose() {
-    debugPrint('Native QR scanner screen closed');
     WidgetsBinding.instance.removeObserver(this);
     unawaited(_stopScanner());
     _animationController.dispose();
@@ -955,7 +927,6 @@ class _NativeQRScannerScreenState extends State<_NativeQRScannerScreen>
           MobileScanner(
             controller: controller,
             errorBuilder: (context, error, child) {
-              debugPrint('MobileScanner error: ${error.toString()}');
               return Container(
                 color: Colors.black,
                 alignment: Alignment.center,
@@ -1003,7 +974,6 @@ class _NativeQRScannerScreenState extends State<_NativeQRScannerScreen>
               if (normalizedCode != null && normalizedCode.isNotEmpty) {
                 _detectedOnce = true;
                 final NavigatorState navigator = Navigator.of(context);
-                debugPrint('Scanned QR: $normalizedCode');
                 ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
                   ..showSnackBar(
@@ -1029,9 +999,9 @@ class _NativeQRScannerScreenState extends State<_NativeQRScannerScreen>
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.black.withValues(alpha: 0.35),
+                    Colors.black.withOpacity(0.35),
                     Colors.transparent,
-                    Colors.black.withValues(alpha: 0.35),
+                    Colors.black.withOpacity(0.35),
                   ],
                 ),
               ),
@@ -1062,7 +1032,7 @@ class _NativeQRScannerScreenState extends State<_NativeQRScannerScreen>
                               BoxShadow(
                                 color: const Color(
                                   0xFF0057B8,
-                                ).withValues(alpha: 0.5),
+                                ).withOpacity(0.5),
                                 blurRadius: 10,
                                 spreadRadius: 2,
                               ),
@@ -1175,7 +1145,7 @@ class _NativeMenuScreen extends StatelessWidget {
             child: ElevatedButton.icon(
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.arrow_back),
-              label: const Text('Back to native app'),
+              label: const Text('Back'),
             ),
           ),
         ],
@@ -1216,7 +1186,7 @@ class _NativeMenuSection extends StatelessWidget {
             leading: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: const Color(0xFF0057B8).withValues(alpha: 0.1),
+                color: const Color(0xFF0057B8).withOpacity(0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(item.icon, color: const Color(0xFF0057B8)),
@@ -1311,7 +1281,7 @@ class _NativeChatScreenState extends State<_NativeChatScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Customer Support',
+                  'Support',
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
                 Text(
@@ -1370,7 +1340,7 @@ class _NativeChatScreenState extends State<_NativeChatScreen> {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withValues(alpha: 0.2),
+                  color: Colors.grey.withOpacity(0.2),
                   blurRadius: 4,
                   offset: const Offset(0, -2),
                 ),
@@ -1442,7 +1412,7 @@ class _NativeChatScreenState extends State<_NativeChatScreen> {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.1),
+              color: Colors.grey.withOpacity(0.1),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
@@ -1496,13 +1466,13 @@ class _InternetRequiredView extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              'Connect to internet',
+              'No connection',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 8),
             const Text(
-              'Unable to load hosted PWA. Check your internet connection and try again.',
+              'Unable to load content. Check your internet connection.',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 13, color: Colors.black54),
             ),
