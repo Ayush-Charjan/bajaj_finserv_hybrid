@@ -31,7 +31,7 @@ class AccountL1Screen extends StatelessWidget {
                   _buildServicesHorizontalList(),
                   const SizedBox(height: 20),
                   _buildSectionHeader('Services for you'),
-                  _buildServicesForYou(),
+                  _buildServicesForYou(context),
                   const Divider(thickness: 4, color: Color(0xFFF0F4F8)),
                   _buildSectionHeader('Statements and documents'),
                   _buildDocumentsGrid(context),
@@ -265,7 +265,7 @@ class AccountL1Screen extends StatelessWidget {
     );
   }
 
-  Widget _buildServicesForYou() {
+  Widget _buildServicesForYou(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
