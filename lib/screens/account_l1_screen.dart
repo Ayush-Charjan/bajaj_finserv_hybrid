@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import 'profile_screen.dart';
 import 'account_l2_details_screens.dart';
+import 'flexi_service_delivery_screen.dart';
 
 class AccountL1Screen extends StatelessWidget {
   const AccountL1Screen({Key? key}) : super(key: key);
@@ -293,7 +294,9 @@ class AccountL1Screen extends StatelessWidget {
                           const Text('• Explore common queries\n• Review transaction history', style: TextStyle(color: Colors.white, fontSize: 9)),
                           const SizedBox(height: 8),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const FlexiServiceDeliveryScreen()));
+                            },
                             style: ElevatedButton.styleFrom(backgroundColor: Colors.black, padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4), minimumSize: Size.zero),
                             child: const Text('View Now', style: TextStyle(fontSize: 9, color: Colors.white)),
                           ),

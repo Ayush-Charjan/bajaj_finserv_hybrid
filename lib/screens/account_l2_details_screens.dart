@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
+import 'flexi_service_delivery_screen.dart';
 
 class YourRelationsScreen extends StatelessWidget {
   const YourRelationsScreen({Key? key}) : super(key: key);
@@ -16,70 +17,75 @@ class YourRelationsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _buildRelationCard(),
-            _buildRelationCard(),
+            _buildRelationCard(context),
+            _buildRelationCard(context),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildRelationCard() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                      decoration: BoxDecoration(color: Colors.blue.shade50, borderRadius: BorderRadius.circular(4)),
-                      child: const Text('Active', style: TextStyle(color: Colors.blue, fontSize: 10, fontWeight: FontWeight.bold)),
-                    ),
-                    const Text('₹1,20,000', style: TextStyle(fontWeight: FontWeight.bold)),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                const Text('SAMSUNG 32-Inch Class Ful...', style: TextStyle(fontWeight: FontWeight.bold)),
-                const Text('BL402P5P727390', style: TextStyle(color: Colors.grey, fontSize: 12)),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    _buildRelationAction(Icons.payment, 'Make payment'),
-                    _buildRelationAction(Icons.description_outlined, 'Statement'),
-                    _buildRelationAction(Icons.grid_view, 'More'),
-                    _buildRelationAction(Icons.chevron_right, 'Details'),
-                  ],
-                ),
-              ],
+  Widget _buildRelationCard(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const FlexiServiceDeliveryScreen()));
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        decoration: BoxDecoration(color: Colors.blue.shade50, borderRadius: BorderRadius.circular(4)),
+                        child: const Text('Active', style: TextStyle(color: Colors.blue, fontSize: 10, fontWeight: FontWeight.bold)),
+                      ),
+                      const Text('₹1,20,000', style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  const Text('SAMSUNG 32-Inch Class Ful...', style: TextStyle(fontWeight: FontWeight.bold)),
+                  const Text('BL402P5P727390', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _buildRelationAction(Icons.payment, 'Make payment'),
+                      _buildRelationAction(Icons.description_outlined, 'Statement'),
+                      _buildRelationAction(Icons.grid_view, 'More'),
+                      _buildRelationAction(Icons.chevron_right, 'Details'),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(color: Colors.orange.shade50, borderRadius: const BorderRadius.vertical(bottom: Radius.circular(8))),
-            child: Row(
-              children: [
-                const Icon(Icons.warning_amber_rounded, color: Colors.orange, size: 16),
-                const SizedBox(width: 8),
-                const Expanded(
-                  child: Text('Instalment of ₹14,446 due on 5 Sep 2025', style: TextStyle(fontSize: 11)),
-                ),
-                TextButton(onPressed: () {}, child: const Text('Pay now', style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 11))),
-              ],
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(color: Colors.orange.shade50, borderRadius: const BorderRadius.vertical(bottom: Radius.circular(8))),
+              child: Row(
+                children: [
+                  const Icon(Icons.warning_amber_rounded, color: Colors.orange, size: 16),
+                  const SizedBox(width: 8),
+                  const Expanded(
+                    child: Text('Instalment of ₹14,446 due on 5 Sep 2025', style: TextStyle(fontSize: 11)),
+                  ),
+                  TextButton(onPressed: () {}, child: const Text('Pay now', style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 11))),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
