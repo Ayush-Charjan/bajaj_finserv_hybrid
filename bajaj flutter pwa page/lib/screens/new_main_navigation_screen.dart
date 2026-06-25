@@ -1,7 +1,7 @@
 // New Main Navigation with 6 bottom tabs
 import 'package:flutter/material.dart';
 import 'new_home_screen.dart';
-import 'profile_screen.dart';
+import 'account_l1_screen.dart';
 import 'scan_qr_screen.dart';
 import 'pay_emi_screen.dart';
 import 'menu_screen.dart';
@@ -35,10 +35,7 @@ class _NewMainNavigationScreenState extends State<NewMainNavigationScreen> {
           isEmbedded: widget.isEmbedded,
           useNativeShell: widget.useNativeShell,
         ),
-        ProfileScreen(
-          isEmbedded: widget.isEmbedded,
-          useNativeShell: widget.useNativeShell,
-        ),
+        const AccountL1Screen(),
         Container(),
         PayEmiScreen(
           isEmbedded: widget.isEmbedded,
