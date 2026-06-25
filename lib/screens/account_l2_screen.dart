@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
-import 'account_l3_screen.dart';
 import 'profile_screen.dart';
 
 class AccountL2Screen extends StatelessWidget {
@@ -10,25 +9,6 @@ class AccountL2Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF0F4F8),
-      appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Row(
-          children: [
-            const Icon(Icons.account_balance, color: Colors.white, size: 20),
-            const SizedBox(width: 8),
-            const Text('FINSERV', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
-            const Spacer(),
-            IconButton(icon: const Icon(Icons.payment, color: Colors.white), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.notifications_none, color: Colors.white), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.shopping_cart_outlined, color: Colors.white), onPressed: () {}),
-          ],
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -95,12 +75,8 @@ class AccountL2Screen extends StatelessWidget {
         childAspectRatio: 2.5,
         children: [
           _buildNavButton('Your relations', Icons.people_outline, () {}),
-          _buildNavButton('Loan payments', Icons.payment, () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const AccountL3Screen(initialSection: 'Loan payments')));
-          }),
-          _buildNavButton('Statements and\ndocuments', Icons.description_outlined, () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const AccountL3Screen(initialSection: 'Statements and documents')));
-          }),
+          _buildNavButton('Loan payments', Icons.payment, () {}),
+          _buildNavButton('Statements and\ndocuments', Icons.description_outlined, () {}),
           _buildNavButton('Your Account', Icons.account_circle_outlined, () {
              Navigator.pop(context);
           }),
@@ -119,15 +95,12 @@ class AccountL2Screen extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 4)],
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: AppColors.primary),
-            ),
-          ],
+        child: Center(
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: AppColors.primary),
+          ),
         ),
       ),
     );
