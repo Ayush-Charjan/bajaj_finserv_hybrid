@@ -28,10 +28,3 @@ bajaj_finserv_hybrid/build/
 # Misc
 .vercel
 node_modules/
-
-# Ignore nested versions
-.git-temp-clone/
-bajaj flutter pwa page/
-bajaj-finserv-demo/
-bajaj_finserv_hybrid/
-native_kotlin_pwa_app/
