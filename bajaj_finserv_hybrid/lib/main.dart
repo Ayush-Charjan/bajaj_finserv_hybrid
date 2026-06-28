@@ -6,10 +6,12 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:stac/stac.dart';
 import 'screens/stac_emi_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  Stac.initialize();
   runApp(const HybridShellApp());
 }
 
@@ -573,23 +575,28 @@ class _NativeTopSearchBar extends StatelessWidget
                     ),
                   ),
                   const Spacer(),
-                  InkWell(
-                    onTap: onEmiTap,
+                  GestureDetector(
+                    onTap: () {
+                      debugPrint('--- EMI BUTTON TAPPED (GD) ---');
+                      onEmiTap();
+                    },
+                    behavior: HitTestBehavior.opaque,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 2,
+                        horizontal: 12,
+                        vertical: 8,
                       ),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.yellow, width: 1),
-                        borderRadius: BorderRadius.circular(3),
+                        border: Border.all(color: Colors.yellow, width: 1.5),
+                        borderRadius: BorderRadius.circular(4),
+                        color: Colors.white.withOpacity(0.05),
                       ),
                       child: const Text(
                         'EMI',
                         style: TextStyle(
                           color: Colors.yellow,
                           fontWeight: FontWeight.bold,
-                          fontSize: 10,
+                          fontSize: 12,
                         ),
                       ),
                     ),

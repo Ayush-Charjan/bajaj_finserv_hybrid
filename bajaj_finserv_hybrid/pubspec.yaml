@@ -13,7 +13,7 @@ dependencies:
   webview_flutter: ^4.13.0
   webview_flutter_android: ^4.10.15
   mobile_scanner: ^5.0.0
-  stac: ^0.1.3
+  stac: ^1.5.0
 
 dev_dependencies:
   flutter_test:

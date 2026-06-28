@@ -1,0 +1,85 @@
+📁 assets/logos/ (3 files - PNG format)
+==========================================
+app_logo.png
+app_icon.png
+splash_logo.png
+
+
+📁 assets/images/ (24 files - JPG format)
+==========================================
+banner1.jpg
+banner2.jpg
+banner3.jpg
+promo_card.jpg
+gold_emi.jpg
+ac_emi.jpg
+personal_loan.jpg
+two_wheeler.jpg
+car_loan.jpg
+home_loan.jpg
+mobile.jpg
+laptop.jpg
+tv.jpg
+refrigerator.jpg
+washing_machine.jpg
+headphones.jpg  
+instant_loan.jpg
+business_loan.jpg
+education_loan.jpg
+medical_loan.jpg
+
+
+📁 assets/images/ (PNG format - profiles)
+==========================================
+user_placeholder.png
+avatar_male.png
+avatar_female.png
+
+
+📁 assets/icons/ (24+ files - PNG format)
+==========================================
+insurance.png
+investment.png
+bills.png
+recharge.png
+wallet.png
+transfer.png
+shopping.png
+rewards.png
+electricity.png
+water.png
+gas.png
+broadband.png
+dth.png
+mobile_recharge.png
+personal_loan_icon.png
+home_loan_icon.png
+car_loan_icon.png
+education_loan_icon.png
+business_loan_icon.png
+qr_code.png
+chat.png
+notification.png
+settings.png
+help.png
+
+
+===========================================
+TOTAL: 50+ Images
+===========================================
+
+QUICK DOWNLOAD SOURCES:
+- Images: unsplash.com, pexels.com
+- Icons: flaticon.com, icons8.com
+- Placeholders: via.placeholder.com
+
+PRIORITY ORDER (start with these):
+1. app_logo.png
+2. user_placeholder.png
+3. banner1.jpg
+4. gold_emi.jpg → home_loan.jpg (6 EMI images)
+5. mobile.jpg → headphones.jpg (6 electronics)
+6. All icons
+
+APP WORKS WITHOUT IMAGES!
+Fallback icons will show instead.

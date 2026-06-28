@@ -7,6 +7,7 @@ class StacEmiScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('Building StacEmiScreen...');
     return FutureBuilder<String>(
       future: rootBundle.loadString('assets/sdui/insta_emi_card.json'),
       builder: (context, snapshot) {
@@ -18,11 +19,17 @@ class StacEmiScreen extends StatelessWidget {
         }
         if (snapshot.hasData) {
           try {
-            return Stac.fromJson(snapshot.data!, context) ?? const Scaffold(body: Center(child: Text('Invalid JSON')));
-          } catch (e) {
+            debugPrint('Rendering SDUI from JSON...');
+            final widget = Stac.fromJson(snapshot.data!, context);
+            if (widget == null) {
+              return const Scaffold(body: Center(child: Text('Stac failed to parse JSON')));
+            }
+            return widget;
+          } catch (e, stack) {
+             debugPrint('Error parsing SDUI: $e\n$stack');
              return Scaffold(
-              appBar: AppBar(title: const Text('Parsing Error')),
-              body: Center(child: Text('Error parsing SDUI: $e')),
+              appBar: AppBar(title: const Text('Parsing Error'), backgroundColor: Colors.red),
+              body: SingleChildScrollView(child: Padding(padding: const EdgeInsets.all(16), child: Text('Error parsing SDUI: $e'))),
             );
           }
         }
