@@ -183,7 +183,7 @@
                   "type": "stack",
                   "alignment": "center",
                   "children": [
-                    { "type": "image", "imageType": "asset", "imageUrl": "assets/images/banner6.jpg", "fit": "cover", "width": "infinity", "height": 200 },
+                    { "type": "image", "imageType": "asset", "imageUrl": "assets/images/banner4.jpg", "fit": "cover", "width": "infinity", "height": 200 },
                     { "type": "icon", "icon": "play_circle_filled", "size": 60, "color": "#FF6B35" }
                   ]
                 }
