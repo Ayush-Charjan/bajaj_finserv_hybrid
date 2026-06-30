@@ -10,20 +10,21 @@
       "children": [
         {
           "type": "container",
-          "padding": { "top": 28, "left": 20, "right": 20, "bottom": 20 },
-          "decoration": { "color": "#FFFFFF" },
+          "width": "infinity",
+          "padding": { "top": 34, "left": 16, "right": 16, "bottom": 30 },
+          "decoration": { "color": "#002A54" },
           "child": {
             "type": "column",
             "crossAxisAlignment": "start",
             "children": [
-              { "type": "text", "data": "Insta EMI Card", "style": { "fontSize": 22, "fontWeight": "bold", "color": "#002A54" } },
+              { "type": "text", "data": "Insta EMI Card", "style": { "fontSize": 24, "fontWeight": "bold", "color": "#FFFFFF" } },
               { "type": "sizedBox", "height": 8 },
-              { "type": "text", "data": "100% digital process | Instant approval | No annual fee", "style": { "fontSize": 13, "color": "#5F6B7A" } },
+              { "type": "text", "data": "100% digital process | Instant approval | No annual fee", "style": { "fontSize": 13, "color": "#DCEAF7" } },
               { "type": "sizedBox", "height": 14 },
               {
                 "type": "row",
                 "children": [
-                  { "type": "text", "data": "4.7", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#002A54" } },
+                  { "type": "text", "data": "4.7", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#FFFFFF" } },
                   { "type": "sizedBox", "width": 6 },
                   { "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
                   { "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
@@ -31,52 +32,52 @@
                   { "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
                   { "type": "icon", "icon": "star_half", "color": "#F7B500", "size": 18 },
                   { "type": "sizedBox", "width": 8 },
-                  { "type": "text", "data": "681 reviews", "style": { "fontSize": 12, "color": "#6B7280" } }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "type": "container",
-          "margin": { "top": 24, "left": 16, "right": 16, "bottom": 28 },
-          "padding": { "top": 28, "left": 22, "right": 22, "bottom": 24 },
-          "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#D8E1EA", "width": 1 } },
-          "child": {
-            "type": "column",
-            "children": [
-              { "type": "text", "data": "Your pre-qualified card loan offer", "textAlign": "center", "style": { "fontSize": 15, "color": "#334155" } },
-              { "type": "sizedBox", "height": 18 },
-              { "type": "text", "data": "Up to Rs. 3,00,000", "style": { "fontSize": 32, "fontWeight": "bold", "color": "#002A54" } },
-              { "type": "sizedBox", "height": 12 },
-              { "type": "text", "data": "Use across 1.5 lakh+ partner stores and leading online brands", "textAlign": "center", "style": { "fontSize": 12, "color": "#64748B" } },
-              { "type": "sizedBox", "height": 22 },
-              {
-                "type": "row",
-                "mainAxisAlignment": "center",
-                "children": [
-                  { "type": "icon", "icon": "check_circle_outline", "size": 18, "color": "#16834B" },
-                  { "type": "sizedBox", "width": 8 },
-                  { "type": "text", "data": "Checking your offer will not affect your credit score", "style": { "fontSize": 11, "color": "#334155" } }
+                  { "type": "text", "data": "681 reviews", "style": { "fontSize": 12, "color": "#DCEAF7" } }
                 ]
               },
-              { "type": "sizedBox", "height": 24 },
               {
-                "type": "sizedBox",
-                "width": "infinity",
-                "height": 50,
+                "type": "container",
+                "margin": { "top": 24 },
+                "padding": { "top": 30, "left": 22, "right": 22, "bottom": 24 },
+                "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#D8E1EA", "width": 1 } },
                 "child": {
-                  "type": "elevatedButton",
-                  "style": { "backgroundColor": "#FF6B35", "shape": { "type": "roundedRectangle", "borderRadius": 6 } },
-                  "onPressed": {
-                    "actionType": "navigateWithLoader",
-                    "navigationStyle": "push",
-                    "request": {
-                      "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/insta_emi_offer_details.json?v=1",
-                      "method": "get"
+                  "type": "column",
+                  "children": [
+                    { "type": "text", "data": "Your pre-qualified card loan offer", "textAlign": "center", "style": { "fontSize": 15, "color": "#334155" } },
+                    { "type": "sizedBox", "height": 18 },
+                    { "type": "text", "data": "Up to Rs. 3,00,000", "textAlign": "center", "style": { "fontSize": 32, "fontWeight": "bold", "color": "#002A54" } },
+                    { "type": "sizedBox", "height": 12 },
+                    { "type": "text", "data": "Use across 1.5 lakh+ partner stores and leading online brands", "textAlign": "center", "style": { "fontSize": 12, "color": "#64748B" } },
+                    { "type": "sizedBox", "height": 22 },
+                    {
+                      "type": "row",
+                      "mainAxisAlignment": "center",
+                      "children": [
+                        { "type": "icon", "icon": "check_circle_outline", "size": 18, "color": "#16834B" },
+                        { "type": "sizedBox", "width": 8 },
+                        { "type": "expanded", "child": { "type": "text", "data": "Checking your offer will not affect your credit score", "textAlign": "center", "style": { "fontSize": 11, "color": "#334155" } } }
+                      ]
+                    },
+                    { "type": "sizedBox", "height": 24 },
+                    {
+                      "type": "sizedBox",
+                      "width": "infinity",
+                      "height": 50,
+                      "child": {
+                        "type": "elevatedButton",
+                        "style": { "backgroundColor": "#FF6B35", "shape": { "type": "roundedRectangle", "borderRadius": 6 } },
+                        "onPressed": {
+                          "actionType": "navigateWithLoader",
+                          "navigationStyle": "push",
+                          "request": {
+                            "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/insta_emi_offer_details.json?v=1",
+                            "method": "get"
+                          }
+                        },
+                        "child": { "type": "text", "data": "CHECK OFFER", "style": { "color": "#FFFFFF", "fontWeight": "bold", "fontSize": 15 } }
+                      }
                     }
-                  },
-                  "child": { "type": "text", "data": "CHECK OFFER", "style": { "color": "#FFFFFF", "fontWeight": "bold", "fontSize": 15 } }
+                  ]
                 }
               }
             ]
