@@ -16,12 +16,12 @@
             "children": [
               {
                 "type": "text",
-                "text": "Insta EMI Card",
+                "data": "Insta EMI Card",
                 "style": { "fontSize": 20, "fontWeight": "bold", "color": "#002A54" }
               },
               {
                 "type": "text",
-                "text": "100% digital process | Instant approval | 4-step process | No annual fee",
+                "data": "100% digital process | Instant approval | 4-step process | No annual fee",
                 "style": { "fontSize": 12, "color": "#757575" }
               },
               {
@@ -30,13 +30,13 @@
                 "child": {
                   "type": "row",
                   "children": [
-                    { "type": "text", "text": "4.7 ", "style": { "fontSize": 14, "fontWeight": "bold" } },
+                    { "type": "text", "data": "4.7 ", "style": { "fontSize": 14, "fontWeight": "bold" } },
                     { "type": "icon", "icon": "star", "color": "#FFC107", "size": 16 },
                     { "type": "icon", "icon": "star", "color": "#FFC107", "size": 16 },
                     { "type": "icon", "icon": "star", "color": "#FFC107", "size": 16 },
                     { "type": "icon", "icon": "star", "color": "#FFC107", "size": 16 },
                     { "type": "icon", "icon": "star_half", "color": "#FFC107", "size": 16 },
-                    { "type": "text", "text": " 681", "style": { "fontSize": 12, "color": "#757575" } }
+                    { "type": "text", "data": " 681", "style": { "fontSize": 12, "color": "#757575" } }
                   ]
                 }
               }
@@ -57,7 +57,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "Get a pre-qualified card loan offer amount of up to",
+                "data": "Get a pre-qualified card loan offer amount of up to",
                 "textAlign": "center",
                 "style": { "fontSize": 14, "color": "#002A54" }
               },
@@ -66,7 +66,7 @@
                 "margin": { "top": 16, "bottom": 16 },
                 "child": {
                   "type": "text",
-                  "text": "₹3,00,000",
+                  "data": "₹3,00,000",
                   "style": { "fontSize": 36, "fontWeight": "bold", "color": "#212121" }
                 }
               },
@@ -78,7 +78,7 @@
                   { "type": "sizedBox", "width": 8 },
                   {
                     "type": "text",
-                    "text": "By proceeding, you agree to the Terms & Conditions.",
+                    "data": "By proceeding, you agree to the Terms & Conditions.",
                     "style": { "fontSize": 11, "color": "#212121" }
                   }
                 ]
@@ -97,7 +97,7 @@
                   "onPressed": {},
                   "child": {
                     "type": "text",
-                    "text": "CHECK OFFER  >>>",
+                    "data": "CHECK OFFER  >>>",
                     "style": { "color": "#FFFFFF", "fontWeight": "bold", "fontSize": 16 }
                   }
                 }
@@ -114,7 +114,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "Shop for 1 million+ products on Easy EMIs",
+                "data": "Shop for 1 million+ products on Easy EMIs",
                 "style": { "fontSize": 16, "fontWeight": "bold" }
               },
               {
@@ -125,13 +125,13 @@
                   "type": "listView",
                   "scrollDirection": "horizontal",
                   "children": [
-                    { "type": "column", "children": [{ "type": "image", "width": 100, "height": 100, "imageType": "asset", "imageUrl": "assets/images/mobile.jpg", "fit": "cover" }, { "type": "text", "text": "Smartphones", "style": { "fontSize": 10 } }] },
+                    { "type": "column", "children": [{ "type": "image", "width": 100, "height": 100, "imageType": "asset", "src": "assets/images/mobile.jpg", "fit": "cover" }, { "type": "text", "data": "Smartphones", "style": { "fontSize": 10 } }] },
                     { "type": "sizedBox", "width": 12 },
-                    { "type": "column", "children": [{ "type": "image", "width": 100, "height": 100, "imageType": "asset", "imageUrl": "assets/images/tv.jpg", "fit": "cover" }, { "type": "text", "text": "Smart TV", "style": { "fontSize": 10 } }] },
+                    { "type": "column", "children": [{ "type": "image", "width": 100, "height": 100, "imageType": "asset", "src": "assets/images/tv.jpg", "fit": "cover" }, { "type": "text", "data": "Smart TV", "style": { "fontSize": 10 } }] },
                     { "type": "sizedBox", "width": 12 },
-                    { "type": "column", "children": [{ "type": "image", "width": 100, "height": 100, "imageType": "asset", "imageUrl": "assets/images/refrigerator.jpg", "fit": "cover" }, { "type": "text", "text": "Refrigerator", "style": { "fontSize": 10 } }] },
+                    { "type": "column", "children": [{ "type": "image", "width": 100, "height": 100, "imageType": "asset", "src": "assets/images/refrigerator.jpg", "fit": "cover" }, { "type": "text", "data": "Refrigerator", "style": { "fontSize": 10 } }] },
                     { "type": "sizedBox", "width": 12 },
-                    { "type": "column", "children": [{ "type": "image", "width": 100, "height": 100, "imageType": "asset", "imageUrl": "assets/images/ac_emi.jpg", "fit": "cover" }, { "type": "text", "text": "Air Conditioner", "style": { "fontSize": 10 } }] }
+                    { "type": "column", "children": [{ "type": "image", "width": 100, "height": 100, "imageType": "asset", "src": "assets/images/ac_emi.jpg", "fit": "cover" }, { "type": "text", "data": "Air Conditioner", "style": { "fontSize": 10 } }] }
                   ]
                 }
               }
@@ -149,7 +149,7 @@
                 "type": "row",
                 "mainAxisAlignment": "spaceBetween",
                 "children": [
-                  { "type": "text", "text": "Features and benefits", "style": { "fontSize": 14, "fontWeight": "w500" } },
+                  { "type": "text", "data": "Features and benefits", "style": { "fontSize": 14, "fontWeight": "w500" } },
                   { "type": "icon", "icon": "keyboard_arrow_down" }
                 ]
               },
@@ -158,7 +158,7 @@
                 "type": "row",
                 "mainAxisAlignment": "spaceBetween",
                 "children": [
-                  { "type": "text", "text": "Eligibility criteria and documents", "style": { "fontSize": 14, "fontWeight": "w500" } },
+                  { "type": "text", "data": "Eligibility criteria and documents", "style": { "fontSize": 14, "fontWeight": "w500" } },
                   { "type": "icon", "icon": "keyboard_arrow_down" }
                 ]
               }
@@ -172,7 +172,7 @@
             "type": "column",
             "crossAxisAlignment": "start",
             "children": [
-              { "type": "text", "text": "How to apply for the Insta EMI Card", "style": { "fontSize": 16, "fontWeight": "bold" } },
+              { "type": "text", "data": "Apply for Insta EMI Card", "style": { "fontSize": 16, "fontWeight": "bold" } },
               {
                 "type": "container",
                 "margin": { "top": 12 },
@@ -183,7 +183,7 @@
                   "type": "stack",
                   "alignment": "center",
                   "children": [
-                    { "type": "image", "imageType": "asset", "imageUrl": "assets/images/banner4.jpg", "fit": "cover", "width": "infinity", "height": 200 },
+                    { "type": "image", "imageType": "asset", "src": "assets/images/banner5.jpg", "fit": "cover", "width": "infinity", "height": 200 },
                     { "type": "icon", "icon": "play_circle_filled", "size": 60, "color": "#FF6B35" }
                   ]
                 }
@@ -200,18 +200,18 @@
               {
                 "type": "row",
                 "children": [
-                  { "type": "container", "width": 24, "height": 24, "decoration": { "color": "#757575", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "text": "1", "style": { "color": "#FFFFFF", "fontSize": 12 } } } },
+                  { "type": "container", "width": 24, "height": 24, "decoration": { "color": "#757575", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "1", "style": { "color": "#FFFFFF", "fontSize": 12 } } } },
                   { "type": "sizedBox", "width": 12 },
-                  { "type": "expanded", "child": { "type": "text", "text": "Enter your 10-digit mobile number and click on 'GET IT NOW'", "style": { "fontSize": 13 } } }
+                  { "type": "expanded", "child": { "type": "text", "data": "Enter your 10-digit mobile number and click on 'GET IT NOW'", "style": { "fontSize": 13 } } }
                 ]
               },
               { "type": "sizedBox", "height": 16 },
               {
                 "type": "row",
                 "children": [
-                  { "type": "container", "width": 24, "height": 24, "decoration": { "color": "#757575", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "text": "2", "style": { "color": "#FFFFFF", "fontSize": 12 } } } },
+                  { "type": "container", "width": 24, "height": 24, "decoration": { "color": "#757575", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "2", "style": { "color": "#FFFFFF", "fontSize": 12 } } } },
                   { "type": "sizedBox", "width": 12 },
-                  { "type": "expanded", "child": { "type": "text", "text": "Enter the OTP and submit.", "style": { "fontSize": 13 } } }
+                  { "type": "expanded", "child": { "type": "text", "data": "Enter the OTP and submit.", "style": { "fontSize": 13 } } }
                 ]
               }
             ]
