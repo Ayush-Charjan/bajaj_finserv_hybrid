@@ -17,7 +17,8 @@ class _FlexiDrawdownScreenState extends State<FlexiDrawdownScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Drawdown Funds', style: TextStyle(color: Colors.white, fontSize: 16)),
+        title: const Text('Drawdown Funds',
+            style: TextStyle(color: Colors.white, fontSize: 16)),
         backgroundColor: AppColors.primary,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
@@ -26,23 +27,32 @@ class _FlexiDrawdownScreenState extends State<FlexiDrawdownScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Enter Drawdown Amount', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            const Text('Enter Drawdown Amount',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
-            Text('Available to withdraw: ₹${_availableLimit.toStringAsFixed(0)}', style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
+            Text(
+                'Available to withdraw: ₹${_availableLimit.toStringAsFixed(0)}',
+                style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
             const SizedBox(height: 24),
             TextField(
               controller: _amountController,
               keyboardType: TextInputType.number,
-              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.primary),
+              style: const TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primary),
               decoration: InputDecoration(
                 prefixText: '₹ ',
                 hintText: '0',
-                enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300)),
-                focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primary, width: 2)),
+                enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade300)),
+                focusedBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.primary, width: 2)),
               ),
             ),
             const SizedBox(height: 32),
-            const Text('Select Bank Account', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+            const Text('Select Bank Account',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
             const SizedBox(height: 12),
             Container(
               padding: const EdgeInsets.all(16),
@@ -58,8 +68,11 @@ class _FlexiDrawdownScreenState extends State<FlexiDrawdownScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('HDFC BANK - XXXX1234', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                        Text('Savings Account', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                        Text('HDFC BANK - XXXX1234',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        Text('Savings Account',
+                            style: TextStyle(color: Colors.grey, fontSize: 12)),
                       ],
                     ),
                   ),
@@ -73,10 +86,15 @@ class _FlexiDrawdownScreenState extends State<FlexiDrawdownScreen> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                   _showSuccess();
+                  _showSuccess();
                 },
-                style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
-                child: const Text('WITHDRAW FUNDS', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8))),
+                child: const Text('WITHDRAW FUNDS',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold)),
               ),
             ),
             const SizedBox(height: 20),
@@ -94,8 +112,10 @@ class _FlexiDrawdownScreenState extends State<FlexiDrawdownScreen> {
   }
 
   void _showSuccess() {
-    final amount = _amountController.text.isEmpty ? '0' : _amountController.text;
-    final transactionId = 'TXN${DateTime.now().millisecondsSinceEpoch.toString().substring(7)}';
+    final amount =
+        _amountController.text.isEmpty ? '0' : _amountController.text;
+    final transactionId =
+        'TXN${DateTime.now().millisecondsSinceEpoch.toString().substring(7)}';
 
     showModalBottomSheet(
       context: context,
@@ -112,37 +132,42 @@ class _FlexiDrawdownScreenState extends State<FlexiDrawdownScreen> {
           children: [
             const Icon(Icons.check_circle, color: Colors.green, size: 70),
             const SizedBox(height: 16),
-            const Text('Withdrawal Successful', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const Text('Withdrawal Successful',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
-            Text('₹$amount', style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.primary)),
+            Text('₹$amount',
+                style: const TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primary)),
             const SizedBox(height: 24),
             const Divider(),
             _buildReceiptRow('Transaction ID', transactionId),
-            _buildReceiptRow('Date', '24 Aug 2025, 02:30 PM'),
+            _buildReceiptRow('Date', '30 JUN 2026, 02:30 PM'),
             _buildReceiptRow('Sent to', 'HDFC Bank - XXXX1234'),
             _buildReceiptRow('Status', 'Success', valueColor: Colors.green),
             const Spacer(),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('SHARE'),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context); // Close sheet
-                      Navigator.pop(context); // Back to dashboard
-                    },
-                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
-                    child: const Text('DONE', style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Expanded(
+            //       child: OutlinedButton(
+            //         onPressed: () {},
+            //         child: const Text('SHARE'),
+            //       ),
+            //     ),
+            //     const SizedBox(width: 12),
+            //     Expanded(
+            //       child: ElevatedButton(
+            //         onPressed: () {
+            //           Navigator.pop(context); // Close sheet
+            //           Navigator.pop(context); // Back to dashboard
+            //         },
+            //         style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+            //         child: const Text('DONE', style: TextStyle(color: Colors.white)),
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),
@@ -156,7 +181,11 @@ class _FlexiDrawdownScreenState extends State<FlexiDrawdownScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(label, style: const TextStyle(color: Colors.grey, fontSize: 13)),
-          Text(value, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: valueColor ?? Colors.black)),
+          Text(value,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                  color: valueColor ?? Colors.black)),
         ],
       ),
     );
