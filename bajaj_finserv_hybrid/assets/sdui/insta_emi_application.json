@@ -8,12 +8,14 @@
     "title": { "type": "text", "data": "Complete Application", "style": { "color": "#FFFFFF", "fontSize": 18, "fontWeight": "bold" } }
   },
   "body": {
-    "type": "singleChildScrollView",
-    "padding": { "top": 22, "left": 16, "right": 16, "bottom": 48 },
+    "type": "form",
     "child": {
-      "type": "column",
-      "crossAxisAlignment": "start",
-      "children": [
+      "type": "singleChildScrollView",
+      "padding": { "top": 22, "left": 16, "right": 16, "bottom": 48 },
+      "child": {
+        "type": "column",
+        "crossAxisAlignment": "start",
+        "children": [
         { "type": "text", "data": "Step 2 of 3", "style": { "fontSize": 12, "fontWeight": "bold", "color": "#FF6B35" } },
         { "type": "sizedBox", "height": 8 },
         { "type": "linearProgressIndicator", "value": 0.66, "minHeight": 7, "backgroundColor": "#DCE4EC", "color": "#FF6B35" },
@@ -115,17 +117,16 @@
             "type": "elevatedButton",
             "style": { "backgroundColor": "#FF6B35", "shape": { "type": "roundedRectangle", "borderRadius": 6 } },
             "onPressed": {
-              "actionType": "showSnackBar",
-              "backgroundColor": "#16834B",
-              "behavior": "floating",
-              "content": { "type": "text", "data": "Details saved. Continue with OTP verification.", "style": { "color": "#FFFFFF", "fontWeight": "bold" } }
+              "actionType": "printFormData",
+              "ids": ["fullName", "mobile", "pan", "dob", "employment", "income", "city"]
             },
             "child": { "type": "text", "data": "VERIFY AND CONTINUE", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#FFFFFF" } }
           }
         },
         { "type": "sizedBox", "height": 14 },
         { "type": "text", "data": "Your information is encrypted and handled securely.", "textAlign": "center", "style": { "fontSize": 11, "color": "#64748B" } }
-      ]
+        ]
+      }
     }
   }
 }

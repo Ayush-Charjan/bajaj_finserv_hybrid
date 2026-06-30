@@ -69,7 +69,7 @@
                   "type": "elevatedButton",
                   "style": { "backgroundColor": "#FF6B35", "shape": { "type": "roundedRectangle", "borderRadius": 6 } },
                   "onPressed": {
-                    "actionType": "navigate",
+                    "actionType": "navigateWithLoader",
                     "navigationStyle": "push",
                     "request": {
                       "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/insta_emi_offer_details.json?v=1",

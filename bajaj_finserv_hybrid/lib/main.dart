@@ -9,9 +9,16 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:stac/stac.dart';
 import 'screens/stac_emi_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Stac.initialize();
+
+  await Stac.initialize(
+    actionParsers: const [
+      NavigateWithLoaderActionParser(),
+      PrintFormDataActionParser(),
+    ],
+  );
+
   runApp(const HybridShellApp());
 }
 
@@ -63,7 +70,9 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
 
     // Check if running in a native shell to auto-login
     final queryParams = Uri.base.queryParameters;
-    final isShell = queryParams['nativeShell'] == 'true' || queryParams['embedded'] == 'true';
+    final isShell =
+        queryParams['nativeShell'] == 'true' ||
+        queryParams['embedded'] == 'true';
     if (isShell) {
       _isNativeLoggedIn = true;
       _initializeMobileWebView();
@@ -462,10 +471,10 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
           onScanTap: _openQRScanner,
           onMenuTap: () => _loadPwaTab(4),
           onEmiTap: () {
-            Navigator.push(
+            debugPrint('--- [HybridHomeScreen] EMI Button Clicked ---');
+            Navigator.of(
               context,
-              MaterialPageRoute(builder: (_) => const StacEmiScreen()),
-            );
+            ).push(MaterialPageRoute(builder: (_) => const StacEmiScreen()));
           },
         ),
         bottomNavigationBar: _NativeBottomNavBar(
@@ -532,7 +541,7 @@ class _NativeTopSearchBar extends StatelessWidget
   final VoidCallback onEmiTap;
 
   @override
-  Size get preferredSize => const Size.fromHeight(120);
+  Size get preferredSize => const Size.fromHeight(130);
 
   @override
   Widget build(BuildContext context) {
@@ -575,21 +584,19 @@ class _NativeTopSearchBar extends StatelessWidget
                     ),
                   ),
                   const Spacer(),
-                  GestureDetector(
+                  InkWell(
                     onTap: () {
-                      debugPrint('--- EMI BUTTON TAPPED (GD) ---');
+                      debugPrint('--- [TopBar] EMI Button Pressed ---');
                       onEmiTap();
                     },
-                    behavior: HitTestBehavior.opaque,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 8,
+                        horizontal: 10,
+                        vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.yellow, width: 1.5),
+                        border: Border.all(color: Colors.yellow, width: 1.2),
                         borderRadius: BorderRadius.circular(4),
-                        color: Colors.white.withOpacity(0.05),
                       ),
                       child: const Text(
                         'EMI',
