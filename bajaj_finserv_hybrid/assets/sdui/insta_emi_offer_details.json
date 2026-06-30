@@ -1,0 +1,175 @@
+{
+  "type": "scaffold",
+  "backgroundColor": "#F5F7FA",
+  "appBar": {
+    "type": "appBar",
+    "backgroundColor": "#002A54",
+    "foregroundColor": "#FFFFFF",
+    "title": { "type": "text", "data": "Your Insta EMI Offer", "style": { "color": "#FFFFFF", "fontSize": 18, "fontWeight": "bold" } }
+  },
+  "body": {
+    "type": "singleChildScrollView",
+    "padding": { "bottom": 40 },
+    "child": {
+      "type": "column",
+      "crossAxisAlignment": "start",
+      "children": [
+        {
+          "type": "container",
+          "padding": { "top": 28, "left": 20, "right": 20, "bottom": 28 },
+          "decoration": { "color": "#002A54" },
+          "child": {
+            "type": "column",
+            "crossAxisAlignment": "start",
+            "children": [
+              { "type": "text", "data": "Congratulations!", "style": { "fontSize": 16, "color": "#B9D9F2" } },
+              { "type": "sizedBox", "height": 10 },
+              { "type": "text", "data": "You are eligible for up to", "style": { "fontSize": 14, "color": "#FFFFFF" } },
+              { "type": "sizedBox", "height": 8 },
+              { "type": "text", "data": "Rs. 3,00,000", "style": { "fontSize": 34, "fontWeight": "bold", "color": "#FFFFFF" } },
+              { "type": "sizedBox", "height": 12 },
+              { "type": "text", "data": "Offer ID: IEC-300K-0626 | Valid until 15 Jul 2026", "style": { "fontSize": 11, "color": "#B9D9F2" } }
+            ]
+          }
+        },
+        {
+          "type": "container",
+          "margin": { "top": 22, "left": 16, "right": 16, "bottom": 22 },
+          "padding": { "all": 20 },
+          "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#DCE4EC", "width": 1 } },
+          "child": {
+            "type": "column",
+            "crossAxisAlignment": "start",
+            "children": [
+              { "type": "text", "data": "Offer summary", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
+              { "type": "sizedBox", "height": 18 },
+              { "type": "row", "mainAxisAlignment": "spaceBetween", "children": [{ "type": "text", "data": "Card limit", "style": { "fontSize": 13, "color": "#64748B" } }, { "type": "text", "data": "Rs. 3,00,000", "style": { "fontSize": 14, "fontWeight": "bold" } }] },
+              { "type": "divider", "height": 28 },
+              { "type": "row", "mainAxisAlignment": "spaceBetween", "children": [{ "type": "text", "data": "Joining fee", "style": { "fontSize": 13, "color": "#64748B" } }, { "type": "text", "data": "Rs. 530", "style": { "fontSize": 14, "fontWeight": "bold" } }] },
+              { "type": "divider", "height": 28 },
+              { "type": "row", "mainAxisAlignment": "spaceBetween", "children": [{ "type": "text", "data": "Annual fee", "style": { "fontSize": 13, "color": "#64748B" } }, { "type": "text", "data": "Zero", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#16834B" } }] },
+              { "type": "divider", "height": 28 },
+              { "type": "row", "mainAxisAlignment": "spaceBetween", "children": [{ "type": "text", "data": "Available tenure", "style": { "fontSize": 13, "color": "#64748B" } }, { "type": "text", "data": "3 to 60 months", "style": { "fontSize": 14, "fontWeight": "bold" } }] }
+            ]
+          }
+        },
+        {
+          "type": "container",
+          "padding": { "top": 22, "left": 16, "right": 16, "bottom": 26 },
+          "decoration": { "color": "#FFFFFF" },
+          "child": {
+            "type": "column",
+            "crossAxisAlignment": "start",
+            "children": [
+              { "type": "text", "data": "Benefits included", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
+              { "type": "sizedBox", "height": 20 },
+              { "type": "row", "children": [{ "type": "icon", "icon": "check_circle", "color": "#16834B", "size": 22 }, { "type": "sizedBox", "width": 12 }, { "type": "expanded", "child": { "type": "text", "data": "No-cost EMI offers on selected products and brands", "style": { "fontSize": 14 } } }] },
+              { "type": "sizedBox", "height": 18 },
+              { "type": "row", "children": [{ "type": "icon", "icon": "check_circle", "color": "#16834B", "size": 22 }, { "type": "sizedBox", "width": 12 }, { "type": "expanded", "child": { "type": "text", "data": "Pre-approved loan limit available after activation", "style": { "fontSize": 14 } } }] },
+              { "type": "sizedBox", "height": 18 },
+              { "type": "row", "children": [{ "type": "icon", "icon": "check_circle", "color": "#16834B", "size": 22 }, { "type": "sizedBox", "width": 12 }, { "type": "expanded", "child": { "type": "text", "data": "Digital card access through the Bajaj Finserv app", "style": { "fontSize": 14 } } }] },
+              { "type": "sizedBox", "height": 18 },
+              { "type": "row", "children": [{ "type": "icon", "icon": "check_circle", "color": "#16834B", "size": 22 }, { "type": "sizedBox", "width": 12 }, { "type": "expanded", "child": { "type": "text", "data": "Exclusive partner discounts and seasonal offers", "style": { "fontSize": 14 } } }] }
+            ]
+          }
+        },
+        {
+          "type": "container",
+          "margin": { "top": 22, "left": 16, "right": 16, "bottom": 22 },
+          "padding": { "all": 20 },
+          "decoration": { "color": "#FFF7F2", "borderRadius": 8 },
+          "child": {
+            "type": "column",
+            "crossAxisAlignment": "start",
+            "children": [
+              { "type": "text", "data": "Eligibility criteria", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
+              { "type": "sizedBox", "height": 16 },
+              { "type": "text", "data": "- Indian resident aged between 21 and 65 years", "style": { "fontSize": 13, "color": "#334155" } },
+              { "type": "sizedBox", "height": 12 },
+              { "type": "text", "data": "- Regular source of income with active bank account", "style": { "fontSize": 13, "color": "#334155" } },
+              { "type": "sizedBox", "height": 12 },
+              { "type": "text", "data": "- Valid PAN and Aadhaar linked to your mobile number", "style": { "fontSize": 13, "color": "#334155" } },
+              { "type": "sizedBox", "height": 12 },
+              { "type": "text", "data": "- Final approval is subject to internal credit policy", "style": { "fontSize": 13, "color": "#334155" } }
+            ]
+          }
+        },
+        {
+          "type": "container",
+          "margin": { "left": 16, "right": 16, "bottom": 22 },
+          "padding": { "all": 20 },
+          "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#E2E8F0", "width": 1 } },
+          "child": {
+            "type": "column",
+            "crossAxisAlignment": "start",
+            "children": [
+              { "type": "text", "data": "Keep these ready", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
+              { "type": "sizedBox", "height": 16 },
+              { "type": "row", "children": [{ "type": "icon", "icon": "badge", "color": "#1B73B9", "size": 22 }, { "type": "sizedBox", "width": 12 }, { "type": "text", "data": "PAN card details", "style": { "fontSize": 14 } }] },
+              { "type": "sizedBox", "height": 16 },
+              { "type": "row", "children": [{ "type": "icon", "icon": "fingerprint", "color": "#1B73B9", "size": 22 }, { "type": "sizedBox", "width": 12 }, { "type": "text", "data": "Aadhaar-linked mobile number", "style": { "fontSize": 14 } }] },
+              { "type": "sizedBox", "height": 16 },
+              { "type": "row", "children": [{ "type": "icon", "icon": "account_balance", "color": "#1B73B9", "size": 22 }, { "type": "sizedBox", "width": 12 }, { "type": "text", "data": "Bank account and IFSC details", "style": { "fontSize": 14 } }] }
+            ]
+          }
+        },
+        {
+          "type": "container",
+          "margin": { "left": 16, "right": 16, "bottom": 22 },
+          "padding": { "all": 20 },
+          "decoration": { "color": "#EAF3FA", "borderRadius": 8 },
+          "child": {
+            "type": "column",
+            "crossAxisAlignment": "start",
+            "children": [
+              { "type": "text", "data": "Example repayment", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
+              { "type": "sizedBox", "height": 12 },
+              { "type": "text", "data": "For a purchase of Rs. 60,000 over 12 months:", "style": { "fontSize": 13, "color": "#334155" } },
+              { "type": "sizedBox", "height": 16 },
+              { "type": "row", "mainAxisAlignment": "spaceBetween", "children": [{ "type": "text", "data": "Approx. monthly EMI", "style": { "fontSize": 13 } }, { "type": "text", "data": "Rs. 5,000", "style": { "fontSize": 16, "fontWeight": "bold", "color": "#002A54" } }] },
+              { "type": "sizedBox", "height": 10 },
+              { "type": "text", "data": "Actual EMI and charges depend on the product, merchant, and selected plan.", "style": { "fontSize": 11, "color": "#64748B" } }
+            ]
+          }
+        },
+        {
+          "type": "container",
+          "margin": { "left": 16, "right": 16, "bottom": 22 },
+          "padding": { "all": 18 },
+          "decoration": { "color": "#FFFFFF", "borderRadius": 8 },
+          "child": {
+            "type": "column",
+            "crossAxisAlignment": "start",
+            "children": [
+              { "type": "text", "data": "Important information", "style": { "fontSize": 16, "fontWeight": "bold", "color": "#162B49" } },
+              { "type": "sizedBox", "height": 12 },
+              { "type": "text", "data": "The displayed limit is indicative. Your final approved limit may change after verification. Product availability, tenure, processing charges, and foreclosure terms vary by transaction.", "style": { "fontSize": 12, "color": "#64748B" } }
+            ]
+          }
+        },
+        {
+          "type": "container",
+          "padding": { "left": 16, "right": 16, "bottom": 36 },
+          "child": {
+            "type": "sizedBox",
+            "width": "infinity",
+            "height": 52,
+            "child": {
+              "type": "elevatedButton",
+              "style": { "backgroundColor": "#FF6B35", "shape": { "type": "roundedRectangle", "borderRadius": 6 } },
+              "onPressed": {
+                "actionType": "navigate",
+                "navigationStyle": "push",
+                "request": {
+                  "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/insta_emi_application.json?v=1",
+                  "method": "get"
+                }
+              },
+              "child": { "type": "text", "data": "CONTINUE APPLICATION", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#FFFFFF" } }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
