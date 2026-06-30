@@ -114,7 +114,7 @@
             "children": [
               {
                 "type": "text",
-                "data": "Shop for 1 million+ products on Easy EMIs",
+                "data": "Shop for 1 trillion+ products on Easy EMIs",
                 "style": { "fontSize": 16, "fontWeight": "bold" }
               },
               {
@@ -158,7 +158,7 @@
                 "type": "row",
                 "mainAxisAlignment": "spaceBetween",
                 "children": [
-                  { "type": "text", "data": "Eligibility criteria and documents", "style": { "fontSize": 14, "fontWeight": "w500" } },
+                  { "type": "text", "data": "Check ur eligibility", "style": { "fontSize": 14, "fontWeight": "w500" } },
                   { "type": "icon", "icon": "keyboard_arrow_down" }
                 ]
               }
@@ -172,7 +172,7 @@
             "type": "column",
             "crossAxisAlignment": "start",
             "children": [
-              { "type": "text", "data": "Apply for Insta EMI Card", "style": { "fontSize": 16, "fontWeight": "bold" } },
+              { "type": "text", "data": "Apply for Insta EMI Card for ur better buying experience", "style": { "fontSize": 16, "fontWeight": "bold" } },
               {
                 "type": "container",
                 "margin": { "top": 12 },
@@ -183,8 +183,8 @@
                   "type": "stack",
                   "alignment": "center",
                   "children": [
-                    { "type": "image", "imageType": "asset", "src": "assets/images/banner1.jpg", "fit": "cover", "width": "infinity", "height": 200 },
-                    { "type": "icon", "icon": "star", "size": 60, "color": "#FF6B35" }
+                    { "type": "image", "imageType": "asset", "src": "assets/images/banner4.jpg", "fit": "cover", "width": "infinity", "height": 200 },
+                    { "type": "icon", "icon": "play_circle_filled", "size": 60, "color": "#FF6B35" }
                   ]
                 }
               }
