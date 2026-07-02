@@ -51,7 +51,7 @@
       { "type": "sizedBox", "height": 16 },
       {
         "type": "text",
-        "data": "You are eligible for up to",
+        "data": "You arent eligible for up to",
         "style": {
           "fontSize": 14,
           "fontWeight": "medium",
