@@ -15,73 +15,24 @@
       "crossAxisAlignment": "start",
       "children": [
         {
-  "type": "container",
-  "width": "infinity",
-  "padding": { "top": 32, "left": 24, "right": 24, "bottom": 32 },
-  "decoration": {
-    "gradient": {
-      "type": "linear",
-      "begin": "topLeft",
-      "end": "bottomRight",
-      "colors": ["#061D3A", "#002A54"]
-    }
-  },
-  "child": {
-    "type": "column",
-    "crossAxisAlignment": "start",
-    "children": [
-      {
-        "type": "container",
-        "padding": { "top": 4, "left": 10, "right": 10, "bottom": 4 },
-        "decoration": {
-          "color": "#1AFFFFFF",
-          "borderRadius": 12
-        },
-        "child": {
-          "type": "text",
-          "data": "CONGRATULATIONS!",
-          "style": {
-            "fontSize": 11,
-            "fontWeight": "bold",
-            "letterSpacing": 1.2,
-            "color": "#94C9FF"
+          "type": "container",
+          "width": "infinity",
+          "padding": { "top": 28, "left": 20, "right": 20, "bottom": 28 },
+          "decoration": { "color": "#002A54" },
+          "child": {
+            "type": "column",
+            "crossAxisAlignment": "start",
+            "children": [
+              { "type": "text", "data": "Congratulations!", "style": { "fontSize": 16, "color": "#B9D9F2" } },
+              { "type": "sizedBox", "height": 10 },
+              { "type": "text", "data": "You are  super eligible for up to", "style": { "fontSize": 14, "color": "#FFFFFF" } },
+              { "type": "sizedBox", "height": 8 },
+              { "type": "text", "data": "Rs. 3,00,000", "style": { "fontSize": 34, "fontWeight": "bold", "color": "#FFFFFF" } },
+              { "type": "sizedBox", "height": 12 },
+              { "type": "text", "data": "Offer ID: IEC-300K-0626 | Valid until 15 Jul 2026", "style": { "fontSize": 11, "color": "#B9D9F2" } }
+            ]
           }
-        }
-      },
-      { "type": "sizedBox", "height": 16 },
-      {
-        "type": "text",
-        "data": "You arent eligible for up to",
-        "style": {
-          "fontSize": 14,
-          "fontWeight": "medium",
-          "color": "#DCEBFA"
-        }
-      },
-      { "type": "sizedBox", "height": 4 },
-      {
-        "type": "text",
-        "data": "Rs. 3,00,000",
-        "style": {
-          "fontSize": 36,
-          "fontWeight": "black",
-          "color": "#FFFFFF",
-          "letterSpacing": -0.5
-        }
-      },
-      { "type": "sizedBox", "height": 16 },
-      {
-        "type": "text",
-        "data": "Offer ID: IEC-300K-0626  |  Valid until 15 Jul 2026",
-        "style": {
-          "fontSize": 11,
-          "fontWeight": "normal",
-          "color": "#A3C9EE"
-        }
-      }
-    ]
-  }
-},
+        },
         {
           "type": "container",
           "margin": { "top": 22, "left": 16, "right": 16, "bottom": 22 },
