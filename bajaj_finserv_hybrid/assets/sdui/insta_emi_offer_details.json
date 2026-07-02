@@ -16,6 +16,7 @@
       "children": [
         {
           "type": "container",
+          "width": "infinity",
           "padding": { "top": 28, "left": 20, "right": 20, "bottom": 28 },
           "decoration": { "color": "#002A54" },
           "child": {
