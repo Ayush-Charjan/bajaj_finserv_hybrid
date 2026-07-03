@@ -43,11 +43,11 @@
                 "child": {
                   "type": "column",
                   "children": [
-                    { "type": "text", "data": "Your were always qualified for card loan offer", "textAlign": "center", "style": { "fontSize": 15, "color": "#334155" } },
+                    { "type": "text", "data": "Your pre-qualified card loan offer", "textAlign": "center", "style": { "fontSize": 15, "color": "#334155" } },
                     { "type": "sizedBox", "height": 18 },
                     { "type": "text", "data": "Up to Rs. 3,00,000", "textAlign": "center", "style": { "fontSize": 32, "fontWeight": "bold", "color": "#002A54" } },
                     { "type": "sizedBox", "height": 12 },
-                    { "type": "text", "data": "Use across 1.5 trillion partner stores and leading online brands", "textAlign": "center", "style": { "fontSize": 12, "color": "#64748B" } },
+                    { "type": "text", "data": "Use across 1.5 lakh+ partner stores and leading online brands", "textAlign": "center", "style": { "fontSize": 12, "color": "#64748B" } },
                     { "type": "sizedBox", "height": 22 },
                     {
                       "type": "row",
