@@ -630,6 +630,7 @@ class _NativeTopSearchBar extends StatelessWidget
                       CircleAvatar(radius: 3, backgroundColor: Colors.orange),
                     ],
                   ),
+                  ),
                   const SizedBox(width: 8),
                   InkWell(
                     onTap: onCartTap,
