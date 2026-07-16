@@ -476,6 +476,9 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
               context,
             ).push(MaterialPageRoute(builder: (_) => const StacEmiScreen()));
           },
+          onPrimeTap: () => Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const StacMandateScreen()),
+          ),
         ),
         bottomNavigationBar: _NativeBottomNavBar(
           selectedIndex: _selectedBottomNavIndex,
@@ -530,6 +533,7 @@ class _NativeTopSearchBar extends StatelessWidget
     required this.onScanTap,
     required this.onMenuTap,
     required this.onEmiTap,
+    required this.onPrimeTap,
   });
 
   final TextEditingController controller;
@@ -539,6 +543,7 @@ class _NativeTopSearchBar extends StatelessWidget
   final VoidCallback onScanTap;
   final VoidCallback onMenuTap;
   final VoidCallback onEmiTap;
+  final VoidCallback onPrimeTap;
 
   @override
   Size get preferredSize => const Size.fromHeight(130);
@@ -609,7 +614,9 @@ class _NativeTopSearchBar extends StatelessWidget
                     ),
                   ),
                   const SizedBox(width: 8),
-                  const Row(
+                  InkWell(
+                    onTap: onPrimeTap,
+                    child: const Row(
                     children: [
                       Text(
                         'prime',
@@ -759,7 +766,7 @@ class _NativeBottomNavBar extends StatelessWidget {
         const BottomNavigationBarItem(
           icon: Icon(Icons.person_outline),
           activeIcon: Icon(Icons.person),
-          label: 'Profile',
+          label: 'Service',
         ),
         BottomNavigationBarItem(
           icon: Container(

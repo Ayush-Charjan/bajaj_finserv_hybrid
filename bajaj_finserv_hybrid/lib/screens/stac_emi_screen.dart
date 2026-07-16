@@ -101,11 +101,7 @@ class PrintFormDataActionParser extends StacActionParser<Map<String, dynamic>> {
         'title': {
           'type': 'text',
           'data': 'Application Preview',
-          'style': {
-            'color': '#FFFFFF',
-            'fontSize': 18,
-            'fontWeight': 'bold',
-          },
+          'style': {'color': '#FFFFFF', 'fontSize': 18, 'fontWeight': 'bold'},
         },
       },
       'body': {
@@ -231,6 +227,46 @@ class StacEmiScreen extends StatefulWidget {
 
   @override
   State<StacEmiScreen> createState() => _StacEmiScreenState();
+}
+
+/// Remote SDUI mandate page. Keep its content in the GitHub-hosted JSON asset.
+class StacMandateScreen extends StatefulWidget {
+  const StacMandateScreen({super.key});
+
+  @override
+  State<StacMandateScreen> createState() => _StacMandateScreenState();
+}
+
+class _StacMandateScreenState extends State<StacMandateScreen> {
+  late final Future<Map<String, dynamic>> _layout = _loadLayout();
+
+  Future<Map<String, dynamic>> _loadLayout() async {
+    final uri = Uri.parse(
+      'https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/mandate.json?v=${DateTime.now().millisecondsSinceEpoch}',
+    );
+    final client = HttpClient();
+    try {
+      final response = await (await client.getUrl(uri)).close();
+      if (response.statusCode != HttpStatus.ok) {
+        throw HttpException('HTTP ${response.statusCode}', uri: uri);
+      }
+      return Map<String, dynamic>.from(
+        jsonDecode(await response.transform(utf8.decoder).join()) as Map,
+      );
+    } finally {
+      client.close();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => FutureBuilder<Map<String, dynamic>>(
+    future: _layout,
+    builder: (context, snapshot) {
+      if (snapshot.hasError) return _EmiSduiErrorScreen(error: snapshot.error);
+      if (!snapshot.hasData) return const EmiSduiLoadingScreen();
+      return Stac.fromJson(snapshot.data!, context) ?? const SizedBox();
+    },
+  );
 }
 
 class _StacEmiScreenState extends State<StacEmiScreen> {

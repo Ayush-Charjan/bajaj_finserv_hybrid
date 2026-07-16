@@ -14,6 +14,7 @@ void main() {
     'assets/sdui/insta_emi_card.json',
     'assets/sdui/insta_emi_offer_details.json',
     'assets/sdui/insta_emi_application.json',
+    'assets/sdui/mandate.json',
   ]) {
     testWidgets('$asset renders', (tester) async {
       final source = await rootBundle.loadString(asset);

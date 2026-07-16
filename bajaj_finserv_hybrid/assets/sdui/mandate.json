@@ -1,0 +1,38 @@
+{
+  "type": "scaffold",
+  "backgroundColor": "#FFFFFF",
+  "appBar": {"type":"appBar","backgroundColor":"#002A54","foregroundColor":"#FFFFFF","title":{"type":"text","data":"Change bank account","style":{"color":"#FFFFFF","fontSize":16,"fontWeight":"bold"}}},
+  "body": {"type":"singleChildScrollView","child":{"type":"column","crossAxisAlignment":"start","children":[
+    {"type":"container","padding":{"top":10,"left":16,"right":16,"bottom":12},"child":{"type":"column","crossAxisAlignment":"start","children":[
+      {"type":"text","data":"Change Bank & Manage Auto Pay","style":{"fontSize":16,"fontWeight":"bold","color":"#202124"}},
+      {"type":"sizedBox","height":4},{"type":"text","data":"Change your EMI bank account linked to your loan repayments or update your UPI AutoPay mandates all in one place.","style":{"fontSize":11,"color":"#555555"}}
+    ]}},
+    {"type":"container","height":1,"decoration":{"color":"#DCE3EC"}},
+    {"type":"container","height":42,"padding":{"left":16},"child":{"type":"listView","scrollDirection":"horizontal","children":[
+      {"type":"container","padding":{"top":12,"left":4,"right":10},"decoration":{"border":{"color":"#FF6B00","width":2}},"child":{"type":"text","data":"Loans","style":{"fontSize":12,"color":"#FF6B00","fontWeight":"bold"}}},
+      {"type":"container","padding":{"top":12,"left":14,"right":14},"child":{"type":"text","data":"Systematic Deposit Plans","style":{"fontSize":12,"color":"#4D4D4D"}}}
+    ]}},
+    {"type":"container","margin":{"left":12,"right":12,"bottom":10},"padding":{"all":10},"decoration":{"color":"#FFFFFF","border":{"color":"#D9DEE5","width":1},"borderRadius":4},"child":{"type":"column","crossAxisAlignment":"start","children":[
+      {"type":"row","children":[{"type":"expanded","child":{"type":"text","data":"Salaried Hybrid Flexi Loan","style":{"fontSize":12,"fontWeight":"bold"}}},{"type":"text","data":"Instalment Amount\n₹10,345","textAlign":"right","style":{"fontSize":9,"color":"#333333"}}}]},
+      {"type":"text","data":"Loan Account Number: 84P-0P?572363","style":{"fontSize":8,"color":"#666666"}},{"type":"sizedBox","height":8},
+      {"type":"row","children":[{"type":"text","data":"Instalments Paid: 5","style":{"fontSize":10}},{"type":"expanded","child":{"type":"text","data":"Instalments Pending: 12","textAlign":"right","style":{"fontSize":10}}}]},{"type":"divider","height":16},
+      {"type":"row","children":[{"type":"icon","icon":"account_balance","color":"#0060A9","size":16},{"type":"sizedBox","width":6},{"type":"text","data":"State bank of india","style":{"fontSize":11,"fontWeight":"bold"}},{"type":"expanded","child":{"type":"text","data":"CHANGE","textAlign":"right","style":{"fontSize":10,"fontWeight":"bold","color":"#FF6B00"}}}]},
+      {"type":"sizedBox","height":8},{"type":"row","children":[{"type":"expanded","child":{"type":"text","data":"Account Number\n****7169\n\nUMRN\n198736490","style":{"fontSize":9,"color":"#333333"}}},{"type":"expanded","child":{"type":"text","data":"IFSC\nHDFC0000882","style":{"fontSize":9,"color":"#333333"}}}]}
+    ]}},
+    {"type":"container","margin":{"left":12,"right":12,"bottom":14},"padding":{"all":12},"decoration":{"color":"#F5F7FF","borderRadius":4},"child":{"type":"column","crossAxisAlignment":"start","children":[
+      {"type":"text","data":"Please note:","style":{"fontSize":12,"fontWeight":"bold"}},{"type":"sizedBox","height":8},
+      {"type":"text","data":"• If your current instalment is under presentation, then the Auto Payment change request will apply to your subsequent month's instalment and not the present one.\n\n• If you wish to change the draw-down bank account for your Flexi Loan withdrawals, click here.\n\n• Your bank may charge a one-time account registration fee.","style":{"fontSize":10,"color":"#555555"}}
+    ]}},
+    {"type":"container","margin":{"left":12,"right":12,"bottom":16},"padding":{"top":18,"left":16,"right":16,"bottom":16},"decoration":{"color":"#0879D8","borderRadius":10},"child":{"type":"column","children":[
+      {"type":"text","data":"Get Bajaj Pay UPI","style":{"fontSize":26,"fontWeight":"bold","color":"#FFFFFF"}},{"type":"sizedBox","height":10},{"type":"text","data":"Transfer, pay, recharge & shop securely","style":{"fontSize":14,"color":"#DCEEFF"}},{"type":"sizedBox","height":18},
+      {"type":"container","padding":{"top":11,"left":24,"right":24,"bottom":11},"decoration":{"color":"#FFFFFF","borderRadius":24},"child":{"type":"text","data":"Create UPI ID","style":{"fontSize":16,"fontWeight":"bold","color":"#0879D8"}}},{"type":"sizedBox","height":20},{"type":"text","data":"Seamless transfers","style":{"fontSize":18,"fontWeight":"bold","color":"#FFFFFF"}},{"type":"sizedBox","height":5},{"type":"text","data":"Pay instantly, anytime, anywhere","style":{"fontSize":12,"color":"#DCEEFF"}},
+      {"type":"sizedBox","height":12},{"type":"image","src":"","imageType":"network","width":110,"height":90,"fit":"contain"}
+    ]}},
+    {"type":"container","padding":{"left":10,"right":10,"bottom":24},"child":{"type":"column","crossAxisAlignment":"start","children":[
+      {"type":"text","data":"Frequently asked questions","style":{"fontSize":18,"fontWeight":"bold"}},{"type":"sizedBox","height":10},
+      {"type":"container","height":35,"child":{"type":"listView","scrollDirection":"horizontal","children":[{"type":"container","padding":{"top":7,"left":12,"right":12,"bottom":7},"decoration":{"border":{"color":"#0057A8","width":1},"borderRadius":7},"child":{"type":"text","data":"All","style":{"fontSize":12,"color":"#003E78"}}},{"type":"sizedBox","width":16},{"type":"text","data":"Meaning & Benefits     Registration     Fees & Charges","style":{"fontSize":12,"color":"#555555"}}]}},
+      {"type":"container","padding":{"all":10},"decoration":{"color":"#F1F3FA","borderRadius":4},"child":{"type":"column","crossAxisAlignment":"start","children":[{"type":"row","children":[{"type":"expanded","child":{"type":"text","data":"What is Auto Payment or mandate registration?","style":{"fontSize":12,"fontWeight":"bold"}}},{"type":"icon","icon":"keyboard_arrow_up","size":20}]},{"type":"sizedBox","height":8},{"type":"text","data":"Auto Payment or mandate registration is a digital method you can use to automate payments for your instalments, SIPs, bill payments, etc. Through Auto Payment, your bank receives a standing instruction to debit the instalment amount only on the due date.","style":{"fontSize":12,"color":"#333333"}}]}},
+      {"type":"sizedBox","height":7},{"type":"container","padding":{"all":10},"decoration":{"color":"#F1F3FA","borderRadius":4},"child":{"type":"row","children":[{"type":"expanded","child":{"type":"text","data":"How to set up Auto Payment or register e-mandate?","style":{"fontSize":12,"fontWeight":"bold"}}},{"type":"icon","icon":"keyboard_arrow_down"}]}},{"type":"sizedBox","height":7},{"type":"container","padding":{"all":10},"decoration":{"color":"#F1F3FA","borderRadius":4},"child":{"type":"row","children":[{"type":"expanded","child":{"type":"text","data":"What are the benefits of setting up Auto Payment?","style":{"fontSize":12,"fontWeight":"bold"}}},{"type":"icon","icon":"keyboard_arrow_down"}]}},{"type":"sizedBox","height":7},{"type":"container","padding":{"all":10},"decoration":{"color":"#F1F3FA","borderRadius":4},"child":{"type":"row","children":[{"type":"expanded","child":{"type":"text","data":"What are the different methods of setting up Auto Payment?","style":{"fontSize":12,"fontWeight":"bold"}}},{"type":"icon","icon":"keyboard_arrow_down"}]}},{"type":"sizedBox","height":14},{"type":"text","data":"⌄  Show more","textAlign":"center","style":{"fontSize":12,"fontWeight":"bold","color":"#FF6B00"}}
+    ]}}
+  ]}}
+}
