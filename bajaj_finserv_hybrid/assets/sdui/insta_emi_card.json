@@ -1,191 +1,2410 @@
-{
-  "type": "scaffold",
-  "backgroundColor": "#F5F7FA",
-  "body": {
-    "type": "singleChildScrollView",
-    "padding": { "bottom": 40 },
-    "child": {
-      "type": "column",
-      "crossAxisAlignment": "start",
-      "children": [
-        {
-          "type": "container",
-          "width": "infinity",
-          "padding": { "top": 34, "left": 16, "right": 16, "bottom": 30 },
-          "decoration": { "color": "#002A54" },
-          "child": {
-            "type": "column",
-            "crossAxisAlignment": "start",
-            "children": [
-              { "type": "text", "data": "Insta EMI Card", "style": { "fontSize": 24, "fontWeight": "bold", "color": "#FFFFFF" } },
-              { "type": "sizedBox", "height": 8 },
-              { "type": "text", "data": "100% digital process | Instant approval | No annual fee", "style": { "fontSize": 13, "color": "#DCEAF7" } },
-              { "type": "sizedBox", "height": 14 },
-              {
-                "type": "row",
-                "children": [
-                  { "type": "text", "data": "4.7", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#FFFFFF" } },
-                  { "type": "sizedBox", "width": 6 },
-                  { "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
-                  { "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
-                  { "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
-                  { "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
-                  { "type": "icon", "icon": "star_half", "color": "#F7B500", "size": 18 },
-                  { "type": "sizedBox", "width": 8 },
-                  { "type": "text", "data": "681 reviews", "style": { "fontSize": 12, "color": "#DCEAF7" } }
-                ]
+[
+  {
+    "type": "scaffold",
+    "backgroundColor": "#FFFFFF",
+    "appBar": {
+      "type": "appBar",
+      "backgroundColor": "#002A54",
+      "foregroundColor": "#FFFFFF",
+      "leading": {
+        "type": "iconButton",
+        "icon": "arrow_back",
+        "action": "BACK_CLICKED"
+      },
+      "title": {
+        "type": "text",
+        "data": "Change bank account",
+        "style": {
+          "color": "#FFFFFF",
+          "fontSize": 16,
+          "fontWeight": "bold"
+        }
+      }
+    },
+    "body": {
+      "type": "singleChildScrollView",
+      "child": {
+        "type": "column",
+        "crossAxisAlignment": "start",
+        "children": [
+          {
+            "type": "container",
+            "padding": {
+              "top": 16,
+              "left": 16,
+              "right": 16,
+              "bottom": 16
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "text",
+                  "data": "Change Bank & Manage Auto Pay",
+                  "style": {
+                    "fontSize": 18,
+                    "fontWeight": "bold",
+                    "color": "#202124"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 4
+                },
+                {
+                  "type": "text",
+                  "data": "Change the bank account linked to your loan repayments or update your UPI AutoPay mandates all in one place",
+                  "style": {
+                    "fontSize": 11,
+                    "color": "#555555",
+                    "fontStyle": "italic"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "height": 1,
+            "decoration": {
+              "color": "#DCE3EC"
+            }
+          },
+          {
+            "type": "container",
+            "height": 40,
+            "padding": {
+              "left": 16
+            },
+            "child": {
+              "type": "row",
+              "children": [
+                {
+                  "type": "container",
+                  "padding": {
+                    "top": 8,
+                    "bottom": 8
+                  },
+                  "decoration": {
+                    "border": {
+                      "bottom": {
+                        "color": "#FF6B00",
+                        "width": 2
+                      }
+                    }
+                  },
+                  "child": {
+                    "type": "text",
+                    "data": "Loans",
+                    "style": {
+                      "fontSize": 13,
+                      "color": "#FF6B00",
+                      "fontWeight": "bold"
+                    }
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "width": 20
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "top": 8,
+                    "bottom": 8
+                  },
+                  "child": {
+                    "type": "text",
+                    "data": "Systematic Deposit Plans",
+                    "style": {
+                      "fontSize": 13,
+                      "color": "#002A54"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "margin": {
+              "top": 12,
+              "left": 16,
+              "right": 16,
+              "bottom": 6
+            },
+            "padding": {
+              "all": 14
+            },
+            "decoration": {
+              "color": "#FFFFFF",
+              "border": {
+                "color": "#D9DEE5",
+                "width": 1
               },
-              {
-                "type": "container",
-                "margin": { "top": 24 },
-                "padding": { "top": 30, "left": 22, "right": 22, "bottom": 24 },
-                "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#D8E1EA", "width": 1 } },
-                "child": {
-                  "type": "column",
+              "borderRadius": 6
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "row",
                   "children": [
-                    { "type": "text", "data": "Your pre-qualified card loan offer", "textAlign": "center", "style": { "fontSize": 15, "color": "#334155" } },
-                    { "type": "sizedBox", "height": 18 },
-                    { "type": "text", "data": "Up to Rs. 5,00,000", "textAlign": "center", "style": { "fontSize": 32, "fontWeight": "bold", "color": "#002A54" } },
-                    { "type": "sizedBox", "height": 12 },
-                    { "type": "text", "data": "Use across 1.5 lakh+ partner stores and leading online brands", "textAlign": "center", "style": { "fontSize": 12, "color": "#64748B" } },
-                    { "type": "sizedBox", "height": 22 },
                     {
-                      "type": "row",
-                      "mainAxisAlignment": "center",
-                      "children": [
-                        { "type": "icon", "icon": "check_circle_outline", "size": 18, "color": "#16834B" },
-                        { "type": "sizedBox", "width": 8 },
-                        { "type": "expanded", "child": { "type": "text", "data": "Checking your offer will not affect your credit score", "textAlign": "center", "style": { "fontSize": 11, "color": "#334155" } } }
-                      ]
-                    },
-                    { "type": "sizedBox", "height": 24 },
-                    {
-                      "type": "sizedBox",
-                      "width": "infinity",
-                      "height": 50,
+                      "type": "expanded",
                       "child": {
-                        "type": "elevatedButton",
-                        "style": { "backgroundColor": "#FF6B35", "shape": { "type": "roundedRectangle", "borderRadius": 6 } },
-                        "onPressed": {
-                          "actionType": "navigateWithLoader",
-                          "navigationStyle": "push",
-                          "request": {
-                            "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/insta_emi_offer_details.json?v=1",
-                            "method": "get"
+                        "type": "column",
+                        "crossAxisAlignment": "start",
+                        "children": [
+                          {
+                            "type": "text",
+                            "data": "Salaried Hybrid Flexi Loan",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "text",
+                            "data": "Loan Account Number: SH402PSP726362",
+                            "style": {
+                              "fontSize": 10,
+                              "color": "#757575"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "column",
+                      "crossAxisAlignment": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "data": "Instalment Amount",
+                          "style": {
+                            "fontSize": 9,
+                            "color": "#757575"
                           }
                         },
-                        "child": { "type": "text", "data": "CHECK OFFER", "style": { "color": "#FFFFFF", "fontWeight": "bold", "fontSize": 15 } }
+                        {
+                          "type": "text",
+                          "data": "₹10,345",
+                          "style": {
+                            "fontSize": 13,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "text",
+                      "data": "Instalments Paid: 10",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    },
+                    {
+                      "type": "spacer"
+                    },
+                    {
+                      "type": "text",
+                      "data": "Instalments Pending: 20",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
                       }
                     }
                   ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F8F9FA",
+                    "borderRadius": 6
+                  },
+                  "child": {
+                    "type": "column",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "icon",
+                            "icon": "account_balance",
+                            "color": "#0057A8",
+                            "size": 18
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 8
+                          },
+                          {
+                            "type": "text",
+                            "data": "State bank of india",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "spacer"
+                          },
+                          {
+                            "type": "button",
+                            "label": "CHANGE",
+                            "backgroundColor": "#FF8A00",
+                            "foregroundColor": "#FFFFFF",
+                            "action": "CHANGE_BANK_LOAN_1"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "Account Number",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "****7169",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 40
+                          },
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "IFSC",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "HDFC0000882",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 }
-              }
-            ]
-          }
-        },
-        {
-          "type": "container",
-          "padding": { "left": 16, "right": 16, "bottom": 28 },
-          "child": {
-            "type": "column",
-            "crossAxisAlignment": "start",
-            "children": [
-              { "type": "text", "data": "Shop on easy EMIs", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
-              { "type": "sizedBox", "height": 6 },
-              { "type": "text", "data": "Explore popular categories with flexible repayment options", "style": { "fontSize": 12, "color": "#64748B" } },
-              {
-                "type": "container",
-                "height": 160,
-                "margin": { "top": 18 },
-                "child": {
-                  "type": "listView",
-                  "scrollDirection": "horizontal",
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "margin": {
+              "top": 6,
+              "left": 16,
+              "right": 16,
+              "bottom": 6
+            },
+            "padding": {
+              "all": 14
+            },
+            "decoration": {
+              "color": "#FFFFFF",
+              "border": {
+                "color": "#D9DEE5",
+                "width": 1
+              },
+              "borderRadius": 6
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "row",
                   "children": [
-                    { "type": "column", "children": [{ "type": "image", "width": 112, "height": 112, "imageType": "asset", "src": "assets/images/mobile.jpg", "fit": "cover" }, { "type": "sizedBox", "height": 8 }, { "type": "text", "data": "Smartphones", "style": { "fontSize": 12, "fontWeight": "w500" } }] },
-                    { "type": "sizedBox", "width": 18 },
-                    { "type": "column", "children": [{ "type": "image", "width": 112, "height": 112, "imageType": "asset", "src": "assets/images/tv.jpg", "fit": "cover" }, { "type": "sizedBox", "height": 8 }, { "type": "text", "data": "Smart TVs", "style": { "fontSize": 12, "fontWeight": "w500" } }] },
-                    { "type": "sizedBox", "width": 18 },
-                    { "type": "column", "children": [{ "type": "image", "width": 112, "height": 112, "imageType": "asset", "src": "assets/images/refrigerator.jpg", "fit": "cover" }, { "type": "sizedBox", "height": 8 }, { "type": "text", "data": "Refrigerators", "style": { "fontSize": 12, "fontWeight": "w500" } }] },
-                    { "type": "sizedBox", "width": 18 },
-                    { "type": "column", "children": [{ "type": "image", "width": 112, "height": 112, "imageType": "asset", "src": "assets/images/ac_emi.jpg", "fit": "cover" }, { "type": "sizedBox", "height": 8 }, { "type": "text", "data": "Air Conditioners", "style": { "fontSize": 12, "fontWeight": "w500" } }] }
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "column",
+                        "crossAxisAlignment": "start",
+                        "children": [
+                          {
+                            "type": "text",
+                            "data": "Salaried Hybrid Flexi Loan",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "text",
+                            "data": "Loan Account Number: SH402PSP726362",
+                            "style": {
+                              "fontSize": 10,
+                              "color": "#757575"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "column",
+                      "crossAxisAlignment": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "data": "Instalment Amount",
+                          "style": {
+                            "fontSize": 9,
+                            "color": "#757575"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "data": "₹14,000",
+                          "style": {
+                            "fontSize": 13,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      ]
+                    }
                   ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "text",
+                      "data": "Instalments Paid: 10",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    },
+                    {
+                      "type": "spacer"
+                    },
+                    {
+                      "type": "text",
+                      "data": "Instalments Pending: 20",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F8F9FA",
+                    "borderRadius": 6
+                  },
+                  "child": {
+                    "type": "column",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "icon",
+                            "icon": "account_balance",
+                            "color": "#0057A8",
+                            "size": 18
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 8
+                          },
+                          {
+                            "type": "text",
+                            "data": "State bank of india",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "spacer"
+                          },
+                          {
+                            "type": "button",
+                            "label": "CHANGE",
+                            "backgroundColor": "#FF8A00",
+                            "foregroundColor": "#FFFFFF",
+                            "action": "CHANGE_BANK_LOAN_2"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "Account Number",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "****7169",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 40
+                          },
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "IFSC",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "SBIN7783649",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "text",
+                        "data": "UMRN ⓘ",
+                        "style": {
+                          "fontSize": 10,
+                          "color": "#757575"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "data": "198736490",
+                        "style": {
+                          "fontSize": 11,
+                          "fontWeight": "bold",
+                          "color": "#202124"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "margin": {
+              "top": 6,
+              "left": 16,
+              "right": 16,
+              "bottom": 12
+            },
+            "padding": {
+              "all": 14
+            },
+            "decoration": {
+              "color": "#FFFFFF",
+              "border": {
+                "color": "#D9DEE5",
+                "width": 1
+              },
+              "borderRadius": 6
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "column",
+                        "crossAxisAlignment": "start",
+                        "children": [
+                          {
+                            "type": "text",
+                            "data": "Business Term Loan",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "text",
+                            "data": "Loan Account Number: CD402PSP727390",
+                            "style": {
+                              "fontSize": 10,
+                              "color": "#757575"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "column",
+                      "crossAxisAlignment": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "data": "Instalment Amount",
+                          "style": {
+                            "fontSize": 9,
+                            "color": "#757575"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "data": "₹10,345",
+                          "style": {
+                            "fontSize": 13,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "text",
+                      "data": "Instalments Paid: 5",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    },
+                    {
+                      "type": "spacer"
+                    },
+                    {
+                      "type": "text",
+                      "data": "Instalments Pending: 12",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F8F9FA",
+                    "borderRadius": 6
+                  },
+                  "child": {
+                    "type": "column",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "icon",
+                            "icon": "account_balance",
+                            "color": "#0057A8",
+                            "size": 18
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 8
+                          },
+                          {
+                            "type": "text",
+                            "data": "State Bank of India",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "spacer"
+                          },
+                          {
+                            "type": "text",
+                            "data": "View only ⓘ",
+                            "style": {
+                              "fontSize": 11,
+                              "color": "#FF8A00",
+                              "fontWeight": "bold"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "Account Number",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "****1823",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 40
+                          },
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "IFSC",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "SBIN7783649",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "text",
+                        "data": "UMRN ⓘ",
+                        "style": {
+                          "fontSize": 10,
+                          "color": "#757575"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "data": "198736490",
+                        "style": {
+                          "fontSize": 11,
+                          "fontWeight": "bold",
+                          "color": "#202124"
+                        }
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 12
+                      },
+                      {
+                        "type": "container",
+                        "padding": {
+                          "all": 8
+                        },
+                        "decoration": {
+                          "color": "#FFF3CD",
+                          "borderRadius": 4
+                        },
+                        "child": {
+                          "type": "row",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "icon": "warning",
+                              "color": "#FFC107",
+                              "size": 16
+                            },
+                            {
+                              "type": "sizedBox",
+                              "width": 8
+                            },
+                            {
+                              "type": "text",
+                              "data": "You are a co-borrower for this loan",
+                              "style": {
+                                "fontSize": 11,
+                                "color": "#856404"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "alignment": "center",
+            "padding": {
+              "top": 8,
+              "bottom": 16
+            },
+            "child": {
+              "type": "gestureDetector",
+              "action": "SHOW_MORE_LOANS",
+              "child": {
+                "type": "text",
+                "data": "∨  Show more",
+                "style": {
+                  "fontSize": 13,
+                  "fontWeight": "bold",
+                  "color": "#FF6B00"
                 }
               }
-            ]
+            }
+          },
+          {
+            "type": "container",
+            "padding": {
+              "all": 16
+            },
+            "decoration": {
+              "color": "#EEEEEE"
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "text",
+                  "data": "Please note:",
+                  "style": {
+                    "fontSize": 13,
+                    "fontWeight": "bold",
+                    "color": "#202124"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 8
+                },
+                {
+                  "type": "text",
+                  "data": "• If your current instalment is under presentation, then the Auto Payment change request will apply to your subsequent month's instalment and not the present one.\n\n• If you wish to change the draw-down bank account for your Flexi Loan withdrawals, click here.\n\n• Your bank may charge a one-time account registration fee.",
+                  "style": {
+                    "fontSize": 11,
+                    "color": "#555555"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "margin": {
+              "all": 16
+            },
+            "padding": {
+              "all": 20
+            },
+            "decoration": {
+              "color": "#007BFF",
+              "borderRadius": 12
+            },
+            "child": {
+              "type": "column",
+              "children": [
+                {
+                  "type": "text",
+                  "data": "Get Bajaj Pay UPI",
+                  "style": {
+                    "fontSize": 24,
+                    "fontWeight": "bold",
+                    "color": "#FFFFFF"
+                  }
+                },
+                {
+                  "type": "text",
+                  "data": "Transfer, pay, recharge & shop securely",
+                  "style": {
+                    "fontSize": 12,
+                    "color": "#E0E0E0"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 16
+                },
+                {
+                  "type": "button",
+                  "label": "Create UPI ID",
+                  "backgroundColor": "#FFFFFF",
+                  "foregroundColor": "#007BFF",
+                  "action": "CREATE_UPI_ID_CLICKED"
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 16
+                },
+                {
+                  "type": "text",
+                  "data": "Seamless transfers",
+                  "style": {
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                    "color": "#FFFFFF"
+                  }
+                },
+                {
+                  "type": "text",
+                  "data": "Pay instantly, anytime, anywhere",
+                  "style": {
+                    "fontSize": 11,
+                    "color": "#E0E0E0"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "image",
+                  "src": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
+                  "imageType": "network",
+                  "width": 110,
+                  "height": 90,
+                  "fit": "contain"
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "padding": {
+              "all": 16
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "text",
+                  "data": "Frequently asked questions",
+                  "style": {
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                    "color": "#202124"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F1F3FA",
+                    "borderRadius": 8
+                  },
+                  "child": {
+                    "type": "column",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "expanded",
+                            "child": {
+                              "type": "text",
+                              "data": "What is Auto Payment or mandate registration?",
+                              "style": {
+                                "fontSize": 12,
+                                "fontWeight": "bold",
+                                "color": "#202124"
+                              }
+                            }
+                          },
+                          {
+                            "type": "icon",
+                            "icon": "keyboard_arrow_up"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 8
+                      },
+                      {
+                        "type": "text",
+                        "data": "Auto Payment or mandate registration is a digital method you can use to automate payments for your instalments, SIPs, bill payments, etc. Through Auto Payment, your bank receives a standing instruction to debit the instalment amount automatically on the due date.",
+                        "style": {
+                          "fontSize": 12,
+                          "color": "#555555"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 8
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F1F3FA",
+                    "borderRadius": 8
+                  },
+                  "child": {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "expanded",
+                        "child": {
+                          "type": "text",
+                          "data": "How to set up Auto Payment or register e-mandate?",
+                          "style": {
+                            "fontSize": 12,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      },
+                      {
+                        "type": "icon",
+                        "icon": "keyboard_arrow_down"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 8
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F1F3FA",
+                    "borderRadius": 8
+                  },
+                  "child": {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "expanded",
+                        "child": {
+                          "type": "text",
+                          "data": "What are the benefits of setting up Auto Payment?",
+                          "style": {
+                            "fontSize": 12,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      },
+                      {
+                        "type": "icon",
+                        "icon": "keyboard_arrow_down"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 8
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F1F3FA",
+                    "borderRadius": 8
+                  },
+                  "child": {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "expanded",
+                        "child": {
+                          "type": "text",
+                          "data": "What are the different methods of setting up Auto Payment?",
+                          "style": {
+                            "fontSize": 12,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      },
+                      {
+                        "type": "icon",
+                        "icon": "keyboard_arrow_down"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "container",
+                  "alignment": "center",
+                  "padding": {
+                    "top": 16,
+                    "bottom": 8
+                  },
+                  "child": {
+                    "type": "gestureDetector",
+                    "action": "SHOW_MORE_FAQS",
+                    "child": {
+                      "type": "text",
+                      "data": "∨  Show more",
+                      "style": {
+                        "fontSize": 13,
+                        "fontWeight": "bold",
+                        "color": "#FF6B00"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
           }
-        },
-        {
-          "type": "container",
-          "padding": { "top": 24, "left": 16, "right": 16, "bottom": 24 },
-          "decoration": { "color": "#FFFFFF" },
-          "child": {
-            "type": "column",
-            "crossAxisAlignment": "start",
-            "children": [
-              { "type": "text", "data": "Why choose the Insta EMI Card?", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
-              { "type": "sizedBox", "height": 20 },
-              { "type": "row", "children": [{ "type": "icon", "icon": "bolt", "color": "#FF6B35", "size": 24 }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Instant digital approval with a simple online process", "style": { "fontSize": 14, "color": "#334155" } } }] },
-              { "type": "sizedBox", "height": 20 },
-              { "type": "row", "children": [{ "type": "icon", "icon": "calendar_month", "color": "#1B73B9", "size": 24 }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Flexible EMI tenures from 3 to 60 months", "style": { "fontSize": 14, "color": "#334155" } } }] },
-              { "type": "sizedBox", "height": 20 },
-              { "type": "row", "children": [{ "type": "icon", "icon": "storefront", "color": "#16834B", "size": 24 }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Accepted at 1.5 lakh+ stores across 4,000+ cities", "style": { "fontSize": 14, "color": "#334155" } } }] },
-              { "type": "sizedBox", "height": 20 },
-              { "type": "row", "children": [{ "type": "icon", "icon": "verified_user", "color": "#7A4FB7", "size": 24 }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Secure transactions and transparent charges", "style": { "fontSize": 14, "color": "#334155" } } }] }
-            ]
-          }
-        },
-        {
-          "type": "container",
-          "margin": { "top": 24, "left": 16, "right": 16, "bottom": 28 },
-          "child": {
-            "type": "column",
-            "crossAxisAlignment": "start",
-            "children": [
-              { "type": "text", "data": "How to get your card", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
-              { "type": "sizedBox", "height": 18 },
-              { "type": "row", "children": [{ "type": "container", "width": 32, "height": 32, "decoration": { "color": "#002A54", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "1", "style": { "color": "#FFFFFF", "fontWeight": "bold" } } } }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Check your personalised pre-qualified offer", "style": { "fontSize": 14 } } }] },
-              { "type": "sizedBox", "height": 22 },
-              { "type": "row", "children": [{ "type": "container", "width": 32, "height": 32, "decoration": { "color": "#002A54", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "2", "style": { "color": "#FFFFFF", "fontWeight": "bold" } } } }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Verify your mobile number using OTP", "style": { "fontSize": 14 } } }] },
-              { "type": "sizedBox", "height": 22 },
-              { "type": "row", "children": [{ "type": "container", "width": 32, "height": 32, "decoration": { "color": "#002A54", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "3", "style": { "color": "#FFFFFF", "fontWeight": "bold" } } } }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Confirm PAN, address, and employment details", "style": { "fontSize": 14 } } }] },
-              { "type": "sizedBox", "height": 22 },
-              { "type": "row", "children": [{ "type": "container", "width": 32, "height": 32, "decoration": { "color": "#FF6B35", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "4", "style": { "color": "#FFFFFF", "fontWeight": "bold" } } } }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Pay the one-time joining fee and activate your card", "style": { "fontSize": 14 } } }] }
-            ]
-          }
-        },
-        {
-          "type": "container",
-          "margin": { "left": 16, "right": 16, "bottom": 24 },
-          "padding": { "all": 20 },
-          "decoration": { "color": "#EAF3FA", "borderRadius": 8 },
-          "child": {
-            "type": "column",
-            "crossAxisAlignment": "start",
-            "children": [
-              { "type": "text", "data": "Fees at a glance", "style": { "fontSize": 17, "fontWeight": "bold", "color": "#002A54" } },
-              { "type": "sizedBox", "height": 16 },
-              { "type": "row", "mainAxisAlignment": "spaceBetween", "children": [{ "type": "text", "data": "Joining fee", "style": { "fontSize": 13 } }, { "type": "text", "data": "Rs. 530 (incl. taxes)", "style": { "fontSize": 13, "fontWeight": "bold" } }] },
-              { "type": "divider", "height": 28 },
-              { "type": "row", "mainAxisAlignment": "spaceBetween", "children": [{ "type": "text", "data": "Annual fee", "style": { "fontSize": 13 } }, { "type": "text", "data": "Rs. 0", "style": { "fontSize": 13, "fontWeight": "bold", "color": "#16834B" } }] }
-            ]
-          }
-        },
-        {
-          "type": "container",
-          "margin": { "left": 16, "right": 16, "bottom": 32 },
-          "padding": { "all": 20 },
-          "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#E2E8F0", "width": 1 } },
-          "child": {
-            "type": "column",
-            "crossAxisAlignment": "start",
-            "children": [
-              { "type": "text", "data": "Need help?", "style": { "fontSize": 17, "fontWeight": "bold", "color": "#162B49" } },
-              { "type": "sizedBox", "height": 10 },
-              { "type": "text", "data": "Call 86980 10101 or visit the nearest Bajaj Finserv partner store.", "style": { "fontSize": 13, "color": "#64748B" } }
-            ]
-          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "scaffold",
+    "backgroundColor": "#FFFFFF",
+    "appBar": {
+      "type": "appBar",
+      "backgroundColor": "#002A54",
+      "foregroundColor": "#FFFFFF",
+      "leading": {
+        "type": "iconButton",
+        "icon": "arrow_back",
+        "action": "BACK_CLICKED"
+      },
+      "title": {
+        "type": "text",
+        "data": "Change bank account",
+        "style": {
+          "color": "#FFFFFF",
+          "fontSize": 16,
+          "fontWeight": "bold"
         }
-      ]
+      }
+    },
+    "body": {
+      "type": "singleChildScrollView",
+      "child": {
+        "type": "column",
+        "crossAxisAlignment": "start",
+        "children": [
+          {
+            "type": "container",
+            "padding": {
+              "top": 16,
+              "left": 16,
+              "right": 16,
+              "bottom": 16
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "text",
+                  "data": "Change Bank & Manage Auto Pay",
+                  "style": {
+                    "fontSize": 18,
+                    "fontWeight": "bold",
+                    "color": "#202124"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 4
+                },
+                {
+                  "type": "text",
+                  "data": "Change the bank account linked to your loan repayments or update your UPI AutoPay mandates all in one place",
+                  "style": {
+                    "fontSize": 11,
+                    "color": "#555555",
+                    "fontStyle": "italic"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "height": 1,
+            "decoration": {
+              "color": "#DCE3EC"
+            }
+          },
+          {
+            "type": "container",
+            "height": 40,
+            "padding": {
+              "left": 16
+            },
+            "child": {
+              "type": "row",
+              "children": [
+                {
+                  "type": "container",
+                  "padding": {
+                    "top": 8,
+                    "bottom": 8
+                  },
+                  "decoration": {
+                    "border": {
+                      "bottom": {
+                        "color": "#FF6B00",
+                        "width": 2
+                      }
+                    }
+                  },
+                  "child": {
+                    "type": "text",
+                    "data": "Loans",
+                    "style": {
+                      "fontSize": 13,
+                      "color": "#FF6B00",
+                      "fontWeight": "bold"
+                    }
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "width": 20
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "top": 8,
+                    "bottom": 8
+                  },
+                  "child": {
+                    "type": "text",
+                    "data": "Systematic Deposit Plans",
+                    "style": {
+                      "fontSize": 13,
+                      "color": "#002A54"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "margin": {
+              "top": 12,
+              "left": 16,
+              "right": 16,
+              "bottom": 6
+            },
+            "padding": {
+              "all": 14
+            },
+            "decoration": {
+              "color": "#FFFFFF",
+              "border": {
+                "color": "#D9DEE5",
+                "width": 1
+              },
+              "borderRadius": 6
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "column",
+                        "crossAxisAlignment": "start",
+                        "children": [
+                          {
+                            "type": "text",
+                            "data": "Salaried Hybrid Flexi Loan",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "text",
+                            "data": "Loan Account Number: SH402PSP726362",
+                            "style": {
+                              "fontSize": 10,
+                              "color": "#757575"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "column",
+                      "crossAxisAlignment": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "data": "Instalment Amount",
+                          "style": {
+                            "fontSize": 9,
+                            "color": "#757575"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "data": "₹10,345",
+                          "style": {
+                            "fontSize": 13,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "text",
+                      "data": "Instalments Paid: 10",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    },
+                    {
+                      "type": "spacer"
+                    },
+                    {
+                      "type": "text",
+                      "data": "Instalments Pending: 20",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F8F9FA",
+                    "borderRadius": 6
+                  },
+                  "child": {
+                    "type": "column",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "icon",
+                            "icon": "account_balance",
+                            "color": "#0057A8",
+                            "size": 18
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 8
+                          },
+                          {
+                            "type": "text",
+                            "data": "State bank of india",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "spacer"
+                          },
+                          {
+                            "type": "button",
+                            "label": "CHANGE",
+                            "backgroundColor": "#FF8A00",
+                            "foregroundColor": "#FFFFFF",
+                            "action": "CHANGE_BANK_LOAN_1"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "Account Number",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "****7169",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 40
+                          },
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "IFSC",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "HDFC0000882",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "margin": {
+              "top": 6,
+              "left": 16,
+              "right": 16,
+              "bottom": 6
+            },
+            "padding": {
+              "all": 14
+            },
+            "decoration": {
+              "color": "#FFFFFF",
+              "border": {
+                "color": "#D9DEE5",
+                "width": 1
+              },
+              "borderRadius": 6
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "column",
+                        "crossAxisAlignment": "start",
+                        "children": [
+                          {
+                            "type": "text",
+                            "data": "Salaried Hybrid Flexi Loan",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "text",
+                            "data": "Loan Account Number: SH402PSP726362",
+                            "style": {
+                              "fontSize": 10,
+                              "color": "#757575"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "column",
+                      "crossAxisAlignment": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "data": "Instalment Amount",
+                          "style": {
+                            "fontSize": 9,
+                            "color": "#757575"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "data": "₹14,000",
+                          "style": {
+                            "fontSize": 13,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "text",
+                      "data": "Instalments Paid: 10",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    },
+                    {
+                      "type": "spacer"
+                    },
+                    {
+                      "type": "text",
+                      "data": "Instalments Pending: 20",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F8F9FA",
+                    "borderRadius": 6
+                  },
+                  "child": {
+                    "type": "column",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "icon",
+                            "icon": "account_balance",
+                            "color": "#0057A8",
+                            "size": 18
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 8
+                          },
+                          {
+                            "type": "text",
+                            "data": "State bank of india",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "spacer"
+                          },
+                          {
+                            "type": "button",
+                            "label": "CHANGE",
+                            "backgroundColor": "#FF8A00",
+                            "foregroundColor": "#FFFFFF",
+                            "action": "CHANGE_BANK_LOAN_2"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "Account Number",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "****7169",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 40
+                          },
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "IFSC",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "SBIN7783649",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "text",
+                        "data": "UMRN ⓘ",
+                        "style": {
+                          "fontSize": 10,
+                          "color": "#757575"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "data": "198736490",
+                        "style": {
+                          "fontSize": 11,
+                          "fontWeight": "bold",
+                          "color": "#202124"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "margin": {
+              "top": 6,
+              "left": 16,
+              "right": 16,
+              "bottom": 12
+            },
+            "padding": {
+              "all": 14
+            },
+            "decoration": {
+              "color": "#FFFFFF",
+              "border": {
+                "color": "#D9DEE5",
+                "width": 1
+              },
+              "borderRadius": 6
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "column",
+                        "crossAxisAlignment": "start",
+                        "children": [
+                          {
+                            "type": "text",
+                            "data": "Business Term Loan",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "text",
+                            "data": "Loan Account Number: CD402PSP727390",
+                            "style": {
+                              "fontSize": 10,
+                              "color": "#757575"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "column",
+                      "crossAxisAlignment": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "data": "Instalment Amount",
+                          "style": {
+                            "fontSize": 9,
+                            "color": "#757575"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "data": "₹10,345",
+                          "style": {
+                            "fontSize": 13,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "text",
+                      "data": "Instalments Paid: 5",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    },
+                    {
+                      "type": "spacer"
+                    },
+                    {
+                      "type": "text",
+                      "data": "Instalments Pending: 12",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "#202124"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F8F9FA",
+                    "borderRadius": 6
+                  },
+                  "child": {
+                    "type": "column",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "icon",
+                            "icon": "account_balance",
+                            "color": "#0057A8",
+                            "size": 18
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 8
+                          },
+                          {
+                            "type": "text",
+                            "data": "State Bank of India",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#202124"
+                            }
+                          },
+                          {
+                            "type": "spacer"
+                          },
+                          {
+                            "type": "text",
+                            "data": "View only ⓘ",
+                            "style": {
+                              "fontSize": 11,
+                              "color": "#FF8A00",
+                              "fontWeight": "bold"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "Account Number",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "****1823",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "sizedBox",
+                            "width": 40
+                          },
+                          {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "IFSC",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "SBIN7783649",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 10
+                      },
+                      {
+                        "type": "text",
+                        "data": "UMRN ⓘ",
+                        "style": {
+                          "fontSize": 10,
+                          "color": "#757575"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "data": "198736490",
+                        "style": {
+                          "fontSize": 11,
+                          "fontWeight": "bold",
+                          "color": "#202124"
+                        }
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 12
+                      },
+                      {
+                        "type": "container",
+                        "padding": {
+                          "all": 8
+                        },
+                        "decoration": {
+                          "color": "#FFF3CD",
+                          "borderRadius": 4
+                        },
+                        "child": {
+                          "type": "row",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "icon": "warning",
+                              "color": "#FFC107",
+                              "size": 16
+                            },
+                            {
+                              "type": "sizedBox",
+                              "width": 8
+                            },
+                            {
+                              "type": "text",
+                              "data": "You are a co-borrower for this loan",
+                              "style": {
+                                "fontSize": 11,
+                                "color": "#856404"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "alignment": "center",
+            "padding": {
+              "top": 8,
+              "bottom": 16
+            },
+            "child": {
+              "type": "gestureDetector",
+              "action": "SHOW_MORE_LOANS",
+              "child": {
+                "type": "text",
+                "data": "∨  Show more",
+                "style": {
+                  "fontSize": 13,
+                  "fontWeight": "bold",
+                  "color": "#FF6B00"
+                }
+              }
+            }
+          },
+          {
+            "type": "container",
+            "padding": {
+              "all": 16
+            },
+            "decoration": {
+              "color": "#EEEEEE"
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "text",
+                  "data": "Please note:",
+                  "style": {
+                    "fontSize": 13,
+                    "fontWeight": "bold",
+                    "color": "#202124"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 8
+                },
+                {
+                  "type": "text",
+                  "data": "• If your current instalment is under presentation, then the Auto Payment change request will apply to your subsequent month's instalment and not the present one.\n\n• If you wish to change the draw-down bank account for your Flexi Loan withdrawals, click here.\n\n• Your bank may charge a one-time account registration fee.",
+                  "style": {
+                    "fontSize": 11,
+                    "color": "#555555"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "margin": {
+              "all": 16
+            },
+            "padding": {
+              "all": 20
+            },
+            "decoration": {
+              "color": "#007BFF",
+              "borderRadius": 12
+            },
+            "child": {
+              "type": "column",
+              "children": [
+                {
+                  "type": "text",
+                  "data": "Get Bajaj Pay UPI",
+                  "style": {
+                    "fontSize": 24,
+                    "fontWeight": "bold",
+                    "color": "#FFFFFF"
+                  }
+                },
+                {
+                  "type": "text",
+                  "data": "Transfer, pay, recharge & shop securely",
+                  "style": {
+                    "fontSize": 12,
+                    "color": "#E0E0E0"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 16
+                },
+                {
+                  "type": "button",
+                  "label": "Create UPI ID",
+                  "backgroundColor": "#FFFFFF",
+                  "foregroundColor": "#007BFF",
+                  "action": "CREATE_UPI_ID_CLICKED"
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 16
+                },
+                {
+                  "type": "text",
+                  "data": "Seamless transfers",
+                  "style": {
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                    "color": "#FFFFFF"
+                  }
+                },
+                {
+                  "type": "text",
+                  "data": "Pay instantly, anytime, anywhere",
+                  "style": {
+                    "fontSize": 11,
+                    "color": "#E0E0E0"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "image",
+                  "src": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
+                  "imageType": "network",
+                  "width": 110,
+                  "height": 90,
+                  "fit": "contain"
+                }
+              ]
+            }
+          },
+          {
+            "type": "container",
+            "padding": {
+              "all": 16
+            },
+            "child": {
+              "type": "column",
+              "crossAxisAlignment": "start",
+              "children": [
+                {
+                  "type": "text",
+                  "data": "Frequently asked questions",
+                  "style": {
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                    "color": "#202124"
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 12
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F1F3FA",
+                    "borderRadius": 8
+                  },
+                  "child": {
+                    "type": "column",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "expanded",
+                            "child": {
+                              "type": "text",
+                              "data": "What is Auto Payment or mandate registration?",
+                              "style": {
+                                "fontSize": 12,
+                                "fontWeight": "bold",
+                                "color": "#202124"
+                              }
+                            }
+                          },
+                          {
+                            "type": "icon",
+                            "icon": "keyboard_arrow_up"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 8
+                      },
+                      {
+                        "type": "text",
+                        "data": "Auto Payment or mandate registration is a digital method you can use to automate payments for your instalments, SIPs, bill payments, etc. Through Auto Payment, your bank receives a standing instruction to debit the instalment amount automatically on the due date.",
+                        "style": {
+                          "fontSize": 12,
+                          "color": "#555555"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 8
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F1F3FA",
+                    "borderRadius": 8
+                  },
+                  "child": {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "expanded",
+                        "child": {
+                          "type": "text",
+                          "data": "How to set up Auto Payment or register e-mandate?",
+                          "style": {
+                            "fontSize": 12,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      },
+                      {
+                        "type": "icon",
+                        "icon": "keyboard_arrow_down"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 8
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F1F3FA",
+                    "borderRadius": 8
+                  },
+                  "child": {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "expanded",
+                        "child": {
+                          "type": "text",
+                          "data": "What are the benefits of setting up Auto Payment?",
+                          "style": {
+                            "fontSize": 12,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      },
+                      {
+                        "type": "icon",
+                        "icon": "keyboard_arrow_down"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "sizedBox",
+                  "height": 8
+                },
+                {
+                  "type": "container",
+                  "padding": {
+                    "all": 12
+                  },
+                  "decoration": {
+                    "color": "#F1F3FA",
+                    "borderRadius": 8
+                  },
+                  "child": {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "expanded",
+                        "child": {
+                          "type": "text",
+                          "data": "What are the different methods of setting up Auto Payment?",
+                          "style": {
+                            "fontSize": 12,
+                            "fontWeight": "bold",
+                            "color": "#202124"
+                          }
+                        }
+                      },
+                      {
+                        "type": "icon",
+                        "icon": "keyboard_arrow_down"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "container",
+                  "alignment": "center",
+                  "padding": {
+                    "top": 16,
+                    "bottom": 8
+                  },
+                  "child": {
+                    "type": "gestureDetector",
+                    "action": "SHOW_MORE_FAQS",
+                    "child": {
+                      "type": "text",
+                      "data": "∨  Show more",
+                      "style": {
+                        "fontSize": 13,
+                        "fontWeight": "bold",
+                        "color": "#FF6B00"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
     }
   }
-}
+]
