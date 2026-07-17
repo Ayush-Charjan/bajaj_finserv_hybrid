@@ -1068,6 +1068,132 @@
                     }
                   ]
                 }
+              },
+              {
+                "type": "sizedBox",
+                "height": 8
+              },
+              {
+                "type": "container",
+                "padding": {
+                  "all": 12
+                },
+                "decoration": {
+                  "color": "#F1F3FA",
+                  "borderRadius": 8
+                },
+                "child": {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "text",
+                        "data": "How to set up Auto Payment or register e-mandate?",
+                        "style": {
+                          "fontSize": 12,
+                          "fontWeight": "bold",
+                          "color": "#202124"
+                        }
+                      }
+                    },
+                    {
+                      "type": "icon",
+                      "icon": "keyboard_arrow_down"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "sizedBox",
+                "height": 8
+              },
+              {
+                "type": "container",
+                "padding": {
+                  "all": 12
+                },
+                "decoration": {
+                  "color": "#F1F3FA",
+                  "borderRadius": 8
+                },
+                "child": {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "text",
+                        "data": "What are the benefits of setting up Auto Payment?",
+                        "style": {
+                          "fontSize": 12,
+                          "fontWeight": "bold",
+                          "color": "#202124"
+                        }
+                      }
+                    },
+                    {
+                      "type": "icon",
+                      "icon": "keyboard_arrow_down"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "sizedBox",
+                "height": 8
+              },
+              {
+                "type": "container",
+                "padding": {
+                  "all": 12
+                },
+                "decoration": {
+                  "color": "#F1F3FA",
+                  "borderRadius": 8
+                },
+                "child": {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "text",
+                        "data": "What are the different methods of setting up Auto Payment?",
+                        "style": {
+                          "fontSize": 12,
+                          "fontWeight": "bold",
+                          "color": "#202124"
+                        }
+                      }
+                    },
+                    {
+                      "type": "icon",
+                      "icon": "keyboard_arrow_down"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "container",
+                "alignment": "center",
+                "padding": {
+                  "top": 16,
+                  "bottom": 8
+                },
+                "child": {
+                  "type": "gestureDetector",
+                  "action": "SHOW_MORE_FAQS",
+                  "child": {
+                    "type": "text",
+                    "data": "∨  Show more",
+                    "style": {
+                      "fontSize": 13,
+                      "fontWeight": "bold",
+                      "color": "#FF6B00"
+                    }
+                  }
+                }
               }
             ]
           }
