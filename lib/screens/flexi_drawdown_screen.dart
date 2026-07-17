@@ -10,7 +10,7 @@ class FlexiDrawdownScreen extends StatefulWidget {
 
 class _FlexiDrawdownScreenState extends State<FlexiDrawdownScreen> {
   final _amountController = TextEditingController();
-  double _availableLimit = 350000;
+  final double _availableLimit = 350000;
 
   @override
   Widget build(BuildContext context) {

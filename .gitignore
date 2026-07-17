@@ -13,6 +13,7 @@
 **/build/
 *.iml
 .gradle/
+.gradle-home/
 local.properties
 **/GeneratedPluginRegistrant.java
 
@@ -28,3 +29,4 @@ bajaj_finserv_hybrid/build/
 # Misc
 .vercel
 node_modules/
+**/devtools_options.yaml

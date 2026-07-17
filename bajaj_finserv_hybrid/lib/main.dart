@@ -476,9 +476,9 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
               context,
             ).push(MaterialPageRoute(builder: (_) => const StacEmiScreen()));
           },
-          onPrimeTap: () => Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => const StacMandateScreen()),
-          ),
+          onPrimeTap: () => Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (_) => const StacMandateScreen())),
         ),
         bottomNavigationBar: _NativeBottomNavBar(
           selectedIndex: _selectedBottomNavIndex,
@@ -617,19 +617,19 @@ class _NativeTopSearchBar extends StatelessWidget
                   InkWell(
                     onTap: onPrimeTap,
                     child: const Row(
-                    children: [
-                      Text(
-                        'prime',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
+                      children: [
+                        Text(
+                          'MAND',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 3),
-                      CircleAvatar(radius: 3, backgroundColor: Colors.orange),
-                    ],
-                  ),
+                        SizedBox(width: 3),
+                        CircleAvatar(radius: 3, backgroundColor: Colors.orange),
+                      ],
+                    ),
                   ),
                   const SizedBox(width: 8),
                   InkWell(
