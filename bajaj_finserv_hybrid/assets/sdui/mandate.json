@@ -20,11 +20,9 @@
           "type": "container",
           "padding": { "top": 18, "left": 16, "right": 16, "bottom": 6 },
           "child": {
-            "type": "column",
-            "crossAxisAlignment": "start",
-            "children": [
-              { "type": "text", "data": "Change the bank account linked to your loan repayments or update your UPI AutoPay mandates all in one place", "style": { "fontSize": 13, "color": "#64748B" } }
-            ]
+            "type": "text",
+            "data": "Change the bank account linked to your loan repayments or update your UPI AutoPay mandates all in one place",
+            "style": { "fontSize": 13, "color": "#64748B" }
           }
         },
 
@@ -54,7 +52,7 @@
             "children": [
               {
                 "type": "row",
-                "mainAxisAlignment": "spaceBetween",
+                "crossAxisAlignment": "start",
                 "children": [
                   {
                     "type": "expanded",
@@ -62,12 +60,13 @@
                       "type": "column",
                       "crossAxisAlignment": "start",
                       "children": [
-                        { "type": "text", "data": "Salaried Hybrid Flexi Loan", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } },
+                        { "type": "text", "data": "Salaried Hybrid Flexi Loan", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }, "maxLines": 2 },
                         { "type": "sizedBox", "height": 4 },
-                        { "type": "text", "data": "Loan Account Number: SH402PSPT26352", "style": { "fontSize": 11, "color": "#64748B" } }
+                        { "type": "text", "data": "Loan Account Number: SH402PSPT26352", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
                       ]
                     }
                   },
+                  { "type": "sizedBox", "width": 12 },
                   {
                     "type": "column",
                     "crossAxisAlignment": "end",
@@ -90,43 +89,52 @@
               { "type": "divider", "height": 24 },
               {
                 "type": "row",
+                "crossAxisAlignment": "start",
+                "children": [
+                  { "type": "icon", "icon": "account_balance", "color": "#1B73B9", "size": 18 },
+                  { "type": "sizedBox", "width": 8 },
+                  {
+                    "type": "expanded",
+                    "child": {
+                      "type": "column",
+                      "crossAxisAlignment": "start",
+                      "children": [
+                        { "type": "text", "data": "State Bank of India", "style": { "fontSize": 13, "fontWeight": "bold" }, "maxLines": 1 },
+                        { "type": "text", "data": "Account Number: ****7169", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 },
+                        { "type": "text", "data": "IFSC: HDFC0000882", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                      ]
+                    }
+                  }
+                ]
+              },
+              { "type": "sizedBox", "height": 12 },
+              {
+                "type": "row",
                 "mainAxisAlignment": "spaceBetween",
+                "crossAxisAlignment": "center",
                 "children": [
                   {
                     "type": "row",
                     "children": [
-                      { "type": "icon", "icon": "account_balance", "color": "#1B73B9", "size": 18 },
-                      { "type": "sizedBox", "width": 8 },
-                      {
-                        "type": "column",
-                        "crossAxisAlignment": "start",
-                        "children": [
-                          { "type": "text", "data": "State Bank of India", "style": { "fontSize": 13, "fontWeight": "bold" } },
-                          { "type": "text", "data": "Account Number: ****7169", "style": { "fontSize": 11, "color": "#64748B" } },
-                          { "type": "text", "data": "IFSC: HDFC0000882", "style": { "fontSize": 11, "color": "#64748B" } }
-                        ]
-                      }
+                      { "type": "icon", "icon": "info_outline", "color": "#94A3B8", "size": 14 },
+                      { "type": "sizedBox", "width": 6 },
+                      { "type": "text", "data": "UMRN: 198736490", "style": { "fontSize": 11, "color": "#64748B" } }
                     ]
                   },
                   {
                     "type": "elevatedButton",
-                    "style": { "backgroundColor": "#FF6B35", "shape": { "type": "roundedRectangle", "borderRadius": 6 } },
+                    "style": {
+                      "backgroundColor": "#FF6B35",
+                      "shape": { "type": "roundedRectangle", "borderRadius": 6 },
+                      "padding": { "left": 20, "right": 20, "top": 10, "bottom": 10 },
+                      "minimumSize": { "width": 0, "height": 0 }
+                    },
                     "onPressed": {
-                      "actionType": "navigate",
-                      "navigationStyle": "push",
-                      "request": { "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/change_bank_account.json?loanAccount=SH402PSPT26352", "method": "get" }
+                      "actionType": "showModalBottomSheet",
+                      "content": { "$ref": "please_note_modal", "params": { "loanAccountNumber": "SH402PSPT26352" } }
                     },
                     "child": { "type": "text", "data": "CHANGE", "style": { "fontSize": 12, "fontWeight": "bold", "color": "#FFFFFF" } }
                   }
-                ]
-              },
-              { "type": "sizedBox", "height": 10 },
-              {
-                "type": "row",
-                "children": [
-                  { "type": "icon", "icon": "info_outline", "color": "#94A3B8", "size": 14 },
-                  { "type": "sizedBox", "width": 6 },
-                  { "type": "text", "data": "UMRN: 198736490", "style": { "fontSize": 11, "color": "#64748B" } }
                 ]
               }
             ]
@@ -145,7 +153,7 @@
             "children": [
               {
                 "type": "row",
-                "mainAxisAlignment": "spaceBetween",
+                "crossAxisAlignment": "start",
                 "children": [
                   {
                     "type": "expanded",
@@ -153,12 +161,13 @@
                       "type": "column",
                       "crossAxisAlignment": "start",
                       "children": [
-                        { "type": "text", "data": "Business Term Loan", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } },
+                        { "type": "text", "data": "Business Term Loan", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }, "maxLines": 2 },
                         { "type": "sizedBox", "height": 4 },
-                        { "type": "text", "data": "Loan Account Number: CD402PSP7223390", "style": { "fontSize": 11, "color": "#64748B" } }
+                        { "type": "text", "data": "Loan Account Number: CD402PSP7223390", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
                       ]
                     }
                   },
+                  { "type": "sizedBox", "width": 12 },
                   {
                     "type": "column",
                     "crossAxisAlignment": "end",
@@ -181,23 +190,21 @@
               { "type": "divider", "height": 24 },
               {
                 "type": "row",
-                "mainAxisAlignment": "spaceBetween",
+                "crossAxisAlignment": "start",
                 "children": [
+                  { "type": "icon", "icon": "account_balance", "color": "#1B73B9", "size": 18 },
+                  { "type": "sizedBox", "width": 8 },
                   {
-                    "type": "row",
-                    "children": [
-                      { "type": "icon", "icon": "account_balance", "color": "#1B73B9", "size": 18 },
-                      { "type": "sizedBox", "width": 8 },
-                      {
-                        "type": "column",
-                        "crossAxisAlignment": "start",
-                        "children": [
-                          { "type": "text", "data": "State Bank of India", "style": { "fontSize": 13, "fontWeight": "bold" } },
-                          { "type": "text", "data": "Account Number: ****1823", "style": { "fontSize": 11, "color": "#64748B" } },
-                          { "type": "text", "data": "IFSC: SBIN7783649", "style": { "fontSize": 11, "color": "#64748B" } }
-                        ]
-                      }
-                    ]
+                    "type": "expanded",
+                    "child": {
+                      "type": "column",
+                      "crossAxisAlignment": "start",
+                      "children": [
+                        { "type": "text", "data": "State Bank of India", "style": { "fontSize": 13, "fontWeight": "bold" }, "maxLines": 1 },
+                        { "type": "text", "data": "Account Number: ****1823", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 },
+                        { "type": "text", "data": "IFSC: SBIN7783649", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                      ]
+                    }
                   },
                   {
                     "type": "row",
@@ -209,7 +216,7 @@
                   }
                 ]
               },
-              { "type": "sizedBox", "height": 10 },
+              { "type": "sizedBox", "height": 12 },
               {
                 "type": "container",
                 "padding": { "all": 10 },
@@ -224,7 +231,7 @@
                   ]
                 }
               },
-              { "type": "sizedBox", "height": 10 },
+              { "type": "sizedBox", "height": 12 },
               {
                 "type": "row",
                 "children": [
@@ -252,8 +259,7 @@
               { "type": "text", "data": "- If your current instalment is under presentation, then the Auto Payment change request will apply to your subsequent month's instalment and not the present one.", "style": { "fontSize": 12, "color": "#334155" } },
               { "type": "sizedBox", "height": 10 },
               {
-                "type": "row",
-                "crossAxisAlignment": "start",
+                "type": "wrap",
                 "children": [
                   { "type": "text", "data": "- If you wish to change the draw-down bank account for your Flexi Loan withdrawals, ", "style": { "fontSize": 12, "color": "#334155" } },
                   {
@@ -274,32 +280,55 @@
           "type": "container",
           "margin": { "left": 16, "right": 16, "bottom": 22 },
           "padding": { "all": 22 },
-          "decoration": {
-            "borderRadius": 10,
-            "gradient": { "type": "linear", "colors": ["#1B73B9", "#5AC8E8"], "begin": "topLeft", "end": "bottomRight" }
-          },
+          "decoration": { "color": "#002A54", "borderRadius": 10 },
           "child": {
             "type": "column",
             "crossAxisAlignment": "start",
             "children": [
               { "type": "text", "data": "Get Bajaj Pay UPI", "style": { "fontSize": 22, "fontWeight": "bold", "color": "#FFFFFF" } },
               { "type": "sizedBox", "height": 6 },
-              { "type": "text", "data": "Transfer, pay, recharge & shop securely", "style": { "fontSize": 13, "color": "#EAF3FA" } },
+              { "type": "text", "data": "Transfer, pay, recharge & shop securely", "style": { "fontSize": 13, "color": "#B9D9F2" } },
               { "type": "sizedBox", "height": 18 },
               {
                 "type": "elevatedButton",
-                "style": { "backgroundColor": "#FFFFFF", "shape": { "type": "roundedRectangle", "borderRadius": 24 } },
+                "style": {
+                  "backgroundColor": "#FFFFFF",
+                  "shape": { "type": "roundedRectangle", "borderRadius": 24 },
+                  "padding": { "left": 24, "right": 24, "top": 12, "bottom": 12 }
+                },
                 "onPressed": {
                   "actionType": "navigate",
                   "navigationStyle": "push",
                   "request": { "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json", "method": "get" }
                 },
-                "child": { "type": "text", "data": "Create UPI ID", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#1B73B9" } }
+                "child": { "type": "text", "data": "Create UPI ID", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#002A54" } }
               },
               { "type": "sizedBox", "height": 20 },
-              { "type": "text", "data": "Seamless transfers", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#FFFFFF" } },
-              { "type": "sizedBox", "height": 4 },
-              { "type": "text", "data": "Pay instantly, anytime, anywhere", "style": { "fontSize": 12, "color": "#EAF3FA" } }
+              {
+                "type": "row",
+                "crossAxisAlignment": "center",
+                "children": [
+                  {
+                    "type": "expanded",
+                    "child": {
+                      "type": "column",
+                      "crossAxisAlignment": "start",
+                      "children": [
+                        { "type": "text", "data": "Seamless transfers", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#FFFFFF" } },
+                        { "type": "sizedBox", "height": 4 },
+                        { "type": "text", "data": "Pay instantly, anytime, anywhere", "style": { "fontSize": 12, "color": "#B9D9F2" } }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "image",
+                    "url": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
+                    "width": 90,
+                    "height": 90,
+                    "fit": "contain"
+                  }
+                ]
+              }
             ]
           }
         },
@@ -307,11 +336,7 @@
         {
           "type": "container",
           "margin": { "left": 16, "right": 16, "bottom": 16 },
-          "child": {
-            "type": "text",
-            "data": "Frequently asked questions",
-            "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" }
-          }
+          "child": { "type": "text", "data": "Frequently asked questions", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } }
         },
 
         {
@@ -370,6 +395,7 @@
                 "margin": { "bottom": 10 },
                 "padding": { "all": 16 },
                 "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                "expanded": true,
                 "child": {
                   "type": "column",
                   "crossAxisAlignment": "start",
@@ -377,17 +403,18 @@
                     {
                       "type": "row",
                       "mainAxisAlignment": "spaceBetween",
+                      "crossAxisAlignment": "start",
+                      "onTap": { "actionType": "toggleExpand", "targetId": "faqItem_autopay" },
                       "children": [
                         { "type": "expanded", "child": { "type": "text", "data": "What is Auto Payment or mandate registration?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
+                        { "type": "sizedBox", "width": 8 },
                         { "type": "icon", "icon": "expand_less", "color": "#162B49", "size": 20 }
-                      ],
-                      "onTap": { "actionType": "toggleExpand", "targetId": "faqItem_autopay" }
+                      ]
                     },
                     { "type": "sizedBox", "height": 12 },
                     { "type": "text", "data": "Auto Payment or mandate registration is a digital method you can use to automate payments for your instalments, SIPs, bill payments, etc. Through Auto Payment, your bank receives a standing instruction to debit the instalment amount automatically on the due date.", "style": { "fontSize": 13, "color": "#334155" } }
                   ]
-                },
-                "expanded": true
+                }
               },
 
               {
@@ -396,16 +423,18 @@
                 "margin": { "bottom": 10 },
                 "padding": { "all": 16 },
                 "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                "expanded": false,
                 "child": {
                   "type": "row",
                   "mainAxisAlignment": "spaceBetween",
+                  "crossAxisAlignment": "start",
+                  "onTap": { "actionType": "toggleExpand", "targetId": "faqItem_setupAutopay" },
                   "children": [
                     { "type": "expanded", "child": { "type": "text", "data": "How to set up Auto Payment or register e-mandate?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
+                    { "type": "sizedBox", "width": 8 },
                     { "type": "icon", "icon": "expand_more", "color": "#162B49", "size": 20 }
                   ]
-                },
-                "onTap": { "actionType": "toggleExpand", "targetId": "faqItem_setupAutopay" },
-                "expanded": false
+                }
               },
 
               {
@@ -414,16 +443,18 @@
                 "margin": { "bottom": 10 },
                 "padding": { "all": 16 },
                 "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                "expanded": false,
                 "child": {
                   "type": "row",
                   "mainAxisAlignment": "spaceBetween",
+                  "crossAxisAlignment": "start",
+                  "onTap": { "actionType": "toggleExpand", "targetId": "faqItem_benefits" },
                   "children": [
                     { "type": "expanded", "child": { "type": "text", "data": "What are the benefits of setting up Auto Payment?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
+                    { "type": "sizedBox", "width": 8 },
                     { "type": "icon", "icon": "expand_more", "color": "#162B49", "size": 20 }
                   ]
-                },
-                "onTap": { "actionType": "toggleExpand", "targetId": "faqItem_benefits" },
-                "expanded": false
+                }
               },
 
               {
@@ -432,33 +463,122 @@
                 "margin": { "bottom": 10 },
                 "padding": { "all": 16 },
                 "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                "expanded": false,
                 "child": {
                   "type": "row",
                   "mainAxisAlignment": "spaceBetween",
+                  "crossAxisAlignment": "start",
+                  "onTap": { "actionType": "toggleExpand", "targetId": "faqItem_methods" },
                   "children": [
                     { "type": "expanded", "child": { "type": "text", "data": "What are the different methods of setting up Auto Payment?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
+                    { "type": "sizedBox", "width": 8 },
                     { "type": "icon", "icon": "expand_more", "color": "#162B49", "size": 20 }
                   ]
-                },
-                "onTap": { "actionType": "toggleExpand", "targetId": "faqItem_methods" },
-                "expanded": false
+                }
               },
 
               { "type": "sizedBox", "height": 6 },
               {
                 "type": "row",
                 "mainAxisAlignment": "center",
+                "onTap": { "actionType": "loadMoreFaq" },
                 "children": [
                   { "type": "text", "data": "Show more", "style": { "fontSize": 13, "fontWeight": "bold", "color": "#FF6B35" } },
                   { "type": "sizedBox", "width": 4 },
                   { "type": "icon", "icon": "expand_more", "color": "#FF6B35", "size": 16 }
-                ],
-                "onTap": { "actionType": "loadMoreFaq" }
+                ]
               }
             ]
           }
         }
       ]
+    }
+  },
+
+  "sharedComponents": {
+    "please_note_modal": {
+      "type": "container",
+      "padding": { "top": 20, "left": 24, "right": 24, "bottom": 28 },
+      "decoration": {
+        "color": "#FFFFFF",
+        "borderRadius": { "topLeft": 16, "topRight": 16 }
+      },
+      "child": {
+        "type": "column",
+        "crossAxisAlignment": "stretch",
+        "children": [
+          {
+            "type": "row",
+            "mainAxisAlignment": "end",
+            "children": [
+              {
+                "type": "icon",
+                "icon": "close",
+                "color": "#FF6B35",
+                "size": 20,
+                "onTap": { "actionType": "dismissModal" }
+              }
+            ]
+          },
+          { "type": "sizedBox", "height": 4 },
+          { "type": "text", "data": "Please note", "textAlign": "center", "style": { "fontSize": 20, "fontWeight": "bold", "color": "#162B49" } },
+          { "type": "sizedBox", "height": 18 },
+          {
+            "type": "text",
+            "textAlign": "center",
+            "data": "If your current month's instalment is under presentation, the bank account change will apply from the subsequent month's instalment* (e.g. if it's Jan 29, deductions will start in March) *Subject to bank approval.",
+            "style": { "fontSize": 13, "color": "#1B4B7A" }
+          },
+          { "type": "sizedBox", "height": 14 },
+          {
+            "type": "text",
+            "textAlign": "center",
+            "data": "Check your reminder SMS from BFL to know which account will be used for upcoming deduction.",
+            "style": { "fontSize": 13, "color": "#1B4B7A" }
+          },
+          { "type": "sizedBox", "height": 26 },
+          {
+            "type": "row",
+            "crossAxisAlignment": "center",
+            "children": [
+              {
+                "type": "expanded",
+                "child": {
+                  "type": "outlinedButton",
+                  "style": {
+                    "borderColor": "#FF6B35",
+                    "shape": { "type": "roundedRectangle", "borderRadius": 24 },
+                    "padding": { "top": 12, "bottom": 12 }
+                  },
+                  "onPressed": { "actionType": "dismissModal" },
+                  "child": { "type": "text", "data": "GO BACK", "style": { "fontSize": 13, "fontWeight": "bold", "color": "#FF6B35" } }
+                }
+              },
+              { "type": "sizedBox", "width": 14 },
+              {
+                "type": "expanded",
+                "child": {
+                  "type": "elevatedButton",
+                  "style": {
+                    "backgroundColor": "#FF6B35",
+                    "shape": { "type": "roundedRectangle", "borderRadius": 24 },
+                    "padding": { "top": 12, "bottom": 12 }
+                  },
+                  "onPressed": {
+                    "actionType": "navigate",
+                    "navigationStyle": "push",
+                    "request": {
+                      "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/change_bank_account.json",
+                      "method": "get"
+                    }
+                  },
+                  "child": { "type": "text", "data": "CONTINUE", "style": { "fontSize": 13, "fontWeight": "bold", "color": "#FFFFFF" } }
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }
