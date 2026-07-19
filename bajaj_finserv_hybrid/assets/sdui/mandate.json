@@ -288,52 +288,58 @@
                       "type": "row",
                       "children": [
                         {
-                          "type": "column",
-                          "crossAxisAlignment": "start",
-                          "children": [
-                            {
-                              "type": "text",
-                              "data": "Account Number",
-                              "style": {
-                                "fontSize": 10,
-                                "color": "#757575"
+                          "type": "flexible",
+                          "child": {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "Account Number",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "****7169",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
                               }
-                            },
-                            {
-                              "type": "text",
-                              "data": "****7169",
-                              "style": {
-                                "fontSize": 11,
-                                "fontWeight": "bold"
-                              }
-                            }
-                          ]
+                            ]
+                          }
                         },
                         {
                           "type": "sizedBox",
                           "width": 40
                         },
                         {
-                          "type": "column",
-                          "crossAxisAlignment": "start",
-                          "children": [
-                            {
-                              "type": "text",
-                              "data": "IFSC",
-                              "style": {
-                                "fontSize": 10,
-                                "color": "#757575"
+                          "type": "flexible",
+                          "child": {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "IFSC",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "HDFC0000882",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
                               }
-                            },
-                            {
-                              "type": "text",
-                              "data": "HDFC0000882",
-                              "style": {
-                                "fontSize": 11,
-                                "fontWeight": "bold"
-                              }
-                            }
-                          ]
+                            ]
+                          }
                         }
                       ]
                     }
@@ -507,52 +513,58 @@
                       "type": "row",
                       "children": [
                         {
-                          "type": "column",
-                          "crossAxisAlignment": "start",
-                          "children": [
-                            {
-                              "type": "text",
-                              "data": "Account Number",
-                              "style": {
-                                "fontSize": 10,
-                                "color": "#757575"
+                          "type": "flexible",
+                          "child": {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "Account Number",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "****7169",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
                               }
-                            },
-                            {
-                              "type": "text",
-                              "data": "****7169",
-                              "style": {
-                                "fontSize": 11,
-                                "fontWeight": "bold"
-                              }
-                            }
-                          ]
+                            ]
+                          }
                         },
                         {
                           "type": "sizedBox",
                           "width": 40
                         },
                         {
-                          "type": "column",
-                          "crossAxisAlignment": "start",
-                          "children": [
-                            {
-                              "type": "text",
-                              "data": "IFSC",
-                              "style": {
-                                "fontSize": 10,
-                                "color": "#757575"
+                          "type": "flexible",
+                          "child": {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "IFSC",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "SBIN7783649",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
                               }
-                            },
-                            {
-                              "type": "text",
-                              "data": "SBIN7783649",
-                              "style": {
-                                "fontSize": 11,
-                                "fontWeight": "bold"
-                              }
-                            }
-                          ]
+                            ]
+                          }
                         }
                       ]
                     },
@@ -749,52 +761,58 @@
                       "type": "row",
                       "children": [
                         {
-                          "type": "column",
-                          "crossAxisAlignment": "start",
-                          "children": [
-                            {
-                              "type": "text",
-                              "data": "Account Number",
-                              "style": {
-                                "fontSize": 10,
-                                "color": "#757575"
+                          "type": "flexible",
+                          "child": {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "Account Number",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "****1823",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
                               }
-                            },
-                            {
-                              "type": "text",
-                              "data": "****1823",
-                              "style": {
-                                "fontSize": 11,
-                                "fontWeight": "bold"
-                              }
-                            }
-                          ]
+                            ]
+                          }
                         },
                         {
                           "type": "sizedBox",
                           "width": 40
                         },
                         {
-                          "type": "column",
-                          "crossAxisAlignment": "start",
-                          "children": [
-                            {
-                              "type": "text",
-                              "data": "IFSC",
-                              "style": {
-                                "fontSize": 10,
-                                "color": "#757575"
+                          "type": "flexible",
+                          "child": {
+                            "type": "column",
+                            "crossAxisAlignment": "start",
+                            "children": [
+                              {
+                                "type": "text",
+                                "data": "IFSC",
+                                "style": {
+                                  "fontSize": 10,
+                                  "color": "#757575"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "data": "SBIN7783649",
+                                "style": {
+                                  "fontSize": 11,
+                                  "fontWeight": "bold"
+                                }
                               }
-                            },
-                            {
-                              "type": "text",
-                              "data": "SBIN7783649",
-                              "style": {
-                                "fontSize": 11,
-                                "fontWeight": "bold"
-                              }
-                            }
-                          ]
+                            ]
+                          }
                         }
                       ]
                     },
