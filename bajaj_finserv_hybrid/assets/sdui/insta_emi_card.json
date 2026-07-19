@@ -1,0 +1,193 @@
+{
+"type": "scaffold",
+"backgroundColor": "#F5F7FA",
+"body": {
+"type": "singleChildScrollView",
+"padding": { "bottom": 40 },
+"child": {
+"type": "column",
+"crossAxisAlignment": "start",
+"children": [
+{
+"type": "container",
+"width": "infinity",
+"padding": { "top": 34, "left": 16, "right": 16, "bottom": 30 },
+"decoration": { "color": "#002A54" },
+"child": {
+"type": "column",
+"crossAxisAlignment": "start",
+"children": [
+{ "type": "text", "data": "Insta EMI Card", "style": { "fontSize": 24, "fontWeight": "bold", "color": "#FFFFFF" } },
+{ "type": "sizedBox", "height": 8 },
+{ "type": "text", "data": "100% digital process | Instant approval | No annual fee", "style": { "fontSize": 13, "color": "#DCEAF7" } },
+{ "type": "sizedBox", "height": 14 },
+{
+"type": "row",
+"children": [
+{ "type": "text", "data": "4.7", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#FFFFFF" } },
+{ "type": "sizedBox", "width": 6 },
+{ "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
+{ "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
+{ "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
+{ "type": "icon", "icon": "star", "color": "#F7B500", "size": 18 },
+{ "type": "icon", "icon": "star_half", "color": "#F7B500", "size": 18 },
+{ "type": "sizedBox", "width": 8 },
+{ "type": "text", "data": "681 reviews", "style": { "fontSize": 12, "color": "#DCEAF7" } }
+]
+},
+{
+"type": "container",
+"margin": { "top": 24 },
+"padding": { "top": 30, "left": 22, "right": 22, "bottom": 24 },
+"decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#D8E1EA", "width": 1 } },
+"child": {
+"type": "column",
+"children": [
+                    { "type": "text", "data": "Your were always qualified for card loan offer", "textAlign": "center", "style": { "fontSize": 15, "color": "#334155" } },
+                    { "type": "text", "data": "Your pre-qualified card loan offer", "textAlign": "center", "style": { "fontSize": 15, "color": "#334155" } },
+{ "type": "sizedBox", "height": 18 },
+{ "type": "text", "data": "Up to Rs. 3,00,000", "textAlign": "center", "style": { "fontSize": 32, "fontWeight": "bold", "color": "#002A54" } },
+{ "type": "sizedBox", "height": 12 },
+                    { "type": "text", "data": "Use across 1.5 trillion partner stores and leading online brands", "textAlign": "center", "style": { "fontSize": 12, "color": "#64748B" } },
+                    { "type": "text", "data": "Use across 1.5 lakh+ partner stores and leading online brands", "textAlign": "center", "style": { "fontSize": 12, "color": "#64748B" } },
+{ "type": "sizedBox", "height": 22 },
+{
+"type": "row",
+"mainAxisAlignment": "center",
+"children": [
+{ "type": "icon", "icon": "check_circle_outline", "size": 18, "color": "#16834B" },
+{ "type": "sizedBox", "width": 8 },
+{ "type": "expanded", "child": { "type": "text", "data": "Checking your offer will not affect your credit score", "textAlign": "center", "style": { "fontSize": 11, "color": "#334155" } } }
+]
+},
+{ "type": "sizedBox", "height": 24 },
+{
+"type": "sizedBox",
+"width": "infinity",
+"height": 50,
+"child": {
+"type": "elevatedButton",
+"style": { "backgroundColor": "#FF6B35", "shape": { "type": "roundedRectangle", "borderRadius": 6 } },
+"onPressed": {
+"actionType": "navigateWithLoader",
+"navigationStyle": "push",
+"request": {
+"url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/insta_emi_offer_details.json?v=1",
+"method": "get"
+}
+},
+"child": { "type": "text", "data": "CHECK OFFER", "style": { "color": "#FFFFFF", "fontWeight": "bold", "fontSize": 15 } }
+}
+}
+]
+}
+}
+]
+}
+},
+{
+"type": "container",
+"padding": { "left": 16, "right": 16, "bottom": 28 },
+"child": {
+"type": "column",
+"crossAxisAlignment": "start",
+"children": [
+{ "type": "text", "data": "Shop on easy EMIs", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
+{ "type": "sizedBox", "height": 6 },
+{ "type": "text", "data": "Explore popular categories with flexible repayment options", "style": { "fontSize": 12, "color": "#64748B" } },
+{
+"type": "container",
+"height": 160,
+"margin": { "top": 18 },
+"child": {
+"type": "listView",
+"scrollDirection": "horizontal",
+"children": [
+{ "type": "column", "children": [{ "type": "image", "width": 112, "height": 112, "imageType": "asset", "src": "assets/images/mobile.jpg", "fit": "cover" }, { "type": "sizedBox", "height": 8 }, { "type": "text", "data": "Smartphones", "style": { "fontSize": 12, "fontWeight": "w500" } }] },
+{ "type": "sizedBox", "width": 18 },
+{ "type": "column", "children": [{ "type": "image", "width": 112, "height": 112, "imageType": "asset", "src": "assets/images/tv.jpg", "fit": "cover" }, { "type": "sizedBox", "height": 8 }, { "type": "text", "data": "Smart TVs", "style": { "fontSize": 12, "fontWeight": "w500" } }] },
+{ "type": "sizedBox", "width": 18 },
+{ "type": "column", "children": [{ "type": "image", "width": 112, "height": 112, "imageType": "asset", "src": "assets/images/refrigerator.jpg", "fit": "cover" }, { "type": "sizedBox", "height": 8 }, { "type": "text", "data": "Refrigerators", "style": { "fontSize": 12, "fontWeight": "w500" } }] },
+{ "type": "sizedBox", "width": 18 },
+{ "type": "column", "children": [{ "type": "image", "width": 112, "height": 112, "imageType": "asset", "src": "assets/images/ac_emi.jpg", "fit": "cover" }, { "type": "sizedBox", "height": 8 }, { "type": "text", "data": "Air Conditioners", "style": { "fontSize": 12, "fontWeight": "w500" } }] }
+]
+}
+}
+]
+}
+},
+{
+"type": "container",
+"padding": { "top": 24, "left": 16, "right": 16, "bottom": 24 },
+"decoration": { "color": "#FFFFFF" },
+"child": {
+"type": "column",
+"crossAxisAlignment": "start",
+"children": [
+{ "type": "text", "data": "Why choose the Insta EMI Card?", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
+{ "type": "sizedBox", "height": 20 },
+{ "type": "row", "children": [{ "type": "icon", "icon": "bolt", "color": "#FF6B35", "size": 24 }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Instant digital approval with a simple online process", "style": { "fontSize": 14, "color": "#334155" } } }] },
+{ "type": "sizedBox", "height": 20 },
+{ "type": "row", "children": [{ "type": "icon", "icon": "calendar_month", "color": "#1B73B9", "size": 24 }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Flexible EMI tenures from 3 to 60 months", "style": { "fontSize": 14, "color": "#334155" } } }] },
+{ "type": "sizedBox", "height": 20 },
+{ "type": "row", "children": [{ "type": "icon", "icon": "storefront", "color": "#16834B", "size": 24 }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Accepted at 1.5 lakh+ stores across 4,000+ cities", "style": { "fontSize": 14, "color": "#334155" } } }] },
+{ "type": "sizedBox", "height": 20 },
+{ "type": "row", "children": [{ "type": "icon", "icon": "verified_user", "color": "#7A4FB7", "size": 24 }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Secure transactions and transparent charges", "style": { "fontSize": 14, "color": "#334155" } } }] }
+]
+}
+},
+{
+"type": "container",
+"margin": { "top": 24, "left": 16, "right": 16, "bottom": 28 },
+"child": {
+"type": "column",
+"crossAxisAlignment": "start",
+"children": [
+{ "type": "text", "data": "How to get your card", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } },
+{ "type": "sizedBox", "height": 18 },
+{ "type": "row", "children": [{ "type": "container", "width": 32, "height": 32, "decoration": { "color": "#002A54", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "1", "style": { "color": "#FFFFFF", "fontWeight": "bold" } } } }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Check your personalised pre-qualified offer", "style": { "fontSize": 14 } } }] },
+{ "type": "sizedBox", "height": 22 },
+{ "type": "row", "children": [{ "type": "container", "width": 32, "height": 32, "decoration": { "color": "#002A54", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "2", "style": { "color": "#FFFFFF", "fontWeight": "bold" } } } }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Verify your mobile number using OTP", "style": { "fontSize": 14 } } }] },
+{ "type": "sizedBox", "height": 22 },
+{ "type": "row", "children": [{ "type": "container", "width": 32, "height": 32, "decoration": { "color": "#002A54", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "3", "style": { "color": "#FFFFFF", "fontWeight": "bold" } } } }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Confirm PAN, address, and employment details", "style": { "fontSize": 14 } } }] },
+{ "type": "sizedBox", "height": 22 },
+{ "type": "row", "children": [{ "type": "container", "width": 32, "height": 32, "decoration": { "color": "#FF6B35", "shape": "circle" }, "child": { "type": "center", "child": { "type": "text", "data": "4", "style": { "color": "#FFFFFF", "fontWeight": "bold" } } } }, { "type": "sizedBox", "width": 14 }, { "type": "expanded", "child": { "type": "text", "data": "Pay the one-time joining fee and activate your card", "style": { "fontSize": 14 } } }] }
+]
+}
+},
+{
+"type": "container",
+"margin": { "left": 16, "right": 16, "bottom": 24 },
+"padding": { "all": 20 },
+"decoration": { "color": "#EAF3FA", "borderRadius": 8 },
+"child": {
+"type": "column",
+"crossAxisAlignment": "start",
+"children": [
+{ "type": "text", "data": "Fees at a glance", "style": { "fontSize": 17, "fontWeight": "bold", "color": "#002A54" } },
+{ "type": "sizedBox", "height": 16 },
+{ "type": "row", "mainAxisAlignment": "spaceBetween", "children": [{ "type": "text", "data": "Joining fee", "style": { "fontSize": 13 } }, { "type": "text", "data": "Rs. 530 (incl. taxes)", "style": { "fontSize": 13, "fontWeight": "bold" } }] },
+{ "type": "divider", "height": 28 },
+{ "type": "row", "mainAxisAlignment": "spaceBetween", "children": [{ "type": "text", "data": "Annual fee", "style": { "fontSize": 13 } }, { "type": "text", "data": "Rs. 0", "style": { "fontSize": 13, "fontWeight": "bold", "color": "#16834B" } }] }
+]
+}
+},
+{
+"type": "container",
+"margin": { "left": 16, "right": 16, "bottom": 32 },
+"padding": { "all": 20 },
+"decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#E2E8F0", "width": 1 } },
+"child": {
+"type": "column",
+"crossAxisAlignment": "start",
+"children": [
+{ "type": "text", "data": "Need help?", "style": { "fontSize": 17, "fontWeight": "bold", "color": "#162B49" } },
+{ "type": "sizedBox", "height": 10 },
+{ "type": "text", "data": "Call 86980 10101 or visit the nearest Bajaj Finserv partner store.", "style": { "fontSize": 13, "color": "#64748B" } }
+]
+}
+}
+]
+}
+}
+}
