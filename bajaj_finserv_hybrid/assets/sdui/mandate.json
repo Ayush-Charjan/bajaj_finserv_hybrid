@@ -23,7 +23,7 @@
           "child": {
             "type": "text",
             "data": "Change the bank account linked to your loan repayments or update your UPI AutoPay mandates all in one place",
-            "style": { "fontSize": 13,"fontWeight": "bold", "color": "#64748B" }
+            "style": { "fontSize": 13,"fontWeight": "bold", "color": "#000000" }
           }
         },
 
