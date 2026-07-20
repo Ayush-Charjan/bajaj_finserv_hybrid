@@ -1,0 +1,441 @@
+{
+  "type": "scaffold",
+  "backgroundColor": "#F5F7FA",
+  "appBar": {
+    "type": "appBar",
+    "backgroundColor": "#002A54",
+    "foregroundColor": "#FFFFFF",
+    "leading": {
+      "type": "gestureDetector",
+      "onTap": {
+        "actionType": "navigate",
+        "navigationStyle": "pop"
+      },
+      "child": {
+        "type": "icon",
+        "icon": "arrow_back",
+        "color": "#FFFFFF",
+        "size": 22
+      }
+    },
+    "title": {
+      "type": "text",
+      "data": "Change Bank Account",
+      "style": {
+        "color": "#FFFFFF",
+        "fontSize": 18,
+        "fontWeight": "bold"
+      }
+    }
+  },
+  "body": {
+    "type": "singleChildScrollView",
+    "padding": {
+      "bottom": 40
+    },
+    "child": {
+      "type": "column",
+      "children": [
+        {
+          "type": "container",
+          "padding": {
+            "top": 18,
+            "left": 16,
+            "right": 16,
+            "bottom": 16
+          },
+          "child": {
+            "type": "text",
+            "data": "Select the new bank account you want to link for your loan repayments and Auto Payment mandate.",
+            "style": {
+              "fontSize": 13,
+              "color": "#64748B"
+            }
+          }
+        },
+        {
+          "type": "container",
+          "margin": {
+            "left": 16,
+            "right": 16,
+            "bottom": 8
+          },
+          "child": {
+            "type": "text",
+            "data": "Currently linked",
+            "style": {
+              "fontSize": 13,
+              "fontWeight": "bold",
+              "color": "#162B49"
+            }
+          }
+        },
+        {
+          "type": "container",
+          "margin": {
+            "left": 16,
+            "right": 16,
+            "bottom": 20
+          },
+          "child": {
+            "type": "container",
+            "padding": 14,
+            "margin": {
+              "bottom": 12
+            },
+            "decoration": {
+              "color": "#FFFFFF",
+              "borderRadius": 8,
+              "border": {
+                "color": "#FF6B35",
+                "width": 1.5
+              }
+            },
+            "child": {
+              "type": "row",
+              "children": [
+                {
+                  "type": "icon",
+                  "icon": "radio_button_checked",
+                  "color": "#FF6B35",
+                  "size": 22
+                },
+                {
+                  "type": "sizedBox",
+                  "width": 12
+                },
+                {
+                  "type": "expanded",
+                  "child": {
+                    "type": "column",
+                    "children": [
+                      {
+                        "type": "text",
+                        "data": "State Bank of India",
+                        "style": {
+                          "fontSize": 14,
+                          "fontWeight": "bold",
+                          "color": "#162B49"
+                        }
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 2
+                      },
+                      {
+                        "type": "text",
+                        "data": "Account: ****7169  |  IFSC: HDFC0000882",
+                        "style": {
+                          "fontSize": 11,
+                          "color": "#64748B"
+                        }
+                      }
+                    ],
+                    "crossAxisAlignment": "start"
+                  }
+                }
+              ],
+              "crossAxisAlignment": "center"
+            }
+          }
+        },
+        {
+          "type": "container",
+          "margin": {
+            "left": 16,
+            "right": 16,
+            "bottom": 8
+          },
+          "child": {
+            "type": "text",
+            "data": "Other linked accounts",
+            "style": {
+              "fontSize": 13,
+              "fontWeight": "bold",
+              "color": "#162B49"
+            }
+          }
+        },
+        {
+          "type": "container",
+          "margin": {
+            "left": 16,
+            "right": 16
+          },
+          "child": {
+            "type": "column",
+            "children": [
+              {
+                "type": "container",
+                "padding": 14,
+                "margin": {
+                  "bottom": 12
+                },
+                "decoration": {
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "border": {
+                    "color": "#E2E8F0",
+                    "width": 1
+                  }
+                },
+                "child": {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "icon": "radio_button_unchecked",
+                      "color": "#94A3B8",
+                      "size": 22
+                    },
+                    {
+                      "type": "sizedBox",
+                      "width": 12
+                    },
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "column",
+                        "children": [
+                          {
+                            "type": "text",
+                            "data": "HDFC Bank",
+                            "style": {
+                              "fontSize": 14,
+                              "fontWeight": "bold",
+                              "color": "#162B49"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 2
+                          },
+                          {
+                            "type": "text",
+                            "data": "Account: ****4432  |  IFSC: HDFC0001122",
+                            "style": {
+                              "fontSize": 11,
+                              "color": "#64748B"
+                            }
+                          }
+                        ],
+                        "crossAxisAlignment": "start"
+                      }
+                    }
+                  ],
+                  "crossAxisAlignment": "center"
+                }
+              },
+              {
+                "type": "container",
+                "padding": 14,
+                "margin": {
+                  "bottom": 12
+                },
+                "decoration": {
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "border": {
+                    "color": "#E2E8F0",
+                    "width": 1
+                  }
+                },
+                "child": {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "icon": "radio_button_unchecked",
+                      "color": "#94A3B8",
+                      "size": 22
+                    },
+                    {
+                      "type": "sizedBox",
+                      "width": 12
+                    },
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "column",
+                        "children": [
+                          {
+                            "type": "text",
+                            "data": "ICICI Bank",
+                            "style": {
+                              "fontSize": 14,
+                              "fontWeight": "bold",
+                              "color": "#162B49"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 2
+                          },
+                          {
+                            "type": "text",
+                            "data": "Account: ****9981  |  IFSC: ICIC0002233",
+                            "style": {
+                              "fontSize": 11,
+                              "color": "#64748B"
+                            }
+                          }
+                        ],
+                        "crossAxisAlignment": "start"
+                      }
+                    }
+                  ],
+                  "crossAxisAlignment": "center"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "sizedBox",
+          "height": 8
+        },
+        {
+          "type": "container",
+          "padding": 14,
+          "margin": {
+            "left": 16,
+            "right": 16,
+            "bottom": 20
+          },
+          "decoration": {
+            "color": "#FFF7E6",
+            "borderRadius": 8
+          },
+          "child": {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "data": "Please note:",
+                "style": {
+                  "fontSize": 13,
+                  "fontWeight": "bold",
+                  "color": "#92400E"
+                }
+              },
+              {
+                "type": "sizedBox",
+                "height": 10
+              },
+              {
+                "type": "text",
+                "data": "- The updated account will be used starting from your next instalment.",
+                "style": {
+                  "fontSize": 12,
+                  "color": "#334155"
+                }
+              },
+              {
+                "type": "sizedBox",
+                "height": 8
+              },
+              {
+                "type": "text",
+                "data": "- Your bank may charge a one-time account registration fee.",
+                "style": {
+                  "fontSize": 12,
+                  "color": "#334155"
+                }
+              },
+              {
+                "type": "sizedBox",
+                "height": 8
+              },
+              {
+                "type": "text",
+                "data": "- Confirmation may take up to 3 working days.",
+                "style": {
+                  "fontSize": 12,
+                  "color": "#334155"
+                }
+              }
+            ],
+            "crossAxisAlignment": "start"
+          }
+        },
+        {
+          "type": "container",
+          "margin": {
+            "left": 16,
+            "right": 16,
+            "top": 24,
+            "bottom": 8
+          },
+          "child": {
+            "type": "row",
+            "children": [
+              {
+                "type": "expanded",
+                "child": {
+                  "type": "outlinedButton",
+                  "child": {
+                    "type": "text",
+                    "data": "CANCEL",
+                    "style": {
+                      "fontSize": 13,
+                      "fontWeight": "bold",
+                      "color": "#64748B"
+                    }
+                  },
+                  "onPressed": {
+                    "actionType": "navigate",
+                    "navigationStyle": "pop"
+                  },
+                  "style": {
+                    "foregroundColor": "#64748B",
+                    "side": {
+                      "color": "#CBD5E1",
+                      "width": 1
+                    },
+                    "shape": {
+                      "type": "roundedRectangleBorder",
+                      "borderRadius": 6
+                    }
+                  }
+                }
+              },
+              {
+                "type": "sizedBox",
+                "width": 14
+              },
+              {
+                "type": "expanded",
+                "child": {
+                  "type": "elevatedButton",
+                  "child": {
+                    "type": "text",
+                    "data": "CONFIRM CHANGE",
+                    "style": {
+                      "fontSize": 13,
+                      "fontWeight": "bold",
+                      "color": "#FFFFFF"
+                    }
+                  },
+                  "onPressed": {
+                    "actionType": "navigate",
+                    "navigationStyle": "pop"
+                  },
+                  "style": {
+                    "backgroundColor": "#FF6B35",
+                    "foregroundColor": "#FFFFFF",
+                    "shape": {
+                      "type": "roundedRectangleBorder",
+                      "borderRadius": 6
+                    }
+                  }
+                }
+              }
+            ],
+            "crossAxisAlignment": "center"
+          }
+        }
+      ],
+      "crossAxisAlignment": "start"
+    }
+  }
+}
