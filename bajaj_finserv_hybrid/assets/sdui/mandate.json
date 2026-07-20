@@ -664,45 +664,155 @@
                     },
 
                     {
-                      "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 20 },
+                      "type": "setValue",
+                      "values": [
+                        { "key": "faq1Expanded", "value": false },
+                        { "key": "faq2Expanded", "value": false }
+                      ],
                       "child": {
-                        "type": "column",
-                        "crossAxisAlignment": "start",
-                        "children": [
-                          {
-                            "type": "container",
-                            "margin": { "bottom": 10 },
-                            "padding": 16,
-                            "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
-                            "child": {
-                              "type": "row",
-                              "mainAxisAlignment": "spaceBetween",
-                              "crossAxisAlignment": "start",
-                              "children": [
-                                { "type": "expanded", "child": { "type": "text", "data": "What is an SDP AutoPay mandate?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
-                                { "type": "sizedBox", "width": 8 },
-                                { "type": "icon", "icon": "expand_more", "color": "#162B49", "size": 20 }
-                              ]
+                        "type": "container",
+                        "margin": { "left": 16, "right": 16, "bottom": 20 },
+                        "child": {
+                          "type": "column",
+                          "crossAxisAlignment": "start",
+                          "children": [
+
+                            {
+                              "type": "conditional",
+                              "condition": "faq1Expanded == true",
+                              "ifTrue": {
+                                "type": "container",
+                                "margin": { "bottom": 10 },
+                                "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                                "child": {
+                                  "type": "inkWell",
+                                  "borderRadius": { "topLeft": 8, "topRight": 8, "bottomLeft": 8, "bottomRight": 8 },
+                                  "onTap": {
+                                    "actionType": "setValue",
+                                    "values": [ { "key": "faq1Expanded", "value": false } ]
+                                  },
+                                  "child": {
+                                    "type": "container",
+                                    "padding": 16,
+                                    "child": {
+                                      "type": "column",
+                                      "crossAxisAlignment": "start",
+                                      "children": [
+                                        {
+                                          "type": "row",
+                                          "mainAxisAlignment": "spaceBetween",
+                                          "crossAxisAlignment": "start",
+                                          "children": [
+                                            { "type": "expanded", "child": { "type": "text", "data": "What is an SDP AutoPay mandate?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
+                                            { "type": "sizedBox", "width": 8 },
+                                            { "type": "icon", "icon": "expand_less", "color": "#162B49", "size": 20 }
+                                          ]
+                                        },
+                                        { "type": "sizedBox", "height": 10 },
+                                        { "type": "text", "data": "An SDP AutoPay mandate is a standing instruction linked to your bank account that lets us auto-debit your Systematic Deposit Plan instalment on the due date, so you never miss a payment.", "style": { "fontSize": 12, "color": "#475569" } }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "ifFalse": {
+                                "type": "container",
+                                "margin": { "bottom": 10 },
+                                "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                                "child": {
+                                  "type": "inkWell",
+                                  "borderRadius": { "topLeft": 8, "topRight": 8, "bottomLeft": 8, "bottomRight": 8 },
+                                  "onTap": {
+                                    "actionType": "setValue",
+                                    "values": [ { "key": "faq1Expanded", "value": true } ]
+                                  },
+                                  "child": {
+                                    "type": "container",
+                                    "padding": 16,
+                                    "child": {
+                                      "type": "row",
+                                      "mainAxisAlignment": "spaceBetween",
+                                      "crossAxisAlignment": "start",
+                                      "children": [
+                                        { "type": "expanded", "child": { "type": "text", "data": "What is an SDP AutoPay mandate?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
+                                        { "type": "sizedBox", "width": 8 },
+                                        { "type": "icon", "icon": "expand_more", "color": "#162B49", "size": 20 }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            },
+
+                            {
+                              "type": "conditional",
+                              "condition": "faq2Expanded == true",
+                              "ifTrue": {
+                                "type": "container",
+                                "margin": { "bottom": 10 },
+                                "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                                "child": {
+                                  "type": "inkWell",
+                                  "borderRadius": { "topLeft": 8, "topRight": 8, "bottomLeft": 8, "bottomRight": 8 },
+                                  "onTap": {
+                                    "actionType": "setValue",
+                                    "values": [ { "key": "faq2Expanded", "value": false } ]
+                                  },
+                                  "child": {
+                                    "type": "container",
+                                    "padding": 16,
+                                    "child": {
+                                      "type": "column",
+                                      "crossAxisAlignment": "start",
+                                      "children": [
+                                        {
+                                          "type": "row",
+                                          "mainAxisAlignment": "spaceBetween",
+                                          "crossAxisAlignment": "start",
+                                          "children": [
+                                            { "type": "expanded", "child": { "type": "text", "data": "How do I change the deposit amount on my SDP?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
+                                            { "type": "sizedBox", "width": 8 },
+                                            { "type": "icon", "icon": "expand_less", "color": "#162B49", "size": 20 }
+                                          ]
+                                        },
+                                        { "type": "sizedBox", "height": 10 },
+                                        { "type": "text", "data": "You can update your SDP deposit amount by opening the plan, selecting 'Modify Deposit Amount', and confirming the new value. The revised amount usually applies from the next instalment cycle.", "style": { "fontSize": 12, "color": "#475569" } }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "ifFalse": {
+                                "type": "container",
+                                "margin": { "bottom": 10 },
+                                "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                                "child": {
+                                  "type": "inkWell",
+                                  "borderRadius": { "topLeft": 8, "topRight": 8, "bottomLeft": 8, "bottomRight": 8 },
+                                  "onTap": {
+                                    "actionType": "setValue",
+                                    "values": [ { "key": "faq2Expanded", "value": true } ]
+                                  },
+                                  "child": {
+                                    "type": "container",
+                                    "padding": 16,
+                                    "child": {
+                                      "type": "row",
+                                      "mainAxisAlignment": "spaceBetween",
+                                      "crossAxisAlignment": "start",
+                                      "children": [
+                                        { "type": "expanded", "child": { "type": "text", "data": "How do I change the deposit amount on my SDP?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
+                                        { "type": "sizedBox", "width": 8 },
+                                        { "type": "icon", "icon": "expand_more", "color": "#162B49", "size": 20 }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
                             }
-                          },
-                          {
-                            "type": "container",
-                            "margin": { "bottom": 10 },
-                            "padding": 16,
-                            "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
-                            "child": {
-                              "type": "row",
-                              "mainAxisAlignment": "spaceBetween",
-                              "crossAxisAlignment": "start",
-                              "children": [
-                                { "type": "expanded", "child": { "type": "text", "data": "How do I change the deposit amount on my SDP?", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } } },
-                                { "type": "sizedBox", "width": 8 },
-                                { "type": "icon", "icon": "expand_more", "color": "#162B49", "size": 20 }
-                              ]
-                            }
-                          }
-                        ]
+
+                          ]
+                        }
                       }
                     }
                   ]
