@@ -23,7 +23,7 @@
           "child": {
             "type": "text",
             "data": "Change the bank account linked to your loan repayments or update your UPI AutoPay mandates all in one place",
-            "style": { "fontSize": 13,"fontWeight": "bold", "color": "#000000" }
+            "style": { "fontSize": 13,"fontWeight": "bold", "color": "#64748B" }
           }
         },
 
@@ -33,13 +33,41 @@
           "child": {
             "type": "row",
             "children": [
-              { "type": "text", "data": "Loans", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#FF6B35" } },
+              {
+                "type": "gestureDetector",
+                "onTap": {
+                  "actionType": "setValue",
+                  "values": [
+                    { "key": "showLoans", "value": true },
+                    { "key": "showSdp", "value": false }
+                  ]
+                },
+                "child": { "type": "text", "data": "Loans", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#FF6B35" } }
+              },
               { "type": "sizedBox", "width": 24 },
-              { "type": "text", "data": "Systematic Deposit Plans", "style": { "fontSize": 14, "color": "#64748B" } }
+              {
+                "type": "gestureDetector",
+                "onTap": {
+                  "actionType": "setValue",
+                  "values": [
+                    { "key": "showLoans", "value": false },
+                    { "key": "showSdp", "value": true }
+                  ]
+                },
+                "child": { "type": "text", "data": "Systematic Deposit Plans", "style": { "fontSize": 14, "color": "#64748B" } }
+              }
             ]
           }
         },
         { "type": "sizedBox", "height": 14 },
+
+        {
+          "type": "visibility",
+          "visible": "{{showLoans}}",
+          "child": {
+        "type": "column",
+        "crossAxisAlignment": "start",
+        "children": [
 
         {
           "type": "container",
@@ -347,6 +375,110 @@
               { "type": "sizedBox", "height": 10 },
               { "type": "text", "data": "- Your bank may charge a one-time account registration fee.", "style": { "fontSize": 12, "color": "#334155" } }
             ]
+          }
+        }
+
+        ]
+          }
+        },
+
+        {
+          "type": "visibility",
+          "visible": "{{showSdp}}",
+          "child": {
+            "type": "container",
+              "margin": { "left": 16, "right": 16, "bottom": 14 },
+              "padding": 16,
+              "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#E2E8F0", "width": 1 } },
+              "child": {
+                "type": "column",
+                "crossAxisAlignment": "start",
+                "children": [
+                  {
+                    "type": "row",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "expanded",
+                        "child": {
+                          "type": "column",
+                          "crossAxisAlignment": "start",
+                          "children": [
+                            { "type": "text", "data": "Systematic Deposit Plan", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }, "maxLines": 2 },
+                            { "type": "sizedBox", "height": 4 },
+                            { "type": "text", "data": "SDP Account Number: SDP402PSPT98214", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                          ]
+                        }
+                      },
+                      { "type": "sizedBox", "width": 12 },
+                      {
+                        "type": "column",
+                        "crossAxisAlignment": "end",
+                        "children": [
+                          { "type": "text", "data": "Deposit Amount", "style": { "fontSize": 11, "color": "#64748B" } },
+                          { "type": "text", "data": "Rs. 5,000", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } }
+                        ]
+                      }
+                    ]
+                  },
+                  { "type": "sizedBox", "height": 10 },
+                  {
+                    "type": "row",
+                    "children": [
+                      { "type": "text", "data": "Deposits Made: 6", "style": { "fontSize": 12, "color": "#334155" } },
+                      { "type": "sizedBox", "width": 18 },
+                      { "type": "text", "data": "Deposits Pending: 18", "style": { "fontSize": 12, "color": "#334155" } }
+                    ]
+                  },
+                  { "type": "divider", "height": 24 },
+                  {
+                    "type": "row",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      { "type": "icon", "icon": "account_balance", "color": "#1B73B9", "size": 18 },
+                      { "type": "sizedBox", "width": 8 },
+                      {
+                        "type": "expanded",
+                        "child": {
+                          "type": "column",
+                          "crossAxisAlignment": "start",
+                          "children": [
+                            { "type": "text", "data": "State Bank of India", "style": { "fontSize": 13, "fontWeight": "bold" }, "maxLines": 1 },
+                            { "type": "text", "data": "Account Number: ****4420", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 },
+                            { "type": "text", "data": "IFSC: SBIN0004420", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  { "type": "sizedBox", "height": 12 },
+                  {
+                    "type": "row",
+                    "mainAxisAlignment": "spaceBetween",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          { "type": "icon", "icon": "info_outline", "color": "#94A3B8", "size": 14 },
+                          { "type": "sizedBox", "width": 6 },
+                          { "type": "text", "data": "UMRN: 198736512", "style": { "fontSize": 11, "color": "#64748B" } }
+                        ]
+                      },
+                      {
+                        "type": "elevatedButton",
+                        "style": {
+                          "backgroundColor": "#FF6B35",
+                          "foregroundColor": "#FFFFFF",
+                          "shape": { "type": "roundedRectangleBorder", "borderRadius": 6 }
+                        },
+                        "onPressed": { "actionType": "none" },
+                        "child": { "type": "text", "data": "CHANGE", "style": { "fontSize": 12, "fontWeight": "bold", "color": "#FFFFFF" } }
+                      }
+                    ]
+                  }
+                ]
+              }
           }
         },
 
