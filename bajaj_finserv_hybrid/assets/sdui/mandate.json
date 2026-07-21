@@ -5,10 +5,22 @@
     "type": "appBar",
     "backgroundColor": "#002A54",
     "foregroundColor": "#FFFFFF",
-    "leading": { "type": "icon", "icon": "arrow_back", "color": "#FFFFFF", "size": 22 },
-    "title": { "type": "text", "data": "Change Bank Account", "style": { "color": "#FFFFFF", "fontSize": 18, "fontWeight": "bold" } }
+    "leading": {
+      "type": "icon",
+      "icon": "arrow_back",
+      "color": "#FFFFFF",
+      "size": 22
+    },
+    "title": {
+      "type": "text",
+      "data": "Change Bank Account",
+      "style": {
+        "color": "#FFFFFF",
+        "fontSize": 18,
+        "fontWeight": "bold"
+      }
+    }
   },
-
   "body": {
     "type": "defaultTabController",
     "length": 2,
@@ -16,20 +28,31 @@
       "type": "column",
       "crossAxisAlignment": "stretch",
       "children": [
-
         {
           "type": "container",
-          "padding": { "top": 18, "left": 16, "right": 16, "bottom": 6 },
+          "padding": {
+            "top": 18,
+            "left": 16,
+            "right": 16,
+            "bottom": 6
+          },
           "child": {
             "type": "text",
             "data": "Change the bank account linked to your loan repayments or update your UPI AutoPay mandates all in one place",
-            "style": { "fontSize": 13, "fontWeight": "bold", "color": "#64748B" }
+            "style": {
+              "fontSize": 13,
+              "fontWeight": "bold",
+              "color": "#64748B"
+            }
           }
         },
-
         {
           "type": "container",
-          "margin": { "left": 8, "right": 16, "top": 6 },
+          "margin": {
+            "left": 8,
+            "right": 16,
+            "top": 6
+          },
           "child": {
             "type": "tabBar",
             "isScrollable": true,
@@ -37,34 +60,57 @@
             "indicatorWeight": 2,
             "labelColor": "#FF6B35",
             "unselectedLabelColor": "#64748B",
-            "labelStyle": { "fontSize": 14, "fontWeight": "bold" },
-            "unselectedLabelStyle": { "fontSize": 14, "fontWeight": "normal" },
+            "labelStyle": {
+              "fontSize": 14,
+              "fontWeight": "bold"
+            },
+            "unselectedLabelStyle": {
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
             "tabs": [
-              { "type": "tab", "text": "Loans" },
-              { "type": "tab", "text": "Systematic Deposit Plans" }
+              {
+                "type": "tab",
+                "text": "Loans"
+              },
+              {
+                "type": "tab",
+                "text": "Systematic Deposit Plans"
+              }
             ]
           }
         },
-
         {
           "type": "expanded",
           "child": {
             "type": "tabBarView",
             "children": [
-
               {
                 "type": "singleChildScrollView",
-                "padding": { "top": 14, "bottom": 40 },
+                "padding": {
+                  "top": 14,
+                  "bottom": 40
+                },
                 "child": {
                   "type": "column",
                   "crossAxisAlignment": "start",
                   "children": [
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 14 },
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 14
+                      },
                       "padding": 16,
-                      "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#E2E8F0", "width": 1 } },
+                      "decoration": {
+                        "color": "#FFFFFF",
+                        "borderRadius": 8,
+                        "border": {
+                          "color": "#E2E8F0",
+                          "width": 1
+                        }
+                      },
                       "child": {
                         "type": "column",
                         "crossAxisAlignment": "start",
@@ -79,54 +125,150 @@
                                   "type": "column",
                                   "crossAxisAlignment": "start",
                                   "children": [
-                                    { "type": "text", "data": "Salaried Hybrid Flexi Loan", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }, "maxLines": 2 },
-                                    { "type": "sizedBox", "height": 4 },
-                                    { "type": "text", "data": "Loan Account Number: SH402PSPT26352", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                                    {
+                                      "type": "text",
+                                      "data": "Salaried Hybrid Flexi Loan",
+                                      "style": {
+                                        "fontSize": 14,
+                                        "fontWeight": "bold",
+                                        "color": "#162B49"
+                                      },
+                                      "maxLines": 2
+                                    },
+                                    {
+                                      "type": "sizedBox",
+                                      "height": 4
+                                    },
+                                    {
+                                      "type": "text",
+                                      "data": "Loan Account Number: SH402PSPT26352",
+                                      "style": {
+                                        "fontSize": 11,
+                                        "color": "#64748B"
+                                      },
+                                      "maxLines": 1
+                                    }
                                   ]
                                 }
                               },
-                              { "type": "sizedBox", "width": 12 },
+                              {
+                                "type": "sizedBox",
+                                "width": 12
+                              },
                               {
                                 "type": "column",
                                 "crossAxisAlignment": "end",
                                 "children": [
-                                  { "type": "text", "data": "Instalment Amount", "style": { "fontSize": 11, "color": "#64748B" } },
-                                  { "type": "text", "data": "Rs. 10,345", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } }
+                                  {
+                                    "type": "text",
+                                    "data": "Instalment Amount",
+                                    "style": {
+                                      "fontSize": 11,
+                                      "color": "#64748B"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "data": "Rs. 10,345",
+                                    "style": {
+                                      "fontSize": 14,
+                                      "fontWeight": "bold",
+                                      "color": "#162B49"
+                                    }
+                                  }
                                 ]
                               }
                             ]
                           },
-                          { "type": "sizedBox", "height": 10 },
+                          {
+                            "type": "sizedBox",
+                            "height": 10
+                          },
                           {
                             "type": "row",
                             "children": [
-                              { "type": "text", "data": "Instalments Paid: 10", "style": { "fontSize": 12, "color": "#334155" } },
-                              { "type": "sizedBox", "width": 18 },
-                              { "type": "text", "data": "Instalments Pending: 20", "style": { "fontSize": 12, "color": "#334155" } }
+                              {
+                                "type": "text",
+                                "data": "Instalments Paid: 10",
+                                "style": {
+                                  "fontSize": 12,
+                                  "color": "#334155"
+                                }
+                              },
+                              {
+                                "type": "sizedBox",
+                                "width": 18
+                              },
+                              {
+                                "type": "text",
+                                "data": "Instalments Pending: 20",
+                                "style": {
+                                  "fontSize": 12,
+                                  "color": "#334155"
+                                }
+                              }
                             ]
                           },
-                          { "type": "divider", "height": 24 },
+                          {
+                            "type": "divider",
+                            "height": 24
+                          },
                           {
                             "type": "row",
                             "crossAxisAlignment": "start",
                             "children": [
-                              { "type": "icon", "icon": "account_balance", "color": "#1B73B9", "size": 18 },
-                              { "type": "sizedBox", "width": 8 },
+                              {
+                                "type": "icon",
+                                "icon": "account_balance",
+                                "color": "#1B73B9",
+                                "size": 18
+                              },
+                              {
+                                "type": "sizedBox",
+                                "width": 8
+                              },
                               {
                                 "type": "expanded",
                                 "child": {
                                   "type": "column",
                                   "crossAxisAlignment": "start",
                                   "children": [
-                                    { "type": "text", "data": "State Bank of India", "style": { "fontSize": 13, "fontWeight": "bold" }, "maxLines": 1 },
-                                    { "type": "text", "data": "Account Number: ****7169", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 },
-                                    { "type": "text", "data": "IFSC: HDFC0000882", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                                    {
+                                      "type": "text",
+                                      "data": "State Bank of India",
+                                      "style": {
+                                        "fontSize": 13,
+                                        "fontWeight": "bold"
+                                      },
+                                      "maxLines": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "data": "Account Number: ****7169",
+                                      "style": {
+                                        "fontSize": 11,
+                                        "color": "#64748B"
+                                      },
+                                      "maxLines": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "data": "IFSC: HDFC0000882",
+                                      "style": {
+                                        "fontSize": 11,
+                                        "color": "#64748B"
+                                      },
+                                      "maxLines": 1
+                                    }
                                   ]
                                 }
                               }
                             ]
                           },
-                          { "type": "sizedBox", "height": 12 },
+                          {
+                            "type": "sizedBox",
+                            "height": 12
+                          },
                           {
                             "type": "row",
                             "mainAxisAlignment": "spaceBetween",
@@ -135,24 +277,53 @@
                               {
                                 "type": "row",
                                 "children": [
-                                  { "type": "icon", "icon": "info_outline", "color": "#94A3B8", "size": 14 },
-                                  { "type": "sizedBox", "width": 6 },
-                                  { "type": "text", "data": "UMRN: 198736490", "style": { "fontSize": 11, "color": "#64748B" } }
+                                  {
+                                    "type": "icon",
+                                    "icon": "info_outline",
+                                    "color": "#94A3B8",
+                                    "size": 14
+                                  },
+                                  {
+                                    "type": "sizedBox",
+                                    "width": 6
+                                  },
+                                  {
+                                    "type": "text",
+                                    "data": "UMRN: 198736490",
+                                    "style": {
+                                      "fontSize": 11,
+                                      "color": "#64748B"
+                                    }
+                                  }
                                 ]
                               },
                               {
-                                "type": "elevatedButton",
+                                "type": "loadingButton",
                                 "style": {
                                   "backgroundColor": "#FF6B35",
                                   "foregroundColor": "#FFFFFF",
-                                  "shape": { "type": "roundedRectangleBorder", "borderRadius": 6 }
+                                  "shape": {
+                                    "type": "roundedRectangleBorder",
+                                    "borderRadius": 6
+                                  }
                                 },
                                 "onPressed": {
                                   "actionType": "showModalBottomSheet",
                                   "widget": {
                                     "type": "container",
-                                    "padding": { "top": 20, "left": 24, "right": 24, "bottom": 28 },
-                                    "decoration": { "color": "#FFFFFF", "borderRadius": { "topLeft": 16, "topRight": 16 } },
+                                    "padding": {
+                                      "top": 20,
+                                      "left": 24,
+                                      "right": 24,
+                                      "bottom": 28
+                                    },
+                                    "decoration": {
+                                      "color": "#FFFFFF",
+                                      "borderRadius": {
+                                        "topLeft": 16,
+                                        "topRight": 16
+                                      }
+                                    },
                                     "child": {
                                       "type": "column",
                                       "crossAxisAlignment": "stretch",
@@ -163,28 +334,63 @@
                                           "children": [
                                             {
                                               "type": "gestureDetector",
-                                              "onTap": { "actionType": "navigate", "navigationStyle": "pop" },
-                                              "child": { "type": "icon", "icon": "close", "color": "#FF6B35", "size": 20 }
+                                              "onTap": {
+                                                "actionType": "navigate",
+                                                "navigationStyle": "pop"
+                                              },
+                                              "child": {
+                                                "type": "icon",
+                                                "icon": "close",
+                                                "color": "#FF6B35",
+                                                "size": 20
+                                              }
                                             }
                                           ]
                                         },
-                                        { "type": "sizedBox", "height": 4 },
-                                        { "type": "text", "data": "Please note", "textAlign": "center", "style": { "fontSize": 20, "fontWeight": "bold", "color": "#162B49" } },
-                                        { "type": "sizedBox", "height": 18 },
+                                        {
+                                          "type": "sizedBox",
+                                          "height": 4
+                                        },
+                                        {
+                                          "type": "text",
+                                          "data": "Please note",
+                                          "textAlign": "center",
+                                          "style": {
+                                            "fontSize": 20,
+                                            "fontWeight": "bold",
+                                            "color": "#162B49"
+                                          }
+                                        },
+                                        {
+                                          "type": "sizedBox",
+                                          "height": 18
+                                        },
                                         {
                                           "type": "text",
                                           "textAlign": "center",
                                           "data": "If your current month's instalment is under presentation, the bank account change will apply from the subsequent month's instalment* (e.g. if it's Jan 29, deductions will start in March) *Subject to bank approval.",
-                                          "style": { "fontSize": 13, "color": "#1B4B7A" }
+                                          "style": {
+                                            "fontSize": 13,
+                                            "color": "#1B4B7A"
+                                          }
                                         },
-                                        { "type": "sizedBox", "height": 14 },
+                                        {
+                                          "type": "sizedBox",
+                                          "height": 14
+                                        },
                                         {
                                           "type": "text",
                                           "textAlign": "center",
                                           "data": "Check your reminder SMS from BFL to know which account will be used for upcoming deduction.",
-                                          "style": { "fontSize": 13, "color": "#1B4B7A" }
+                                          "style": {
+                                            "fontSize": 13,
+                                            "color": "#1B4B7A"
+                                          }
                                         },
-                                        { "type": "sizedBox", "height": 26 },
+                                        {
+                                          "type": "sizedBox",
+                                          "height": 26
+                                        },
                                         {
                                           "type": "row",
                                           "crossAxisAlignment": "center",
@@ -195,29 +401,63 @@
                                                 "type": "outlinedButton",
                                                 "style": {
                                                   "foregroundColor": "#FF6B35",
-                                                  "side": { "color": "#FF6B35", "width": 1.5 },
-                                                  "shape": { "type": "roundedRectangleBorder", "borderRadius": 24 }
+                                                  "side": {
+                                                    "color": "#FF6B35",
+                                                    "width": 1.5
+                                                  },
+                                                  "shape": {
+                                                    "type": "roundedRectangleBorder",
+                                                    "borderRadius": 24
+                                                  }
                                                 },
-                                                "onPressed": { "actionType": "navigate", "navigationStyle": "pop" },
-                                                "child": { "type": "text", "data": "GO BACK", "style": { "fontSize": 13, "fontWeight": "bold", "color": "#FF6B35" } }
+                                                "onPressed": {
+                                                  "actionType": "navigate",
+                                                  "navigationStyle": "pop"
+                                                },
+                                                "child": {
+                                                  "type": "text",
+                                                  "data": "GO BACK",
+                                                  "style": {
+                                                    "fontSize": 13,
+                                                    "fontWeight": "bold",
+                                                    "color": "#FF6B35"
+                                                  }
+                                                }
                                               }
                                             },
-                                            { "type": "sizedBox", "width": 14 },
+                                            {
+                                              "type": "sizedBox",
+                                              "width": 14
+                                            },
                                             {
                                               "type": "expanded",
                                               "child": {
-                                                "type": "elevatedButton",
+                                                "type": "loadingButton",
                                                 "style": {
                                                   "backgroundColor": "#FF6B35",
                                                   "foregroundColor": "#FFFFFF",
-                                                  "shape": { "type": "roundedRectangleBorder", "borderRadius": 24 }
+                                                  "shape": {
+                                                    "type": "roundedRectangleBorder",
+                                                    "borderRadius": 24
+                                                  }
                                                 },
                                                 "onPressed": {
                                                   "actionType": "navigateWithLoader",
                                                   "navigationStyle": "push",
-                                                  "request": { "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/change_bank_account.json", "method": "get" }
+                                                  "request": {
+                                                    "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/change_bank_account.json",
+                                                    "method": "get"
+                                                  }
                                                 },
-                                                "child": { "type": "text", "data": "CONTINUE", "style": { "fontSize": 13, "fontWeight": "bold", "color": "#FFFFFF" } }
+                                                "child": {
+                                                  "type": "text",
+                                                  "data": "CONTINUE",
+                                                  "style": {
+                                                    "fontSize": 13,
+                                                    "fontWeight": "bold",
+                                                    "color": "#FFFFFF"
+                                                  }
+                                                }
                                               }
                                             }
                                           ]
@@ -226,19 +466,37 @@
                                     }
                                   }
                                 },
-                                "child": { "type": "text", "data": "CHANGE", "style": { "fontSize": 12, "fontWeight": "bold", "color": "#FFFFFF" } }
+                                "child": {
+                                  "type": "text",
+                                  "data": "CHANGE",
+                                  "style": {
+                                    "fontSize": 12,
+                                    "fontWeight": "bold",
+                                    "color": "#FFFFFF"
+                                  }
+                                }
                               }
                             ]
                           }
                         ]
                       }
                     },
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 14 },
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 14
+                      },
                       "padding": 16,
-                      "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#E2E8F0", "width": 1 } },
+                      "decoration": {
+                        "color": "#FFFFFF",
+                        "borderRadius": 8,
+                        "border": {
+                          "color": "#E2E8F0",
+                          "width": 1
+                        }
+                      },
                       "child": {
                         "type": "column",
                         "crossAxisAlignment": "start",
@@ -253,93 +511,252 @@
                                   "type": "column",
                                   "crossAxisAlignment": "start",
                                   "children": [
-                                    { "type": "text", "data": "Business Term Loan", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }, "maxLines": 2 },
-                                    { "type": "sizedBox", "height": 4 },
-                                    { "type": "text", "data": "Loan Account Number: CD402PSP7223390", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                                    {
+                                      "type": "text",
+                                      "data": "Business Term Loan",
+                                      "style": {
+                                        "fontSize": 14,
+                                        "fontWeight": "bold",
+                                        "color": "#162B49"
+                                      },
+                                      "maxLines": 2
+                                    },
+                                    {
+                                      "type": "sizedBox",
+                                      "height": 4
+                                    },
+                                    {
+                                      "type": "text",
+                                      "data": "Loan Account Number: CD402PSP7223390",
+                                      "style": {
+                                        "fontSize": 11,
+                                        "color": "#64748B"
+                                      },
+                                      "maxLines": 1
+                                    }
                                   ]
                                 }
                               },
-                              { "type": "sizedBox", "width": 12 },
+                              {
+                                "type": "sizedBox",
+                                "width": 12
+                              },
                               {
                                 "type": "column",
                                 "crossAxisAlignment": "end",
                                 "children": [
-                                  { "type": "text", "data": "Instalment Amount", "style": { "fontSize": 11, "color": "#64748B" } },
-                                  { "type": "text", "data": "Rs. 10,345", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } }
+                                  {
+                                    "type": "text",
+                                    "data": "Instalment Amount",
+                                    "style": {
+                                      "fontSize": 11,
+                                      "color": "#64748B"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "data": "Rs. 10,345",
+                                    "style": {
+                                      "fontSize": 14,
+                                      "fontWeight": "bold",
+                                      "color": "#162B49"
+                                    }
+                                  }
                                 ]
                               }
                             ]
                           },
-                          { "type": "sizedBox", "height": 10 },
+                          {
+                            "type": "sizedBox",
+                            "height": 10
+                          },
                           {
                             "type": "row",
                             "children": [
-                              { "type": "text", "data": "Instalments Paid: 5", "style": { "fontSize": 12, "color": "#334155" } },
-                              { "type": "sizedBox", "width": 18 },
-                              { "type": "text", "data": "Instalments Pending: 12", "style": { "fontSize": 12, "color": "#334155" } }
+                              {
+                                "type": "text",
+                                "data": "Instalments Paid: 5",
+                                "style": {
+                                  "fontSize": 12,
+                                  "color": "#334155"
+                                }
+                              },
+                              {
+                                "type": "sizedBox",
+                                "width": 18
+                              },
+                              {
+                                "type": "text",
+                                "data": "Instalments Pending: 12",
+                                "style": {
+                                  "fontSize": 12,
+                                  "color": "#334155"
+                                }
+                              }
                             ]
                           },
-                          { "type": "divider", "height": 24 },
+                          {
+                            "type": "divider",
+                            "height": 24
+                          },
                           {
                             "type": "row",
                             "crossAxisAlignment": "start",
                             "children": [
-                              { "type": "icon", "icon": "account_balance", "color": "#1B73B9", "size": 18 },
-                              { "type": "sizedBox", "width": 8 },
+                              {
+                                "type": "icon",
+                                "icon": "account_balance",
+                                "color": "#1B73B9",
+                                "size": 18
+                              },
+                              {
+                                "type": "sizedBox",
+                                "width": 8
+                              },
                               {
                                 "type": "expanded",
                                 "child": {
                                   "type": "column",
                                   "crossAxisAlignment": "start",
                                   "children": [
-                                    { "type": "text", "data": "State Bank of India", "style": { "fontSize": 13, "fontWeight": "bold" }, "maxLines": 1 },
-                                    { "type": "text", "data": "Account Number: ****1823", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 },
-                                    { "type": "text", "data": "IFSC: SBIN7783649", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                                    {
+                                      "type": "text",
+                                      "data": "State Bank of India",
+                                      "style": {
+                                        "fontSize": 13,
+                                        "fontWeight": "bold"
+                                      },
+                                      "maxLines": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "data": "Account Number: ****1823",
+                                      "style": {
+                                        "fontSize": 11,
+                                        "color": "#64748B"
+                                      },
+                                      "maxLines": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "data": "IFSC: SBIN7783649",
+                                      "style": {
+                                        "fontSize": 11,
+                                        "color": "#64748B"
+                                      },
+                                      "maxLines": 1
+                                    }
                                   ]
                                 }
                               },
                               {
                                 "type": "row",
                                 "children": [
-                                  { "type": "text", "data": "View only", "style": { "fontSize": 11, "color": "#64748B" } },
-                                  { "type": "sizedBox", "width": 4 },
-                                  { "type": "icon", "icon": "info_outline", "color": "#94A3B8", "size": 14 }
+                                  {
+                                    "type": "text",
+                                    "data": "View only",
+                                    "style": {
+                                      "fontSize": 11,
+                                      "color": "#64748B"
+                                    }
+                                  },
+                                  {
+                                    "type": "sizedBox",
+                                    "width": 4
+                                  },
+                                  {
+                                    "type": "icon",
+                                    "icon": "info_outline",
+                                    "color": "#94A3B8",
+                                    "size": 14
+                                  }
                                 ]
                               }
                             ]
                           },
-                          { "type": "sizedBox", "height": 12 },
+                          {
+                            "type": "sizedBox",
+                            "height": 12
+                          },
                           {
                             "type": "container",
                             "padding": 10,
-                            "decoration": { "color": "#FFF7E6", "borderRadius": 6 },
+                            "decoration": {
+                              "color": "#FFF7E6",
+                              "borderRadius": 6
+                            },
                             "child": {
                               "type": "row",
                               "crossAxisAlignment": "start",
                               "children": [
-                                { "type": "icon", "icon": "warning_amber", "color": "#D97706", "size": 16 },
-                                { "type": "sizedBox", "width": 8 },
-                                { "type": "expanded", "child": { "type": "text", "data": "You are a co-borrower for this loan", "style": { "fontSize": 12, "color": "#92400E" } } }
+                                {
+                                  "type": "icon",
+                                  "icon": "warning_amber",
+                                  "color": "#D97706",
+                                  "size": 16
+                                },
+                                {
+                                  "type": "sizedBox",
+                                  "width": 8
+                                },
+                                {
+                                  "type": "expanded",
+                                  "child": {
+                                    "type": "text",
+                                    "data": "You are a co-borrower for this loan",
+                                    "style": {
+                                      "fontSize": 12,
+                                      "color": "#92400E"
+                                    }
+                                  }
+                                }
                               ]
                             }
                           }
                         ]
                       }
                     },
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 20 },
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 20
+                      },
                       "padding": 14,
-                      "decoration": { "color": "#FFF7E6", "borderRadius": 8 },
+                      "decoration": {
+                        "color": "#FFF7E6",
+                        "borderRadius": 8
+                      },
                       "child": {
                         "type": "column",
                         "crossAxisAlignment": "start",
                         "children": [
-                          { "type": "text", "data": "Please note:", "style": { "fontSize": 13, "fontWeight": "bold", "color": "#92400E" } },
-                          { "type": "sizedBox", "height": 10 },
-                          { "type": "text", "data": "- If your current instalment is under presentation, then the Auto Payment change request will apply to your subsequent month's instalment and not the present one.", "style": { "fontSize": 12, "color": "#334155" } },
-                          { "type": "sizedBox", "height": 10 },
+                          {
+                            "type": "text",
+                            "data": "Please note:",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#92400E"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 10
+                          },
+                          {
+                            "type": "text",
+                            "data": "- If your current instalment is under presentation, then the Auto Payment change request will apply to your subsequent month's instalment and not the present one.",
+                            "style": {
+                              "fontSize": 12,
+                              "color": "#334155"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 10
+                          },
                           {
                             "type": "row",
                             "crossAxisAlignment": "start",
@@ -349,7 +766,10 @@
                                 "child": {
                                   "type": "text",
                                   "data": "- If you wish to change the draw-down bank account for your Flexi Loan withdrawals, click here.",
-                                  "style": { "fontSize": 12, "color": "#334155" }
+                                  "style": {
+                                    "fontSize": 12,
+                                    "color": "#334155"
+                                  }
                                 }
                               }
                             ]
@@ -359,21 +779,48 @@
                             "onTap": {
                               "actionType": "navigate",
                               "navigationStyle": "push",
-                              "request": { "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/flexi_drawdown_account.json", "method": "get" }
+                              "request": {
+                                "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/flexi_drawdown_account.json",
+                                "method": "get"
+                              }
                             },
-                            "child": { "type": "text", "data": "Click here to change draw-down account", "style": { "fontSize": 12, "color": "#FF6B35", "fontWeight": "bold" } }
+                            "child": {
+                              "type": "text",
+                              "data": "Click here to change draw-down account",
+                              "style": {
+                                "fontSize": 12,
+                                "color": "#FF6B35",
+                                "fontWeight": "bold"
+                              }
+                            }
                           },
-                          { "type": "sizedBox", "height": 10 },
-                          { "type": "text", "data": "- Your bank may charge a one-time account registration fee.", "style": { "fontSize": 12, "color": "#334155" } }
+                          {
+                            "type": "sizedBox",
+                            "height": 10
+                          },
+                          {
+                            "type": "text",
+                            "data": "- Your bank may charge a one-time account registration fee.",
+                            "style": {
+                              "fontSize": 12,
+                              "color": "#334155"
+                            }
+                          }
                         ]
                       }
                     },
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 22 },
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 22
+                      },
                       "padding": 22,
-                      "decoration": { "color": "#002A54", "borderRadius": 10 },
+                      "decoration": {
+                        "color": "#002A54",
+                        "borderRadius": 10
+                      },
                       "child": {
                         "type": "row",
                         "crossAxisAlignment": "center",
@@ -384,32 +831,91 @@
                               "type": "column",
                               "crossAxisAlignment": "start",
                               "children": [
-                                { "type": "text", "data": "Get Bajaj Pay UPI", "style": { "fontSize": 22, "fontWeight": "bold", "color": "#FFFFFF" } },
-                                { "type": "sizedBox", "height": 6 },
-                                { "type": "text", "data": "Transfer, pay, recharge & shop securely", "style": { "fontSize": 13, "color": "#B9D9F2" } },
-                                { "type": "sizedBox", "height": 18 },
                                 {
-                                  "type": "elevatedButton",
+                                  "type": "text",
+                                  "data": "Get Bajaj Pay UPI",
+                                  "style": {
+                                    "fontSize": 22,
+                                    "fontWeight": "bold",
+                                    "color": "#FFFFFF"
+                                  }
+                                },
+                                {
+                                  "type": "sizedBox",
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "data": "Transfer, pay, recharge & shop securely",
+                                  "style": {
+                                    "fontSize": 13,
+                                    "color": "#B9D9F2"
+                                  }
+                                },
+                                {
+                                  "type": "sizedBox",
+                                  "height": 18
+                                },
+                                {
+                                  "type": "loadingButton",
                                   "style": {
                                     "backgroundColor": "#FFFFFF",
                                     "foregroundColor": "#002A54",
-                                    "shape": { "type": "roundedRectangleBorder", "borderRadius": 24 }
+                                    "shape": {
+                                      "type": "roundedRectangleBorder",
+                                      "borderRadius": 24
+                                    }
                                   },
                                   "onPressed": {
                                     "actionType": "navigateWithLoader",
                                     "navigationStyle": "push",
-                                    "request": { "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json", "method": "get" }
+                                    "request": {
+                                      "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json",
+                                      "method": "get"
+                                    }
                                   },
-                                  "child": { "type": "text", "data": "Create UPI ID", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#002A54" } }
+                                  "child": {
+                                    "type": "text",
+                                    "data": "Create UPI ID",
+                                    "style": {
+                                      "fontSize": 14,
+                                      "fontWeight": "bold",
+                                      "color": "#002A54"
+                                    }
+                                  }
                                 },
-                                { "type": "sizedBox", "height": 20 },
-                                { "type": "text", "data": "Seamless transfers", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#FFFFFF" } },
-                                { "type": "sizedBox", "height": 4 },
-                                { "type": "text", "data": "Pay instantly, anytime, anywhere", "style": { "fontSize": 12, "color": "#B9D9F2" } }
+                                {
+                                  "type": "sizedBox",
+                                  "height": 20
+                                },
+                                {
+                                  "type": "text",
+                                  "data": "Seamless transfers",
+                                  "style": {
+                                    "fontSize": 15,
+                                    "fontWeight": "bold",
+                                    "color": "#FFFFFF"
+                                  }
+                                },
+                                {
+                                  "type": "sizedBox",
+                                  "height": 4
+                                },
+                                {
+                                  "type": "text",
+                                  "data": "Pay instantly, anytime, anywhere",
+                                  "style": {
+                                    "fontSize": 12,
+                                    "color": "#B9D9F2"
+                                  }
+                                }
                               ]
                             }
                           },
-                          { "type": "sizedBox", "width": 12 },
+                          {
+                            "type": "sizedBox",
+                            "width": 12
+                          },
                           {
                             "type": "image",
                             "src": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
@@ -421,64 +927,120 @@
                         ]
                       }
                     },
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 16 },
-                      "child": { "type": "text", "data": "Frequently asked questions", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } }
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 16
+                      },
+                      "child": {
+                        "type": "text",
+                        "data": "Frequently asked questions",
+                        "style": {
+                          "fontSize": 18,
+                          "fontWeight": "bold",
+                          "color": "#162B49"
+                        }
+                      }
                     },
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 20 },
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 20
+                      },
                       "child": {
                         "type": "column",
                         "crossAxisAlignment": "start",
                         "children": [
                           {
                             "type": "container",
-                            "margin": { "bottom": 10 },
-                            "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                            "margin": {
+                              "bottom": 10
+                            },
+                            "decoration": {
+                              "color": "#EEF3F9",
+                              "borderRadius": 8
+                            },
                             "child": {
                               "type": "expansionTile",
-                              "tilePadding": { "left": 16, "right": 16, "top": 4, "bottom": 4 },
-                              "childrenPadding": { "left": 16, "right": 16, "bottom": 16 },
+                              "tilePadding": {
+                                "left": 16,
+                                "right": 16,
+                                "top": 4,
+                                "bottom": 4
+                              },
+                              "childrenPadding": {
+                                "left": 16,
+                                "right": 16,
+                                "bottom": 16
+                              },
                               "iconColor": "#162B49",
                               "collapsedIconColor": "#162B49",
                               "title": {
                                 "type": "text",
                                 "data": "What is Auto Payment or mandate registration?",
-                                "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }
+                                "style": {
+                                  "fontSize": 14,
+                                  "fontWeight": "bold",
+                                  "color": "#162B49"
+                                }
                               },
                               "children": [
                                 {
                                   "type": "text",
                                   "data": "Auto Payment or mandate registration is a digital method you can use to automate payments for your instalments, SIPs, bill payments, etc. Through Auto Payment, your bank receives a standing instruction to debit the instalment amount automatically on the due date.",
-                                  "style": { "fontSize": 13, "color": "#334155" }
+                                  "style": {
+                                    "fontSize": 13,
+                                    "color": "#334155"
+                                  }
                                 }
                               ]
                             }
                           },
                           {
                             "type": "container",
-                            "margin": { "bottom": 10 },
-                            "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                            "margin": {
+                              "bottom": 10
+                            },
+                            "decoration": {
+                              "color": "#EEF3F9",
+                              "borderRadius": 8
+                            },
                             "child": {
                               "type": "expansionTile",
-                              "tilePadding": { "left": 16, "right": 16, "top": 4, "bottom": 4 },
-                              "childrenPadding": { "left": 16, "right": 16, "bottom": 16 },
+                              "tilePadding": {
+                                "left": 16,
+                                "right": 16,
+                                "top": 4,
+                                "bottom": 4
+                              },
+                              "childrenPadding": {
+                                "left": 16,
+                                "right": 16,
+                                "bottom": 16
+                              },
                               "iconColor": "#162B49",
                               "collapsedIconColor": "#162B49",
                               "title": {
                                 "type": "text",
                                 "data": "How to set up Auto Payment or register e-mandate?",
-                                "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }
+                                "style": {
+                                  "fontSize": 14,
+                                  "fontWeight": "bold",
+                                  "color": "#162B49"
+                                }
                               },
                               "children": [
                                 {
                                   "type": "text",
                                   "data": "You can set up Auto Payment by selecting your loan or mandate account, providing your bank details, and authorizing the e-mandate via your Net Banking or Debit Card credentials.",
-                                  "style": { "fontSize": 13, "color": "#334155" }
+                                  "style": {
+                                    "fontSize": 13,
+                                    "color": "#334155"
+                                  }
                                 }
                               ]
                             }
@@ -489,20 +1051,32 @@
                   ]
                 }
               },
-
               {
                 "type": "singleChildScrollView",
-                "padding": { "top": 14, "bottom": 40 },
+                "padding": {
+                  "top": 14,
+                  "bottom": 40
+                },
                 "child": {
                   "type": "column",
                   "crossAxisAlignment": "start",
                   "children": [
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 14 },
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 14
+                      },
                       "padding": 16,
-                      "decoration": { "color": "#FFFFFF", "borderRadius": 8, "border": { "color": "#E2E8F0", "width": 1 } },
+                      "decoration": {
+                        "color": "#FFFFFF",
+                        "borderRadius": 8,
+                        "border": {
+                          "color": "#E2E8F0",
+                          "width": 1
+                        }
+                      },
                       "child": {
                         "type": "column",
                         "crossAxisAlignment": "start",
@@ -517,54 +1091,150 @@
                                   "type": "column",
                                   "crossAxisAlignment": "start",
                                   "children": [
-                                    { "type": "text", "data": "Systematic Deposit Plan", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }, "maxLines": 2 },
-                                    { "type": "sizedBox", "height": 4 },
-                                    { "type": "text", "data": "SDP Account Number: SDP402PSPT98214", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                                    {
+                                      "type": "text",
+                                      "data": "Systematic Deposit Plan",
+                                      "style": {
+                                        "fontSize": 14,
+                                        "fontWeight": "bold",
+                                        "color": "#162B49"
+                                      },
+                                      "maxLines": 2
+                                    },
+                                    {
+                                      "type": "sizedBox",
+                                      "height": 4
+                                    },
+                                    {
+                                      "type": "text",
+                                      "data": "SDP Account Number: SDP402PSPT98214",
+                                      "style": {
+                                        "fontSize": 11,
+                                        "color": "#64748B"
+                                      },
+                                      "maxLines": 1
+                                    }
                                   ]
                                 }
                               },
-                              { "type": "sizedBox", "width": 12 },
+                              {
+                                "type": "sizedBox",
+                                "width": 12
+                              },
                               {
                                 "type": "column",
                                 "crossAxisAlignment": "end",
                                 "children": [
-                                  { "type": "text", "data": "Deposit Amount", "style": { "fontSize": 11, "color": "#64748B" } },
-                                  { "type": "text", "data": "Rs. 5,000", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" } }
+                                  {
+                                    "type": "text",
+                                    "data": "Deposit Amount",
+                                    "style": {
+                                      "fontSize": 11,
+                                      "color": "#64748B"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "data": "Rs. 5,000",
+                                    "style": {
+                                      "fontSize": 14,
+                                      "fontWeight": "bold",
+                                      "color": "#162B49"
+                                    }
+                                  }
                                 ]
                               }
                             ]
                           },
-                          { "type": "sizedBox", "height": 10 },
+                          {
+                            "type": "sizedBox",
+                            "height": 10
+                          },
                           {
                             "type": "row",
                             "children": [
-                              { "type": "text", "data": "Deposits Made: 6", "style": { "fontSize": 12, "color": "#334155" } },
-                              { "type": "sizedBox", "width": 18 },
-                              { "type": "text", "data": "Deposits Pending: 18", "style": { "fontSize": 12, "color": "#334155" } }
+                              {
+                                "type": "text",
+                                "data": "Deposits Made: 6",
+                                "style": {
+                                  "fontSize": 12,
+                                  "color": "#334155"
+                                }
+                              },
+                              {
+                                "type": "sizedBox",
+                                "width": 18
+                              },
+                              {
+                                "type": "text",
+                                "data": "Deposits Pending: 18",
+                                "style": {
+                                  "fontSize": 12,
+                                  "color": "#334155"
+                                }
+                              }
                             ]
                           },
-                          { "type": "divider", "height": 24 },
+                          {
+                            "type": "divider",
+                            "height": 24
+                          },
                           {
                             "type": "row",
                             "crossAxisAlignment": "start",
                             "children": [
-                              { "type": "icon", "icon": "account_balance", "color": "#1B73B9", "size": 18 },
-                              { "type": "sizedBox", "width": 8 },
+                              {
+                                "type": "icon",
+                                "icon": "account_balance",
+                                "color": "#1B73B9",
+                                "size": 18
+                              },
+                              {
+                                "type": "sizedBox",
+                                "width": 8
+                              },
                               {
                                 "type": "expanded",
                                 "child": {
                                   "type": "column",
                                   "crossAxisAlignment": "start",
                                   "children": [
-                                    { "type": "text", "data": "State Bank of India", "style": { "fontSize": 13, "fontWeight": "bold" }, "maxLines": 1 },
-                                    { "type": "text", "data": "Account Number: ****4420", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 },
-                                    { "type": "text", "data": "IFSC: SBIN0004420", "style": { "fontSize": 11, "color": "#64748B" }, "maxLines": 1 }
+                                    {
+                                      "type": "text",
+                                      "data": "State Bank of India",
+                                      "style": {
+                                        "fontSize": 13,
+                                        "fontWeight": "bold"
+                                      },
+                                      "maxLines": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "data": "Account Number: ****4420",
+                                      "style": {
+                                        "fontSize": 11,
+                                        "color": "#64748B"
+                                      },
+                                      "maxLines": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "data": "IFSC: SBIN0004420",
+                                      "style": {
+                                        "fontSize": 11,
+                                        "color": "#64748B"
+                                      },
+                                      "maxLines": 1
+                                    }
                                   ]
                                 }
                               }
                             ]
                           },
-                          { "type": "sizedBox", "height": 12 },
+                          {
+                            "type": "sizedBox",
+                            "height": 12
+                          },
                           {
                             "type": "row",
                             "mainAxisAlignment": "spaceBetween",
@@ -573,50 +1243,118 @@
                               {
                                 "type": "row",
                                 "children": [
-                                  { "type": "icon", "icon": "info_outline", "color": "#94A3B8", "size": 14 },
-                                  { "type": "sizedBox", "width": 6 },
-                                  { "type": "text", "data": "UMRN: 198736512", "style": { "fontSize": 11, "color": "#64748B" } }
+                                  {
+                                    "type": "icon",
+                                    "icon": "info_outline",
+                                    "color": "#94A3B8",
+                                    "size": 14
+                                  },
+                                  {
+                                    "type": "sizedBox",
+                                    "width": 6
+                                  },
+                                  {
+                                    "type": "text",
+                                    "data": "UMRN: 198736512",
+                                    "style": {
+                                      "fontSize": 11,
+                                      "color": "#64748B"
+                                    }
+                                  }
                                 ]
                               },
                               {
-                                "type": "elevatedButton",
+                                "type": "loadingButton",
                                 "style": {
                                   "backgroundColor": "#FF6B35",
                                   "foregroundColor": "#FFFFFF",
-                                  "shape": { "type": "roundedRectangleBorder", "borderRadius": 6 }
+                                  "shape": {
+                                    "type": "roundedRectangleBorder",
+                                    "borderRadius": 6
+                                  }
                                 },
-                                "onPressed": { "actionType": "none" },
-                                "child": { "type": "text", "data": "CHANGE", "style": { "fontSize": 12, "fontWeight": "bold", "color": "#FFFFFF" } }
+                                "onPressed": {
+                                  "actionType": "none"
+                                },
+                                "child": {
+                                  "type": "text",
+                                  "data": "CHANGE",
+                                  "style": {
+                                    "fontSize": 12,
+                                    "fontWeight": "bold",
+                                    "color": "#FFFFFF"
+                                  }
+                                }
                               }
                             ]
                           }
                         ]
                       }
                     },
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 20 },
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 20
+                      },
                       "padding": 14,
-                      "decoration": { "color": "#FFF7E6", "borderRadius": 8 },
+                      "decoration": {
+                        "color": "#FFF7E6",
+                        "borderRadius": 8
+                      },
                       "child": {
                         "type": "column",
                         "crossAxisAlignment": "start",
                         "children": [
-                          { "type": "text", "data": "Please note:", "style": { "fontSize": 13, "fontWeight": "bold", "color": "#92400E" } },
-                          { "type": "sizedBox", "height": 10 },
-                          { "type": "text", "data": "- If your current instalment is under presentation, then the Auto Payment change request will apply to your subsequent instalment and not the present one.", "style": { "fontSize": 12, "color": "#334155" } },
-                          { "type": "sizedBox", "height": 10 },
-                          { "type": "text", "data": "- Your bank may charge a one-time account registration fee.", "style": { "fontSize": 12, "color": "#334155" } }
+                          {
+                            "type": "text",
+                            "data": "Please note:",
+                            "style": {
+                              "fontSize": 13,
+                              "fontWeight": "bold",
+                              "color": "#92400E"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 10
+                          },
+                          {
+                            "type": "text",
+                            "data": "- If your current instalment is under presentation, then the Auto Payment change request will apply to your subsequent instalment and not the present one.",
+                            "style": {
+                              "fontSize": 12,
+                              "color": "#334155"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 10
+                          },
+                          {
+                            "type": "text",
+                            "data": "- Your bank may charge a one-time account registration fee.",
+                            "style": {
+                              "fontSize": 12,
+                              "color": "#334155"
+                            }
+                          }
                         ]
                       }
                     },
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 22 },
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 22
+                      },
                       "padding": 22,
-                      "decoration": { "color": "#002A54", "borderRadius": 10 },
+                      "decoration": {
+                        "color": "#002A54",
+                        "borderRadius": 10
+                      },
                       "child": {
                         "type": "row",
                         "crossAxisAlignment": "center",
@@ -627,32 +1365,91 @@
                               "type": "column",
                               "crossAxisAlignment": "start",
                               "children": [
-                                { "type": "text", "data": "Get Bajaj Pay UPI", "style": { "fontSize": 22, "fontWeight": "bold", "color": "#FFFFFF" } },
-                                { "type": "sizedBox", "height": 6 },
-                                { "type": "text", "data": "Transfer, pay, recharge & shop securely", "style": { "fontSize": 13, "color": "#B9D9F2" } },
-                                { "type": "sizedBox", "height": 18 },
                                 {
-                                  "type": "elevatedButton",
+                                  "type": "text",
+                                  "data": "Get Bajaj Pay UPI",
+                                  "style": {
+                                    "fontSize": 22,
+                                    "fontWeight": "bold",
+                                    "color": "#FFFFFF"
+                                  }
+                                },
+                                {
+                                  "type": "sizedBox",
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "data": "Transfer, pay, recharge & shop securely",
+                                  "style": {
+                                    "fontSize": 13,
+                                    "color": "#B9D9F2"
+                                  }
+                                },
+                                {
+                                  "type": "sizedBox",
+                                  "height": 18
+                                },
+                                {
+                                  "type": "loadingButton",
                                   "style": {
                                     "backgroundColor": "#FFFFFF",
                                     "foregroundColor": "#002A54",
-                                    "shape": { "type": "roundedRectangleBorder", "borderRadius": 24 }
+                                    "shape": {
+                                      "type": "roundedRectangleBorder",
+                                      "borderRadius": 24
+                                    }
                                   },
                                   "onPressed": {
                                     "actionType": "navigate",
                                     "navigationStyle": "push",
-                                    "request": { "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json", "method": "get" }
+                                    "request": {
+                                      "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json",
+                                      "method": "get"
+                                    }
                                   },
-                                  "child": { "type": "text", "data": "Create UPI ID", "style": { "fontSize": 14, "fontWeight": "bold", "color": "#002A54" } }
+                                  "child": {
+                                    "type": "text",
+                                    "data": "Create UPI ID",
+                                    "style": {
+                                      "fontSize": 14,
+                                      "fontWeight": "bold",
+                                      "color": "#002A54"
+                                    }
+                                  }
                                 },
-                                { "type": "sizedBox", "height": 20 },
-                                { "type": "text", "data": "Seamless transfers", "style": { "fontSize": 15, "fontWeight": "bold", "color": "#FFFFFF" } },
-                                { "type": "sizedBox", "height": 4 },
-                                { "type": "text", "data": "Pay instantly, anytime, anywhere", "style": { "fontSize": 12, "color": "#B9D9F2" } }
+                                {
+                                  "type": "sizedBox",
+                                  "height": 20
+                                },
+                                {
+                                  "type": "text",
+                                  "data": "Seamless transfers",
+                                  "style": {
+                                    "fontSize": 15,
+                                    "fontWeight": "bold",
+                                    "color": "#FFFFFF"
+                                  }
+                                },
+                                {
+                                  "type": "sizedBox",
+                                  "height": 4
+                                },
+                                {
+                                  "type": "text",
+                                  "data": "Pay instantly, anytime, anywhere",
+                                  "style": {
+                                    "fontSize": 12,
+                                    "color": "#B9D9F2"
+                                  }
+                                }
                               ]
                             }
                           },
-                          { "type": "sizedBox", "width": 12 },
+                          {
+                            "type": "sizedBox",
+                            "width": 12
+                          },
                           {
                             "type": "image",
                             "src": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
@@ -664,64 +1461,120 @@
                         ]
                       }
                     },
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 16 },
-                      "child": { "type": "text", "data": "Frequently asked questions", "style": { "fontSize": 18, "fontWeight": "bold", "color": "#162B49" } }
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 16
+                      },
+                      "child": {
+                        "type": "text",
+                        "data": "Frequently asked questions",
+                        "style": {
+                          "fontSize": 18,
+                          "fontWeight": "bold",
+                          "color": "#162B49"
+                        }
+                      }
                     },
-
                     {
                       "type": "container",
-                      "margin": { "left": 16, "right": 16, "bottom": 20 },
+                      "margin": {
+                        "left": 16,
+                        "right": 16,
+                        "bottom": 20
+                      },
                       "child": {
                         "type": "column",
                         "crossAxisAlignment": "start",
                         "children": [
                           {
                             "type": "container",
-                            "margin": { "bottom": 10 },
-                            "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                            "margin": {
+                              "bottom": 10
+                            },
+                            "decoration": {
+                              "color": "#EEF3F9",
+                              "borderRadius": 8
+                            },
                             "child": {
                               "type": "expansionTile",
-                              "tilePadding": { "left": 16, "right": 16, "top": 4, "bottom": 4 },
-                              "childrenPadding": { "left": 16, "right": 16, "bottom": 16 },
+                              "tilePadding": {
+                                "left": 16,
+                                "right": 16,
+                                "top": 4,
+                                "bottom": 4
+                              },
+                              "childrenPadding": {
+                                "left": 16,
+                                "right": 16,
+                                "bottom": 16
+                              },
                               "iconColor": "#162B49",
                               "collapsedIconColor": "#162B49",
                               "title": {
                                 "type": "text",
                                 "data": "What is an SDP AutoPay mandate?",
-                                "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }
+                                "style": {
+                                  "fontSize": 14,
+                                  "fontWeight": "bold",
+                                  "color": "#162B49"
+                                }
                               },
                               "children": [
                                 {
                                   "type": "text",
                                   "data": "An SDP AutoPay mandate allows automated monthly deductions from your registered bank account towards your Systematic Deposit Plan.",
-                                  "style": { "fontSize": 13, "color": "#334155" }
+                                  "style": {
+                                    "fontSize": 13,
+                                    "color": "#334155"
+                                  }
                                 }
                               ]
                             }
                           },
                           {
                             "type": "container",
-                            "margin": { "bottom": 10 },
-                            "decoration": { "color": "#EEF3F9", "borderRadius": 8 },
+                            "margin": {
+                              "bottom": 10
+                            },
+                            "decoration": {
+                              "color": "#EEF3F9",
+                              "borderRadius": 8
+                            },
                             "child": {
                               "type": "expansionTile",
-                              "tilePadding": { "left": 16, "right": 16, "top": 4, "bottom": 4 },
-                              "childrenPadding": { "left": 16, "right": 16, "bottom": 16 },
+                              "tilePadding": {
+                                "left": 16,
+                                "right": 16,
+                                "top": 4,
+                                "bottom": 4
+                              },
+                              "childrenPadding": {
+                                "left": 16,
+                                "right": 16,
+                                "bottom": 16
+                              },
                               "iconColor": "#162B49",
                               "collapsedIconColor": "#162B49",
                               "title": {
                                 "type": "text",
                                 "data": "How do I change the deposit amount on my SDP?",
-                                "style": { "fontSize": 14, "fontWeight": "bold", "color": "#162B49" }
+                                "style": {
+                                  "fontSize": 14,
+                                  "fontWeight": "bold",
+                                  "color": "#162B49"
+                                }
                               },
                               "children": [
                                 {
                                   "type": "text",
                                   "data": "To alter your monthly deposit amount, you must create a new Systematic Deposit Plan request or update the terms via the service request panel prior to the next billing cycle.",
-                                  "style": { "fontSize": 13, "color": "#334155" }
+                                  "style": {
+                                    "fontSize": 13,
+                                    "color": "#334155"
+                                  }
                                 }
                               ]
                             }
@@ -732,7 +1585,6 @@
                   ]
                 }
               }
-
             ]
           }
         }

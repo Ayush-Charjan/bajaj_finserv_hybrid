@@ -102,13 +102,116 @@ class StacExpansionTile {
 }
 
 /// ---------------------------------------------------------------------------
+/// CUSTOM STAC PARSER FOR IN-BUTTON LOADING
+/// ---------------------------------------------------------------------------
+class StacLoadingButtonParser extends StacParser<StacLoadingButton> {
+  const StacLoadingButtonParser();
+
+  @override
+  String get type => 'loadingButton';
+
+  @override
+  StacLoadingButton getModel(Map<String, dynamic> json) =>
+      StacLoadingButton.fromJson(json);
+
+  @override
+  Widget parse(BuildContext context, StacLoadingButton model) {
+    return _StacLoadingButtonWidget(model: model);
+  }
+}
+
+class StacLoadingButton {
+  final Map<String, dynamic>? child;
+  final Map<String, dynamic>? onPressed;
+  final String? backgroundColor;
+  final String? foregroundColor;
+
+  StacLoadingButton({
+    this.child,
+    this.onPressed,
+    this.backgroundColor,
+    this.foregroundColor,
+  });
+
+  factory StacLoadingButton.fromJson(Map<String, dynamic> json) {
+    return StacLoadingButton(
+      child: json['child'] as Map<String, dynamic>?,
+      onPressed: json['onPressed'] as Map<String, dynamic>?,
+      backgroundColor: json['style']?['backgroundColor'] as String?,
+      foregroundColor: json['style']?['foregroundColor'] as String?,
+    );
+  }
+}
+
+class _StacLoadingButtonWidget extends StatefulWidget {
+  final StacLoadingButton model;
+  const _StacLoadingButtonWidget({required this.model});
+
+  @override
+  State<_StacLoadingButtonWidget> createState() =>
+      _StacLoadingButtonWidgetState();
+}
+
+class _StacLoadingButtonWidgetState extends State<_StacLoadingButtonWidget> {
+  bool _isLoading = false;
+
+  Future<void> _handlePress() async {
+    if (widget.model.onPressed == null) return;
+
+    setState(() => _isLoading = true);
+
+    try {
+      // Hand the raw action JSON to Stac's dispatcher, which resolves the
+      // right ActionParser (built-in or custom) and runs it.
+      await Stac.onCallFromJson(widget.model.onPressed!, context);
+    } catch (e) {
+      debugPrint('Error executing STAC button action: $e');
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final bgColor = widget.model.backgroundColor != null
+        ? _colorFromHex(widget.model.backgroundColor!)
+        : const Color(0xFFFF6B35);
+    final fgColor = widget.model.foregroundColor != null
+        ? _colorFromHex(widget.model.foregroundColor!)
+        : Colors.white;
+
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: bgColor,
+        foregroundColor: fgColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      ),
+      onPressed: _isLoading ? null : _handlePress,
+      child: _isLoading
+          ? SizedBox(
+              height: 16,
+              width: 16,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(fgColor),
+              ),
+            )
+          : (Stac.fromJson(widget.model.child, context) ??
+                const SizedBox.shrink()),
+    );
+  }
+}
+
+/// ---------------------------------------------------------------------------
 /// MAIN APPLICATION ENTRY POINT
 /// ---------------------------------------------------------------------------
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Stac.initialize(
-    parsers: const [StacExpansionTileParser()],
+    parsers: const [StacExpansionTileParser(), StacLoadingButtonParser()],
     actionParsers: const [
       NavigateWithLoaderActionParser(),
       PrintFormDataActionParser(),
