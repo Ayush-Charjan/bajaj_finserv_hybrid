@@ -817,14 +817,14 @@
                     {
                       "type": "container",
                       "margin": {
-                        "left": 16,
-                        "right": 16,
+                        "left": 0,
+                        "right": 0,
                         "bottom": 22
                       },
                       "padding": 20,
                       "decoration": {
                         "color": "#002A54",
-                        "borderRadius": 10
+                        "borderRadius": 0
                       },
                       "child": {
                         "type": "column",
@@ -855,7 +855,7 @@
                           },
                           {
                             "type": "sizedBox",
-                            "height": 16
+                            "height": 14
                           },
                           {
                             "type": "loadingButton",
@@ -887,19 +887,19 @@
                           },
                           {
                             "type": "sizedBox",
-                            "height": 16
+                            "height": 14
                           },
                           {
                             "type": "image",
                             "src": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
                             "imageType": "network",
-                            "height": 60,
                             "width": 60,
+                            "height": 60,
                             "fit": "contain"
                           },
                           {
                             "type": "sizedBox",
-                            "height": 16
+                            "height": 14
                           },
                           {
                             "type": "text",
@@ -926,7 +926,7 @@
                           }
                         ]
                       }
-                    },
+                    }
                     {
                       "type": "container",
                       "margin": {
