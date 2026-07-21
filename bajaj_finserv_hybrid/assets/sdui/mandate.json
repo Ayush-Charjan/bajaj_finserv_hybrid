@@ -38,6 +38,15 @@
           },
           "child": {
             "type": "text",
+            "data": "Change Bank & Manage Auto Pay",
+            "style": {
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "color": "#000000"
+            }
+          },
+          "child2": {
+            "type": "text",
             "data": "Change the bank account linked to your loan repayments or update your UPI AutoPay mandates all in one place",
             "style": {
               "fontSize": 13,
