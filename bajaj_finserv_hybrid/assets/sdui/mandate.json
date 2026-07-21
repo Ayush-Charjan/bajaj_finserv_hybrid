@@ -97,7 +97,7 @@
                 },
                 "child": {
                   "type": "column",
-                  "crossAxisAlignment": "start",
+                  "crossAxisAlignment": "stretch",
                   "children": [
                     {
                       "type": "container",
@@ -1058,7 +1058,7 @@
                 },
                 "child": {
                   "type": "column",
-                  "crossAxisAlignment": "start",
+                  "crossAxisAlignment": "stretch",
                   "children": [
                     {
                       "type": "container",
