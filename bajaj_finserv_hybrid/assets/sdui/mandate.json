@@ -48,9 +48,9 @@
         },
         {
           "type": "container",
-          "margin": {
+          "padding": {
             "left": 16,
-            "right": 16,
+            "right": 0,
             "top": 6
           },
           "child": {
@@ -62,7 +62,7 @@
             "unselectedLabelColor": "#64748B",
             "labelPadding": {
               "left": 0,
-              "right": 20
+              "right": 24
             },
             "labelStyle": {
               "fontSize": 14,
@@ -828,7 +828,7 @@
                       },
                       "child": {
                         "type": "column",
-                        "crossAxisAlignment": "center",
+                        "crossAxisAlignment": "stretch",
                         "children": [
                           {
                             "type": "text",
@@ -893,7 +893,6 @@
                             "type": "image",
                             "src": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
                             "imageType": "network",
-                            "height": 120,
                             "fit": "cover"
                           },
                           {
@@ -1513,7 +1512,7 @@
                       },
                       "child": {
                         "type": "column",
-                        "crossAxisAlignment": "center",
+                        "crossAxisAlignment": "stretch",
                         "children": [
                           {
                             "type": "text",
@@ -1578,7 +1577,6 @@
                             "type": "image",
                             "src": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
                             "imageType": "network",
-                            "height": 120,
                             "fit": "cover"
                           },
                           {
