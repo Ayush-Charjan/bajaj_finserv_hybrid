@@ -893,7 +893,8 @@
                             "type": "image",
                             "src": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
                             "imageType": "network",
-                            "height": 100,
+                            "height": 60,
+                            "width": 60,
                             "fit": "contain"
                           },
                           {
