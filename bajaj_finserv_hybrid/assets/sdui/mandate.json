@@ -817,14 +817,14 @@
                     {
                       "type": "container",
                       "margin": {
-                        "left": 0,
-                        "right": 0,
+                        "left": 16,
+                        "right": 16,
                         "bottom": 22
                       },
                       "padding": 20,
                       "decoration": {
                         "color": "#002A54",
-                        "borderRadius": 0
+                        "borderRadius": 10
                       },
                       "child": {
                         "type": "column",
@@ -855,7 +855,7 @@
                           },
                           {
                             "type": "sizedBox",
-                            "height": 14
+                            "height": 16
                           },
                           {
                             "type": "loadingButton",
@@ -887,19 +887,18 @@
                           },
                           {
                             "type": "sizedBox",
-                            "height": 14
+                            "height": 16
                           },
                           {
                             "type": "image",
                             "src": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/seamless-transfers?scl=1&fmt=png-alpha",
                             "imageType": "network",
-                            "width": 60,
-                            "height": 60,
+                            "height": 100,
                             "fit": "contain"
                           },
                           {
                             "type": "sizedBox",
-                            "height": 14
+                            "height": 16
                           },
                           {
                             "type": "text",
