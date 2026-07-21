@@ -396,7 +396,7 @@
                                     "shape": { "type": "roundedRectangleBorder", "borderRadius": 24 }
                                   },
                                   "onPressed": {
-                                    "actionType": "navigate",
+                                    "actionType": "navigateWithLoader",
                                     "navigationStyle": "push",
                                     "request": { "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json", "method": "get" }
                                   },
