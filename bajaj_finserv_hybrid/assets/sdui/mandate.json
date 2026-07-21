@@ -822,99 +822,67 @@
                         "borderRadius": 10
                       },
                       "child": {
-                        "type": "row",
+                        "type": "column",
                         "crossAxisAlignment": "center",
                         "children": [
                           {
-                            "type": "expanded",
-                            "child": {
-                              "type": "column",
-                              "crossAxisAlignment": "start",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "data": "Get Bajaj Pay UPI",
-                                  "style": {
-                                    "fontSize": 22,
-                                    "fontWeight": "bold",
-                                    "color": "#FFFFFF"
-                                  }
-                                },
-                                {
-                                  "type": "sizedBox",
-                                  "height": 6
-                                },
-                                {
-                                  "type": "text",
-                                  "data": "Transfer, pay, recharge & shop securely",
-                                  "style": {
-                                    "fontSize": 13,
-                                    "color": "#B9D9F2"
-                                  }
-                                },
-                                {
-                                  "type": "sizedBox",
-                                  "height": 18
-                                },
-                                {
-                                  "type": "loadingButton",
-                                  "style": {
-                                    "backgroundColor": "#FFFFFF",
-                                    "foregroundColor": "#002A54",
-                                    "shape": {
-                                      "type": "roundedRectangleBorder",
-                                      "borderRadius": 24
-                                    }
-                                  },
-                                  "onPressed": {
-                                    "actionType": "navigateWithLoader",
-                                    "navigationStyle": "push",
-                                    "request": {
-                                      "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json",
-                                      "method": "get"
-                                    }
-                                  },
-                                  "child": {
-                                    "type": "text",
-                                    "data": "Create UPI ID",
-                                    "style": {
-                                      "fontSize": 14,
-                                      "fontWeight": "bold",
-                                      "color": "#002A54"
-                                    }
-                                  }
-                                },
-                                {
-                                  "type": "sizedBox",
-                                  "height": 20
-                                },
-                                {
-                                  "type": "text",
-                                  "data": "Seamless transfers",
-                                  "style": {
-                                    "fontSize": 15,
-                                    "fontWeight": "bold",
-                                    "color": "#FFFFFF"
-                                  }
-                                },
-                                {
-                                  "type": "sizedBox",
-                                  "height": 4
-                                },
-                                {
-                                  "type": "text",
-                                  "data": "Pay instantly, anytime, anywhere",
-                                  "style": {
-                                    "fontSize": 12,
-                                    "color": "#B9D9F2"
-                                  }
-                                }
-                              ]
+                            "type": "text",
+                            "data": "Get Bajaj Pay UPI",
+                            "textAlign": "center",
+                            "style": {
+                              "fontSize": 22,
+                              "fontWeight": "bold",
+                              "color": "#FFFFFF"
                             }
                           },
                           {
                             "type": "sizedBox",
-                            "width": 12
+                            "height": 6
+                          },
+                          {
+                            "type": "text",
+                            "data": "Transfer, pay, recharge & shop securely",
+                            "textAlign": "center",
+                            "style": {
+                              "fontSize": 13,
+                              "color": "#B9D9F2"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 18
+                          },
+                          {
+                            "type": "loadingButton",
+                            "style": {
+                              "backgroundColor": "#FFFFFF",
+                              "foregroundColor": "#002A54",
+                              "shape": {
+                                "type": "roundedRectangleBorder",
+                                "borderRadius": 24
+                              }
+                            },
+                            "onPressed": {
+                              "actionType": "navigate",
+                              "navigationStyle": "push",
+                              "request": {
+                                "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json",
+                                "method": "get"
+                              }
+                            },
+                            "child": {
+                              "type": "text",
+                              "data": "Create UPI ID",
+                              "style": {
+                                "fontSize": 14,
+                                "fontWeight": "bold",
+                                "color": "#002A54"
+                              }
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 16
                           },
                           {
                             "type": "image",
@@ -923,6 +891,33 @@
                             "width": 90,
                             "height": 90,
                             "fit": "contain"
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 16
+                          },
+                          {
+                            "type": "text",
+                            "data": "Seamless transfers",
+                            "textAlign": "center",
+                            "style": {
+                              "fontSize": 15,
+                              "fontWeight": "bold",
+                              "color": "#FFFFFF"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 4
+                          },
+                          {
+                            "type": "text",
+                            "data": "Pay instantly, anytime, anywhere",
+                            "textAlign": "center",
+                            "style": {
+                              "fontSize": 12,
+                              "color": "#B9D9F2"
+                            }
                           }
                         ]
                       }
@@ -1274,7 +1269,163 @@
                                   }
                                 },
                                 "onPressed": {
-                                  "actionType": "none"
+                                  "actionType": "showModalBottomSheet",
+                                  "widget": {
+                                    "type": "container",
+                                    "padding": {
+                                      "top": 20,
+                                      "left": 24,
+                                      "right": 24,
+                                      "bottom": 28
+                                    },
+                                    "decoration": {
+                                      "color": "#FFFFFF",
+                                      "borderRadius": {
+                                        "topLeft": 16,
+                                        "topRight": 16
+                                      }
+                                    },
+                                    "child": {
+                                      "type": "column",
+                                      "crossAxisAlignment": "stretch",
+                                      "children": [
+                                        {
+                                          "type": "row",
+                                          "mainAxisAlignment": "end",
+                                          "children": [
+                                            {
+                                              "type": "gestureDetector",
+                                              "onTap": {
+                                                "actionType": "navigate",
+                                                "navigationStyle": "pop"
+                                              },
+                                              "child": {
+                                                "type": "icon",
+                                                "icon": "close",
+                                                "color": "#FF6B35",
+                                                "size": 20
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "sizedBox",
+                                          "height": 4
+                                        },
+                                        {
+                                          "type": "text",
+                                          "data": "Please note",
+                                          "textAlign": "center",
+                                          "style": {
+                                            "fontSize": 20,
+                                            "fontWeight": "bold",
+                                            "color": "#162B49"
+                                          }
+                                        },
+                                        {
+                                          "type": "sizedBox",
+                                          "height": 18
+                                        },
+                                        {
+                                          "type": "text",
+                                          "textAlign": "center",
+                                          "data": "If your current month's instalment is under presentation, the bank account change will apply from the subsequent month's instalment* (e.g. if it's Jan 29, deductions will start in March) *Subject to bank approval.",
+                                          "style": {
+                                            "fontSize": 13,
+                                            "color": "#1B4B7A"
+                                          }
+                                        },
+                                        {
+                                          "type": "sizedBox",
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "text",
+                                          "textAlign": "center",
+                                          "data": "Check your reminder SMS from BFL to know which account will be used for upcoming deduction.",
+                                          "style": {
+                                            "fontSize": 13,
+                                            "color": "#1B4B7A"
+                                          }
+                                        },
+                                        {
+                                          "type": "sizedBox",
+                                          "height": 26
+                                        },
+                                        {
+                                          "type": "row",
+                                          "crossAxisAlignment": "center",
+                                          "children": [
+                                            {
+                                              "type": "expanded",
+                                              "child": {
+                                                "type": "outlinedButton",
+                                                "style": {
+                                                  "foregroundColor": "#FF6B35",
+                                                  "side": {
+                                                    "color": "#FF6B35",
+                                                    "width": 1.5
+                                                  },
+                                                  "shape": {
+                                                    "type": "roundedRectangleBorder",
+                                                    "borderRadius": 24
+                                                  }
+                                                },
+                                                "onPressed": {
+                                                  "actionType": "navigate",
+                                                  "navigationStyle": "pop"
+                                                },
+                                                "child": {
+                                                  "type": "text",
+                                                  "data": "GO BACK",
+                                                  "style": {
+                                                    "fontSize": 13,
+                                                    "fontWeight": "bold",
+                                                    "color": "#FF6B35"
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "type": "sizedBox",
+                                              "width": 14
+                                            },
+                                            {
+                                              "type": "expanded",
+                                              "child": {
+                                                "type": "loadingButton",
+                                                "style": {
+                                                  "backgroundColor": "#FF6B35",
+                                                  "foregroundColor": "#FFFFFF",
+                                                  "shape": {
+                                                    "type": "roundedRectangleBorder",
+                                                    "borderRadius": 24
+                                                  }
+                                                },
+                                                "onPressed": {
+                                                  "actionType": "navigateWithLoader",
+                                                  "navigationStyle": "push",
+                                                  "request": {
+                                                    "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/change_bank_account.json",
+                                                    "method": "get"
+                                                  }
+                                                },
+                                                "child": {
+                                                  "type": "text",
+                                                  "data": "CONTINUE",
+                                                  "style": {
+                                                    "fontSize": 13,
+                                                    "fontWeight": "bold",
+                                                    "color": "#FFFFFF"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
                                 },
                                 "child": {
                                   "type": "text",
@@ -1356,99 +1507,67 @@
                         "borderRadius": 10
                       },
                       "child": {
-                        "type": "row",
+                        "type": "column",
                         "crossAxisAlignment": "center",
                         "children": [
                           {
-                            "type": "expanded",
-                            "child": {
-                              "type": "column",
-                              "crossAxisAlignment": "start",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "data": "Get Bajaj Pay UPI",
-                                  "style": {
-                                    "fontSize": 22,
-                                    "fontWeight": "bold",
-                                    "color": "#FFFFFF"
-                                  }
-                                },
-                                {
-                                  "type": "sizedBox",
-                                  "height": 6
-                                },
-                                {
-                                  "type": "text",
-                                  "data": "Transfer, pay, recharge & shop securely",
-                                  "style": {
-                                    "fontSize": 13,
-                                    "color": "#B9D9F2"
-                                  }
-                                },
-                                {
-                                  "type": "sizedBox",
-                                  "height": 18
-                                },
-                                {
-                                  "type": "loadingButton",
-                                  "style": {
-                                    "backgroundColor": "#FFFFFF",
-                                    "foregroundColor": "#002A54",
-                                    "shape": {
-                                      "type": "roundedRectangleBorder",
-                                      "borderRadius": 24
-                                    }
-                                  },
-                                  "onPressed": {
-                                    "actionType": "navigate",
-                                    "navigationStyle": "push",
-                                    "request": {
-                                      "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json",
-                                      "method": "get"
-                                    }
-                                  },
-                                  "child": {
-                                    "type": "text",
-                                    "data": "Create UPI ID",
-                                    "style": {
-                                      "fontSize": 14,
-                                      "fontWeight": "bold",
-                                      "color": "#002A54"
-                                    }
-                                  }
-                                },
-                                {
-                                  "type": "sizedBox",
-                                  "height": 20
-                                },
-                                {
-                                  "type": "text",
-                                  "data": "Seamless transfers",
-                                  "style": {
-                                    "fontSize": 15,
-                                    "fontWeight": "bold",
-                                    "color": "#FFFFFF"
-                                  }
-                                },
-                                {
-                                  "type": "sizedBox",
-                                  "height": 4
-                                },
-                                {
-                                  "type": "text",
-                                  "data": "Pay instantly, anytime, anywhere",
-                                  "style": {
-                                    "fontSize": 12,
-                                    "color": "#B9D9F2"
-                                  }
-                                }
-                              ]
+                            "type": "text",
+                            "data": "Get Bajaj Pay UPI",
+                            "textAlign": "center",
+                            "style": {
+                              "fontSize": 22,
+                              "fontWeight": "bold",
+                              "color": "#FFFFFF"
                             }
                           },
                           {
                             "type": "sizedBox",
-                            "width": 12
+                            "height": 6
+                          },
+                          {
+                            "type": "text",
+                            "data": "Transfer, pay, recharge & shop securely",
+                            "textAlign": "center",
+                            "style": {
+                              "fontSize": 13,
+                              "color": "#B9D9F2"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 18
+                          },
+                          {
+                            "type": "loadingButton",
+                            "style": {
+                              "backgroundColor": "#FFFFFF",
+                              "foregroundColor": "#002A54",
+                              "shape": {
+                                "type": "roundedRectangleBorder",
+                                "borderRadius": 24
+                              }
+                            },
+                            "onPressed": {
+                              "actionType": "navigate",
+                              "navigationStyle": "push",
+                              "request": {
+                                "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/create_upi_id.json",
+                                "method": "get"
+                              }
+                            },
+                            "child": {
+                              "type": "text",
+                              "data": "Create UPI ID",
+                              "style": {
+                                "fontSize": 14,
+                                "fontWeight": "bold",
+                                "color": "#002A54"
+                              }
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 16
                           },
                           {
                             "type": "image",
@@ -1457,6 +1576,33 @@
                             "width": 90,
                             "height": 90,
                             "fit": "contain"
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 16
+                          },
+                          {
+                            "type": "text",
+                            "data": "Seamless transfers",
+                            "textAlign": "center",
+                            "style": {
+                              "fontSize": 15,
+                              "fontWeight": "bold",
+                              "color": "#FFFFFF"
+                            }
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 4
+                          },
+                          {
+                            "type": "text",
+                            "data": "Pay instantly, anytime, anywhere",
+                            "textAlign": "center",
+                            "style": {
+                              "fontSize": 12,
+                              "color": "#B9D9F2"
+                            }
                           }
                         ]
                       }
