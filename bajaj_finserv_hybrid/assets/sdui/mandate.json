@@ -285,40 +285,6 @@
                                     }
                                   ]
                                 }
-                              }
-                            ]
-                          },
-                          {
-                            "type": "sizedBox",
-                            "height": 12
-                          },
-                          {
-                            "type": "row",
-                            "mainAxisAlignment": "spaceBetween",
-                            "crossAxisAlignment": "start",
-                            "children": [
-                              {
-                                "type": "row",
-                                "children": [
-                                  {
-                                    "type": "icon",
-                                    "icon": "info_outline",
-                                    "color": "#94A3B8",
-                                    "size": 14
-                                  },
-                                  {
-                                    "type": "sizedBox",
-                                    "width": 6
-                                  },
-                                  {
-                                    "type": "text",
-                                    "data": "UMRN: 198736490",
-                                    "style": {
-                                      "fontSize": 11,
-                                      "color": "#64748B"
-                                    }
-                                  }
-                                ]
                               },
                               {
                                 "type": "loadingButton",
@@ -498,6 +464,33 @@
                                     "fontWeight": "bold",
                                     "color": "#FFFFFF"
                                   }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 12
+                          },
+                          {
+                            "type": "row",
+                            "children": [
+                              {
+                                "type": "icon",
+                                "icon": "info_outline",
+                                "color": "#94A3B8",
+                                "size": 14
+                              },
+                              {
+                                "type": "sizedBox",
+                                "width": 6
+                              },
+                              {
+                                "type": "text",
+                                "data": "UMRN: 198736490",
+                                "style": {
+                                  "fontSize": 11,
+                                  "color": "#64748B"
                                 }
                               }
                             ]
@@ -1246,40 +1239,6 @@
                                     }
                                   ]
                                 }
-                              }
-                            ]
-                          },
-                          {
-                            "type": "sizedBox",
-                            "height": 12
-                          },
-                          {
-                            "type": "row",
-                            "mainAxisAlignment": "spaceBetween",
-                            "crossAxisAlignment": "start",
-                            "children": [
-                              {
-                                "type": "row",
-                                "children": [
-                                  {
-                                    "type": "icon",
-                                    "icon": "info_outline",
-                                    "color": "#94A3B8",
-                                    "size": 14
-                                  },
-                                  {
-                                    "type": "sizedBox",
-                                    "width": 6
-                                  },
-                                  {
-                                    "type": "text",
-                                    "data": "UMRN: 198736512",
-                                    "style": {
-                                      "fontSize": 11,
-                                      "color": "#64748B"
-                                    }
-                                  }
-                                ]
                               },
                               {
                                 "type": "loadingButton",
@@ -1459,6 +1418,33 @@
                                     "fontWeight": "bold",
                                     "color": "#FFFFFF"
                                   }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "sizedBox",
+                            "height": 12
+                          },
+                          {
+                            "type": "row",
+                            "children": [
+                              {
+                                "type": "icon",
+                                "icon": "info_outline",
+                                "color": "#94A3B8",
+                                "size": 14
+                              },
+                              {
+                                "type": "sizedBox",
+                                "width": 6
+                              },
+                              {
+                                "type": "text",
+                                "data": "UMRN: 198736512",
+                                "style": {
+                                  "fontSize": 11,
+                                  "color": "#64748B"
                                 }
                               }
                             ]
