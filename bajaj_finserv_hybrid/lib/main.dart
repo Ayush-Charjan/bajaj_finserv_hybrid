@@ -8,11 +8,107 @@ import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:stac/stac.dart';
 import 'screens/stac_emi_screen.dart';
+// import 'screens/stac_mandate_screen.dart';
 
+/// ---------------------------------------------------------------------------
+/// HELPER FUNCTIONS FOR CUSTOM STAC PARSER
+/// ---------------------------------------------------------------------------
+Color _colorFromHex(String hexString) {
+  final buffer = StringBuffer();
+  if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
+  buffer.write(hexString.replaceFirst('#', ''));
+  return Color(int.parse(buffer.toString(), radix: 16));
+}
+
+EdgeInsetsGeometry? _edgeInsetsFromJson(dynamic json) {
+  if (json == null) return null;
+  if (json is num) return EdgeInsets.all(json.toDouble());
+  if (json is Map<String, dynamic>) {
+    return EdgeInsets.only(
+      left: (json['left'] as num?)?.toDouble() ?? 0.0,
+      top: (json['top'] as num?)?.toDouble() ?? 0.0,
+      right: (json['right'] as num?)?.toDouble() ?? 0.0,
+      bottom: (json['bottom'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
+  return null;
+}
+
+/// ---------------------------------------------------------------------------
+/// CUSTOM STAC PARSER FOR EXPANSION TILE
+/// ---------------------------------------------------------------------------
+class StacExpansionTileParser extends StacParser<StacExpansionTile> {
+  const StacExpansionTileParser();
+
+  @override
+  String get type => 'expansionTile';
+
+  @override
+  StacExpansionTile getModel(Map<String, dynamic> json) =>
+      StacExpansionTile.fromJson(json);
+
+  @override
+  Widget parse(BuildContext context, StacExpansionTile model) {
+    return ExpansionTile(
+      tilePadding: model.tilePadding,
+      childrenPadding: model.childrenPadding,
+      iconColor: model.iconColor != null
+          ? _colorFromHex(model.iconColor!)
+          : null,
+      collapsedIconColor: model.collapsedIconColor != null
+          ? _colorFromHex(model.collapsedIconColor!)
+          : null,
+      title: Stac.fromJson(model.title, context) ?? const SizedBox.shrink(),
+      children: model.children
+          .map(
+            (child) => Stac.fromJson(child, context) ?? const SizedBox.shrink(),
+          )
+          .toList(),
+    );
+  }
+}
+
+class StacExpansionTile {
+  final Map<String, dynamic> title;
+  final List<Map<String, dynamic>> children;
+  final EdgeInsetsGeometry? tilePadding;
+  final EdgeInsetsGeometry? childrenPadding;
+  final String? iconColor;
+  final String? collapsedIconColor;
+
+  StacExpansionTile({
+    required this.title,
+    required this.children,
+    this.tilePadding,
+    this.childrenPadding,
+    this.iconColor,
+    this.collapsedIconColor,
+  });
+
+  factory StacExpansionTile.fromJson(Map<String, dynamic> json) {
+    return StacExpansionTile(
+      title: json['title'] as Map<String, dynamic>,
+      children:
+          (json['children'] as List<dynamic>?)
+              ?.map((e) => e as Map<String, dynamic>)
+              .toList() ??
+          [],
+      tilePadding: _edgeInsetsFromJson(json['tilePadding']),
+      childrenPadding: _edgeInsetsFromJson(json['childrenPadding']),
+      iconColor: json['iconColor'] as String?,
+      collapsedIconColor: json['collapsedIconColor'] as String?,
+    );
+  }
+}
+
+/// ---------------------------------------------------------------------------
+/// MAIN APPLICATION ENTRY POINT
+/// ---------------------------------------------------------------------------
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Stac.initialize(
+    parsers: const [StacExpansionTileParser()],
     actionParsers: const [
       NavigateWithLoaderActionParser(),
       PrintFormDataActionParser(),
@@ -68,7 +164,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
     super.initState();
     _lastBackPressedAt = null;
 
-    // Check if running in a native shell to auto-login
     final queryParams = Uri.base.queryParameters;
     final isShell =
         queryParams['nativeShell'] == 'true' ||
@@ -77,7 +172,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
       _isNativeLoggedIn = true;
       _initializeMobileWebView();
 
-      // Notify shell that we are ready after a small delay to allow for API calls/rendering
       Future.delayed(const Duration(milliseconds: 1500), () {
         _openNativeFeature('READY');
       });
@@ -432,7 +526,6 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
 
     return WillPopScope(
       onWillPop: () async {
-        // If webview can go back, navigate back inside webview.
         try {
           if (_controller != null) {
             final bool canGoBack = await _controller!.canGoBack();
@@ -443,12 +536,10 @@ class _HybridHomeScreenState extends State<HybridHomeScreen> {
           }
         } catch (_) {}
 
-        // If there are flutter routes to pop, allow navigator to pop.
         if (Navigator.of(context).canPop()) {
           return true;
         }
 
-        // Double back to exit.
         final DateTime now = DateTime.now();
         if (_lastBackPressedAt == null ||
             now.difference(_lastBackPressedAt!) > const Duration(seconds: 2)) {
