@@ -817,14 +817,14 @@
                     {
                       "type": "container",
                       "margin": {
-                        "left": 16,
-                        "right": 16,
+                        "left": 0,
+                        "right": 0,
                         "bottom": 22
                       },
                       "padding": 20,
                       "decoration": {
                         "color": "#002A54",
-                        "borderRadius": 10
+                        "borderRadius": 0
                       },
                       "child": {
                         "type": "column",
@@ -1502,14 +1502,14 @@
                     {
                       "type": "container",
                       "margin": {
-                        "left": 16,
-                        "right": 16,
+                        "left": 0,
+                        "right": 0,
                         "bottom": 22
                       },
                       "padding": 20,
                       "decoration": {
                         "color": "#002A54",
-                        "borderRadius": 10
+                        "borderRadius": 0
                       },
                       "child": {
                         "type": "column",
