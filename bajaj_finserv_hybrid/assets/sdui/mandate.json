@@ -6,10 +6,18 @@
     "backgroundColor": "#002A54",
     "foregroundColor": "#FFFFFF",
     "leading": {
-      "type": "icon",
-      "icon": "arrow_back",
-      "color": "#FFFFFF",
-      "size": 22
+      "type": "iconButton",
+      "icon": {
+        "type": "icon",
+        "iconType": "material",
+        "icon": "arrow_back",
+        "color": "#FFFFFF",
+        "size": 22
+      },
+      "onPressed": {
+        "actionType": "navigate",
+        "navigationStyle": "pop"
+      }
     },
     "title": {
       "type": "text",
