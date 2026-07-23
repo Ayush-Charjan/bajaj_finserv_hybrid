@@ -441,7 +441,7 @@
                                                 },
                                                 "onPressed": {
                                                   "actionType": "navigateWithLoader",
-                                                  "navigationStyle": "push",
+                                                  "navigationStyle": "pushReplacement",
                                                   "request": {
                                                     "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/change_bank_account.json",
                                                     "method": "get"
@@ -1395,7 +1395,7 @@
                                                 },
                                                 "onPressed": {
                                                   "actionType": "navigateWithLoader",
-                                                  "navigationStyle": "push",
+                                                  "navigationStyle": "pushReplacement",
                                                   "request": {
                                                     "url": "https://raw.githubusercontent.com/Ayush-Charjan/bajaj_finserv_hybrid/main/bajaj_finserv_hybrid/assets/sdui/change_bank_account.json",
                                                     "method": "get"

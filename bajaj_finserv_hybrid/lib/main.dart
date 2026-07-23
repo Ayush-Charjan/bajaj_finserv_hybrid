@@ -8,7 +8,7 @@ import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:stac/stac.dart';
 import 'screens/stac_emi_screen.dart';
-// import 'screens/stac_mandate_screen.dart';
+import 'screens/stac_mandate_screen.dart';
 
 /// ---------------------------------------------------------------------------
 /// HELPER FUNCTIONS FOR CUSTOM STAC PARSER
